@@ -1,0 +1,25 @@
+
+
+.container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(1px, 1fr));
+    grid-template-rows: repeat(1, minmax(40px, auto));
+    grid-gap: 2px 2px;
+    grid-auto-flow: row;
+    padding-top: 2px;
+}
+
+.content {
+  background-color: red;
+}
+
+.tompiler.tompiler {
+  background-color: red;
+}
+
+.cell {
+  text-align: center;
+  color: rgb(63, 63, 63);
+  background-color: rgb(226, 226, 226);
+  border-radius: 3px;
+}
