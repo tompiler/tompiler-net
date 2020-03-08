@@ -190,7 +190,7 @@ html {
     overflow-y: scroll;
   }
   * {
-    box-sizing: inherit;
+    // box-sizing: inherit;
   }
   *:before {
     box-sizing: inherit;
@@ -508,9 +508,9 @@ html {
   th {
     font-weight: bold;
   }
-  li {
-    margin-bottom: calc(1.45rem / 2);
-  }
+  // li {
+  //   margin-bottom: calc(1.45rem / 2);
+  // }
   ol li {
     padding-left: 0;
   }
