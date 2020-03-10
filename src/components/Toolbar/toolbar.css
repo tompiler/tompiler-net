@@ -17,21 +17,24 @@
 
 .toolbar__logo {
     margin-left: 1rem;
+    display: flex;
 }
 
-.toolbar__bb-logo {
+.toolbar__logo-container {
+    display: flex;
     height: 100%;
+    padding: 0 10px 0 10px;
 }
 
-.toolbar__bb-logo:hover {
+.toolbar__logo-container:hover {
     background: #aaaaaa;
 }
 
 .toolbar__logo a {
+    margin: auto;
     color: black;
     text-decoration: none;
     font-size: 1.5rem;
-    display: inline;
 }
 
 .toolbar_navigation-items a {
