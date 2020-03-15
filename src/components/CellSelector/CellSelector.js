@@ -1,6 +1,6 @@
 import React from "react"
-import headingData from "./data/headingData"
-import Cell from "./cell"
+import headingData from "./headingData"
+import Cell from "../cell"
 import "./cellSelector.css"
 
 class CellSelector extends React.Component {
@@ -45,12 +45,7 @@ class CellSelector extends React.Component {
         }
       }
     })
-    return (
-      <div className="parent">
-        <div className="container-left">{elements}</div>
-        <div className="container-right"></div>
-      </div>
-    )
+    return <React.Fragment>{elements}</React.Fragment>
   }
 }
 
