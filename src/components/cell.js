@@ -9,6 +9,7 @@ const Cell = ({
   colour,
   onMouseEnter,
   onMouseLeave,
+  routeHandler,
 }) => {
   return (
     <div
@@ -26,6 +27,7 @@ const Cell = ({
       }}
       onMouseEnter={() => onMouseEnter(heading.word)}
       onMouseLeave={() => onMouseLeave(heading.word)}
+      onClick={() => routeHandler(heading.word)}
     >
       {text}
     </div>

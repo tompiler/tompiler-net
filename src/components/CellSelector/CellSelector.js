@@ -40,6 +40,7 @@ class CellSelector extends React.Component {
                   ? heading.colour2
                   : "white"
               }
+              routeHandler={this.props.routeHandler}
             ></Cell>
           )
         }

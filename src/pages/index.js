@@ -11,6 +11,14 @@ import "../styles/index.scss"
 class IndexPage extends React.Component {
   state = {
     sideDrawerOpen: false,
+    route: "about",
+  }
+
+  routeHandler = route => {
+    console.log(route)
+    this.setState(() => {
+      return { route: route }
+    })
   }
 
   drawerToggleClickHandler = () => {
@@ -34,7 +42,7 @@ class IndexPage extends React.Component {
         <Toolbar drawerClickHandler={this.drawerToggleClickHandler} />
         <SideDrawer show={this.state.sideDrawerOpen} />
         {backdrop}
-        <Main />
+        <Main route={this.state.route} routeHandler={this.routeHandler} />
       </div>
     )
   }
