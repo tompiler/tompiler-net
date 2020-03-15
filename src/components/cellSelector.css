@@ -1,0 +1,17 @@
+.container-left {
+    height: 100%;
+    background: rgba(10,0,200,.1);
+    position: fixed;
+    top: 56px;
+    left: 0;
+    width: 50%;
+}
+
+.container-right {
+    height: 100%;
+    background: rgba(100,0,20,.3);
+    position: fixed;
+    top: 56px;
+    left: 50%;
+    width: 50%;
+}

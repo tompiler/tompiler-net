@@ -1,8 +1,9 @@
 import React from "react"
 import headingData from "./data/headingData"
 import Cell from "./cell"
+import "./cellSelector.css"
 
-class Wordsearch extends React.Component {
+class CellSelector extends React.Component {
   constructor(props) {
     super(props)
     this.state = { hover: false, hoverWord: "" }
@@ -44,8 +45,13 @@ class Wordsearch extends React.Component {
         }
       }
     })
-    return <div className="parent">{elements}</div>
+    return (
+      <div className="parent">
+        <div className="container-left">{elements}</div>
+        <div className="container-right"></div>
+      </div>
+    )
   }
 }
 
-export default Wordsearch
+export default CellSelector
