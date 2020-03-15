@@ -23,7 +23,7 @@
 
     display: flex;
     flex-direction: column;
-    min-height: 80vh;
+    min-height: 75vh;
 }
 
 .side-drawer ul {

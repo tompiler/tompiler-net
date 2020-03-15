@@ -12,9 +12,6 @@ const SideDrawer = props => {
       <div className="sideDrawer-container">
         <ul>
           <li>
-            <a href="/">cv</a>
-          </li>
-          <li>
             <a href="/">articles</a>
           </li>
           <li>
@@ -23,6 +20,9 @@ const SideDrawer = props => {
         </ul>
       </div>
       <ul>
+        <li>
+          <a href="/">cv</a>
+        </li>
         <li>
           <a href="/">about</a>
         </li>
