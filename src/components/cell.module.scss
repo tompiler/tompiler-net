@@ -7,6 +7,9 @@
   font-size: 26px;
   color: black;
 
+  box-shadow: 3px 5px #8a8a8a;
+  
+
   /* background-color: white; */
   position: absolute;
   margin: 2vh;
@@ -16,6 +19,8 @@
   display: inline-block;
   width: 1.2vw;
   height: 3.7vh;
+
+  cursor: pointer;
 
   transition: 0.25s background-color;
 }

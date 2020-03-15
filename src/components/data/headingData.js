@@ -1,3 +1,10 @@
+const blue = "rgba(0,194,224,.7)",
+  orange = "rgba(250,146,63,.7)",
+  green = "rgba(20,102,24,.6)",
+  fuschia = "rgba(221,33,83,.6)",
+  goldenrod = "rgba(218,165,33,.7)",
+  purple = "rgba(192,63,230,.7)"
+
 const headingData = [
   {
     text: "t",
@@ -5,9 +12,9 @@ const headingData = [
     top: 26,
     display: "inline-block",
     direction: "across",
-    colour: "rgba(189, 166, 245, .7)",
+    colour: blue,
     word: "tompiler",
-    colour2: "rgba(162, 211, 222, .7)",
+    colour2: orange,
     word2: "tutorials",
   },
   {
@@ -16,7 +23,7 @@ const headingData = [
     top: 26,
     display: "inline-block",
     direction: "across",
-    colour: "rgba(189, 166, 245, .7)",
+    colour: blue,
     word: "tompiler",
   },
   {
@@ -25,9 +32,9 @@ const headingData = [
     top: 26,
     display: "inline-block",
     direction: "across",
-    colour: "rgba(189, 166, 245, .7)",
+    colour: blue,
     word: "tompiler",
-    colour2: "rgba(158, 217, 185, .7)",
+    colour2: fuschia,
     word2: "articles",
   },
   {
@@ -36,7 +43,7 @@ const headingData = [
     top: 32.1,
     display: "inline-block",
     direction: "down",
-    colour: "rgba(162, 211, 222, .7)",
+    colour: orange,
     word: "tutorials",
   },
   {
@@ -45,9 +52,9 @@ const headingData = [
     top: 38.4,
     display: "inline-block",
     direction: "down",
-    colour: "rgba(162, 211, 222, .7)",
+    colour: orange,
     word: "tutorials",
-    colour2: "rgba(199, 222, 162, .7)",
+    colour2: green,
     word2: "contact",
   },
   {
@@ -56,7 +63,7 @@ const headingData = [
     top: 44.6,
     display: "inline-block",
     direction: "down",
-    colour: "rgba(162, 211, 222, .7)",
+    colour: orange,
     word: "tutorials",
   },
   {
@@ -65,9 +72,9 @@ const headingData = [
     top: 63.1,
     display: "inline-block",
     direction: "down",
-    colour: "rgba(162, 211, 222, .7)",
+    colour: orange,
     word: "tutorials",
-    colour2: "rgba(222, 162, 174, .7)",
+    colour2: blue,
     word2: "about",
   },
   {
@@ -76,7 +83,7 @@ const headingData = [
     top: 69.2,
     display: "inline-block",
     direction: "down",
-    colour: "rgba(162, 211, 222, .7)",
+    colour: orange,
     word: "tutorials",
   },
   {
@@ -85,9 +92,9 @@ const headingData = [
     top: 38.35,
     display: "inline-block",
     direction: "across",
-    colour: "rgba(199, 222, 162, .7)",
+    colour: green,
     word: "contact",
-    colour2: "rgba(222, 192, 162, .7)",
+    colour2: goldenrod,
     word2: "cv",
   },
   {
@@ -96,7 +103,7 @@ const headingData = [
     top: 38.35,
     display: "inline-block",
     direction: "across",
-    colour: "rgba(199, 222, 162, .7)",
+    colour: green,
     word: "contact",
   },
   {
@@ -105,7 +112,7 @@ const headingData = [
     top: 38.35,
     display: "inline-block",
     direction: "across",
-    colour: "rgba(199, 222, 162, .7)",
+    colour: green,
     word: "contact",
   },
   {
@@ -114,7 +121,7 @@ const headingData = [
     top: 44.5,
     display: "inline-block",
     direction: "down",
-    colour: "rgba(222, 192, 162, .7)",
+    colour: goldenrod,
     word: "cv",
   },
   {
@@ -123,7 +130,7 @@ const headingData = [
     top: 19.82,
     display: "inline-block",
     direction: "down",
-    colour: "rgba(158, 217, 185, .7)",
+    colour: fuschia,
     word: "articles",
   },
   {
@@ -132,7 +139,7 @@ const headingData = [
     top: 32.1,
     display: "inline-block",
     direction: "down",
-    colour: "rgba(158, 217, 185, .7)",
+    colour: fuschia,
     word: "articles",
   },
   {
@@ -141,7 +148,7 @@ const headingData = [
     top: 63.1,
     display: "inline-block",
     direction: "across",
-    colour: "rgba(222, 162, 174, .7)",
+    colour: blue,
     word: "about",
   },
 ]

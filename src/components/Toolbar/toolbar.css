@@ -15,26 +15,29 @@
     padding: 0 1rem;
 }
 
-.toolbar__logo {
-    margin-left: 1rem;
-    display: flex;
-}
-
 .toolbar__logo-container {
     display: flex;
     height: 100%;
     padding: 0 10px 0 10px;
 }
 
-.toolbar__logo-container:hover {
-    background: #aaaaaa;
+.toolbar__logo-container:hover div {
+    color: #fa923f;
 }
 
-.toolbar__logo a {
+.toolbar__logo-container:hover .toggle-button__line {
+    background: #fa923f;
+}
+
+
+.toolbar__logo {
+    padding-left: 1rem;
+    display: flex;
     margin: auto;
     color: black;
     text-decoration: none;
     font-size: 1.5rem;
+    cursor: pointer;
 }
 
 .toolbar_navigation-items a {
