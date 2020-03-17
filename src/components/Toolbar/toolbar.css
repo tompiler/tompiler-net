@@ -5,7 +5,7 @@
     width: 100%;
     background: white;
     height: 56px;
-    border-bottom: 2px solid #333333;
+    border-bottom: 3px solid #333333;
 }
 
 .toolbar__navigation {
@@ -36,7 +36,7 @@
     margin: auto;
     color: black;
     text-decoration: none;
-    font-size: 1.5rem;
+    font-size: 1.7rem;
     cursor: pointer;
 }
 
