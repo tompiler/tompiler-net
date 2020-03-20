@@ -25,7 +25,7 @@ module.exports = {
           "Montserrat sans-serif",
           "Open Sans sans-serif",
           "Quicksand, sans-serif:100",
-          "source sans pro:300,400,400i,700", // you can also specify font weights and styles
+          "source sans pro:200,300,400,400i,700", // you can also specify font weights and styles
         ],
         display: "swap",
       },
@@ -36,7 +36,7 @@ module.exports = {
         fonts: [
           {
             family: "Open Sans",
-            variants: ["400", "700"],
+            variants: ["200", "400", "700"],
           },
         ],
       },
