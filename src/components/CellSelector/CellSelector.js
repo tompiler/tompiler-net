@@ -24,7 +24,7 @@ class CellSelector extends React.Component {
     var elements = []
     CellSelectorData.forEach(heading => {
       for (var i = 0; i < heading.text.length; i++) {
-        if (heading.text[i] != " ") {
+        if (heading.text[i] !== " ") {
           elements.push(
             <Cell
               heading={heading}

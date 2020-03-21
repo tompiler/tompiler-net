@@ -1,6 +1,4 @@
 import React from "react"
-import { Link } from "gatsby"
-import Header from "../components/header"
 import Main from "../components/Main/Main"
 import Toolbar from "../components/Toolbar/Toolbar"
 import SideDrawer from "../components/SideDrawer/SideDrawer"

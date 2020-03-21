@@ -18,8 +18,11 @@
 .toolbar__logo-container {
     display: flex;
     height: 100%;
-    padding: 0 10px 0 10px;
-}
+    padding: auto;
+    margin: 0;
+    border: none;
+    background: none;
+    }
 
 .toolbar__logo-container:hover div {
     color: #fa923f;
@@ -28,7 +31,6 @@
 .toolbar__logo-container:hover .toggle-button__line {
     background: #fa923f;
 }
-
 
 .toolbar__logo {
     padding-left: 1rem;

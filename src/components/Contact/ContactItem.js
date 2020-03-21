@@ -7,7 +7,12 @@ const ContactItem = ({ href, icon }) => {
   return (
     <div className={contactItemStyles.contactItem}>
       <div className={contactItemStyles.iconContainer}>
-        <a className={contactItemStyles.itemLink} target="_blank" href={href}>
+        <a
+          className={contactItemStyles.itemLink}
+          target="_blank"
+          rel="noopener noreferrer"
+          href={href}
+        >
           <FontAwesomeIcon
             size={window.innerWidth > 2000 ? "8x" : "6x"}
             icon={icon}

@@ -74,7 +74,7 @@ const headingData = [
     direction: "down",
     colour: orange,
     word: "tutorials",
-    colour2: blue,
+    colour2: purple,
     word2: "mission",
   },
   {
@@ -148,7 +148,7 @@ const headingData = [
     top: 48.9,
     display: "inline-block",
     direction: "across",
-    colour: blue,
+    colour: purple,
     word: "mission",
   },
   {
@@ -157,7 +157,7 @@ const headingData = [
     top: 48.9,
     display: "inline-block",
     direction: "across",
-    colour: blue,
+    colour: purple,
     word: "mission",
   },
 ]
