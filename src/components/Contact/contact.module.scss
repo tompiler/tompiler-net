@@ -1,4 +1,9 @@
+.header {
+    padding: 1rem 0 3rem;
+}
+
 .headerContainer {
+    height: 12vh;
     width: 45vw;
     text-align: center;
     padding: 0 2.5vw 0 2.5vw;
@@ -6,6 +11,7 @@
 }
 
 .title {
+    position: relative;
     width: 100%;
     color: #000000;
     font-size: 2rem;
