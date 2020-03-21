@@ -1,5 +1,5 @@
 import React from "react"
-import headingData from "./headingData"
+import CellSelectorData from "./CellSelectorData"
 import Cell from "../cell"
 import "./cellSelector.css"
 
@@ -22,7 +22,7 @@ class CellSelector extends React.Component {
 
   render() {
     var elements = []
-    headingData.forEach(heading => {
+    CellSelectorData.forEach(heading => {
       for (var i = 0; i < heading.text.length; i++) {
         if (heading.text[i] != " ") {
           elements.push(

@@ -1,11 +1,11 @@
 import React from "react"
 import CellSelector from "../CellSelector/CellSelector"
 import Contact from "../Contact/Contact"
-import About from "../About/About"
+import Mission from "../Mission/Mission"
 import "./main.css"
 
 const Main = props => {
-  let main = <About />
+  let main = <Mission />
   if (props.route === "contact") {
     main = <Contact />
   }
