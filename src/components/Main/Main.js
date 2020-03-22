@@ -1,5 +1,6 @@
 import React from "react"
 import CellSelector from "../CellSelector/CellSelector"
+import ContentContainer from "../ContentContainer/ContentContainer"
 import Contact from "../Contact/Contact"
 import Mission from "../Mission/Mission"
 import Tompiler from "../Tompiler/Tompiler"
@@ -38,7 +39,9 @@ const Main = props => {
             classNames="display"
             unmountOnExit
           >
-            {main}
+            <ContentContainer {...props} key={props.route}>
+              {main}
+            </ContentContainer>
           </CSSTransition>
         </TransitionGroup>
       </div>

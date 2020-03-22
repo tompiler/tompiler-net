@@ -1,24 +1,6 @@
-.headerContainer {
-    height: 12vh;
-    width: 45vw;
-    text-align: center;
-    padding: 0 2.5vw 0 2.5vw;
-    margin: 10vh 0 0 0;
-}
-
-.title {
-    width: 100%;
-    color: #000000;
-    font-size: 2rem;
-    font-family: "Crimson Text";
-    font-weight: 300;
-    letter-spacing: 0.2rem;
-    border-bottom: 1px solid #000;
-    padding: 2vh 0;
-}
-
 .contact-container {
     display: grid;
+    top: 20vh;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 20vh 20vh;
     grid-column-gap: 2vw;
