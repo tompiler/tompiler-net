@@ -15,3 +15,35 @@
     left: 50%;
     width: 50%;
 }
+
+.display-appear {
+    opacity: 0;
+    z-index: 1;
+}
+.display-appear.display-appear-active {
+  opacity: 1;
+  transition: all 500ms linear;
+}
+
+/* enter */
+.display-enter {
+  opacity: 0;
+  z-index: 1;
+}
+.display-enter.display-enter-active {
+    opacity: 1;
+    transition: all 500ms linear;
+}
+
+/* exit */
+.display-exit {
+    opacity: 1;
+    z-index: 1;
+}
+.display-exit.display-exit-active {
+    opacity: 0;
+    transition: all 0ms ;
+}
+.display-exit-done {
+  opacity: 0;
+}

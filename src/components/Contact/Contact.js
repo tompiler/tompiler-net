@@ -12,7 +12,7 @@ import {
 
 const Contact = () => {
   return (
-    <React.Fragment>
+    <div>
       <div className={contactStyles.headerContainer}>
         <h1 className={contactStyles.title}>contact</h1>
       </div>
@@ -42,7 +42,7 @@ const Contact = () => {
           href="https://www.youtube.com/channel/UCghVvAggSPShlctFuVTqWKA/featured?view_as=subscriber"
         ></ContactItem>
       </div>
-    </React.Fragment>
+    </div>
   )
 }
 

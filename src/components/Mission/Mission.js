@@ -3,7 +3,7 @@ import missionStyles from "./mission.module.scss"
 
 const Mission = () => {
   return (
-    <React.Fragment>
+    <div>
       <div className={missionStyles.headerContainer}>
         <h1 className={missionStyles.title}>mission</h1>
       </div>
@@ -32,7 +32,7 @@ const Mission = () => {
           interested.
         </div>
       </div>
-    </React.Fragment>
+    </div>
   )
 }
 

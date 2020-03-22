@@ -4,6 +4,10 @@
     align-items: center;
 }
 
+.toolbar__logo-container:focus {
+    outline: none;
+}
+
 .toggle-button {
     display: flex;
     flex-direction: column;
