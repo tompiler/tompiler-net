@@ -3,46 +3,22 @@ import CellSelector from "../CellSelector/CellSelector"
 import Contact from "../Contact/Contact"
 import Mission from "../Mission/Mission"
 import Tompiler from "../Tompiler/Tompiler"
+import Articles from "../Articles/Articles"
+import Tutorials from "../Tutorials/Tutorials"
 import { CSSTransition, TransitionGroup } from "react-transition-group"
 
 import "./main.css"
 
 const Main = props => {
-  // let main = (
-  //   <div
-  //     style={{
-  //       width: "100vw",
-  //       height: "100vh",
-  //       backgroundColor: "rgba(192,63,230,.7)",
-  //     }}
-  //   ></div>
-  // )
-  // if (props.route === "contact") {
-  //   main = (
-  //     <div
-  //       style={{
-  //         width: "100vw",
-  //         height: "100vh",
-  //         backgroundColor: "rgba(20,102,24,.6)",
-  //       }}
-  //     ></div>
-  //   )
-  // } else if (props.route === "tompiler") {
-  //   main = (
-  //     <div
-  //       style={{
-  //         width: "100vw",
-  //         height: "100vh",
-  //         backgroundColor: "rgba(0,194,224,.7)",
-  //       }}
-  //     ></div>
-  //   )
-  // }
   let main = <Mission />
   if (props.route === "contact") {
     main = <Contact />
   } else if (props.route === "tompiler") {
     main = <Tompiler />
+  } else if (props.route === "articles") {
+    main = <Articles />
+  } else if (props.route === "tutorials") {
+    main = <Tutorials />
   }
   console.log("Route:", props.route)
 
