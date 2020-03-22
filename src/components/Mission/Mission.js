@@ -26,8 +26,9 @@ const Mission = () => {
           globe to reduce the pressure on health services. <br />
           <br />
           We're now facing much more time indoors than expected this year. In
-          that time, I want to create something positive from what will
-          otherwise be a regressive period for humanity around the globe.
+          that time, I want to create something positive during what will
+          otherwise feel like a chaotic and concerning time for humanity as a
+          whole.
           <br />
           <br />
           The articles I hope to write will tell stories, illustrated with
