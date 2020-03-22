@@ -1,11 +1,11 @@
 import React from "react"
 import CellSelector from "../CellSelector/CellSelector"
-import ContentContainer from "../ContentContainer/ContentContainer"
-import Contact from "../Contact/Contact"
-import Mission from "../Mission/Mission"
-import Tompiler from "../Tompiler/Tompiler"
-import Articles from "../Articles/Articles"
-import Tutorials from "../Tutorials/Tutorials"
+import ContentContainer from "../Main/ContentContainer/ContentContainer"
+import Contact from "../Main/Contact/Contact"
+import Mission from "../Main/Mission/Mission"
+import Tompiler from "../Main/Tompiler/Tompiler"
+import Articles from "../Main/Articles/Articles"
+import Tutorials from "../Main/Tutorials/Tutorials"
 import { CSSTransition, TransitionGroup } from "react-transition-group"
 
 import "./main.css"
@@ -26,7 +26,7 @@ const Main = props => {
   return (
     <div className="parent">
       <div className="container-left">
-        <CellSelector routeHandler={props.routeHandler} />
+        <CellSelector {...props} />
       </div>
 
       <div className="container-right">
@@ -35,7 +35,7 @@ const Main = props => {
             in={true}
             key={props.route}
             // appear={true}
-            timeout={1000}
+            timeout={800}
             classNames="display"
             unmountOnExit
           >

@@ -22,7 +22,7 @@
 }
 .display-appear.display-appear-active {
   opacity: 1;
-  transition: all 500ms linear;
+  transition: all 800ms linear;
 }
 
 /* enter */
@@ -32,7 +32,7 @@
 }
 .display-enter.display-enter-active {
     opacity: 1;
-    transition: all 500ms linear;
+    transition: all 800ms linear;
 }
 
 /* exit */

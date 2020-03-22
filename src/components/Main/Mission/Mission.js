@@ -22,7 +22,7 @@ const Mission = () => {
       <br />
       We're now facing much more time indoors than expected this year. In that
       time, I want to create something positive during what will otherwise feel
-      like a chaotic and concerning time for humanity as a whole.
+      like a chaotic and concerning period for humanity as a whole.
       <br />
       <br />
       The articles I hope to write will tell stories, illustrated with graphics,
@@ -31,7 +31,6 @@ const Mission = () => {
       <br />
       <br />
       I'll also be making some tutorials along the way for anyone interested.
-      <br />
       <br />
       <br />
       Tom Lynch

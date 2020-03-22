@@ -1,9 +1,10 @@
-const blue = "rgba(0,194,224,.7)",
-  orange = "rgba(250,146,63,.7)",
-  green = "rgba(20,102,24,.6)",
-  fuschia = "rgba(221,33,83,.6)",
-  goldenrod = "rgba(218,165,33,.7)",
-  purple = "rgba(192,63,230,.7)"
+const /*blue = "rgba(0,194,224,.9)",*/
+  blue = "rgba(74, 171, 255,.9)",
+  orange = "rgba(250,146,63,.9)",
+  green = "rgba(20,102,24,.7)",
+  fuschia = "rgba(221,33,83,.75)",
+  goldenrod = "rgba(218,165,33,.9)",
+  purple = "rgba(192,63,230,.75)"
 
 const headingData = [
   {

@@ -6,7 +6,7 @@ import "./cellSelector.css"
 class CellSelector extends React.Component {
   constructor(props) {
     super(props)
-    this.state = { hover: false, hoverWord: "" }
+    this.state = { selected: "tompiler", hover: false, hoverWord: "" }
 
     this.mouseEnter = this.mouseEnter.bind(this)
     this.mouseLeave = this.mouseLeave.bind(this)
@@ -34,9 +34,12 @@ class CellSelector extends React.Component {
               onMouseEnter={this.mouseEnter}
               onMouseLeave={this.mouseLeave}
               colour={
-                this.state.hover && this.state.hoverWord === heading.word
+                (this.state.hover && this.state.hoverWord === heading.word) ||
+                this.props.route === heading.word
                   ? heading.colour
-                  : this.state.hover && this.state.hoverWord === heading.word2
+                  : (this.state.hover &&
+                      this.state.hoverWord === heading.word2) ||
+                    this.props.route === heading.word2
                   ? heading.colour2
                   : "white"
               }
