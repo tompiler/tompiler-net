@@ -28,6 +28,7 @@ const Cell = ({
         className={cellStyles.button}
         style={{
           backgroundColor: colour,
+          border: colour === "white" ? "1px solid #cccccc" : "none",
         }}
         onMouseEnter={() => onMouseEnter(heading.word)}
         onMouseLeave={() => onMouseLeave(heading.word)}

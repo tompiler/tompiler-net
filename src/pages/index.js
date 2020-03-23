@@ -9,7 +9,7 @@ import "../styles/index.scss"
 class IndexPage extends React.Component {
   state = {
     sideDrawerOpen: false,
-    route: "mission",
+    route: "tompiler",
   }
 
   routeHandler = route => {

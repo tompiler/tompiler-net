@@ -11,11 +11,11 @@ import { CSSTransition, TransitionGroup } from "react-transition-group"
 import "./main.css"
 
 const Main = props => {
-  let main = <Mission />
+  let main = <Tompiler />
   if (props.route === "contact") {
     main = <Contact />
-  } else if (props.route === "tompiler") {
-    main = <Tompiler />
+  } else if (props.route === "mission") {
+    main = <Mission />
   } else if (props.route === "articles") {
     main = <Articles />
   } else if (props.route === "tutorials") {
