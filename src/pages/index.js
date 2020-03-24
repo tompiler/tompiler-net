@@ -37,7 +37,10 @@ class IndexPage extends React.Component {
 
     return (
       <div className="app">
-        <Toolbar drawerClickHandler={this.drawerToggleClickHandler} />
+        <Toolbar
+          drawerClickHandler={this.drawerToggleClickHandler}
+          routeHandler={this.routeHandler}
+        />
         <SideDrawer show={this.state.sideDrawerOpen} />
         {backdrop}
         <Main route={this.state.route} routeHandler={this.routeHandler} />

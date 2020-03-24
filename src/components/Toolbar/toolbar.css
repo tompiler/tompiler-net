@@ -22,7 +22,7 @@
     margin: 0;
     border: none;
     background: none;
-    }
+}
 
 .toolbar__logo-container:hover div {
     color: #fa923f;
@@ -40,6 +40,22 @@
     text-decoration: none;
     font-size: 1.7rem;
     cursor: pointer;
+}
+
+.toolbar__button {
+  display: inline-block;
+  padding: auto;
+  margin: 0;
+  border: none;
+  border-radius: 3px;
+  box-shadow: none;
+  background-color: white;
+  cursor: pointer;
+  transition: 0.3s background-color ease;  
+}
+
+.toolbar__button:focus {
+    outline: none;
 }
 
 .toolbar_navigation-items a {
