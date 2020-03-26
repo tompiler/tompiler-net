@@ -1,14 +1,12 @@
 .contact-container {
     display: grid;
-    top: 20vh;
-    grid-template-columns: 1fr 1fr 1fr;
+    position: absolute;
+    top: 0;
+    grid-template-columns: 12vw 12vw 12vw;
     grid-template-rows: 20vh 20vh;
     grid-column-gap: 2vw;
     grid-row-gap: 2vh;
     justify-content: center;
-    justify-self: auto;
     justify-items: center;
     align-items: center;
-    width: 45vw;
-    padding: 0 2.5vw 0 2.5vw;
 }

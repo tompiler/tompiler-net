@@ -1,14 +1,29 @@
+.container-right-nested {
+    width: 100%;
+    
+}
+
+.header-position-fixed {
+    position: fixed;
+    width: 50vw;
+    background-color: white;
+    z-index: 100;
+}
+
 .headerContainer {
-    height: 12vh;
-    width: 45vw;
-    text-align: center;
-    padding: 0 2.5vw 0 2.5vw;
-    margin: 4vh 0 0 0;
+    // height: 8vh;
+    margin: 0 5vw;
+    // width: 100%;
+    // text-align: center;
+    padding: 8vh 0 0 0;
+    background: white;
+    z-index: 1000;
 }
 
 .title {
     width: 100%;
     color: #000000;
+    text-align: center;
     font-size: 2rem;
     font-family: "Crimson Text";
     font-weight: 300;
@@ -18,9 +33,13 @@
 }
 
 .content-container {
+    position: absolute;
+    top: 20vh;
+    width: 100%;
     display: grid;
     grid-template-rows: 25%;
-    grid-template-columns: 50vw;
+    grid-template-columns: 100%;
     justify-items: center;
-    align-items: center;
+    align-items: top;
+    height: 100vh;
 }

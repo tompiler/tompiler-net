@@ -3,8 +3,8 @@
     background: white;
     /* border-top: 2px solid #333333; */
     /* box-shadow: 1px 0px 0px rgba(0,0,0,.5); */
-    position: fixed;
-    top: 55px;
+    position: absolute;
+    top: 60px;
     left: 0;
     width: 50%;
     z-index: 200;  
@@ -19,7 +19,6 @@
 .sideDrawer-container {
     margin: 0 auto;
     max-width: 750px;
-    padding: 1rem;
 
     display: flex;
     flex-direction: column;

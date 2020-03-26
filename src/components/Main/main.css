@@ -1,25 +1,37 @@
+
 .container-left {
     height: 100%;
     background: white;
     position: fixed;
-    top: 65px;
+    top: 56px;
     left: 0;
     width: 50%;
 }
 
 .container-right {
-    height: 100%;
-    background: white;
-    position: fixed;
-    top: 65px;
+    position: absolute;
+    /* background: #dddddd; */
+    top: 56px;
     left: 50%;
     width: 50%;
+}
+
+.container-bottom {
+  position: absolute;
+  display: flex;
+  flex: 1;
+  width: 100%;
+  margin: 0;
+  height: 400vh;
+  background-color: rgba(10, 10, 200, 0.1);
+  top: 100vh;
 }
 
 .display-appear {
     opacity: 0;
     z-index: 1;
 }
+
 .display-appear.display-appear-active {
   opacity: 1;
   transition: all 800ms linear;
