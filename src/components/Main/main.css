@@ -54,7 +54,7 @@
 }
 .display-exit.display-exit-active {
     opacity: 0;
-    transition: all 0ms ;
+    transition: all 500ms ;
 }
 .display-exit-done {
   opacity: 0;
