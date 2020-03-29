@@ -6,15 +6,12 @@ import Mission from "../Main/Mission/Mission"
 import Tompiler from "../Main/Tompiler/Tompiler"
 import Articles from "../Main/Articles/Articles"
 import Tutorials from "../Main/Tutorials/Tutorials"
+
 import {
   CSSTransition,
   Transition,
   TransitionGroup,
 } from "react-transition-group"
-
-// import { Transition } from "react-spring/renderprops"
-
-import { animated, useSpring, useTransition, config } from "react-spring"
 
 import "./main.css"
 
@@ -33,30 +30,6 @@ const Main = ({ route, routeHandler }) => {
   }
   console.log("Route:", route)
 
-  // const props = useSpring({
-  //   to: { opacity: route === "cv" ? 0 : 1 },
-  //   from: { opacity: 1 },
-  //   config: { duration: 200 },
-  // })
-
-  // const props = useTransition(route, null, {
-  //   from: { opacity: 1 },
-  //   enter: { opacity: 1 },
-  //   leave: { opacity: 0 },
-  // })
-
-  // const transitions = useTransition(location, location => location.pathname, {
-  //   from: { opacity: 0, transform: "translate3d(100%,0,0)" },
-  //   enter: { opacity: 1, transform: "translate3d(0%,0,0)" },
-  //   leave: { opacity: 0, transform: "translate3d(-50%,0,0)" },
-  // })
-
-  // const transition = useTransition(route, null, {
-  //   from: { opacity: 0 },
-  //   enter: { opacity: 1 },
-  //   leave: { opacity: 0 },
-  // })
-
   const duration = 300
 
   const defaultStyle = {
@@ -65,7 +38,7 @@ const Main = ({ route, routeHandler }) => {
   }
 
   const transitionStyles = {
-    entering: { opacity: 1 },
+    entering: { opacity: 0 },
     entered: { opacity: 1 },
     exiting: { opacity: 0 },
     exited: { opacity: 0 },
