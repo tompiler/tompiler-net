@@ -2,8 +2,6 @@ import React from "react"
 import contentContainerStyles from "./contentcontainer.module.scss"
 
 const ContentContainer = props => {
-  const contactChildClass =
-    props.route === "contact" ? "" : contentContainerStyles.contentContainer
   return (
     <div>
       <div className={contentContainerStyles.containerRightNested}>

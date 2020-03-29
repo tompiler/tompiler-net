@@ -1,10 +1,14 @@
 import React from "react"
-import App from "../App.js"
-
+import App from "./App"
+import { BrowserRouter } from "react-router-dom"
 import "../styles/index.scss"
 
 const IndexPage = () => {
-  return <App />
+  return (
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  )
 }
 
 export default IndexPage
