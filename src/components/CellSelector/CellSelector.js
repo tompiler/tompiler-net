@@ -21,6 +21,7 @@ class CellSelector extends React.Component {
   }
 
   render() {
+    console.log(this.props.transitionProps)
     var elements = []
     CellSelectorData.forEach(heading => {
       for (var i = 0; i < heading.text.length; i++) {
@@ -49,7 +50,7 @@ class CellSelector extends React.Component {
         }
       }
     })
-    return <React.Fragment>{elements}</React.Fragment>
+    return <div>{elements}</div>
   }
 }
 
