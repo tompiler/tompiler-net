@@ -40,7 +40,11 @@ const Main = ({ route, routeHandler }) => {
   const transitionStyles = {
     entering: { opacity: 0 },
     entered: { opacity: 1 },
-    exiting: { opacity: 0 },
+    exiting: {
+      opacity: 0,
+      transform: "translateX(-300px)",
+      transition: "all 300ms ease-out",
+    },
     exited: { opacity: 0 },
   }
 
