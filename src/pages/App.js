@@ -11,7 +11,7 @@ class App extends React.Component {
   }
 
   routeHandler = route => {
-    console.log(route)
+    // console.log(route)
     this.setState(() => {
       return { route: route }
     })

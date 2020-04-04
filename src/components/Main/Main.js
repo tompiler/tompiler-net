@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useRef, useEffect } from "react"
 import CellSelector from "../CellSelector/CellSelector"
 import ContentContainer from "../Main/ContentContainer/ContentContainer"
 import Contact from "../Main/Contact/Contact"
@@ -15,7 +15,20 @@ import {
 
 import "./main.css"
 
+const usePrevious = value => {
+  const ref = useRef()
+  useEffect(() => {
+    ref.current = value
+  })
+  return ref.current
+}
+
 const Main = ({ route, routeHandler }) => {
+  const prevRoute = usePrevious(route)
+  console.log("Route:", route, "prevRoute:", prevRoute)
+
+  const leftTransition = prevRoute === "cv" ? 125 : 250
+
   let main = <Tompiler />
   if (route === "contact") {
     main = <Contact />
@@ -28,22 +41,29 @@ const Main = ({ route, routeHandler }) => {
   } else if (route === "cv") {
     main = <div />
   }
-  console.log("Route:", route)
 
-  const duration = 300
+  const duration = 500
 
   const defaultStyle = {
-    transition: `opacity ${duration}ms ease-in-out`,
+    transition: `opacity ${leftTransition}ms ease-in-out`,
     opacity: 0,
+    background: "red",
   }
 
   const transitionStyles = {
-    entering: { opacity: 0 },
-    entered: { opacity: 1 },
+    entering: {
+      opacity: 0,
+      transform: "translateX(-200px)",
+    },
+    entered: {
+      opacity: 1,
+      transform: "translateX(-0px)",
+      transition: `all ${leftTransition}ms ease-in-out`,
+    },
     exiting: {
       opacity: 0,
       transform: "translateX(-300px)",
-      transition: "all 300ms ease-out",
+      transition: "all 250ms ease-in-out",
     },
     exited: { opacity: 0 },
   }
@@ -53,7 +73,8 @@ const Main = ({ route, routeHandler }) => {
       <div className="container-left">
         <Transition
           in={route !== "cv" ? true : false}
-          timeout={duration}
+          appear={true}
+          timeout={leftTransition}
           unmountOnExit
         >
           {state => (
@@ -63,7 +84,13 @@ const Main = ({ route, routeHandler }) => {
                 ...transitionStyles[state],
               }}
             >
-              <CellSelector route={route} routeHandler={routeHandler} />
+              <CellSelector
+                style={{
+                  transform: "translateX-300px)",
+                }}
+                route={route}
+                routeHandler={routeHandler}
+              />
             </div>
           )}
         </Transition>
@@ -74,9 +101,9 @@ const Main = ({ route, routeHandler }) => {
           <CSSTransition
             in={true}
             key={route}
-            // appear={true}
-            timeout={800}
-            classNames="display"
+            appear={true}
+            timeout={1000}
+            classNames="contentright"
             unmountOnExit
           >
             <ContentContainer
