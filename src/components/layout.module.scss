@@ -1,13 +1,92 @@
-.container {
-    margin: 0 auto;
-    max-width: 750px;
-    padding: 1rem;
-
-    display: flex;
-    flex-direction: column;
-    min-height: 97vh;
+.container-left {
+    height: 100%;
+    // background-color: #d0fad0;
+    position: fixed;
+    top: 56px;
+    left: 0;
+    width: 50%;
+    z-index: 0;
 }
 
-.content {
-    flex-grow: 1;
+.container-right {
+    position: fixed;
+    // background: #180c0c;
+    top: 56px;
+    left: 50%;
+    width: 50%;
+    height: 100vh;
+    text-align: center;
+}
+
+.container-bottom {
+  position: absolute;
+  display: flex;
+  flex: 1;
+  width: 100%;
+  margin: 0;
+  height: 400vh;
+  // background-color: rgba(10, 10, 200, 0.1);
+  top: 100vh;
+}
+
+.container-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.link {
+  height: 30px;
+  // background: rgb(189, 186, 186);
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  text-align: center;
+}
+
+
+
+.header-position-fixed {
+  position: fixed;
+  width: 50vw;
+  // background-color: white;
+  // z-index: 100;
+}
+
+.headerContainer {
+  // height: 8vh;
+  margin: 0 5vw;
+  // width: 100%;
+  // text-align: center;
+  padding: 8vh 0 0 0;
+  // background: white;
+  // z-index: 1000;
+  border-bottom: 1px solid #000;
+
+}
+
+.title {
+  width: 100%;
+  color: #000000;
+  text-align: center;
+  font-size: 2rem;
+  font-family: "Crimson Text";
+  font-weight: 300;
+  letter-spacing: 0.2rem;
+  padding: 2vh 0;
+}
+
+.content-container {
+  position: absolute;
+  top: 20vh;
+  width: 100%;
+  display: grid;
+  grid-template-rows: 25%;
+  grid-template-columns: 100%;
+  justify-items: center;
+  align-items: top;
+  height: 100vh;
 }

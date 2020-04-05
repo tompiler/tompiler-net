@@ -6,6 +6,8 @@
     background: white;
     height: 56px;
     z-index: 500;
+    font-family: 'Open Sans';
+    display: block;
     /* border-bottom: 3px solid #333333; */
 }
 
@@ -44,15 +46,15 @@
 }
 
 .toolbar__button {
-  display: inline-block;
-  padding: auto;
-  margin: 0;
-  border: none;
-  border-radius: 3px;
-  box-shadow: none;
-  background-color: white;
-  cursor: pointer;
-  transition: 0.3s background-color ease;  
+    display: inline-block;
+    padding: auto;
+    margin: 0;
+    border: none;
+    border-radius: 3px;
+    box-shadow: none;
+    background-color: white;
+    cursor: pointer;
+    transition: 0.3s background-color ease;  
 }
 
 .toolbar__button:focus {

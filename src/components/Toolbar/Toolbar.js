@@ -1,41 +1,32 @@
 import React from "react"
-
+import { Link } from "gatsby"
 import DrawerToggleButton from "../SideDrawer/drawerToggleButton"
 import "./toolbar.css"
 
-const Toolbar = ({ drawerClickHandler, routeHandler }) => (
+import { SpringLink } from "../SpringLink"
+import TransitionLink from "gatsby-plugin-transition-link"
+
+const Toolbar = ({ setSideDrawer, routeHandler }) => (
   <header className="toolbar">
     <nav className="toolbar__navigation">
-      <DrawerToggleButton click={drawerClickHandler} />
+      <DrawerToggleButton click={setSideDrawer} />
       <div className="toolbar-gap"></div>
       <div className="toolbar_navigation-items">
         <ul>
           <li>
-            <button
-              className="toolbar__button"
-              onClick={() => routeHandler("cv")}
-              onKeyDown={() => routeHandler("cv")}
-            >
-              cv
-            </button>
+            <SpringLink to="/tompiler">home</SpringLink>
           </li>
           <li>
-            <button
-              className="toolbar__button"
-              onClick={() => routeHandler("tutorials")}
-              onKeyDown={() => routeHandler("tutorials")}
-            >
-              tutorials
-            </button>
+            <SpringLink to="/cv">cv</SpringLink>
           </li>
           <li>
-            <button
-              className="toolbar__button"
-              onClick={() => routeHandler("articles")}
-              onKeyDown={() => routeHandler("articles")}
-            >
-              articles
-            </button>
+            <SpringLink to="/mission">mission</SpringLink>
+          </li>
+          <li>
+            <SpringLink to="/articles">articles</SpringLink>
+          </li>
+          <li>
+            <SpringLink to="/tutorials">tutorials</SpringLink>
           </li>
         </ul>
       </div>
