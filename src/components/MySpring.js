@@ -1,5 +1,5 @@
 import React from "react"
-import { Spring, Transition } from "react-spring/renderprops"
+import { Spring, Transition, config } from "react-spring/renderprops"
 import { TransitionState } from "gatsby-plugin-transition-link"
 import layoutStyles from "./layout.module.scss"
 
@@ -18,7 +18,9 @@ const MySpring = ({ text }) => (
             opacity: mount ? 1 : 0,
           }}
           config={{
-            duration: seconds * 1000,
+            mass: 2,
+            tension: 200,
+            friction: 40,
           }}
         >
           {props => <div style={props}>{text}</div>}

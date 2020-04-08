@@ -11,6 +11,7 @@ import "../styles/index.scss"
 
 import Tompiler from "./tompiler"
 import Mission from "./mission"
+import Contact from "./contact"
 import CV from "./cv"
 import Articles from "./articles"
 import Tutorials from "./tutorials"
@@ -19,6 +20,7 @@ const IndexPage = () => {
   return (
     <App>
       <Tompiler path="/" exact />
+      <Contact path="/contact" />
       <CV path="/cv" />
       <Mission path="/mission" />
       <Tutorials path="/tutorials" />

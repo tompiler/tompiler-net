@@ -3,7 +3,7 @@ import Layout from "../components/layout"
 
 import CellSelector from "../components/CellSelector/CellSelector"
 
-const mission = props => {
+const Contact = props => {
   const pathName =
     props.location.pathname.substr(1) === ""
       ? "tompiler"
@@ -11,4 +11,4 @@ const mission = props => {
   return <Layout {...props} left={<CellSelector route={pathName} />} />
 }
 
-export default mission
+export default Contact

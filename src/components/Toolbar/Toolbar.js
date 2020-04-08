@@ -14,19 +14,29 @@ const Toolbar = ({ setSideDrawer, routeHandler }) => (
       <div className="toolbar_navigation-items">
         <ul>
           <li>
-            <SpringLink to="/tompiler">home</SpringLink>
+            <SpringLink to="/tompiler" exitLength={1} entryLength={1}>
+              home
+            </SpringLink>
           </li>
           <li>
-            <SpringLink to="/cv">cv</SpringLink>
+            <SpringLink to="/cv" exitLength={1} entryLength={1}>
+              cv
+            </SpringLink>
           </li>
           <li>
-            <SpringLink to="/mission">mission</SpringLink>
+            <SpringLink to="/mission" exitLength={1} entryLength={1}>
+              mission
+            </SpringLink>
           </li>
           <li>
-            <SpringLink to="/articles">articles</SpringLink>
+            <SpringLink to="/articles" exitLength={1} entryLength={1}>
+              articles
+            </SpringLink>
           </li>
           <li>
-            <SpringLink to="/tutorials">tutorials</SpringLink>
+            <SpringLink to="/tutorials" exitLength={1} entryLength={1}>
+              tutorials
+            </SpringLink>
           </li>
         </ul>
       </div>

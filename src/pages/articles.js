@@ -1,8 +1,14 @@
 import React from "react"
 import Layout from "../components/layout"
 
+import CellSelector from "../components/CellSelector/CellSelector"
+
 const articles = props => {
-  return <Layout {...props} left={"This is the articles section"} />
+  const pathName =
+    props.location.pathname.substr(1) === ""
+      ? "tompiler"
+      : props.location.pathname.substr(1)
+  return <Layout {...props} left={<CellSelector route={pathName} />} />
 }
 
 export default articles
