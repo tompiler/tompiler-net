@@ -17,13 +17,13 @@ const MySpring = ({ text }) => (
             // transform: `translateY(${mount ? 0 : "100px"})`,
             opacity: mount ? 1 : 0,
           }}
-          config={{
-            mass: 2,
-            tension: 200,
-            friction: 40,
-          }}
+          config={{ mass: 1, tension: 100 }}
         >
-          {props => <div style={props}>{text}</div>}
+          {props => (
+            <div className="big" style={props}>
+              {text}
+            </div>
+          )}
         </Spring>
       )
     }}

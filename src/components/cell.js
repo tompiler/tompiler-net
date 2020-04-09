@@ -1,9 +1,18 @@
-import React from "react"
+import React, { useEffect } from "react"
 import cellStyles from "./cell.module.scss"
 import { Spring, animated, interpolate, config } from "react-spring/renderprops"
 import { SpringLink } from "./SpringLink"
+import useHover from "./useHover"
 
-const Cell = ({ heading, text, position, colour, route }) => {
+const Cell = ({
+  heading,
+  text,
+  position,
+  colour,
+  route,
+  hoverWord,
+  setHoverWord,
+}) => {
   // console.log(colour, heading.colour.substr(0, 15))
 
   let alpha
@@ -15,11 +24,33 @@ const Cell = ({ heading, text, position, colour, route }) => {
     alpha = 1
   }
 
+  // const [hoverRef, isHovered] = useHover()
+
+  // setHoverWord(heading.word)
+
+  //   return (
+  //     <div ref={hoverRef}>
+  //       {isHovered ? '😁' : '☹️'}
+  //     </div>
+  //   );
+  // }
+
   return (
-    <Spring native from={{ o: 0 }} to={{ o: alpha }} config={config.default}>
+    <Spring
+      native
+      from={{
+        o: 1,
+      }}
+      to={{
+        o: 1,
+      }}
+      // config={{ duration: hoverWord ? 250 : 0 }}
+    >
       {({ o }) => (
         <animated.div
           className={cellStyles.cell}
+          onMouseEnter={() => setHoverWord(heading.word)}
+          onMouseLeave={() => setHoverWord(null)}
           style={{
             left:
               heading.direction === "across"
@@ -29,33 +60,26 @@ const Cell = ({ heading, text, position, colour, route }) => {
               heading.direction === "down"
                 ? heading.top + position * 6.2 + "vh"
                 : heading.top + "vh",
-            // border: colour === "white" ? "1px solid #cccccc" : "none",
             backgroundColor:
-              heading.word === route
-                ? o.interpolate(
-                    o =>
-                      `rgba(${heading.colour.red}, ${heading.colour.green}, ${heading.colour.blue}, ${o})`
-                  )
-                : heading.word2 === route
-                ? o.interpolate(
-                    o =>
-                      `rgba(${heading.colour2.red}, ${heading.colour2.green}, ${heading.colour2.blue}, ${o})`
-                  )
-                : "white",
-            // transition: "background-color 0.3s linear",
+              hoverWord === heading.word
+                ? `rgba(${heading.colour.red}, ${heading.colour.green}, ${heading.colour.blue}, ${heading.colour.a}`
+                : hoverWord === heading.word2
+                ? `rgba(${heading.colour2.red}, ${heading.colour2.green}, ${heading.colour2.blue}, ${heading.colour2.a}`
+                : heading.word === route
+                ? `rgba(${heading.colour.red}, ${heading.colour.green}, ${heading.colour.blue}, ${heading.colour.a})`
+                : // )
+                heading.word2 === route //|| hoverWord === heading.word2
+                ? // ? o.interpolate(
+                  //     o =>
+                  `rgba(${heading.colour2.red}, ${heading.colour2.green}, ${heading.colour2.blue}, ${heading.colour2.a})`
+                : // )
+                  "white",
+            transition:
+              heading.word === hoverWord || heading.word2 === hoverWord
+                ? "background-color 300ms linear"
+                : "none",
           }}
         >
-          {/* <button
-        className={cellStyles.button}
-        style={{
-          backgroundColor: colour,
-          border: colour === "white" ? "1px solid #cccccc" : "none",
-        }}
-        onMouseEnter={() => setHovered(heading.word)}
-        onMouseLeave={() => setHovered(null)}
-        onClick={() => setClicked(null)}
-        onKeyDown={() => setClicked(null)}
-      > */}
           <SpringLink
             className={cellStyles.springLink}
             to={`/${heading.word}`}
@@ -64,7 +88,6 @@ const Cell = ({ heading, text, position, colour, route }) => {
           >
             {text}
           </SpringLink>
-          {/* </button> */}
         </animated.div>
       )}
     </Spring>

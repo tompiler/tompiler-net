@@ -1,13 +1,5 @@
 import React from "react"
 import App from "./App"
-import "../styles/index.scss"
-
-// import ContentContainer from "../components/Main/ContentContainer/ContentContainer"
-// import Contact from "../components/Main/Contact/Contact"
-// import Mission from "../components/Main/Mission/Mission"
-// import Tompiler from "../components/Main/Tompiler/Tompiler"
-// import Articles from "../components/Main/Articles/Articles"
-// import Tutorials from "../components/Main/Tutorials/Tutorials"
 
 import Tompiler from "./tompiler"
 import Mission from "./mission"
@@ -15,6 +7,8 @@ import Contact from "./contact"
 import CV from "./cv"
 import Articles from "./articles"
 import Tutorials from "./tutorials"
+
+import "../styles/index.scss"
 
 const IndexPage = () => {
   return (

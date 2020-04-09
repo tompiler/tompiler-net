@@ -20,6 +20,7 @@ const Layout = props => {
           {/* <div className={layoutStyles.containerContent}> */}
           {/* <div className={layoutStyles.linkContainer}> */}
           <MySpring text={props.left} />
+          {/* <div>{props.left}</div> */}
           {/* </div> */}
           {/* </div> */}
         </div>
