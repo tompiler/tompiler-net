@@ -11,7 +11,8 @@ import { SpringLink } from "./SpringLink"
 // import useHover from "./useHover"
 import { useSpring, animated } from "react-spring"
 
-const Cell = ({ heading, text, position }) => {
+const Cell = ({ heading, text, position, route }) => {
+  console.log(route)
   const [{ backgroundColourA }, set] = useSpring(() => ({
     backgroundColourA: 0,
   }))
@@ -44,9 +45,10 @@ const Cell = ({ heading, text, position }) => {
       style={{ ...positions }}
       onMouseEnter={() => set({ backgroundColourA: heading.colour.a })}
       onMouseLeave={() => set({ backgroundColourA: 0 })}
+      // onClick={() => set({ backgroundColourA: heading.colour.a })}
     >
       <div style={{ zIndex: 5, position: "relative", display: "inline" }}>
-        {link}
+        <animated.span className={cellStyles.span}>{link}</animated.span>
       </div>
       <div
         style={{
@@ -56,10 +58,10 @@ const Cell = ({ heading, text, position }) => {
       >
         <animated.div
           style={{
-            backgroundColor: backgroundColourA.interpolate(
-              v =>
-                `rgba(${heading.colour.red}, ${heading.colour.green}, ${heading.colour.blue}, ${v})`
-            ),
+            backgroundColor: backgroundColourA.interpolate(v => {
+              console.log(v)
+              return `rgba(${heading.colour.red}, ${heading.colour.green}, ${heading.colour.blue}, ${v})`
+            }),
             border: backgroundColourA.interpolate(
               v =>
                 `1px solid rgba(${heading.colour.red}, ${heading.colour.green}, ${heading.colour.blue}, ${v})`
