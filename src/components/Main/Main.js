@@ -42,8 +42,6 @@ const Main = ({ route, routeHandler }) => {
     main = <div />
   }
 
-  const duration = 500
-
   const defaultStyle = {
     transition: `opacity ${leftTransition}ms ease-in-out`,
     opacity: 0,

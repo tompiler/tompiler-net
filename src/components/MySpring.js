@@ -1,13 +1,13 @@
 import React from "react"
-import { Spring, Transition, config } from "react-spring/renderprops"
+import { Spring } from "react-spring/renderprops"
 import { TransitionState } from "gatsby-plugin-transition-link"
-import layoutStyles from "./layout.module.scss"
+// import layoutStyles from "./layout.module.scss"
 
 const MySpring = ({ text }) => (
   <TransitionState>
     {({ transitionStatus, exit, entry }) => {
       const mount = ["entering", "entered"].includes(transitionStatus)
-      const seconds = mount ? entry.length : exit.length
+      // const seconds = mount ? entry.length : exit.length
       // console.log(transitionStatus, mount, exit, entry)
 
       return (

@@ -1,7 +1,7 @@
 import React from "react"
-import Main from "../components/Main/Main"
-import SideDrawer from "../components/SideDrawer/SideDrawer"
-import Backdrop from "../components/Backdrop/Backdrop"
+// import Main from "../components/Main/Main"
+// import SideDrawer from "../components/SideDrawer/SideDrawer"
+// import Backdrop from "../components/Backdrop/Backdrop"
 import { Router, Location } from "@reach/router"
 
 import "../styles/app.scss"

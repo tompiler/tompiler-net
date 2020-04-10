@@ -1,10 +1,10 @@
 import React from "react"
-import { Link } from "gatsby"
+// import { Link } from "gatsby"
 import DrawerToggleButton from "../SideDrawer/drawerToggleButton"
 import "./toolbar.css"
 
 import { SpringLink } from "../SpringLink"
-import TransitionLink from "gatsby-plugin-transition-link"
+// import TransitionLink from "gatsby-plugin-transition-link"
 
 const Toolbar = ({ setSideDrawer, routeHandler }) => (
   <header className="toolbar">

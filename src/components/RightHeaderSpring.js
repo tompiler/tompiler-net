@@ -1,5 +1,5 @@
 import React from "react"
-import { Spring, config } from "react-spring/renderprops"
+import { Spring } from "react-spring/renderprops"
 import { TransitionState } from "gatsby-plugin-transition-link"
 import layoutStyles from "./layout.module.scss"
 
@@ -7,7 +7,7 @@ const RightHeaderSpring = ({ pathname }) => (
   <TransitionState>
     {({ transitionStatus, exit, entry }) => {
       const mount = ["entering", "entered"].includes(transitionStatus)
-      const seconds = mount ? entry.length : exit.length
+      // const seconds = mount ? entry.length : exit.length
       // console.log(transitionStatus, mount, exit, entry)
 
       return (

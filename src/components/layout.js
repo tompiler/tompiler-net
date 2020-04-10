@@ -3,7 +3,7 @@ import React from "react"
 import Toolbar from "../components/Toolbar/Toolbar"
 import layoutStyles from "./layout.module.scss"
 
-import { MySpring } from "./MySpring"
+// import { MySpring } from "./MySpring"
 import { RightHeaderSpring } from "./RightHeaderSpring"
 
 const Layout = props => {
@@ -19,8 +19,8 @@ const Layout = props => {
         <div className={layoutStyles.containerLeft}>
           {/* <div className={layoutStyles.containerContent}> */}
           {/* <div className={layoutStyles.linkContainer}> */}
-          <MySpring text={props.left} />
-          {/* <div>{props.left}</div> */}
+          {/* <MySpring text={props.left} /> */}
+          <div>{props.left}</div>
           {/* </div> */}
           {/* </div> */}
         </div>

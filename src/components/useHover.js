@@ -8,7 +8,7 @@ import { useRef, useState, useEffect } from "react"
 // }
 
 // Hook
-export default function useHover() {
+export default function useHover(word) {
   const [value, setValue] = useState(false)
 
   const ref = useRef(null)
