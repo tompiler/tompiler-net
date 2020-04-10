@@ -1,5 +1,5 @@
 import React from "react"
-import cellStyles from "./cell.module.scss"
+import wordStyles from "./word.module.scss"
 // import {
 //   Spring,
 //   Transition,
@@ -11,7 +11,7 @@ import { SpringLink } from "./SpringLink"
 // import useHover from "./useHover"
 import { useSpring, animated } from "react-spring"
 
-const Cell = ({ heading, text, position }) => {
+const Word = ({ heading, text, position }) => {
   const [{ backgroundColourA }, set] = useSpring(() => ({
     backgroundColourA: 0,
   }))
@@ -29,7 +29,7 @@ const Cell = ({ heading, text, position }) => {
 
   const link = (
     <SpringLink
-      className={cellStyles.springLink}
+      className={wordStyles.springLink}
       to={`/${heading.word}`}
       exitLength={1}
       entryLength={1}
@@ -40,7 +40,7 @@ const Cell = ({ heading, text, position }) => {
 
   return (
     <button
-      className={cellStyles.button}
+      className={wordStyles.button}
       style={{ ...positions }}
       onMouseEnter={() => set({ backgroundColourA: heading.colour.a })}
       onMouseLeave={() => set({ backgroundColourA: 0 })}
@@ -65,7 +65,7 @@ const Cell = ({ heading, text, position }) => {
                 `1px solid rgba(${heading.colour.red}, ${heading.colour.green}, ${heading.colour.blue}, ${v})`
             ),
           }}
-          className={cellStyles.glance}
+          className={wordStyles.glance}
         />
       </div>
     </button>
@@ -127,4 +127,4 @@ const Cell = ({ heading, text, position }) => {
   )
 }
 
-export default Cell
+export default Word
