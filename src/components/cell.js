@@ -59,7 +59,7 @@ const Cell = ({ heading, text, position, route }) => {
         <animated.div
           style={{
             backgroundColor: backgroundColourA.interpolate(v => {
-              console.log(v)
+              // console.log(v)
               return `rgba(${heading.colour.red}, ${heading.colour.green}, ${heading.colour.blue}, ${v})`
             }),
             border: backgroundColourA.interpolate(

@@ -6,8 +6,9 @@ import Word from "../word"
 
 import "./cellSelector.css"
 
-const CellSelector = ({ route }) => {
+const CellSelector = props => {
   // console.log("Updated")
+  console.log(props)
   var elements = []
   CellSelectorData.forEach(heading => {
     for (var i = 0; i < heading.text.length; i++) {
@@ -18,7 +19,7 @@ const CellSelector = ({ route }) => {
             text={heading.text[i]}
             position={i}
             key={heading.text[i] + "_" + i}
-            route={route}
+            route={props.route}
           ></Cell>
         )
       }

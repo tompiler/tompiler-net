@@ -6,7 +6,12 @@ const SpringLink = ({ to, entryLength, exitLength, children, className }) => (
     className={className}
     to={to}
     exit={{ length: exitLength }}
-    entry={{ length: entryLength }}
+    entry={{
+      length: entryLength,
+      state: {
+        thisIs: "passed to the entering page",
+      },
+    }}
   >
     {children}
   </TransitionLink>

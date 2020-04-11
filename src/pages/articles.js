@@ -8,7 +8,9 @@ const articles = props => {
     props.location.pathname.substr(1) === ""
       ? "tompiler"
       : props.location.pathname.substr(1)
-  return <Layout {...props} left={<CellSelector route={pathName} />} />
+  return (
+    <Layout {...props} left={<CellSelector {...props} route={pathName} />} />
+  )
 }
 
 export default articles
