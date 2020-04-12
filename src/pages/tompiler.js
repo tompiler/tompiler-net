@@ -9,7 +9,10 @@ const tompiler = props => {
     props.location.pathname.substr(1) === ""
       ? "tompiler"
       : props.location.pathname.substr(1)
-  return <Layout {...props} left={<CellSelector route={pathName} />} />
+  // console.log(props)
+  return (
+    <Layout {...props} left={<CellSelector {...props} route={pathName} />} />
+  )
 }
 
 export default tompiler

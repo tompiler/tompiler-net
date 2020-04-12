@@ -7,9 +7,6 @@ const RightHeaderSpring = ({ pathname }) => (
   <TransitionState>
     {({ transitionStatus, exit, entry }) => {
       const mount = ["entering", "entered"].includes(transitionStatus)
-      // const seconds = mount ? entry.length : exit.length
-      // console.log(transitionStatus, mount, exit, entry)
-
       return (
         <Spring
           to={{
@@ -18,7 +15,7 @@ const RightHeaderSpring = ({ pathname }) => (
           config={{
             mass: 20,
             tension: 200,
-            friction: 40,
+            friction: 50,
           }}
         >
           {props => (

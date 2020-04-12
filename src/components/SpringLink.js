@@ -1,16 +1,21 @@
 import React from "react"
 import TransitionLink from "gatsby-plugin-transition-link"
 
-const SpringLink = ({ to, entryLength, exitLength, children, className }) => (
+const SpringLink = ({
+  to,
+  entryLength,
+  exitLength,
+  children,
+  className,
+  prevRoute,
+}) => (
   <TransitionLink
     className={className}
     to={to}
-    exit={{ length: exitLength }}
+    exit={{ length: 1 }}
     entry={{
       length: entryLength,
-      state: {
-        thisIs: "passed to the entering page",
-      },
+      // delay: 1,
     }}
   >
     {children}
