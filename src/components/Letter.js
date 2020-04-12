@@ -8,9 +8,12 @@ const Letter = ({
   to,
   route,
   left,
+  top,
   transitionStatus,
+  setClickedWord,
   setHover,
   setHoverElement,
+  clickedWord,
   hoverElement,
   alpha,
   activeColour,
@@ -42,7 +45,9 @@ const Letter = ({
             linkText={linkText}
             to={to}
             left={left}
+            top={top}
             transitionStatus={transitionStatus}
+            setClickedWord={setClickedWord}
             setHover={setHover}
             setHoverElement={setHoverElement}
             hoverElement={hoverElement}

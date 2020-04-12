@@ -15,10 +15,6 @@ const Cell = props => {
             border: `1px solid ${props.backgroundColor}`,
             borderRadius: "3px",
             boxShadow: "2px 3px 2px rgba(83, 83, 83)",
-            // props.alpha.interpolate(v => {
-            //   return `2px 3px 2px rgba(83, 83, 83, ${v})`
-            // }),
-            //
           }}
           onMouseEnter={() => {
             props.setHoverElement(props.to)
@@ -29,6 +25,9 @@ const Cell = props => {
             props.setHover({
               alpha: 0,
             })
+          }}
+          onClick={() => {
+            props.setClickedWord(props.to)
           }}
         >
           <div>
