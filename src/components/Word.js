@@ -22,12 +22,12 @@ const Word = ({
   // console.log(clickedWord)
 
   const colour = `rgba(${WordSelectorData[word][0].colour.red},${WordSelectorData[word][0].colour.green},${WordSelectorData[word][0].colour.blue},${WordSelectorData[word][0].colour.a})`
-  const getLetters = props => {
+  const getLetters = () => {
     var elements = []
     WordSelectorData[word].forEach((letter, i) => {
       elements.push(
         <Letter
-          {...props}
+          // {...props}
           key={[word, i].join("_")}
           linkText={letter.text}
           to={word}
@@ -48,28 +48,7 @@ const Word = ({
     return elements
   }
 
-  return (
-    <div>
-      <Transition
-        items={clickedWord}
-        // initial={{ backgroundColor: route !== word ? colour : "white" }}
-        from={{
-          backgroundColor: word === exitState.exitState ? colour : "white",
-        }}
-        enter={{
-          backgroundColor: word === entryState.entryState ? colour : "white",
-        }}
-        leave={{
-          backgroundColor: "white",
-        }}
-      >
-        {item => props => {
-          // console.log(show)
-          return getLetters(props)
-        }}
-      </Transition>
-    </div>
-  )
+  return <div>{getLetters()}</div>
 }
 
 export default Word

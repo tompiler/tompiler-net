@@ -19,7 +19,7 @@ const SpringLink = ({
     }}
     entry={{
       length: 1,
-      // delay: 1,
+      delay: 1,
       state: { entryState: entryState },
     }}
   >

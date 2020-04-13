@@ -6,7 +6,9 @@ import cellStyles from "./cell.module.scss"
 
 const Cell = props => {
   // const props
-  // console.log(props.to, props.setClickedWord)
+  if (props.to === "tompiler") {
+    console.log(props.to, props.clickedWord, props.word, props.activeColour)
+  }
   return (
     <>
       <button
@@ -19,7 +21,8 @@ const Cell = props => {
       >
         <animated.div
           style={{
-            backgroundColor: props.backgroundColor,
+            backgroundColor:
+              props.clickedWord === props.to ? props.activeColour : "white",
             border: `1px solid ${props.backgroundColor}`,
             borderRadius: "3px",
             boxShadow: "2px 3px 2px rgba(83, 83, 83)",
