@@ -13,6 +13,9 @@ module.exports = {
     "gatsby-plugin-sass",
     {
       resolve: "gatsby-plugin-transition-link",
+      options: {
+        injectPageProps: false,
+      },
     },
     {
       resolve: "gatsby-source-filesystem",

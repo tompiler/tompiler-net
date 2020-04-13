@@ -11,7 +11,6 @@ const Layout = props => {
     props.location.pathname.substr(1) === ""
       ? "tompiler"
       : props.location.pathname.substr(1)
-
   return (
     <>
       <Toolbar />

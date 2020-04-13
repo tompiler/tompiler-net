@@ -7,15 +7,20 @@ const SpringLink = ({
   exitLength,
   children,
   className,
-  prevRoute,
+  exitState,
+  entryState,
 }) => (
   <TransitionLink
     className={className}
     to={to}
-    exit={{ length: 1 }}
+    exit={{
+      length: 1,
+      state: { exitState: exitState },
+    }}
     entry={{
-      length: entryLength,
+      length: 1,
       // delay: 1,
+      state: { entryState: entryState },
     }}
   >
     {children}

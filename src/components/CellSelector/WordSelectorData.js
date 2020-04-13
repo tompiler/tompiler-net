@@ -1,8 +1,8 @@
 const /*blue = "rgba(0,194,224,.9)",*/
-  blue = { red: 74, green: 171, blue: 255, a: 1 },
-  orange = { red: 250, green: 146, blue: 63, a: 1 },
-  green = { red: 20, green: 102, blue: 24, a: 1 },
-  fuschia = { red: 221, green: 33, blue: 83, a: 1 }
+  blue = { red: 74, green: 171, blue: 255, a: 0.7 },
+  orange = { red: 250, green: 146, blue: 63, a: 0.7 },
+  green = { red: 20, green: 102, blue: 24, a: 0.5 },
+  fuschia = { red: 221, green: 33, blue: 83, a: 0.6 }
 // goldenrod = { red: 218, green: 165, blue: 33, a: 1 },
 // purple = { red: 169, green: 39, blue: 207, a: 1 }
 
@@ -65,66 +65,66 @@ const headingData = {
       word: "tutorials",
     },
   ],
-  // contact: [
-  //   {
-  //     text: "c",
-  //     left: 35,
-  //     top: 18,
-  //     display: "inline-block",
-  //     direction: "across",
-  //     colour: green,
-  //     word: "contact",
-  //   },
+  contact: [
+    {
+      text: "c",
+      left: 35,
+      top: 18,
+      display: "inline-block",
+      direction: "across",
+      colour: green,
+      word: "contact",
+    },
 
-  //   {
-  //     text: "o",
-  //     left: 35,
-  //     top: 24,
-  //     display: "inline-block",
-  //     direction: "across",
-  //     colour: green,
-  //     word: "contact",
-  //   },
-  //   {
-  //     text: "n",
-  //     left: 35,
-  //     top: 30,
-  //     display: "inline-block",
-  //     direction: "down",
-  //     colour: green,
-  //     word: "contact",
-  //   },
-  // ],
-  // articles: [
-  //   {
-  //     text: "a",
-  //     left: 40,
-  //     top: 18,
-  //     display: "inline-block",
-  //     direction: "down",
-  //     colour: fuschia,
-  //     word: "articles",
-  //   },
+    {
+      text: "o",
+      left: 35,
+      top: 24,
+      display: "inline-block",
+      direction: "across",
+      colour: green,
+      word: "contact",
+    },
+    {
+      text: "n",
+      left: 35,
+      top: 30,
+      display: "inline-block",
+      direction: "down",
+      colour: green,
+      word: "contact",
+    },
+  ],
+  articles: [
+    {
+      text: "a",
+      left: 40,
+      top: 18,
+      display: "inline-block",
+      direction: "down",
+      colour: fuschia,
+      word: "articles",
+    },
 
-  //   {
-  //     text: "r",
-  //     left: 40,
-  //     top: 24,
-  //     display: "inline-block",
-  //     direction: "down",
-  //     colour: fuschia,
-  //     word: "articles",
-  //   },
-  //   {
-  //     text: "t",
-  //     left: 40,
-  //     top: 30,
-  //     display: "inline-block",
-  //     direction: "down",
-  //     colour: fuschia,
-  //     word: "articles",
-  //   },
-  // ],
+    {
+      text: "r",
+      left: 40,
+      top: 24,
+      display: "inline-block",
+      direction: "down",
+      colour: fuschia,
+      word: "articles",
+    },
+    {
+      text: "t",
+      left: 40,
+      top: 30,
+      display: "inline-block",
+      direction: "down",
+      colour: fuschia,
+      word: "articles",
+    },
+  ],
 }
 
 // const headingData = [

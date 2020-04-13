@@ -1,4 +1,5 @@
-import React from "react"
+import React, { useRef, useEffect } from "react"
+import { Transition } from "react-spring/renderprops"
 
 import WordSelectorData from "./CellSelector/WordSelectorData"
 import Letter from "./Letter"
@@ -10,35 +11,65 @@ const Word = ({
   setClickedWord,
   setHoverAlpha,
   setHoverElement,
+  exitState,
+  entryState,
   clickedWord,
   hoverElement,
   alpha,
 }) => {
-  var elements = []
+  //   console.log(transitionStatus, route, word)
 
-  console.log(transitionStatus, route)
-  WordSelectorData[word].forEach(letter => {
-    // console.log(letter)
-    elements.push(
-      <Letter
-        linkText={letter.text}
-        to={word}
-        route={route}
-        left={`${letter.left}vw`}
-        top={`${letter.top}vh`}
-        transitionStatus={transitionStatus}
-        setClickedWord={setClickedWord}
-        setHover={setHoverAlpha}
-        setHoverElement={setHoverElement}
-        clickedWord={clickedWord}
-        hoverElement={hoverElement}
-        alpha={alpha}
-        activeColour={`rgba(${letter.colour.red},${letter.colour.green},${letter.colour.blue},${letter.colour.a})`}
-      ></Letter>
-    )
-  })
+  // console.log(clickedWord)
 
-  return <div>{elements}</div>
+  const colour = `rgba(${WordSelectorData[word][0].colour.red},${WordSelectorData[word][0].colour.green},${WordSelectorData[word][0].colour.blue},${WordSelectorData[word][0].colour.a})`
+  const getLetters = props => {
+    var elements = []
+    WordSelectorData[word].forEach((letter, i) => {
+      elements.push(
+        <Letter
+          {...props}
+          key={[word, i].join("_")}
+          linkText={letter.text}
+          to={word}
+          route={route}
+          left={`${letter.left}vw`}
+          top={`${letter.top}vh`}
+          transitionStatus={transitionStatus}
+          setClickedWord={setClickedWord}
+          setHover={setHoverAlpha}
+          setHoverElement={setHoverElement}
+          clickedWord={clickedWord}
+          hoverElement={hoverElement}
+          alpha={alpha}
+          activeColour={`rgba(${letter.colour.red},${letter.colour.green},${letter.colour.blue},${letter.colour.a})`}
+        ></Letter>
+      )
+    })
+    return elements
+  }
+
+  return (
+    <div>
+      <Transition
+        items={clickedWord}
+        // initial={{ backgroundColor: route !== word ? colour : "white" }}
+        from={{
+          backgroundColor: word === exitState.exitState ? colour : "white",
+        }}
+        enter={{
+          backgroundColor: word === entryState.entryState ? colour : "white",
+        }}
+        leave={{
+          backgroundColor: "white",
+        }}
+      >
+        {item => props => {
+          // console.log(show)
+          return getLetters(props)
+        }}
+      </Transition>
+    </div>
+  )
 }
 
 export default Word

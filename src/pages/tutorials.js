@@ -1,9 +1,9 @@
-import React from "react"
+import React, { useRef, useEffect } from "react"
 import Layout from "../components/layout"
 
 import CellSelector from "../components/CellSelector/CellSelector"
 
-const tutorials = props => {
+const Tutorials = props => {
   const pathName =
     props.location.pathname.substr(1) === ""
       ? "tompiler"
@@ -11,4 +11,4 @@ const tutorials = props => {
   return <Layout {...props} left={<CellSelector route={pathName} />} />
 }
 
-export default tutorials
+export default Tutorials

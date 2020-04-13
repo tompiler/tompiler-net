@@ -8,7 +8,10 @@
 // import { TransitionState } from "gatsby-plugin-transition-link"
 
 import React, { useState } from "react"
-import { TransitionState } from "gatsby-plugin-transition-link"
+import {
+  TransitionPortal,
+  TransitionState,
+} from "gatsby-plugin-transition-link"
 import { useSpring } from "react-spring"
 
 import Letter from "../Letter"
@@ -20,15 +23,27 @@ import Word from "../Word"
 const CellSelector = ({ route }) => {
   const [{ alpha }, setHoverAlpha] = useSpring(() => ({
     alpha: 0,
+    config: {
+      mass: 1,
+      tension: 170,
+      friction: 40,
+    },
   }))
 
-  const [clickedWord, setClickedWord] = useState("tompiler")
+  const [clickedWord, setClickedWord] = useState(null)
   const [hoverElement, setHoverElement] = useState(null)
 
-  console.log(clickedWord)
+  // console.log(route)
+
+  // console.log(clickedWord, hoverElement)
   return (
     <TransitionState>
       {({ transitionStatus, exit, entry }) => {
+        console.log(
+          transitionStatus,
+          exit.state.exitState,
+          entry.state.entryState
+        )
         return (
           <div>
             <Word
@@ -38,7 +53,11 @@ const CellSelector = ({ route }) => {
               setClickedWord={setClickedWord}
               setHoverAlpha={setHoverAlpha}
               setHoverElement={setHoverElement}
-              clickedWord={clickedWord}
+              exitState={exit.state}
+              entryState={entry.state}
+              clickedWord={
+                clickedWord || exit.state.exitState || entry.state.entryState
+              }
               hoverElement={hoverElement}
               alpha={alpha}
             />
@@ -49,18 +68,26 @@ const CellSelector = ({ route }) => {
               setClickedWord={setClickedWord}
               setHoverAlpha={setHoverAlpha}
               setHoverElement={setHoverElement}
-              clickedWord={clickedWord}
+              exitState={exit.state}
+              entryState={entry.state}
+              clickedWord={
+                clickedWord || exit.state.exitState || entry.state.entryState
+              }
               hoverElement={hoverElement}
               alpha={alpha}
             />
-            {/* <Word
+            <Word
               word="contact"
               route={route}
               transitionStatus={transitionStatus}
               setClickedWord={setClickedWord}
               setHoverAlpha={setHoverAlpha}
               setHoverElement={setHoverElement}
-              clickedWord={clickedWord}
+              exitState={exit.state}
+              entryState={entry.state}
+              clickedWord={
+                clickedWord || exit.state.exitState || entry.state.entryState
+              }
               hoverElement={hoverElement}
               alpha={alpha}
             />
@@ -71,10 +98,14 @@ const CellSelector = ({ route }) => {
               setClickedWord={setClickedWord}
               setHoverAlpha={setHoverAlpha}
               setHoverElement={setHoverElement}
-              clickedWord={clickedWord}
+              exitState={exit.state}
+              entryState={entry.state}
+              clickedWord={
+                clickedWord || exit.state.exitState || entry.state.entryState
+              }
               hoverElement={hoverElement}
               alpha={alpha}
-            /> */}
+            />
           </div>
         )
       }}

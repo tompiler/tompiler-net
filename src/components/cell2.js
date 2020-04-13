@@ -6,9 +6,17 @@ import cellStyles from "./cell.module.scss"
 
 const Cell = props => {
   // const props
+  // console.log(props.to, props.setClickedWord)
   return (
     <>
-      <button style={{ ...props }} className={cellStyles.button}>
+      <button
+        style={{ ...props }}
+        className={cellStyles.button}
+        onClick={() => {
+          // console.log("Clicked:", props.to)
+          props.setClickedWord(props.to)
+        }}
+      >
         <animated.div
           style={{
             backgroundColor: props.backgroundColor,
@@ -19,19 +27,24 @@ const Cell = props => {
           onMouseEnter={() => {
             props.setHoverElement(props.to)
             props.setHover({ alpha: 0.7 })
+            // console.log(props.clickedWord, props.to)
           }}
           onMouseLeave={() => {
-            props.setHoverElement(null)
+            // console.log(props.clickedWord)
+            props.setHoverElement(props.hoverElement)
             props.setHover({
               alpha: 0,
             })
-          }}
-          onClick={() => {
-            props.setClickedWord(props.to)
+            // console.log(props.clickedWord, props.to)
           }}
         >
           <div>
-            <SpringLink className={cellStyles.springLink} to={`/${props.to}`}>
+            <SpringLink
+              className={cellStyles.springLink}
+              to={`/${props.to}`}
+              entryState={props.to}
+              exitState={props.to}
+            >
               {props.linkText}
             </SpringLink>
           </div>
