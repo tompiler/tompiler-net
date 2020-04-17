@@ -1,48 +1,56 @@
-import React, { useRef, useEffect } from "react"
-import { Transition } from "react-spring/renderprops"
+import React, { useState } from "react"
+// import { Transition } from "react-spring/renderprops"
 
 import WordSelectorData from "./CellSelector/WordSelectorData"
-import Letter from "./Letter"
+import Cell from "./cell2"
 
 const Word = ({
   word,
-  route,
   transitionStatus,
-  setClickedWord,
-  setHoverAlpha,
-  setHoverElement,
   exitState,
   entryState,
+  setFirst,
+  first,
+  setClickedWord,
+  setFadeOut,
+  fadeOut,
+  setFadeIn,
+  fadeIn,
+  setHoverAlpha,
+  setHoverElement,
   clickedWord,
   hoverElement,
   alpha,
+  route,
 }) => {
-  //   console.log(transitionStatus, route, word)
-
-  // console.log(clickedWord)
-
-  const colour = `rgba(${WordSelectorData[word][0].colour.red},${WordSelectorData[word][0].colour.green},${WordSelectorData[word][0].colour.blue},${WordSelectorData[word][0].colour.a})`
   const getLetters = () => {
     var elements = []
     WordSelectorData[word].forEach((letter, i) => {
       elements.push(
-        <Letter
-          // {...props}
+        <Cell
           key={[word, i].join("_")}
           linkText={letter.text}
           to={word}
-          route={route}
+          setFirst={setFirst}
+          first={first}
           left={`${letter.left}vw`}
           top={`${letter.top}vh`}
+          exitState={exitState}
+          entryState={entryState}
           transitionStatus={transitionStatus}
           setClickedWord={setClickedWord}
           setHover={setHoverAlpha}
           setHoverElement={setHoverElement}
           clickedWord={clickedWord}
+          setFadeOut={setFadeOut}
+          fadeOut={fadeOut}
+          setFadeIn={setFadeIn}
+          fadeIn={fadeIn}
           hoverElement={hoverElement}
           alpha={alpha}
-          activeColour={`rgba(${letter.colour.red},${letter.colour.green},${letter.colour.blue},${letter.colour.a})`}
-        ></Letter>
+          activeColour={letter.colour}
+          route={route}
+        ></Cell>
       )
     })
     return elements

@@ -8,19 +8,14 @@
 // import { TransitionState } from "gatsby-plugin-transition-link"
 
 import React, { useState } from "react"
-import {
-  TransitionPortal,
-  TransitionState,
-} from "gatsby-plugin-transition-link"
+// import { TransitionState } from "gatsby-plugin-transition-link"
 import { useSpring } from "react-spring"
 
-import Letter from "../Letter"
-
-import WordSelectorData from "./WordSelectorData"
+// import WordSelectorData from "./WordSelectorData"
 
 import Word from "../Word"
 
-const CellSelector = ({ route }) => {
+const CellSelector = ({ transitionStatus, exit, entry, route }) => {
   const [{ alpha }, setHoverAlpha] = useSpring(() => ({
     alpha: 0,
     config: {
@@ -30,160 +25,111 @@ const CellSelector = ({ route }) => {
     },
   }))
 
+  const [first, setFirst] = useState(true)
+
+  const mount = ["entering", "entered"].includes(transitionStatus)
+
+  const [{ fadeOut }, setFadeOut] = useSpring(() => ({
+    fadeOut: mount ? 0 : 0.7,
+  }))
+
+  const [{ fadeIn }, setFadeIn] = useSpring(() => ({
+    fadeIn: mount ? 0 : 0.7,
+  }))
+
   const [clickedWord, setClickedWord] = useState(null)
   const [hoverElement, setHoverElement] = useState(null)
 
-  // console.log(route)
+  //console.log(route)
 
-  // console.log(clickedWord, hoverElement)
+  // console.log(hoverElement)
+  // console.log(transitionStatus, exit.state.exitState, entry.state.entryState)
+
+  const persistentClicked =
+    clickedWord || exit.state.exitState || entry.state.entryState || route
+
+  // console.log("Just Clicked: ", persistentClicked)
+
   return (
-    <TransitionState>
-      {({ transitionStatus, exit, entry }) => {
-        console.log(
-          transitionStatus,
-          exit.state.exitState,
-          entry.state.entryState
-        )
-        return (
-          <div>
-            <Word
-              word="tompiler"
-              route={route}
-              transitionStatus={transitionStatus}
-              setClickedWord={setClickedWord}
-              setHoverAlpha={setHoverAlpha}
-              setHoverElement={setHoverElement}
-              exitState={exit.state}
-              entryState={entry.state}
-              clickedWord={
-                clickedWord || exit.state.exitState || entry.state.entryState
-              }
-              hoverElement={hoverElement}
-              alpha={alpha}
-            />
-            <Word
-              word="tutorials"
-              route={route}
-              transitionStatus={transitionStatus}
-              setClickedWord={setClickedWord}
-              setHoverAlpha={setHoverAlpha}
-              setHoverElement={setHoverElement}
-              exitState={exit.state}
-              entryState={entry.state}
-              clickedWord={
-                clickedWord || exit.state.exitState || entry.state.entryState
-              }
-              hoverElement={hoverElement}
-              alpha={alpha}
-            />
-            <Word
-              word="contact"
-              route={route}
-              transitionStatus={transitionStatus}
-              setClickedWord={setClickedWord}
-              setHoverAlpha={setHoverAlpha}
-              setHoverElement={setHoverElement}
-              exitState={exit.state}
-              entryState={entry.state}
-              clickedWord={
-                clickedWord || exit.state.exitState || entry.state.entryState
-              }
-              hoverElement={hoverElement}
-              alpha={alpha}
-            />
-            <Word
-              word="articles"
-              route={route}
-              transitionStatus={transitionStatus}
-              setClickedWord={setClickedWord}
-              setHoverAlpha={setHoverAlpha}
-              setHoverElement={setHoverElement}
-              exitState={exit.state}
-              entryState={entry.state}
-              clickedWord={
-                clickedWord || exit.state.exitState || entry.state.entryState
-              }
-              hoverElement={hoverElement}
-              alpha={alpha}
-            />
-          </div>
-        )
-      }}
-    </TransitionState>
+    <div>
+      <Word
+        word="tompiler"
+        transitionStatus={transitionStatus}
+        exitState={exit.state}
+        entryState={entry.state}
+        setFirst={setFirst}
+        first={first}
+        setClickedWord={setClickedWord}
+        setFadeOut={setFadeOut}
+        fadeOut={fadeOut}
+        setFadeIn={setFadeIn}
+        fadeIn={fadeIn}
+        setHoverAlpha={setHoverAlpha}
+        setHoverElement={setHoverElement}
+        clickedWord={persistentClicked}
+        hoverElement={hoverElement}
+        alpha={alpha}
+        route={route}
+      />
+      <Word
+        word="tutorials"
+        transitionStatus={transitionStatus}
+        exitState={exit.state}
+        entryState={entry.state}
+        setFirst={setFirst}
+        first={first}
+        setClickedWord={setClickedWord}
+        setFadeOut={setFadeOut}
+        fadeOut={fadeOut}
+        setFadeIn={setFadeIn}
+        fadeIn={fadeIn}
+        setHoverAlpha={setHoverAlpha}
+        setHoverElement={setHoverElement}
+        clickedWord={persistentClicked}
+        hoverElement={hoverElement}
+        alpha={alpha}
+        route={route}
+      />
+      <Word
+        word="contact"
+        transitionStatus={transitionStatus}
+        exitState={exit.state}
+        entryState={entry.state}
+        setFirst={setFirst}
+        first={first}
+        setClickedWord={setClickedWord}
+        setFadeOut={setFadeOut}
+        fadeOut={fadeOut}
+        setFadeIn={setFadeIn}
+        fadeIn={fadeIn}
+        setHoverAlpha={setHoverAlpha}
+        setHoverElement={setHoverElement}
+        clickedWord={persistentClicked}
+        hoverElement={hoverElement}
+        alpha={alpha}
+        route={route}
+      />
+      <Word
+        word="articles"
+        transitionStatus={transitionStatus}
+        exitState={exit.state}
+        entryState={entry.state}
+        setFirst={setFirst}
+        first={first}
+        setClickedWord={setClickedWord}
+        setFadeOut={setFadeOut}
+        fadeOut={fadeOut}
+        setFadeIn={setFadeIn}
+        fadeIn={fadeIn}
+        setHoverAlpha={setHoverAlpha}
+        setHoverElement={setHoverElement}
+        clickedWord={persistentClicked}
+        hoverElement={hoverElement}
+        alpha={alpha}
+        route={route}
+      />
+    </div>
   )
 }
 
 export default CellSelector
-
-// <Letter
-//   linkText={"t"}
-//   to={"tompiler"}
-//   route={route}
-//   left={"9vw"}
-//   transitionStatus={transitionStatus}
-//   setHover={set}
-//   setHoverElement={setHoverElement}
-//   hoverElement={hoverElement}
-//   alpha={alpha}
-//   activeColour={"rgba(74,171,255,0.7)"}
-// ></Letter>
-// <Letter
-//   linkText={"o"}
-//   to={"tompiler"}
-//   route={route}
-//   left={"12vw"}
-//   transitionStatus={transitionStatus}
-//   setHover={set}
-//   setHoverElement={setHoverElement}
-//   hoverElement={hoverElement}
-//   alpha={alpha}
-//   activeColour={"rgba(74,171,255,0.7)"}
-// ></Letter>
-// <Letter
-//   linkText={"m"}
-//   to={"tompiler"}
-//   route={route}
-//   left={"15vw"}
-//   transitionStatus={transitionStatus}
-//   setHover={set}
-//   setHoverElement={setHoverElement}
-//   hoverElement={hoverElement}
-//   alpha={alpha}
-//   activeColour={"rgba(74,171,255,0.7)"}
-// ></Letter>
-// <Letter
-//   linkText={"t"}
-//   to={"tutorials"}
-//   route={route}
-//   left={"30vw"}
-//   transitionStatus={transitionStatus}
-//   setHover={set}
-//   setHoverElement={setHoverElement}
-//   hoverElement={hoverElement}
-//   alpha={alpha}
-//   activeColour={"rgba(250,146,63,0.7)"}
-// ></Letter>
-// <Letter
-//   linkText={"u"}
-//   to={"tutorials"}
-//   route={route}
-//   left={"33vw"}
-//   transitionStatus={transitionStatus}
-//   setHover={set}
-//   setHoverElement={setHoverElement}
-//   hoverElement={hoverElement}
-//   alpha={alpha}
-//   activeColour={"rgba(250,146,63,0.7)"}
-// ></Letter>
-// <Letter
-//   linkText={"t"}
-//   to={"tutorials"}
-//   route={route}
-//   left={"36vw"}
-//   transitionStatus={transitionStatus}
-//   setHover={set}
-//   setHoverElement={setHoverElement}
-//   hoverElement={hoverElement}
-//   alpha={alpha}
-//   activeColour={"rgba(250,146,63,0.7)"}
-// ></Letter>

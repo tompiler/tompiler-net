@@ -1,57 +1,72 @@
 import React from "react"
 
 import { SpringLink } from "./SpringLink"
-import { animated } from "react-spring"
+import { animated, useSpring } from "react-spring"
 import cellStyles from "./cell.module.scss"
+import { Spring } from "react-spring/renderprops"
 
 const Cell = props => {
-  // const props
-  if (props.to === "tompiler") {
-    console.log(props.to, props.clickedWord, props.word, props.activeColour)
-  }
+  const mount = ["entering", "entered"].includes(props.transitionStatus)
+
   return (
     <>
       <button
         style={{ ...props }}
         className={cellStyles.button}
         onClick={() => {
-          // console.log("Clicked:", props.to)
-          props.setClickedWord(props.to)
+          props.setFadeOut({ fadeOut: 0 })
+          props.setFadeIn({ fadeOut: 0.7 })
         }}
       >
-        <animated.div
-          style={{
-            backgroundColor:
-              props.clickedWord === props.to ? props.activeColour : "white",
-            border: `1px solid ${props.backgroundColor}`,
-            borderRadius: "3px",
-            boxShadow: "2px 3px 2px rgba(83, 83, 83)",
+        <Spring
+          from={{ v: 0 }}
+          to={{
+            v: mount ? 0.7 : 0,
           }}
-          onMouseEnter={() => {
-            props.setHoverElement(props.to)
-            props.setHover({ alpha: 0.7 })
-            // console.log(props.clickedWord, props.to)
-          }}
-          onMouseLeave={() => {
-            // console.log(props.clickedWord)
-            props.setHoverElement(props.hoverElement)
-            props.setHover({
-              alpha: 0,
-            })
-            // console.log(props.clickedWord, props.to)
+          config={{
+            // duration: 3000,
+            mass: 3,
+            tension: 400,
+            friction: 80,
           }}
         >
-          <div>
-            <SpringLink
-              className={cellStyles.springLink}
-              to={`/${props.to}`}
-              entryState={props.to}
-              exitState={props.to}
-            >
-              {props.linkText}
-            </SpringLink>
-          </div>
-        </animated.div>
+          {propss => {
+            return (
+              <div
+                style={{
+                  backgroundColor:
+                    props.to === props.route
+                      ? `rgba(${props.activeColour.red}, ${props.activeColour.green}, ${props.activeColour.blue}, ${propss.v})`
+                      : "white",
+                  border: `1px solid ${props.backgroundColor}`,
+                  borderRadius: "3px",
+                  boxShadow: "2px 3px 2px rgba(83, 83, 83)",
+                }}
+                onMouseEnter={() => {
+                  props.setHoverElement(props.to)
+                  props.setHover({ alpha: 0.7 })
+                }}
+                onMouseLeave={() => {
+                  props.setHoverElement(props.hoverElement)
+                  props.setHover({
+                    alpha: 0,
+                  })
+                }}
+              >
+                <div>
+                  <SpringLink
+                    className={cellStyles.springLink}
+                    to={`/${props.to}`}
+                    entryState={props.to}
+                    exitState={props.to}
+                  >
+                    {props.linkText}
+                  </SpringLink>
+                </div>
+              </div>
+            )
+          }}
+        </Spring>
         <div className={cellStyles.glanceParent}>
           <animated.div
             className={cellStyles.glance}

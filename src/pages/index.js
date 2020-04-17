@@ -1,5 +1,5 @@
-import React, { useState } from "react"
-import App from "./App"
+import React from "react"
+// import App from "./App"
 
 import Tompiler from "./tompiler"
 import Mission from "./mission"
@@ -8,7 +8,8 @@ import CV from "./cv"
 import Articles from "./articles"
 import Tutorials from "./tutorials"
 
-import { Router, Location } from "@reach/router"
+// import { Router, Location } from "@reach/router"
+import { Router } from "@reach/router"
 
 import "../styles/index.scss"
 

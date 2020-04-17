@@ -14,12 +14,15 @@ const SpringLink = ({
     className={className}
     to={to}
     exit={{
-      length: 1,
+      length: 0.1,
+      delay: 0,
+      zIndex: 100,
       state: { exitState: exitState },
     }}
     entry={{
-      length: 1,
-      delay: 1,
+      length: 0.4,
+      delay: 0.05,
+      zIndex: 100,
       state: { entryState: entryState },
     }}
   >

@@ -1,8 +1,8 @@
-import React, { useRef, useEffect } from "react"
+import React from "react"
 import Layout from "../components/layout"
 
 // import tompilerStyles from "../styles/tompiler.module.scss"
-import CellSelector from "../components/CellSelector/CellSelector"
+import TransitionCell from "../components/TransitionCell"
 
 const Tompiler = props => {
   const pathName =
@@ -10,7 +10,7 @@ const Tompiler = props => {
       ? "tompiler"
       : props.location.pathname.substr(1)
   return (
-    <Layout {...props} left={<CellSelector {...props} route={pathName} />} />
+    <Layout {...props} left={<TransitionCell {...props} route={pathName} />} />
   )
 }
 

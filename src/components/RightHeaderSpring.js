@@ -7,22 +7,29 @@ const RightHeaderSpring = ({ pathname }) => (
   <TransitionState>
     {({ transitionStatus, exit, entry }) => {
       const mount = ["entering", "entered"].includes(transitionStatus)
+
       return (
         <Spring
           to={{
             opacity: mount ? 1 : 0,
           }}
           config={{
-            mass: 20,
+            // duration: 3000,
+            mass: 1,
             tension: 200,
             friction: 50,
           }}
         >
-          {props => (
-            <div className={layoutStyles.title} style={props}>
-              {pathname}
-            </div>
-          )}
+          {props => {
+            return (
+              <div
+                className={layoutStyles.title}
+                style={{ opacity: props.opacity }}
+              >
+                {pathname}
+              </div>
+            )
+          }}
         </Spring>
       )
     }}
