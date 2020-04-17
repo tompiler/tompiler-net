@@ -7,10 +7,12 @@ import { Spring } from "react-spring/renderprops"
 const Cell = ({
   linkText,
   word,
+  word2,
   route,
   left,
   top,
   activeColour,
+  activeColour2,
   transitionStatus,
   setHoverAlpha,
   alpha,
@@ -18,6 +20,7 @@ const Cell = ({
   hoverElement,
 }) => {
   const mount = ["entering", "entered"].includes(transitionStatus)
+  const route2 = word2 === route ? true : false
 
   return (
     <>
@@ -26,7 +29,7 @@ const Cell = ({
         className={cellStyles.button}
         onMouseEnter={() => {
           setHoverElement(word)
-          setHoverAlpha({ alpha: 0.7 })
+          setHoverAlpha({ alpha: 0.9 })
         }}
         onMouseLeave={() => {
           setHoverElement(hoverElement)
@@ -38,12 +41,12 @@ const Cell = ({
         <Spring
           from={{ v: 0 }}
           to={{
-            v: mount ? 0.7 : 0,
+            v: mount && route2 ? activeColour2.a : mount ? activeColour.a : 0,
           }}
           config={{
-            mass: 3,
-            tension: 400,
-            friction: 80,
+            mass: 1,
+            tension: 300,
+            friction: 40,
           }}
         >
           {props => {
@@ -53,13 +56,9 @@ const Cell = ({
                   backgroundColor:
                     word === route
                       ? `rgba(${activeColour.red}, ${activeColour.green}, ${activeColour.blue}, ${props.v})`
+                      : word2 === route
+                      ? `rgba(${activeColour2.red}, ${activeColour2.green}, ${activeColour2.blue}, ${props.v})`
                       : "white",
-                  border:
-                    word === route
-                      ? `1px solid rgba(${activeColour.red}, ${
-                          activeColour.green
-                        }, ${activeColour.blue}, ${0.3}`
-                      : "1px solid white",
                   borderRadius: "3px",
                   boxShadow: "2px 3px 1px rgba(83, 83, 83)",
                 }}
@@ -68,9 +67,9 @@ const Cell = ({
                   <SpringLink
                     className={cellStyles.springLink}
                     to={`/${word}`}
-                    entryLength={0.4}
-                    exitLength={0.1}
-                    entryDelay={0.05}
+                    exitLength={0.6}
+                    entryLength={1}
+                    entryDelay={0.6}
                     entryState={word}
                     exitState={word}
                   >
@@ -84,15 +83,17 @@ const Cell = ({
         <div className={cellStyles.glanceParent}>
           <animated.div
             className={cellStyles.glance}
-            style={{
-              zIndex: 3,
-              backgroundColor:
-                hoverElement === word
-                  ? alpha.interpolate(v => {
-                      return `rgba(0,0,0,${v})`
-                    })
-                  : "",
-            }}
+            style={
+              {
+                // zIndex: 3,
+                // backgroundColor:
+                //   hoverElement === word || hoverElement === word2
+                //     ? alpha.interpolate(v => {
+                //         return `rgba(0,0,0,${v})`
+                //       })
+                //     : "",
+              }
+            }
           />
         </div>
       </button>

@@ -8,7 +8,7 @@ const CellSelector = ({ transitionStatus, exit, entry, route }) => {
     alpha: 0,
     config: {
       mass: 1,
-      tension: 170,
+      tension: 270,
       friction: 40,
     },
   }))
@@ -46,6 +46,24 @@ const CellSelector = ({ transitionStatus, exit, entry, route }) => {
       />
       <Word
         word="articles"
+        route={route}
+        transitionStatus={transitionStatus}
+        setHoverAlpha={setHoverAlpha}
+        alpha={alpha}
+        setHoverElement={setHoverElement}
+        hoverElement={hoverElement}
+      />
+      <Word
+        word="mission"
+        route={route}
+        transitionStatus={transitionStatus}
+        setHoverAlpha={setHoverAlpha}
+        alpha={alpha}
+        setHoverElement={setHoverElement}
+        hoverElement={hoverElement}
+      />
+      <Word
+        word="cv"
         route={route}
         transitionStatus={transitionStatus}
         setHoverAlpha={setHoverAlpha}

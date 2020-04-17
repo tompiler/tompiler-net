@@ -26,8 +26,8 @@ const RightHeaderSpring = ({ pathname }) => (
                 className={layoutStyles.title}
                 style={{
                   opacity: props.opacity,
-                  fontSize:
-                    `${props.opacity < 0.2 ? 2 : props.opacity * 2.4}` + "vw",
+                  // fontSize:
+                  //   `${props.opacity < 0.2 ? 2 : props.opacity * 2.4}` + "vw",
                 }}
               >
                 {pathname}
