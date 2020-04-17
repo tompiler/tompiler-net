@@ -14,27 +14,62 @@ const Toolbar = ({ setSideDrawer, routeHandler }) => (
       <div className="toolbar_navigation-items">
         <ul>
           <li>
-            <SpringLink to="/tompiler" exitLength={1} entryLength={1}>
+            <SpringLink
+              to="/tompiler"
+              exitLength={0.6}
+              entryLength={1}
+              entryDelay={0.6}
+              entryState={"tompiler"}
+              exitState={"tompiler"}
+            >
               home
             </SpringLink>
           </li>
           <li>
-            <SpringLink to="/cv" exitLength={1} entryLength={1}>
+            <SpringLink
+              to="/cv"
+              exitLength={0.6}
+              entryLength={1}
+              entryDelay={0.6}
+              entryState={"cv"}
+              exitState={"cv"}
+            >
               cv
             </SpringLink>
           </li>
           <li>
-            <SpringLink to="/mission" exitLength={1} entryLength={1}>
+            <SpringLink
+              to="/mission"
+              exitLength={0.6}
+              entryLength={1}
+              entryDelay={0.6}
+              entryState={"mission"}
+              exitState={"mission"}
+            >
               mission
             </SpringLink>
           </li>
           <li>
-            <SpringLink to="/articles" exitLength={1} entryLength={1}>
+            <SpringLink
+              to="/articles"
+              exitLength={0.6}
+              entryLength={1}
+              entryDelay={0.6}
+              entryState={"articles"}
+              exitState={"articles"}
+            >
               articles
             </SpringLink>
           </li>
           <li>
-            <SpringLink to="/tutorials" exitLength={1} entryLength={1}>
+            <SpringLink
+              to="/tutorials"
+              exitLength={0.6}
+              entryLength={1}
+              entryDelay={0.6}
+              entryState={"tutorials"}
+              exitState={"tutorials"}
+            >
               tutorials
             </SpringLink>
           </li>
