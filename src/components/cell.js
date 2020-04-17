@@ -1,164 +1,103 @@
 import React from "react"
-import cellStyles from "./cell.module.scss"
-import { TransitionState } from "gatsby-plugin-transition-link"
-
-// import {
-//   Spring,
-//   Transition,
-//   animated,
-//   interpolate,
-//   config,
-// } from "react-spring/renderprops"
 import { SpringLink } from "./SpringLink"
-// import useHover from "./useHover"
-import { useSpring, animated } from "react-spring"
+import { animated } from "react-spring"
+import cellStyles from "./cell.module.scss"
+import { Spring } from "react-spring/renderprops"
 
-const Cell = ({ heading, text, position, transitionStatus, route }) => {
-  ;<TransitionState>
-    {({ transitionStatus, exit, entry }) => {
-      // console.log(route)
-      const [{ backgroundColourA }, set] = useSpring(() => ({
-        backgroundColourA: 0,
-      }))
+const Cell = ({
+  linkText,
+  word,
+  route,
+  left,
+  top,
+  activeColour,
+  transitionStatus,
+  setHoverAlpha,
+  alpha,
+  setHoverElement,
+  hoverElement,
+}) => {
+  const mount = ["entering", "entered"].includes(transitionStatus)
 
-      if (
-        heading.word !== route &&
-        ["exiting", "exited"].includes(transitionStatus)
-      ) {
-        console.log(heading.word, route, transitionStatus)
-        set({ backgroundColourA: 0 })
-      }
-
-      if (heading.word === route) {
-        // console.log(transitionStatus, route, heading.word)
-      }
-
-      const positions = {
-        left:
-          heading.direction === "across"
-            ? heading.left + position * 2.5 + "vw"
-            : heading.left + "vw",
-        top:
-          heading.direction === "down"
-            ? heading.top + position * 6.2 + "vh"
-            : heading.top + "vh",
-      }
-
-      const backgroundColour = () => {
-        if ((transitionStatus = "exiting" && route === heading.word)) {
-          console.log(route, "exit out")
-        }
-        if ((transitionStatus = "entering" && route === heading.word)) {
-          console.log(route, "enter in")
-        }
-      }
-
-      const link = (
-        <SpringLink
-          className={cellStyles.springLink}
-          to={`/${heading.word}`}
-          exitLength={1}
-          entryLength={0}
-          prevRoute={route}
-        >
-          {text}
-        </SpringLink>
-      )
-
-      return (
-        <button
-          className={cellStyles.button}
-          style={{
-            ...positions,
-            backgroundColor:
-              heading.word === route
-                ? `rgba(${heading.colour.red}, ${heading.colour.green}, ${heading.colour.blue}, ${heading.colour.a})`
-                : "rgba(0,0,0,0)",
+  return (
+    <>
+      <button
+        style={{ left: left, top: top }}
+        className={cellStyles.button}
+        onMouseEnter={() => {
+          setHoverElement(word)
+          setHoverAlpha({ alpha: 0.7 })
+        }}
+        onMouseLeave={() => {
+          setHoverElement(hoverElement)
+          setHoverAlpha({
+            alpha: 0,
+          })
+        }}
+      >
+        <Spring
+          from={{ v: 0 }}
+          to={{
+            v: mount ? 0.7 : 0,
           }}
-          onMouseEnter={() => set({ backgroundColourA: heading.colour.a })}
-          onMouseLeave={() =>
-            set({
-              backgroundColourA: 0,
-            })
-          }
+          config={{
+            mass: 3,
+            tension: 400,
+            friction: 80,
+          }}
         >
-          <div>{link}</div>
-          <div>
-            <animated.div
-              style={{
-                backgroundColor: backgroundColourA.interpolate(v => {
-                  // console.log(v)
-
-                  return `rgba(${heading.colour.red}, ${heading.colour.green}, ${heading.colour.blue}, ${v})`
-                }),
-                border: backgroundColourA.interpolate(
-                  v =>
-                    `1px solid rgba(${heading.colour.red}, ${heading.colour.green}, ${heading.colour.blue}, ${v})`
-                ),
-              }}
-              className={cellStyles.glance}
-            />
-          </div>
-        </button>
-
-        // <Spring
-        //   native
-        //   from={{
-        //     o: 1,
-        //   }}
-        //   to={{
-        //     o: 0,
-        //   }}
-        //   // config={{ duration: hoverWord ? 250 : 0 }}
-        // >
-        //   {({ o }) => (
-        //     <animated.div
-        //       className={cellStyles.cell}
-        //       onMouseEnter={() => setHoverWord(heading.word)}
-        //       onMouseLeave={() => setHoverWord(null)}
-        //       style={{
-        //         left:
-        //           heading.direction === "across"
-        //             ? heading.left + position * 2.5 + "vw"
-        //             : heading.left + "vw",
-        //         top:
-        //           heading.direction === "down"
-        //             ? heading.top + position * 6.2 + "vh"
-        //             : heading.top + "vh",
-        //         backgroundColor:
-        //           hoverWord === heading.word
-        //             ? `rgba(${heading.colour.red}, ${heading.colour.green}, ${heading.colour.blue}, ${o}`
-        //             : hoverWord === heading.word2
-        //             ? `rgba(${heading.colour2.red}, ${heading.colour2.green}, ${heading.colour2.blue}, ${o}`
-        //             : heading.word === route
-        //             ? `rgba(${heading.colour.red}, ${heading.colour.green}, ${heading.colour.blue}, ${o})`
-        //             : // )
-        //             heading.word2 === route //|| hoverWord === heading.word2
-        //             ? // ? o.interpolate(
-        //               //     o =>
-        //               `rgba(${heading.colour2.red}, ${heading.colour2.green}, ${heading.colour2.blue}, ${o})`
-        //             : // )
-        //               "white",
-        //         transition:
-        //           heading.word === hoverWord || heading.word2 === hoverWord
-        //             ? "background-color 300ms linear"
-        //             : "none",
-        //       }}
-        //     >
-        //       <SpringLink
-        //         className={cellStyles.springLink}
-        //         to={`/${heading.word}`}
-        //         exitLength={1}
-        //         entryLength={1}
-        //       >
-        //         {text}
-        //       </SpringLink>
-        //     </animated.div>
-        //   )}
-        // </Spring>
-      )
-    }}
-  </TransitionState>
+          {props => {
+            return (
+              <div
+                style={{
+                  backgroundColor:
+                    word === route
+                      ? `rgba(${activeColour.red}, ${activeColour.green}, ${activeColour.blue}, ${props.v})`
+                      : "white",
+                  border:
+                    word === route
+                      ? `1px solid rgba(${activeColour.red}, ${
+                          activeColour.green
+                        }, ${activeColour.blue}, ${0.3}`
+                      : "1px solid white",
+                  borderRadius: "3px",
+                  boxShadow: "2px 3px 1px rgba(83, 83, 83)",
+                }}
+              >
+                <div>
+                  <SpringLink
+                    className={cellStyles.springLink}
+                    to={`/${word}`}
+                    entryLength={0.4}
+                    exitLength={0.1}
+                    entryDelay={0.05}
+                    entryState={word}
+                    exitState={word}
+                  >
+                    {linkText}
+                  </SpringLink>
+                </div>
+              </div>
+            )
+          }}
+        </Spring>
+        <div className={cellStyles.glanceParent}>
+          <animated.div
+            className={cellStyles.glance}
+            style={{
+              zIndex: 3,
+              backgroundColor:
+                hoverElement === word
+                  ? alpha.interpolate(v => {
+                      return `rgba(0,0,0,${v})`
+                    })
+                  : "",
+            }}
+          />
+        </div>
+      </button>
+    </>
+  )
 }
 
 export default Cell

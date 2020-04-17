@@ -19,8 +19,8 @@ const headingData = {
     },
     {
       text: "o",
-      left: 15,
-      top: 24,
+      left: 17.2,
+      top: 18,
       display: "inline-block",
       direction: "across",
       colour: blue,
@@ -28,8 +28,8 @@ const headingData = {
     },
     {
       text: "m",
-      left: 15,
-      top: 30,
+      left: 19.4,
+      top: 18,
       display: "inline-block",
       direction: "across",
       colour: blue,
@@ -40,7 +40,7 @@ const headingData = {
     {
       text: "t",
       left: 25,
-      top: 18,
+      top: 38,
       display: "inline-block",
       direction: "across",
       colour: orange,
@@ -49,7 +49,7 @@ const headingData = {
     {
       text: "u",
       left: 25,
-      top: 24,
+      top: 44,
       display: "inline-block",
       direction: "across",
       colour: orange,
@@ -58,7 +58,7 @@ const headingData = {
     {
       text: "t",
       left: 25,
-      top: 30,
+      top: 50,
       display: "inline-block",
       direction: "across",
       colour: orange,
@@ -69,7 +69,7 @@ const headingData = {
     {
       text: "c",
       left: 35,
-      top: 18,
+      top: 38,
       display: "inline-block",
       direction: "across",
       colour: green,
@@ -79,7 +79,7 @@ const headingData = {
     {
       text: "o",
       left: 35,
-      top: 24,
+      top: 44,
       display: "inline-block",
       direction: "across",
       colour: green,
@@ -88,7 +88,7 @@ const headingData = {
     {
       text: "n",
       left: 35,
-      top: 30,
+      top: 50,
       display: "inline-block",
       direction: "down",
       colour: green,
@@ -99,7 +99,7 @@ const headingData = {
     {
       text: "a",
       left: 40,
-      top: 18,
+      top: 38,
       display: "inline-block",
       direction: "down",
       colour: fuschia,
@@ -109,7 +109,7 @@ const headingData = {
     {
       text: "r",
       left: 40,
-      top: 24,
+      top: 44,
       display: "inline-block",
       direction: "down",
       colour: fuschia,
@@ -118,7 +118,7 @@ const headingData = {
     {
       text: "t",
       left: 40,
-      top: 30,
+      top: 50,
       display: "inline-block",
       direction: "down",
       colour: fuschia,

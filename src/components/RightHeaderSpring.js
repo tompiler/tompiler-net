@@ -16,15 +16,19 @@ const RightHeaderSpring = ({ pathname }) => (
           config={{
             // duration: 3000,
             mass: 1,
-            tension: 200,
-            friction: 50,
+            tension: 120,
+            friction: 15,
           }}
         >
           {props => {
             return (
               <div
                 className={layoutStyles.title}
-                style={{ opacity: props.opacity }}
+                style={{
+                  opacity: props.opacity,
+                  fontSize:
+                    `${props.opacity < 0.2 ? 2 : props.opacity * 2.4}` + "vw",
+                }}
               >
                 {pathname}
               </div>

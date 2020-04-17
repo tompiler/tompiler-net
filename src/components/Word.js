@@ -1,62 +1,36 @@
-import React, { useState } from "react"
-// import { Transition } from "react-spring/renderprops"
-
+import React from "react"
 import WordSelectorData from "./CellSelector/WordSelectorData"
-import Cell from "./cell2"
+import Cell from "./cell"
 
 const Word = ({
   word,
-  transitionStatus,
-  exitState,
-  entryState,
-  setFirst,
-  first,
-  setClickedWord,
-  setFadeOut,
-  fadeOut,
-  setFadeIn,
-  fadeIn,
-  setHoverAlpha,
-  setHoverElement,
-  clickedWord,
-  hoverElement,
-  alpha,
   route,
+  transitionStatus,
+  setHoverAlpha,
+  alpha,
+  setHoverElement,
+  hoverElement,
 }) => {
-  const getLetters = () => {
-    var elements = []
-    WordSelectorData[word].forEach((letter, i) => {
-      elements.push(
-        <Cell
-          key={[word, i].join("_")}
-          linkText={letter.text}
-          to={word}
-          setFirst={setFirst}
-          first={first}
-          left={`${letter.left}vw`}
-          top={`${letter.top}vh`}
-          exitState={exitState}
-          entryState={entryState}
-          transitionStatus={transitionStatus}
-          setClickedWord={setClickedWord}
-          setHover={setHoverAlpha}
-          setHoverElement={setHoverElement}
-          clickedWord={clickedWord}
-          setFadeOut={setFadeOut}
-          fadeOut={fadeOut}
-          setFadeIn={setFadeIn}
-          fadeIn={fadeIn}
-          hoverElement={hoverElement}
-          alpha={alpha}
-          activeColour={letter.colour}
-          route={route}
-        ></Cell>
-      )
-    })
-    return elements
-  }
-
-  return <div>{getLetters()}</div>
+  var elements = []
+  WordSelectorData[word].forEach((letter, i) => {
+    elements.push(
+      <Cell
+        key={[word, i].join("_")}
+        linkText={letter.text}
+        word={word}
+        route={route}
+        left={`${letter.left}vw`}
+        top={`${letter.top}vh`}
+        activeColour={letter.colour}
+        transitionStatus={transitionStatus}
+        setHoverAlpha={setHoverAlpha}
+        alpha={alpha}
+        setHoverElement={setHoverElement}
+        hoverElement={hoverElement}
+      ></Cell>
+    )
+  })
+  return <div>{elements}</div>
 }
 
 export default Word

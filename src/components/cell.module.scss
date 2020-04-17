@@ -38,7 +38,7 @@
 .button {
   display: inline-block;
   position: absolute;
-  width: 2.3vw;
+  width: 2vw;
   height: 5.7vh;
   /* // padding: auto; */
   margin: 0;
@@ -47,7 +47,7 @@
   // border: 1px solid white; 
   border: none;
   border-radius: 3px;
-  // box-shadow: 2px 3px 2px #535353;
+  // box-shadow: 2px 3px 2px rgba(83, 83, 83, 1);
   cursor: pointer;
   /* transition: 0.3s background-color ease; */
   text-align: center;
@@ -58,13 +58,11 @@
   text-decoration: none;
   color: black;
   display: inline-block;
-  width: 2.3vw;
+  width: 2vw;
   height: 5.7vh;
   // line-height: 5.7vh;
   padding: 0;
   margin: 0;
-  // background-color: rgba(0,0,0,0);
-  // text-align: center;
 }
 
 
@@ -77,22 +75,8 @@
   color: #a8a8a8;
 }
 
-// .glance {
-//   width: 100%;
-//   height: 100%;
-//   padding: 0;
-//   margin: 0;
-//   border-radius: 3px;
-//   z-index: 1;
-//   position: relative;
-//   // transform: translateY(-5.8vh);
-//   background-color: #b9dbbf;
-  
-// }
-
-
 .glance-parent {
-  width: 2.3vw;
+  width: 2.03vw;
   height: 5.7vh;
   /* display: inline-block; */
   display: flex;
@@ -101,13 +85,13 @@
 
 .glance {
   /* display: flex; */
-  width: 100%;
-  height: 10%;
+  width: 9%;
+  height: 5%;
   padding: 0;
   margin: 0;
   border-radius: 10px;
-  z-index: 3;
+  z-index: 10;
   position: relative;
-  transform: translateY(0.7vh);
+  transform: translateY(-2vh);
   pointer-events: none;
 }
