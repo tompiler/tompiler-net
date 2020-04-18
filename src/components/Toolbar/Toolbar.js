@@ -15,17 +15,41 @@ const Toolbar = ({ setSideDrawer, routeHandler }) => (
         <ul>
           <li>
             <SpringLink
-              to="/tompiler"
+              to="/articles"
               exitLength={0.6}
               entryLength={1}
               entryDelay={0.6}
-              entryState={"tompiler"}
-              exitState={"tompiler"}
+              entryState={"articles"}
+              exitState={"articles"}
             >
-              home
+              articles
             </SpringLink>
           </li>
           <li>
+            <SpringLink
+              to="/tutorials"
+              exitLength={0.6}
+              entryLength={1}
+              entryDelay={0.6}
+              entryState={"tutorials"}
+              exitState={"tutorials"}
+            >
+              tutorials
+            </SpringLink>
+          </li>
+          <li>
+            <SpringLink
+              to="/contact"
+              exitLength={0.6}
+              entryLength={1}
+              entryDelay={0.6}
+              entryState={"contact"}
+              exitState={"contact"}
+            >
+              contact
+            </SpringLink>
+          </li>
+          <li style={{ padding: 0 }}>
             <SpringLink
               to="/cv"
               exitLength={0.6}
@@ -47,30 +71,6 @@ const Toolbar = ({ setSideDrawer, routeHandler }) => (
               exitState={"mission"}
             >
               mission
-            </SpringLink>
-          </li>
-          <li>
-            <SpringLink
-              to="/articles"
-              exitLength={0.6}
-              entryLength={1}
-              entryDelay={0.6}
-              entryState={"articles"}
-              exitState={"articles"}
-            >
-              articles
-            </SpringLink>
-          </li>
-          <li>
-            <SpringLink
-              to="/tutorials"
-              exitLength={0.6}
-              entryLength={1}
-              entryDelay={0.6}
-              entryState={"tutorials"}
-              exitState={"tutorials"}
-            >
-              tutorials
             </SpringLink>
           </li>
         </ul>

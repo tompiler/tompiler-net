@@ -16,12 +16,9 @@ const Layout = props => {
       <Toolbar />
       <div className={layoutStyles.parent}>
         <div className={layoutStyles.containerLeft}>
-          {/* <div className={layoutStyles.containerContent}> */}
-          {/* <div className={layoutStyles.linkContainer}> */}
-          {/* <MySpring text={props.left} /> */}
-          <div>{props.left}</div>
-          {/* </div> */}
-          {/* </div> */}
+          <div className={layoutStyles.containerContent}>
+            <div className={layoutStyles.linkContainer}>{props.left}</div>
+          </div>
         </div>
         <div className={layoutStyles.containerRight}>
           <div>
