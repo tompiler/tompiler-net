@@ -10,13 +10,13 @@ const drawerToggleButton = props => (
     role="button"
     tabIndex={0}
   >
-    <div className="toggle-button-container">
+    {/* <div className="toggle-button-container">
       <button className="toggle-button">
         <div className="toggle-button__line" />
         <div className="toggle-button__line" />
         <div className="toggle-button__line" />
       </button>
-    </div>
+    </div> */}
     <div className="toolbar__logo">tompiler</div>
   </div>
 )

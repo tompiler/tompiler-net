@@ -36,7 +36,7 @@
 }
 
 .toolbar__logo {
-    padding-left: 1rem;
+    /* padding-left: 1rem; */
     display: flex;
     margin: auto;
     color: black;

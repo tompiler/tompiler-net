@@ -80,7 +80,7 @@ const Cell = ({
             )
           }}
         </Spring>
-        <div className={cellStyles.glanceParent}>
+        {/* <div className={cellStyles.glanceParent}>
           <animated.div
             className={cellStyles.glance}
             style={
@@ -95,7 +95,7 @@ const Cell = ({
               }
             }
           />
-        </div>
+        </div> */}
       </button>
     </>
   )
