@@ -1,5 +1,5 @@
 import React from "react"
-// import App from "./App"
+import App from "../components/App"
 
 import Tompiler from "./tompiler"
 import Mission from "./mission"
@@ -8,21 +8,18 @@ import CV from "./cv"
 import Articles from "./articles"
 import Tutorials from "./tutorials"
 
-// import { Router, Location } from "@reach/router"
-import { Router } from "@reach/router"
-
 import "../styles/index.scss"
 
 const IndexPage = () => {
   return (
-    <Router className="router">
+    <App>
       <Tompiler path="/" exact />
       <Contact path="/contact" />
       <CV path="/cv" />
       <Mission path="/mission" />
       <Tutorials path="/tutorials" />
       <Articles path="/articles" />
-    </Router>
+    </App>
   )
 }
 

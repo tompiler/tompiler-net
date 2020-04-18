@@ -1,6 +1,6 @@
 import React from "react"
 import { SpringLink } from "./SpringLink"
-import { animated } from "react-spring"
+// import { animated } from "react-spring"
 import cellStyles from "./cell.module.scss"
 import { Spring } from "react-spring/renderprops"
 
