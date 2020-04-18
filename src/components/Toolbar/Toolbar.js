@@ -1,6 +1,6 @@
 import React from "react"
 // import { Link } from "gatsby"
-import DrawerToggleButton from "../SideDrawer/drawerToggleButton"
+import DrawerToggleButton from "./drawerToggleButton"
 import "./toolbar.css"
 
 import { SpringLink } from "../SpringLink"

@@ -3,12 +3,18 @@ import Layout from "../components/layout"
 
 import TransitionCell from "../components/TransitionCell"
 
-const Contact = props => {
+import Contact from "../components/Main/Contact/Contact"
+
+const contact = props => {
   const pathName =
     props.location.pathname.substr(1) === ""
       ? "tompiler"
       : props.location.pathname.substr(1)
-  return <Layout {...props} left={<TransitionCell route={pathName} />} />
+  return (
+    <Layout {...props} left={<TransitionCell route={pathName} />}>
+      <Contact />
+    </Layout>
+  )
 }
 
-export default Contact
+export default contact

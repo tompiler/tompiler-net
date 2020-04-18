@@ -3,12 +3,16 @@ import Layout from "../components/layout"
 
 import TransitionCell from "../components/TransitionCell"
 
-const CV = props => {
+const cv = props => {
   const pathName =
     props.location.pathname.substr(1) === ""
       ? "tompiler"
       : props.location.pathname.substr(1)
-  return <Layout {...props} left={<TransitionCell route={pathName} />} />
+  return (
+    <Layout {...props} left={<TransitionCell route={pathName} />}>
+      <div></div>
+    </Layout>
+  )
 }
 
-export default CV
+export default cv

@@ -1,9 +1,9 @@
 import React, { useState } from "react"
 import { useSpring } from "react-spring"
 
-import Word from "../Word"
+import Word from "./Word"
 
-const CellSelector = ({ transitionStatus, exit, entry, route }) => {
+const WordSelector = ({ transitionStatus, exit, entry, route }) => {
   const [{ alpha }, setHoverAlpha] = useSpring(() => ({
     alpha: 0,
     config: {
@@ -75,4 +75,4 @@ const CellSelector = ({ transitionStatus, exit, entry, route }) => {
   )
 }
 
-export default CellSelector
+export default WordSelector

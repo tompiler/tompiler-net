@@ -1,6 +1,6 @@
 import React from "react"
-import WordSelectorData from "./CellSelector/WordSelectorData"
-import Cell from "./cell"
+import WordSelectorData from "./WordSelectorData"
+import Cell from "./Cell"
 
 const Word = ({
   word,

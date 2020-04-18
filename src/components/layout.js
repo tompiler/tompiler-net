@@ -22,16 +22,9 @@ const Layout = props => {
         </div>
         <div className={layoutStyles.containerRight}>
           <div>
-            <div className={layoutStyles.containerRightNested}>
-              <div className={layoutStyles.headerPositionFixed}>
-                <div className={layoutStyles.headerContainer}>
-                  <RightHeaderSpring pathname={pathName} />
-                </div>
-              </div>
-              <div className={layoutStyles.contentContainer}>
-                {props.children}
-              </div>
-            </div>
+            <RightHeaderSpring pathName={pathName}>
+              {props.children}
+            </RightHeaderSpring>
           </div>
         </div>
       </div>
