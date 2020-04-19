@@ -1,6 +1,6 @@
 import React from "react"
 import { SpringLink } from "../SpringLink"
-// import { animated } from "react-spring"
+import { animated } from "react-spring"
 import cellStyles from "./cell.module.scss"
 import { Spring } from "react-spring/renderprops"
 
@@ -51,8 +51,10 @@ const Cell = ({
         >
           {props => {
             return (
-              <div
+              <animated.div
                 style={{
+                  width: "2vw",
+                  height: "5.7vh",
                   backgroundColor:
                     word === route
                       ? `rgba(${activeColour.red}, ${activeColour.green}, ${activeColour.blue}, ${props.v})`
@@ -68,7 +70,7 @@ const Cell = ({
                     className={cellStyles.springLink}
                     to={`/${word}`}
                     exitLength={0.6}
-                    entryLength={1}
+                    entryLength={0.8}
                     entryDelay={0.6}
                     entryState={word}
                     exitState={word}
@@ -76,7 +78,7 @@ const Cell = ({
                     {linkText}
                   </SpringLink>
                 </div>
-              </div>
+              </animated.div>
             )
           }}
         </Spring>
