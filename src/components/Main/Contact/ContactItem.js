@@ -14,7 +14,7 @@ const ContactItem = ({ href, icon }) => {
           href={href}
         >
           <FontAwesomeIcon
-            size={window.innerWidth > 2000 ? "8x" : "6x"}
+            size={window.innerWidth > 2000 ? "6x" : "4x"}
             icon={icon}
           />
         </a>

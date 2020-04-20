@@ -33,10 +33,6 @@ const Contact = () => {
         icon={faGithubSquare}
         href="https://www.github.com/tompiler"
       ></ContactItem>
-      <ContactItem
-        icon={faYoutubeSquare}
-        href="https://www.youtube.com/channel/UCghVvAggSPShlctFuVTqWKA/featured?view_as=subscriber"
-      ></ContactItem>
     </div>
   )
 }
