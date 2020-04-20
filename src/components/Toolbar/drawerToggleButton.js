@@ -1,4 +1,5 @@
 import React from "react"
+import { SpringLink } from "../SpringLink"
 
 import "./drawerToggleButton.css"
 
@@ -17,7 +18,19 @@ const drawerToggleButton = props => (
         <div className="toggle-button__line" />
       </button>
     </div> */}
-    <div className="toolbar__logo">tompiler</div>
+    <div className="toolbar__logo">
+      <SpringLink
+        className="spring-link"
+        to={"/tompiler"}
+        exitLength={0.6}
+        entryLength={0.8}
+        entryDelay={0.6}
+        entryState={"tompiler"}
+        exitState={"tompiler"}
+      >
+        tompiler
+      </SpringLink>
+    </div>
   </div>
 )
 

@@ -7,7 +7,6 @@ import {
   faLinkedin,
   faTwitterSquare,
   faGithubSquare,
-  faYoutubeSquare,
 } from "@fortawesome/free-brands-svg-icons"
 
 const Contact = () => {

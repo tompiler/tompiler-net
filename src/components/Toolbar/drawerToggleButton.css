@@ -30,3 +30,12 @@
     height: 3px;
     background: black;
 }
+
+.spring-link {
+    text-decoration: none;
+    color: black;
+}
+
+.spring-link:hover {
+    color: #fa923f;
+}
