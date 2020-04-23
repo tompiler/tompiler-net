@@ -1,4 +1,5 @@
-import React from "react"
+import React, { useEffect, useRef, useState } from "react"
+import { useSpring, animated } from "react-spring"
 
 import WordSelector from "./WordSelector/WordSelector"
 import { TransitionState } from "gatsby-plugin-transition-link"
@@ -12,6 +13,7 @@ const TransitionCell = ({ route }) => {
           exit={exit}
           entry={entry}
           route={route}
+          mount={mount}
         />
       )}
     </TransitionState>

@@ -17,11 +17,7 @@ const Layout = props => {
       <div className={layoutStyles.parent}>
         <div className={layoutStyles.containerLeft}>
           <div className={layoutStyles.containerContent}>
-            {pathName !== "cv" ? (
-              <div className={layoutStyles.linkContainer}>{props.left}</div>
-            ) : (
-              <div>Hello</div>
-            )}
+            <div className={layoutStyles.linkContainer}>{props.left}</div>
           </div>
         </div>
         <div className={layoutStyles.containerRight}>

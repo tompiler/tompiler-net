@@ -21,7 +21,7 @@ const RightHeaderSpring = ({ pathName, children }) => (
           }}
         >
           {props => {
-            console.log("Hello")
+            // console.log("Hello")
             return (
               <div className={layoutStyles.containerRightNested}>
                 <div className={layoutStyles.headerPositionFixed}>

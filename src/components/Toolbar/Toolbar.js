@@ -16,9 +16,9 @@ const Toolbar = ({ setSideDrawer, routeHandler }) => (
           <li>
             <SpringLink
               to="/articles"
-              exitLength={0.6}
-              entryLength={1}
-              entryDelay={0.6}
+              exitLength={0.8}
+              entryLength={0.8}
+              entryDelay={0.8}
               entryState={"articles"}
               exitState={"articles"}
             >
@@ -28,9 +28,9 @@ const Toolbar = ({ setSideDrawer, routeHandler }) => (
           <li>
             <SpringLink
               to="/tutorials"
-              exitLength={0.6}
-              entryLength={1}
-              entryDelay={0.6}
+              exitLength={0.8}
+              entryLength={0.8}
+              entryDelay={0.8}
               entryState={"tutorials"}
               exitState={"tutorials"}
             >
@@ -40,9 +40,9 @@ const Toolbar = ({ setSideDrawer, routeHandler }) => (
           <li>
             <SpringLink
               to="/contact"
-              exitLength={0.6}
-              entryLength={1}
-              entryDelay={0.6}
+              exitLength={0.8}
+              entryLength={0.8}
+              entryDelay={0.8}
               entryState={"contact"}
               exitState={"contact"}
             >
@@ -52,9 +52,9 @@ const Toolbar = ({ setSideDrawer, routeHandler }) => (
           <li style={{ padding: 0 }}>
             <SpringLink
               to="/cv"
-              exitLength={0.6}
-              entryLength={1}
-              entryDelay={0.6}
+              exitLength={0.8}
+              entryLength={0.8}
+              entryDelay={0.8}
               entryState={"cv"}
               exitState={"cv"}
             >
@@ -64,9 +64,9 @@ const Toolbar = ({ setSideDrawer, routeHandler }) => (
           <li>
             <SpringLink
               to="/mission"
-              exitLength={0.6}
-              entryLength={1}
-              entryDelay={0.6}
+              exitLength={0.8}
+              entryLength={0.8}
+              entryDelay={0.8}
               entryState={"mission"}
               exitState={"mission"}
             >

@@ -3,6 +3,7 @@ import { SpringLink } from "../SpringLink"
 import { animated } from "react-spring"
 import cellStyles from "./cell.module.scss"
 import { Spring } from "react-spring/renderprops"
+import { useLocation } from "@reach/router"
 
 const Cell = ({
   linkText,
@@ -22,35 +23,40 @@ const Cell = ({
   const mount = ["entering", "entered"].includes(transitionStatus)
   const route2 = word2 === route ? true : false
 
+  // const location = useLocation()
+
   return (
     <>
-      <button
-        style={{ left: left, top: top }}
-        className={cellStyles.button}
-        onMouseEnter={() => {
-          setHoverElement(word)
-          setHoverAlpha({ alpha: 0.9 })
+      <Spring
+        from={{ v: 0 }}
+        to={{
+          v: mount && route2 ? activeColour2.a : mount ? activeColour.a : 0,
         }}
-        onMouseLeave={() => {
-          setHoverElement(hoverElement)
-          setHoverAlpha({
-            alpha: 0,
-          })
+        config={{
+          mass: 1,
+          tension: 300,
+          friction: 40,
         }}
       >
-        <Spring
-          from={{ v: 0 }}
-          to={{
-            v: mount && route2 ? activeColour2.a : mount ? activeColour.a : 0,
-          }}
-          config={{
-            mass: 1,
-            tension: 300,
-            friction: 40,
-          }}
-        >
-          {props => {
-            return (
+        {props => {
+          return (
+            <animated.button
+              style={{
+                left: left,
+                top: top,
+              }}
+              className={cellStyles.button}
+              onMouseEnter={() => {
+                setHoverElement(word)
+                setHoverAlpha({ alpha: 0.9 })
+              }}
+              onMouseLeave={() => {
+                setHoverElement(hoverElement)
+                setHoverAlpha({
+                  alpha: 0,
+                })
+              }}
+            >
               <animated.div
                 style={{
                   width: "2vw",
@@ -69,9 +75,9 @@ const Cell = ({
                   <SpringLink
                     className={cellStyles.springLink}
                     to={`/${word}`}
-                    exitLength={0.6}
+                    exitLength={0.8}
                     entryLength={0.8}
-                    entryDelay={0.6}
+                    entryDelay={0.8}
                     entryState={word}
                     exitState={word}
                   >
@@ -79,10 +85,8 @@ const Cell = ({
                   </SpringLink>
                 </div>
               </animated.div>
-            )
-          }}
-        </Spring>
-        {/* <div className={cellStyles.glanceParent}>
+
+              {/* <div className={cellStyles.glanceParent}>
           <animated.div
             className={cellStyles.glance}
             style={
@@ -98,7 +102,10 @@ const Cell = ({
             }
           />
         </div> */}
-      </button>
+            </animated.button>
+          )
+        }}
+      </Spring>
     </>
   )
 }
