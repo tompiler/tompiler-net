@@ -4,13 +4,9 @@ import Layout from "../components/layout"
 import TransitionCell from "../components/TransitionCell"
 import Mission from "../components/Main/Mission/Mission"
 
-const mission = props => {
-  const pathName =
-    props.location.pathname.substr(1) === ""
-      ? "tompiler"
-      : props.location.pathname.substr(1)
+const mission = () => {
   return (
-    <Layout {...props} left={<TransitionCell route={pathName} />}>
+    <Layout left={<TransitionCell />}>
       <Mission />
     </Layout>
   )

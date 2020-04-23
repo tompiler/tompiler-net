@@ -4,7 +4,7 @@ import { useLocation } from "@reach/router"
 
 import Word from "./Word"
 
-const WordSelector = ({ mount, transitionStatus, exit, entry, route }) => {
+const WordSelector = ({ mount, transitionStatus, exit, entry }) => {
   const [{ alpha }, setHoverAlpha] = useSpring(() => ({
     alpha: 0,
     config: {
@@ -16,7 +16,8 @@ const WordSelector = ({ mount, transitionStatus, exit, entry, route }) => {
 
   const [hoverElement, setHoverElement] = useState(null)
 
-  // const location = useLocation()
+  const location = useLocation()
+  const route = location.pathname.substr(1)
 
   const [{ cvFade, transform }, setCvFade] = useSpring(() => ({
     cvFade: route === "cv" ? 0 : 1,
@@ -29,7 +30,7 @@ const WordSelector = ({ mount, transitionStatus, exit, entry, route }) => {
     // delay: 3000,
   }))
 
-  //entering cv
+  // // entering cv
   // if (location.pathname.substr(1) === "cv" && route !== "cv") {
   //   console.log("cv entering")
   //   setCvFade({

@@ -1,0 +1,25 @@
+.link {
+    padding: 1vh 5vw;
+    font-size: 2em;
+}
+
+.springLink:hover {
+    color: #fa923f;
+    cursor: pointer;
+}
+
+.springLink {
+    text-decoration: none;
+}
+
+.main {
+    margin: 1.5vh 0;
+    position: relative;
+    width: 200px;
+    height: 5px;
+    background: #a8a8a8;
+    cursor: pointer;
+    border-radius: 5px;
+    border: 2px solid white;
+    overflow: hidden;
+  }

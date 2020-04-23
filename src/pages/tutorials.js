@@ -5,12 +5,8 @@ import TransitionCell from "../components/TransitionCell"
 import Tutorials from "../components/Main/Tutorials/Tutorials"
 
 const tutorials = props => {
-  const pathName =
-    props.location.pathname.substr(1) === ""
-      ? "tompiler"
-      : props.location.pathname.substr(1)
   return (
-    <Layout {...props} left={<TransitionCell {...props} route={pathName} />}>
+    <Layout left={<TransitionCell />}>
       <Tutorials />
     </Layout>
   )

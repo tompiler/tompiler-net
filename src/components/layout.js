@@ -7,10 +7,6 @@ import layoutStyles from "./layout.module.scss"
 import { RightHeaderSpring } from "./RightHeaderSpring"
 
 const Layout = props => {
-  const pathName =
-    props.location.pathname.substr(1) === ""
-      ? "tompiler"
-      : props.location.pathname.substr(1)
   return (
     <>
       <Toolbar />
@@ -22,7 +18,7 @@ const Layout = props => {
         </div>
         <div className={layoutStyles.containerRight}>
           <div>
-            <RightHeaderSpring pathName={pathName}>
+            <RightHeaderSpring name={props.name}>
               {props.children}
             </RightHeaderSpring>
           </div>

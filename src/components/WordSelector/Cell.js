@@ -79,7 +79,7 @@ const Cell = ({
                     entryLength={0.8}
                     entryDelay={0.8}
                     entryState={word}
-                    exitState={word}
+                    exitState={route}
                   >
                     {linkText}
                   </SpringLink>

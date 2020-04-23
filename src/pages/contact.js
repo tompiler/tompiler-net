@@ -5,13 +5,9 @@ import TransitionCell from "../components/TransitionCell"
 
 import Contact from "../components/Main/Contact/Contact"
 
-const contact = props => {
-  const pathName =
-    props.location.pathname.substr(1) === ""
-      ? "tompiler"
-      : props.location.pathname.substr(1)
+const contact = () => {
   return (
-    <Layout {...props} left={<TransitionCell route={pathName} />}>
+    <Layout name="contact" left={<TransitionCell />}>
       <Contact />
     </Layout>
   )
