@@ -1,11 +1,14 @@
 .container-left {
-    height: 100%;
+    height: 70vh;
     // background-color: #d0fad0;
     position: fixed;
     top: 56px;
     left: 0;
     width: 50%;
     z-index: 0;
+    display: flex;
+    justify-content: end;
+    align-items: center;
 }
 
 .container-right {
@@ -31,7 +34,7 @@
 
 .container-content {
   display: flex;
-  justify-content: center;
+  justify-content: end;
   align-items: center;
 }
 

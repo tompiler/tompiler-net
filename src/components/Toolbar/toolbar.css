@@ -36,9 +36,9 @@
 }
 
 .toolbar__logo {
-    /* padding-left: 1rem; */
-    display: flex;
-    margin: auto;
+    padding-left: 0.5rem;
+    /* display: flex; */
+    margin: 1vh 0 0 0;
     color: black;
     text-decoration: none;
     font-size: 1.7rem;

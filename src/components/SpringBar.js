@@ -1,13 +1,19 @@
 import React, { useState } from "react"
 import { useSpring, animated } from "react-spring"
 import transitionCellStyles from "./transitionCell.module.scss"
-import useMeasure from "./useMeasure"
 
-const SpringBar = ({ mount, transitionStatus }) => {
+const SpringBar = ({ mount, entry, to, location, barColour }) => {
   const props = useSpring({
     from: { width: 0 },
     to: {
-      width: mount ? 120 : 0,
+      width:
+        mount &&
+        entry.state.entryState === undefined &&
+        location.pathname.substr(1) === to
+          ? 40
+          : mount && entry.state.entryState === to
+          ? 40
+          : 0,
     },
     config: {
       //   duration: 1000,
@@ -17,20 +23,15 @@ const SpringBar = ({ mount, transitionStatus }) => {
     },
   })
 
-  //   console.log(props.width.value)
   return (
-    // <div {...bind} className={transitionCellStyles.main}>
     <animated.div
-      //   className={transitionCellStyles.main}
+      className={transitionCellStyles.main}
       style={{
-        margin: "2vh 0",
         width: props.width.interpolate(x => x + "px"),
-        height: "5px",
-        background: "black",
-        // opacity: props.opacity,
+        height: "3px",
+        background: `rgba(${barColour.red},${barColour.green},${barColour.blue},${barColour.a})`,
       }}
     ></animated.div>
-    // </div>
   )
 }
 
