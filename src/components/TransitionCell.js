@@ -1,12 +1,11 @@
 import React, { useEffect, useRef, useState } from "react"
-
-import { useSpring, animated } from "react-spring"
+import { Spring, animated } from "react-spring/renderprops"
 import useMeasure from "./useMeasure"
 
 import WordSelector from "./WordSelector/WordSelector"
 import { TransitionState } from "gatsby-plugin-transition-link"
 import { SpringLink } from "./SpringLink"
-
+import SpringBar from "./SpringBar"
 import { useLocation } from "@reach/router"
 
 import transitionCellStyles from "./transitionCell.module.scss"
@@ -14,10 +13,6 @@ import transitionCellStyles from "./transitionCell.module.scss"
 const TransitionCell = () => {
   const location = useLocation()
   const route = location.pathname.substr(1)
-
-  // const [open, toggle] = useState(false)
-  // const [bind, { width }] = useMeasure()
-  // const props = useSpring({ width: open ? width : 0 })
 
   return (
     <TransitionState>
@@ -43,8 +38,9 @@ const TransitionCell = () => {
             >
               {"tompiler"}
             </SpringLink>
+            <SpringBar mount={mount} transitionStatus={transitionStatus} />
           </div>
-          <div></div>
+
           <div className={transitionCellStyles.link}>
             <SpringLink
               className={transitionCellStyles.springLink}
