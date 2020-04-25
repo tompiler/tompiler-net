@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React from "react"
 import { Spring } from "react-spring/renderprops"
 import { TransitionState } from "gatsby-plugin-transition-link"
 import { useLocation } from "@reach/router"
@@ -10,9 +10,11 @@ const Content = ({ children, name }) => {
   const route = location.pathname.substr(1)
   const windowSize = useWindowSize()
 
-  const [firstURL, setFirstURL] = useState(
-    location.pathname === "/" ? "tompiler" : location.pathname.substr(1)
-  )
+  // const [firstURL, setFirstURL] = useState(
+  //   location.pathname === "/" ? "tompiler" : location.pathname.substr(1)
+  // )
+
+  const firstURL = location.pathname === "/" ? "tompiler" : route
 
   return (
     <TransitionState>
@@ -42,12 +44,12 @@ const Content = ({ children, name }) => {
                 <>
                   <div
                     className={
-                      windowSize.width > 600
+                      windowSize.width > 650
                         ? contentStyles.headerContainer
                         : contentStyles.headerContainerMobile
                     }
                   >
-                    {windowSize.width > 600 && (
+                    {windowSize.width > 650 && (
                       <div
                         className={contentStyles.title}
                         style={{

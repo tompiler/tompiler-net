@@ -20,7 +20,7 @@ const ContactItem = ({ href, icon }) => {
             size={
               windowSize.width > 1900
                 ? "4x"
-                : windowSize.width > 600
+                : windowSize.width > 650
                 ? "3x"
                 : "2x"
             }

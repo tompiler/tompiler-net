@@ -1,10 +1,8 @@
 import React from "react"
-// import { Link } from "gatsby"
 import HomeButton from "./HomeButton"
 import toolbarStyles from "./toolbar.module.scss"
 
-import { SpringLink } from "../SpringLink"
-// import TransitionLink from "gatsby-plugin-transition-link"
+// import { SpringLink } from "../SpringLink"
 import useWindowSize from "../useWindowSize"
 
 const Toolbar = () => {
