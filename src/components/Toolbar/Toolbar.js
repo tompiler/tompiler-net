@@ -1,17 +1,27 @@
 import React from "react"
 // import { Link } from "gatsby"
-import DrawerToggleButton from "./drawerToggleButton"
-import "./toolbar.css"
+import HomeButton from "./HomeButton"
+import toolbarStyles from "./toolbar.module.scss"
 
 import { SpringLink } from "../SpringLink"
 // import TransitionLink from "gatsby-plugin-transition-link"
+import useWindowSize from "../useWindowSize"
 
-const Toolbar = ({ setSideDrawer, routeHandler }) => (
-  <header className="toolbar">
-    <nav className="toolbar__navigation">
-      <DrawerToggleButton click={setSideDrawer} />
-      <div className="toolbar-gap"></div>
-      <div className="toolbar_navigation-items">
+const Toolbar = () => {
+  const windowSize = useWindowSize()
+
+  return (
+    <header className={toolbarStyles.toolbar}>
+      <nav
+        className={
+          windowSize.width > 650
+            ? toolbarStyles.navigation
+            : toolbarStyles.navigationMobile
+        }
+      >
+        <HomeButton />
+        {/* <div className="toolbar-gap"></div> */}
+        {/* <div className="toolbar_navigation-items">
         <ul>
           <li>
             <SpringLink
@@ -74,9 +84,10 @@ const Toolbar = ({ setSideDrawer, routeHandler }) => (
             </SpringLink>
           </li>
         </ul>
-      </div>
-    </nav>
-  </header>
-)
+      </div> */}
+      </nav>
+    </header>
+  )
+}
 
 export default Toolbar

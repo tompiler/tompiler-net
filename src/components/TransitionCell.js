@@ -3,6 +3,7 @@ import React from "react"
 // import WordSelector from "./WordSelector/WordSelector"
 import { TransitionState } from "gatsby-plugin-transition-link"
 import { useLocation } from "@reach/router"
+import layoutStyles from "./layout.module.scss"
 
 import MobileLink from "./MobileLink"
 
