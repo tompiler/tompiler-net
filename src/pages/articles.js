@@ -1,9 +1,9 @@
 import React from "react"
-import Layout from "../components/layout"
+import Layout from "../components/Layout"
 
-import TransitionCell from "../components/TransitionCell"
+import TransitionCell from "../components/Content/TransitionCell"
 
-import Articles from "../components/Main/Articles/Articles"
+import Articles from "../components/Content/Articles/Articles"
 
 const articles = () => {
   return (

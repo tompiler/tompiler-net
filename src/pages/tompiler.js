@@ -1,9 +1,9 @@
 import React from "react"
-import Layout from "../components/layout"
+import Layout from "../components/Layout"
 
 // import tompilerStyles from "../styles/tompiler.module.scss"
-import TransitionCell from "../components/TransitionCell"
-import Tompiler from "../components/Main/Tompiler/Tompiler"
+import TransitionCell from "../components/Content/TransitionCell"
+import Tompiler from "../components/Content/Tompiler/Tompiler"
 
 const tompiler = () => {
   return (

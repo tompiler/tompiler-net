@@ -1,9 +1,9 @@
 import React from "react"
-import Layout from "../components/layout"
+import Layout from "../components/Layout"
 
-import TransitionCell from "../components/TransitionCell"
+import TransitionCell from "../components/Content/TransitionCell"
 
-import Contact from "../components/Main/Contact/Contact"
+import Contact from "../components/Content/Contact/Contact"
 
 const contact = () => {
   return (

@@ -2,8 +2,11 @@ import React from "react"
 
 import contactItemStyles from "./contactItem.module.scss"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import useWindowSize from "../../useWindowSize"
 
 const ContactItem = ({ href, icon }) => {
+  const windowSize = useWindowSize()
+
   return (
     <div className={contactItemStyles.contactItem}>
       <div className={contactItemStyles.iconContainer}>
@@ -14,8 +17,15 @@ const ContactItem = ({ href, icon }) => {
           href={href}
         >
           <FontAwesomeIcon
-            size={window.innerWidth > 2000 ? "6x" : "4x"}
+            size={
+              windowSize.width > 1900
+                ? "4x"
+                : windowSize.width > 600
+                ? "3x"
+                : "2x"
+            }
             icon={icon}
+            className={contactItemStyles.icon}
           />
         </a>
       </div>

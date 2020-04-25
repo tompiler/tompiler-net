@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import { useSpring, animated } from "react-spring"
 import transitionCellStyles from "./transitionCell.module.scss"
-import useWindowSize from "./useWindowSize"
+import useWindowSize from "../useWindowSize"
 
 const SpringBar = ({ mount, entry, to, location, barColour }) => {
   const windowSize = useWindowSize()

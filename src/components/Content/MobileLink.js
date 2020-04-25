@@ -1,13 +1,13 @@
 import React from "react"
 import transitionCellStyles from "./transitionCell.module.scss"
 
-import { SpringLink } from "./SpringLink"
+import { SpringLink } from "../SpringLink"
 import SpringBar from "./SpringBar"
-import useWindowSize from "./useWindowSize"
+import useWindowSize from "../useWindowSize"
 
 const MobileLink = props => {
   const windowSize = useWindowSize()
-
+  console.log("HELLO", windowSize)
   return (
     <div
       className={

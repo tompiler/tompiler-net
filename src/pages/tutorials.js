@@ -1,8 +1,8 @@
 import React from "react"
-import Layout from "../components/layout"
+import Layout from "../components/Layout"
 
-import TransitionCell from "../components/TransitionCell"
-import Tutorials from "../components/Main/Tutorials/Tutorials"
+import TransitionCell from "../components/Content/TransitionCell"
+import Tutorials from "../components/Content/Tutorials/Tutorials"
 
 const tutorials = props => {
   return (

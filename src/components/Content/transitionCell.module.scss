@@ -1,7 +1,22 @@
 .link {
     padding: 1vh 4vw;
     font-size: 1.4em;
+    width: 12vw;
 }
+
+.link-mobile {
+    width: 20vw;
+    padding: 1vh 0vw;
+    font-size: 0.87rem;
+    display: inline-block;
+    text-align: center;
+}
+
+@media only screen and (max-width: 800px) {
+    .link {
+        width: 200px;
+    }
+  }
 
 .springLink:hover {
     color: #fa923f;
@@ -41,12 +56,4 @@
     cursor: pointer;
     border-radius: 3px;
     border: 3px solid white;
-}
-
-.link-mobile {
-    width: 15vw;
-    padding: 1vh 0vw;
-    font-size: 0.8rem;
-    display: inline-block;
-    text-align: center;
 }

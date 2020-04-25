@@ -1,9 +1,18 @@
 import React from "react"
 import missionStyles from "./mission.module.scss"
+import useWindowSize from "../../useWindowSize"
 
 const Mission = () => {
+  const windowSize = useWindowSize()
+
   return (
-    <div className={missionStyles.missionItem}>
+    <div
+      className={
+        windowSize.width > 650
+          ? missionStyles.missionItem
+          : missionStyles.missionItemMobile
+      }
+    >
       I've made this site primarily as a place to host bits of work I do from
       time to time.
       <br />

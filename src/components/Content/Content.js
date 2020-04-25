@@ -2,11 +2,13 @@ import React, { useState } from "react"
 import { Spring } from "react-spring/renderprops"
 import { TransitionState } from "gatsby-plugin-transition-link"
 import { useLocation } from "@reach/router"
-import layoutStyles from "./layout.module.scss"
+import contentStyles from "./content.module.scss"
+import useWindowSize from "../useWindowSize"
 
-const RightHeaderSpring = ({ children, name }) => {
+const Content = ({ children, name }) => {
   const location = useLocation()
   const route = location.pathname.substr(1)
+  const windowSize = useWindowSize()
 
   const [firstURL, setFirstURL] = useState(
     location.pathname === "/" ? "tompiler" : location.pathname.substr(1)
@@ -14,9 +16,7 @@ const RightHeaderSpring = ({ children, name }) => {
 
   return (
     <TransitionState>
-      {({ transitionStatus, exit, entry }) => {
-        const mount = ["entering", "entered"].includes(transitionStatus)
-
+      {({ mount, transitionStatus, exit, entry }) => {
         const header =
           location.pathname === "/" &&
           exit.state.exitState === undefined &&
@@ -29,7 +29,7 @@ const RightHeaderSpring = ({ children, name }) => {
         return (
           <Spring
             to={{
-              opacity: ["exiting", "exited"].includes(transitionStatus) ? 0 : 1,
+              opacity: mount ? 1 : 0,
             }}
             config={{
               mass: 1,
@@ -39,20 +39,28 @@ const RightHeaderSpring = ({ children, name }) => {
           >
             {props => {
               return (
-                <div className={layoutStyles.containerRightNested}>
-                  <div className={layoutStyles.headerPositionFixed}>
-                    <div className={layoutStyles.headerContainer}>
+                <>
+                  <div
+                    className={
+                      windowSize.width > 600
+                        ? contentStyles.headerContainer
+                        : contentStyles.headerContainerMobile
+                    }
+                  >
+                    {windowSize.width > 600 && (
                       <div
-                        className={layoutStyles.title}
+                        className={contentStyles.title}
                         style={{
                           opacity: props.opacity,
                         }}
                       >
                         {header}
                       </div>
-                    </div>
+                    )}
+                  </div>
+                  <div>
                     <div
-                      className={layoutStyles.contentContainer}
+                      className={contentStyles.contentContainer}
                       style={{
                         opacity: props.opacity,
                       }}
@@ -60,7 +68,7 @@ const RightHeaderSpring = ({ children, name }) => {
                       {children}
                     </div>
                   </div>
-                </div>
+                </>
               )
             }}
           </Spring>
@@ -70,4 +78,4 @@ const RightHeaderSpring = ({ children, name }) => {
   )
 }
 
-export { RightHeaderSpring }
+export { Content }

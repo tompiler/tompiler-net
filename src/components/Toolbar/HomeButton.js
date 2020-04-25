@@ -1,6 +1,6 @@
 import React from "react"
 import { SpringLink } from "../SpringLink"
-import SpringBar from "../SpringBar"
+import SpringBar from "../Content/SpringBar"
 import { TransitionState } from "gatsby-plugin-transition-link"
 import { useLocation } from "@reach/router"
 import useWindowSize from "../useWindowSize"
@@ -14,7 +14,7 @@ const DrawerToggleButton = () => {
   const windowSize = useWindowSize()
 
   return (
-    <div className={homeButtonStyles.toolbarLogo}>
+    <div className={homeButtonStyles.container}>
       <SpringLink
         className={
           windowSize.width > 650

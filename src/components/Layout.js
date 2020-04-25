@@ -1,12 +1,11 @@
 import React from "react"
 
-import Toolbar from "../components/Toolbar/Toolbar"
+import Toolbar from "./Toolbar/Toolbar"
 import layoutStyles from "./layout.module.scss"
 
 import useWindowSize from "./useWindowSize"
 
-// import { MySpring } from "./MySpring"
-import { RightHeaderSpring } from "./RightHeaderSpring"
+import { Content } from "./Content/Content"
 
 const Layout = props => {
   const windowSize = useWindowSize()
@@ -14,7 +13,7 @@ const Layout = props => {
   return (
     <>
       <Toolbar />
-      <div className={layoutStyles.parent}>
+      <div>
         <div
           className={
             windowSize.width > 650
@@ -22,13 +21,7 @@ const Layout = props => {
               : layoutStyles.containerTopMobile
           }
         >
-          <div
-            className={
-              windowSize.width > 650
-                ? layoutStyles.containerContent
-                : layoutStyles.containerContentTopMobile
-            }
-          >
+          <div className={layoutStyles.containerContent}>
             <div
               className={
                 windowSize.width > 650
@@ -40,12 +33,14 @@ const Layout = props => {
             </div>
           </div>
         </div>
-        <div className={layoutStyles.containerRight}>
-          <div>
-            <RightHeaderSpring name={props.name}>
-              {props.children}
-            </RightHeaderSpring>
-          </div>
+        <div
+          className={
+            windowSize.width > 650
+              ? layoutStyles.containerRight
+              : layoutStyles.containerRightMobile
+          }
+        >
+          <Content name={props.name}>{props.children}</Content>
         </div>
       </div>
     </>
