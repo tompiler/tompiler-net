@@ -1,8 +1,11 @@
 import React, { useState } from "react"
 import { useSpring, animated } from "react-spring"
 import transitionCellStyles from "./transitionCell.module.scss"
+import useWindowSize from "./useWindowSize"
 
 const SpringBar = ({ mount, entry, to, location, barColour }) => {
+  const windowSize = useWindowSize()
+
   const props = useSpring({
     from: { width: 0 },
     to: {
@@ -24,14 +27,26 @@ const SpringBar = ({ mount, entry, to, location, barColour }) => {
   })
 
   return (
-    <animated.div
-      className={transitionCellStyles.main}
-      style={{
-        width: props.width.interpolate(x => x + "px"),
-        height: "3px",
-        background: `rgba(${barColour.red},${barColour.green},${barColour.blue},${barColour.a})`,
-      }}
-    ></animated.div>
+    <div
+      className={
+        windowSize.width > 650
+          ? transitionCellStyles.barContainer
+          : transitionCellStyles.barContainerMobile
+      }
+    >
+      <animated.div
+        className={
+          windowSize.width > 650
+            ? transitionCellStyles.bar
+            : transitionCellStyles.barMobile
+        }
+        style={{
+          width: props.width.interpolate(x => x + "px"),
+          height: "3px",
+          background: `rgba(${barColour.red},${barColour.green},${barColour.blue},${barColour.a})`,
+        }}
+      ></animated.div>
+    </div>
   )
 }
 

@@ -13,16 +13,34 @@
     color: black;
 }
 
-.main {
-    margin: 1vh 0;
+.bar-container {
+    display: flex;
+    justify-content: start;
+}
+
+.bar-container-mobile {
+    display: flex;
+    justify-content: center;
+}
+
+.bar {
+    margin: 0.2vh 0;
     position: relative;
     width: 200px;
     height: 5px;
-    // background: #a8a8a8;
     cursor: pointer;
     border-radius: 3px;
     border: 3px solid white;
-    overflow: hidden;
+}
+
+.bar-mobile {
+    margin: 0vh 0;
+    position: relative;
+    width: 200px;
+    height: 5px;
+    cursor: pointer;
+    border-radius: 3px;
+    border: 3px solid white;
 }
 
 .link-mobile {

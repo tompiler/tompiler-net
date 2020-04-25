@@ -3,6 +3,7 @@ import { SpringLink } from "../SpringLink"
 import SpringBar from "../SpringBar"
 import { TransitionState } from "gatsby-plugin-transition-link"
 import { useLocation } from "@reach/router"
+import useWindowSize from "../useWindowSize"
 
 import homeButtonStyles from "./homeButton.module.scss"
 
@@ -10,10 +11,16 @@ import { blue } from "../WordSelector/WordSelectorData"
 
 const DrawerToggleButton = () => {
   const location = useLocation()
+  const windowSize = useWindowSize()
+
   return (
     <div className={homeButtonStyles.toolbarLogo}>
       <SpringLink
-        className={homeButtonStyles.springLink}
+        className={
+          windowSize.width > 650
+            ? homeButtonStyles.springLink
+            : homeButtonStyles.springLinkMobile
+        }
         to={"/tompiler"}
         exitLength={0.6}
         entryLength={0.8}

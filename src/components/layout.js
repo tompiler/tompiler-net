@@ -40,13 +40,13 @@ const Layout = props => {
             </div>
           </div>
         </div>
-        {/* <div className={layoutStyles.containerRight}>
+        <div className={layoutStyles.containerRight}>
           <div>
             <RightHeaderSpring name={props.name}>
               {props.children}
             </RightHeaderSpring>
           </div>
-        </div> */}
+        </div>
       </div>
     </>
   )
