@@ -15,8 +15,7 @@ const Tompiler = () => {
     >
       Hello, my name is tom. <br />
       <br />
-      I'm a software engineer living in London with interests in botany,
-      ornithology, and natural history.
+      I'm a software engineer living in London. I like learning a lot.
       <br />
       <br />
     </div>

@@ -5,12 +5,13 @@
 }
 
 .link-mobile {
-    width: 20vw;
+    display: inline-block;
+    width: 18vw;
     padding: 1vh 0vw;
     font-size: 0.87rem;
-    display: inline-block;
     text-align: center;
 }
+
 
 @media only screen and (max-width: 800px) {
     .link {

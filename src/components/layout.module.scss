@@ -19,10 +19,9 @@
 }
 
 .container-content {
-  display: flex;
-  justify-content: flex-end;
   align-items: center;
 }
+
 
 .link-container {
   display: flex;
@@ -32,8 +31,7 @@
 
 .link-container-mobile {
   display: flex;
-  justify-content: space-around;
-  flex-direction: row;
+  justify-content: center;
 }
 
 .container-right {
@@ -48,8 +46,8 @@
 .container-right-mobile {
   position: fixed;
   top: 12vh;
-  left: 10vw;
-  width: 80vw;
+  left: 10%;
+  width: 80%;
   height: 100vh;
   text-align: center;
 }

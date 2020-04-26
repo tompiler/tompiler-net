@@ -7,7 +7,6 @@ import useWindowSize from "../useWindowSize"
 
 const MobileLink = props => {
   const windowSize = useWindowSize()
-  console.log("HELLO", windowSize)
   return (
     <div
       className={
