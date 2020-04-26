@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 import { Spring, animated } from "react-spring/renderprops"
 import { TransitionState } from "gatsby-plugin-transition-link"
 import { useLocation } from "@reach/router"
@@ -37,11 +37,13 @@ const ContentContainer = styled("div")`
   height: 100vh;
 `
 
-const Content = ({ children, name }) => {
+const Content = ({ children }) => {
   const location = useLocation()
   const route = location.pathname.substr(1)
   const windowSize = useWindowSize()
-  const firstURL = location.pathname === "/" ? "tompiler" : route
+
+  // needed to fix 'first' link via transitionLink
+  const [firstURL] = useState(location.pathname === "/" ? "tompiler" : route)
 
   return (
     <TransitionState>
