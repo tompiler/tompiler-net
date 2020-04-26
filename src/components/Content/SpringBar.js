@@ -1,7 +1,22 @@
 import React from "react"
 import { useSpring, animated } from "react-spring"
-import transitionCellStyles from "./transitionCell.module.scss"
 import useWindowSize from "../useWindowSize"
+
+import styled from "styled-components"
+
+const BarContainer = styled("div")`
+  display: flex;
+  justify-content: ${props => (props.mobile ? "center" : "flex-start")};
+`
+const Bar = styled(animated.div)`
+  position: relative;
+  width: 200px;
+  height: 3px;
+  margin: ${props => (props.mobile ? "0 0" : "0.2vh 0")};
+  cursor: pointer;
+  border-radius: 3px;
+  border: 3px solid white;
+`
 
 const SpringBar = ({ mount, entry, to, location, barColour }) => {
   const windowSize = useWindowSize()
@@ -27,26 +42,15 @@ const SpringBar = ({ mount, entry, to, location, barColour }) => {
   })
 
   return (
-    <div
-      className={
-        windowSize.width > 650
-          ? transitionCellStyles.barContainer
-          : transitionCellStyles.barContainerMobile
-      }
-    >
-      <animated.div
-        className={
-          windowSize.width > 650
-            ? transitionCellStyles.bar
-            : transitionCellStyles.barMobile
-        }
+    <BarContainer mobile={windowSize.width < 650 ? true : false}>
+      <Bar
+        mobile={windowSize.width < 650 ? true : false}
         style={{
           width: props.width.interpolate(x => x + "px"),
-          height: "3px",
           background: `rgba(${barColour.red},${barColour.green},${barColour.blue},${barColour.a})`,
         }}
-      ></animated.div>
-    </div>
+      ></Bar>
+    </BarContainer>
   )
 }
 

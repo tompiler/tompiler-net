@@ -1,5 +1,4 @@
 import React from "react"
-import transitionCellStyles from "./transitionCell.module.scss"
 
 import { SpringLink } from "../SpringLink"
 import SpringBar from "./SpringBar"
@@ -15,12 +14,20 @@ const LinkContainer = styled("div")`
   text-align: ${props => (props.mobile ? "center" : "left")};
 `
 
+const StyledSpringLink = styled(SpringLink)`
+  text-decoration: none;
+  color: black;
+  &:hover {
+    color: #fa923f;
+    cursor: pointer;
+  }
+`
+
 const MobileLink = props => {
   const windowSize = useWindowSize()
   return (
     <LinkContainer mobile={windowSize.width < 650 ? true : false}>
-      <SpringLink
-        className={transitionCellStyles.springLink}
+      <StyledSpringLink
         to={`/${props.to}`}
         exitLength={0.5}
         entryLength={0.5}
@@ -29,7 +36,7 @@ const MobileLink = props => {
         exitState={props.location.pathname === "/" ? "tompiler" : props.route}
       >
         {props.to === "tompiler" ? "home" : props.to}
-      </SpringLink>
+      </StyledSpringLink>
       <SpringBar {...props} />
     </LinkContainer>
   )
