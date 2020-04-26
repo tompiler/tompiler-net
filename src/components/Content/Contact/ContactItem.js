@@ -1,35 +1,52 @@
 import React from "react"
 
-import contactItemStyles from "./contactItem.module.scss"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import useWindowSize from "../../useWindowSize"
+
+import styled from "styled-components"
+
+const IconContainer = styled("div")`
+  display: flex;
+  height: 100%;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+`
+
+const ItemLink = styled("a")`
+  display: flex;
+  color: rgb(54, 54, 54);
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+`
+
+const Icon = styled(FontAwesomeIcon)`
+  &:hover {
+    color: #fa923f;
+    cursor: pointer;
+  }
+`
 
 const ContactItem = ({ href, icon }) => {
   const windowSize = useWindowSize()
 
   return (
-    <div className={contactItemStyles.contactItem}>
-      <div className={contactItemStyles.iconContainer}>
-        <a
-          className={contactItemStyles.itemLink}
-          target="_blank"
-          rel="noopener noreferrer"
-          href={href}
-        >
-          <FontAwesomeIcon
-            size={
-              windowSize.width > 1900
-                ? "4x"
-                : windowSize.width > 650
-                ? "3x"
-                : "2x"
-            }
-            icon={icon}
-            className={contactItemStyles.icon}
-          />
-        </a>
-      </div>
-    </div>
+    <IconContainer>
+      <ItemLink target="_blank" rel="noopener noreferrer" href={href}>
+        <Icon
+          size={
+            windowSize.width > 1900
+              ? "4x"
+              : windowSize.width > 650
+              ? "3x"
+              : "2x"
+          }
+          icon={icon}
+        />
+      </ItemLink>
+    </IconContainer>
   )
 }
 

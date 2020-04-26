@@ -1,18 +1,23 @@
 import React from "react"
-import missionStyles from "./mission.module.scss"
 import useWindowSize from "../../useWindowSize"
+
+import styled from "styled-components"
+
+const MissionItem = styled("div")`
+  display: inline-block;
+  width: ${props => (props.mobile ? "90%" : "75%")};
+  height: 0;
+  text-align: justify;
+  color: black;
+  line-height: 1.6;
+  font-size: 0.8em;
+`
 
 const Mission = () => {
   const windowSize = useWindowSize()
 
   return (
-    <div
-      className={
-        windowSize.width > 650
-          ? missionStyles.missionItem
-          : missionStyles.missionItemMobile
-      }
-    >
+    <MissionItem mobile={windowSize.width < 650 ? true : false}>
       I've made this site primarily as a place to host bits of work I do from
       time to time.
       <br />
@@ -46,7 +51,7 @@ const Mission = () => {
       <br />
       <br />
       March 19th, 2020
-    </div>
+    </MissionItem>
   )
 }
 
