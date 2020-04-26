@@ -21,11 +21,12 @@ const HeaderContainer = styled("div")`
   display: flex;
   justify-content: center;
   width: 100%;
-  height: ${props => (props.mobile ? "30px" : "6vh")};
+  height: ${props => (props.mobile ? "0px" : "6vh")};
   border-bottom: 1px solid #000;
 `
 
 const ContentContainer = styled("div")`
+  display: block;
   position: relative;
   padding: 3vh 0;
   display: grid;

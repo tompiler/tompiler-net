@@ -10,6 +10,7 @@
 }
 
 .container-top-mobile {
+  display: block;
   height: 56px;
   position: fixed;
   top: 56px;
@@ -44,8 +45,9 @@
 }
 
 .container-right-mobile {
+  display: block;
   position: fixed;
-  top: 12vh;
+  top: 18vh;
   left: 10%;
   width: 80%;
   height: 100vh;
