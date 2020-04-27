@@ -1,22 +1,36 @@
 import React from "react"
 import HomeButton from "./HomeButton"
-import toolbarStyles from "./toolbar.module.scss"
-
-// import { SpringLink } from "../SpringLink"
 import useWindowSize from "../useWindowSize"
+
+import styled from "styled-components"
+
+const Header = styled("header")`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: white;
+  height: 56px;
+  z-index: 500;
+  font-family: "Open Sans";
+  display: block;
+`
+
+const Nav = styled("nav")`
+  display: flex;
+  height: 100%;
+  padding: ${props => (props.mobile ? "0" : "0 1rem")};
+  display: flex;
+  justify-content: ${props => (props.mobile ? "center" : "flex-start")};
+  width: 100%;
+`
 
 const Toolbar = () => {
   const windowSize = useWindowSize()
 
   return (
-    <header className={toolbarStyles.toolbar}>
-      <nav
-        className={
-          windowSize.width > 650
-            ? toolbarStyles.navigation
-            : toolbarStyles.navigationMobile
-        }
-      >
+    <Header>
+      <Nav mobile={windowSize.width < 650 ? true : false}>
         <HomeButton />
         {/* <div className="toolbar-gap"></div> */}
         {/* <div className="toolbar_navigation-items">
@@ -83,8 +97,8 @@ const Toolbar = () => {
           </li>
         </ul>
       </div> */}
-      </nav>
-    </header>
+      </Nav>
+    </Header>
   )
 }
 
