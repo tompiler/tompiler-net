@@ -3,6 +3,7 @@ import Context from "./store/context"
 
 import Toolbar from "./Toolbar/Toolbar"
 import Content from "./Content/Content"
+import Navigation from "./Navigation/Navigation"
 
 import useWindowSize from "./useWindowSize"
 
@@ -10,7 +11,7 @@ import styled, { ThemeProvider } from "styled-components"
 import { lightTheme, darkTheme } from "../components/theme/theme"
 import { GlobalStyles } from "../components/store/globalStyle"
 
-const Navigation = styled("div")`
+const NavigationContainer = styled("div")`
   position: fixed;
   height: ${props => (props.mobile ? "56px" : "70vh")};
   top: 56px;
@@ -47,13 +48,13 @@ const Layout = props => {
         <GlobalStyles />
         <Toolbar />
         <div>
-          <Navigation mobile={windowSize.width < 650 ? true : false}>
+          <NavigationContainer mobile={windowSize.width < 650 ? true : false}>
             <div>
               <LinkContainer mobile={windowSize.width < 650 ? true : false}>
-                {props.left}
+                <Navigation />
               </LinkContainer>
             </div>
-          </Navigation>
+          </NavigationContainer>
           <ContainerRight mobile={windowSize.width < 650 ? true : false}>
             <Content name={props.name}>{props.children}</Content>
           </ContainerRight>

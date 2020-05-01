@@ -5,8 +5,8 @@ import { TransitionState } from "gatsby-plugin-transition-link"
 import { useLocation } from "@reach/router"
 import useWindowSize from "../useWindowSize"
 
-import { SpringLink } from "../SpringLink"
-import SpringBar from "../Content/SpringBar"
+import { SpringLink } from "../Navigation/SpringLink"
+import SpringBar from "../Navigation/SpringBar"
 
 import styled from "styled-components"
 

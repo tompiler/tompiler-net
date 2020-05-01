@@ -5,7 +5,7 @@ import { useLocation } from "@reach/router"
 
 import MobileLink from "./MobileLink"
 
-const TransitionCell = () => {
+const Navigation = () => {
   const location = useLocation()
   return (
     <TransitionState>
@@ -22,4 +22,4 @@ const TransitionCell = () => {
   )
 }
 
-export default TransitionCell
+export default Navigation

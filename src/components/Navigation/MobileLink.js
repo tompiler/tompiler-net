@@ -2,7 +2,7 @@ import React from "react"
 
 import useWindowSize from "../useWindowSize"
 
-import { SpringLink } from "../SpringLink"
+import { SpringLink } from "./SpringLink"
 import SpringBar from "./SpringBar"
 
 import styled from "styled-components"
