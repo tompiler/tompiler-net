@@ -1,14 +1,17 @@
 import React, { useState } from "react"
-import { Spring, animated } from "react-spring/renderprops"
+
 import { TransitionState } from "gatsby-plugin-transition-link"
 import { useLocation } from "@reach/router"
+
 import useWindowSize from "../useWindowSize"
+
+import { Spring, animated } from "react-spring/renderprops"
 
 import styled from "styled-components"
 
 const Title = styled(animated.div)`
   width: 100%;
-  color: #000000;
+  /* color: #000000; */
   text-align: center;
   font-size: 2rem;
   font-family: "Open Sans";
@@ -22,7 +25,7 @@ const HeaderContainer = styled("div")`
   justify-content: center;
   width: 100%;
   height: ${props => (props.mobile ? "0px" : "6vh")};
-  border-bottom: 1px solid #000;
+  border-bottom: ${props => `1px solid ${props.theme.color}`};
 `
 
 const ContentContainer = styled("div")`
@@ -103,4 +106,4 @@ const Content = ({ children }) => {
   )
 }
 
-export { Content }
+export default Content

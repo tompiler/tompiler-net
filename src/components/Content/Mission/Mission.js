@@ -1,4 +1,5 @@
 import React from "react"
+
 import useWindowSize from "../../useWindowSize"
 
 import styled from "styled-components"
@@ -8,9 +9,9 @@ const MissionItem = styled("div")`
   width: ${props => (props.mobile ? "90%" : "75%")};
   height: 0;
   text-align: justify;
-  color: black;
+  color: ${props => props.theme.color};
   line-height: 1.6;
-  font-size: 0.8em;
+  font-size: 0.88em;
 `
 
 const Mission = () => {

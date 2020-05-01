@@ -1,7 +1,7 @@
 import React from "react"
 import HomeButton from "./HomeButton"
 import useWindowSize from "../useWindowSize"
-
+import ToggleDarkMode from "./ToggleDarkMode"
 import styled from "styled-components"
 
 const Header = styled("header")`
@@ -9,7 +9,6 @@ const Header = styled("header")`
   top: 0;
   left: 0;
   width: 100%;
-  background: white;
   height: 56px;
   z-index: 500;
   font-family: "Open Sans";
@@ -17,11 +16,10 @@ const Header = styled("header")`
 `
 
 const Nav = styled("nav")`
-  display: flex;
+  display: inline-block;
   height: 100%;
   padding: ${props => (props.mobile ? "0" : "0 1rem")};
-  display: flex;
-  justify-content: ${props => (props.mobile ? "center" : "flex-start")};
+  /* justify-content: ${props => (props.mobile ? "center" : "flex-start")}; */
   width: 100%;
 `
 
@@ -32,6 +30,7 @@ const Toolbar = () => {
     <Header>
       <Nav mobile={windowSize.width < 650 ? true : false}>
         <HomeButton />
+        <ToggleDarkMode />
         {/* <div className="toolbar-gap"></div> */}
         {/* <div className="toolbar_navigation-items">
         <ul>

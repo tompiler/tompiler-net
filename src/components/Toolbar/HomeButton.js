@@ -1,27 +1,28 @@
 import React from "react"
-import { SpringLink } from "../SpringLink"
-import SpringBar from "../Content/SpringBar"
+
 import { TransitionState } from "gatsby-plugin-transition-link"
+
 import { useLocation } from "@reach/router"
 import useWindowSize from "../useWindowSize"
 
-import { blue } from "../WordSelector/WordSelectorData"
+import { SpringLink } from "../SpringLink"
+import SpringBar from "../Content/SpringBar"
 
 import styled from "styled-components"
 
 const Container = styled("div")`
+  display: inline-block;
   padding-left: 0.5rem;
   margin: 1vh 0 0 0;
-  color: black;
+  color: ${props => props.theme.color};
   text-decoration: none;
   font-size: 1.7rem;
   cursor: pointer;
 `
 
 const StyledSpringLink = styled(SpringLink)`
-  display: block;
-  margin: ${props => (props.mobile ? "0 0 0.7vh 0" : "0")};
-  color: black;
+  display: inline-block;
+  color: ${props => props.theme.color};
   text-decoration: none;
   &:hover {
     color: #fa923f;
@@ -35,7 +36,7 @@ const DrawerToggleButton = () => {
   return (
     <Container>
       <StyledSpringLink
-        mobile={windowSize.width < 650 ? true : false}
+        mobile={windowSize.width < 650 ? 1 : 0}
         to={"/tompiler"}
         exitLength={0.6}
         entryLength={0.8}
@@ -46,14 +47,7 @@ const DrawerToggleButton = () => {
         tompiler
       </StyledSpringLink>
       <TransitionState>
-        {props => (
-          <SpringBar
-            {...props}
-            to={"tompiler"}
-            location={location}
-            barColour={blue}
-          />
-        )}
+        {props => <SpringBar {...props} to={"tompiler"} location={location} />}
       </TransitionState>
     </Container>
   )

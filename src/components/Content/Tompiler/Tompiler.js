@@ -1,4 +1,5 @@
 import React from "react"
+
 import useWindowSize from "../../useWindowSize"
 
 import styled from "styled-components"
@@ -8,9 +9,9 @@ const TompilerItem = styled("div")`
   width: 75%;
   height: 0;
   text-align: justify;
-  color: black;
+  color: ${props => props.theme.color};
   line-height: 1.6;
-  font-size: 0.84em;
+  font-size: 0.88em;
 `
 
 const Tompiler = () => {

@@ -1,8 +1,9 @@
 import React from "react"
 
+import useWindowSize from "../useWindowSize"
+
 import { SpringLink } from "../SpringLink"
 import SpringBar from "./SpringBar"
-import useWindowSize from "../useWindowSize"
 
 import styled from "styled-components"
 
@@ -15,8 +16,11 @@ const LinkContainer = styled("div")`
 `
 
 const StyledSpringLink = styled(SpringLink)`
+  display: inline-block;
   text-decoration: none;
-  color: black;
+  color: ${props => props.theme.color};
+  margin: ${props => (props.mobile ? "0 0 0.2vh 0" : "0")};
+
   &:hover {
     color: #fa923f;
     cursor: pointer;
@@ -34,6 +38,7 @@ const MobileLink = props => {
         entryDelay={0.5}
         entryState={props.to}
         exitState={props.location.pathname === "/" ? "tompiler" : props.route}
+        mobile={windowSize.width < 650 ? true : false}
       >
         {props.to === "tompiler" ? "home" : props.to}
       </StyledSpringLink>

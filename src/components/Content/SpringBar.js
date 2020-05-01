@@ -1,25 +1,32 @@
-import React from "react"
-import { useSpring, animated } from "react-spring"
+import React, { useContext } from "react"
+
 import useWindowSize from "../useWindowSize"
 
-import styled from "styled-components"
+import { useSpring, animated } from "react-spring"
+
+import styled, { ThemeContext } from "styled-components"
 
 const BarContainer = styled("div")`
   display: flex;
-  justify-content: ${props => (props.mobile ? "center" : "flex-start")};
+  justify-content: ${props =>
+    !props.mobile || props.to === "tompiler" ? "flex-start" : "center"};
 `
 const Bar = styled(animated.div)`
+  display: inline-block;
   position: relative;
   width: 200px;
   height: 3px;
   margin: ${props => (props.mobile ? "0 0" : "0.2vh 0")};
   cursor: pointer;
-  border-radius: 3px;
-  border: 3px solid white;
+  border-radius: 1.5px;
+  /* border: ${props => (props.width > 0 ? props.color : `white`)}; */
 `
 
 const SpringBar = ({ mount, entry, to, location, barColour }) => {
   const windowSize = useWindowSize()
+  const theme = useContext(ThemeContext)
+
+  const colour = theme.pageColours[to]
 
   const props = useSpring({
     from: { width: 0 },
@@ -28,9 +35,13 @@ const SpringBar = ({ mount, entry, to, location, barColour }) => {
         mount &&
         entry.state.entryState === undefined &&
         location.pathname.substr(1) === to
-          ? 40
+          ? to === "tompiler"
+            ? 48
+            : 36
           : mount && entry.state.entryState === to
-          ? 40
+          ? to === "tompiler"
+            ? 48
+            : 36
           : 0,
     },
     config: {
@@ -42,12 +53,12 @@ const SpringBar = ({ mount, entry, to, location, barColour }) => {
   })
 
   return (
-    <BarContainer mobile={windowSize.width < 650 ? true : false}>
+    <BarContainer mobile={windowSize.width < 650 ? true : false} to={to}>
       <Bar
-        mobile={windowSize.width < 650 ? true : false}
+        mobile={windowSize.width < 650 ? 1 : 0}
         style={{
           width: props.width.interpolate(x => x + "px"),
-          background: `rgba(${barColour.red},${barColour.green},${barColour.blue},${barColour.a})`,
+          background: `rgba(${colour.red},${colour.green},${colour.blue},${colour.a})`,
         }}
       ></Bar>
     </BarContainer>

@@ -1,8 +1,8 @@
 import React from "react"
 
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import useWindowSize from "../../useWindowSize"
 
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import styled from "styled-components"
 
 const IconContainer = styled("div")`
@@ -15,7 +15,8 @@ const IconContainer = styled("div")`
 
 const ItemLink = styled("a")`
   display: flex;
-  color: rgb(54, 54, 54);
+  /* color: rgb(54, 54, 54); */
+  color: ${props => props.theme.contactItem.color};
   width: 100%;
   height: 100%;
   justify-content: center;
@@ -24,7 +25,7 @@ const ItemLink = styled("a")`
 
 const Icon = styled(FontAwesomeIcon)`
   &:hover {
-    color: #fa923f;
+    color: ${props => props.theme.contactItem.hover};
     cursor: pointer;
   }
 `

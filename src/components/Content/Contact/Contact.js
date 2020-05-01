@@ -1,6 +1,8 @@
 import React from "react"
-import ContactItem from "./ContactItem"
+
 import useWindowSize from "../../useWindowSize"
+
+import ContactItem from "./ContactItem"
 
 import { faHome, faEnvelope } from "@fortawesome/free-solid-svg-icons"
 import {
@@ -8,7 +10,6 @@ import {
   faTwitter,
   faGithub,
 } from "@fortawesome/free-brands-svg-icons"
-
 import styled from "styled-components"
 
 const ContactContainer = styled("div")`
