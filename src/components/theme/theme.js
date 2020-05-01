@@ -8,7 +8,7 @@ export const lightTheme = {
     contact: { red: 29, green: 129, blue: 98, a: 0.7 }, // #1D8162
     articles: { red: 221, green: 33, blue: 83, a: 0.6 }, // #DD2153
     cv: { red: 255, green: 201, blue: 3, a: 0.9 }, // #C29E0D
-    mission: { red: 169, green: 39, blue: 207, a: 0.6 }, // #A927CF
+    aims: { red: 169, green: 39, blue: 207, a: 0.6 }, // #A927CF
   },
 }
 
@@ -22,6 +22,6 @@ export const darkTheme = {
     contact: { red: 72, green: 153, blue: 98, a: 1 }, // #528172
     articles: { red: 221, green: 109, blue: 138, a: 1 }, // #DD8DA2
     cv: { red: 245, green: 218, blue: 116, a: 1 }, // #F5E39D
-    mission: { red: 186, green: 130, blue: 207, a: 1 }, // #BA82CF
+    aims: { red: 186, green: 130, blue: 207, a: 1 }, // #BA82CF
   },
 }

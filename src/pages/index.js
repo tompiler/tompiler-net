@@ -2,7 +2,7 @@ import React from "react"
 import App from "../components/App"
 
 import Tompiler from "./tompiler"
-import Mission from "./mission"
+import Aims from "./aims"
 import Contact from "./contact"
 import CV from "./cv"
 import Articles from "./articles"
@@ -20,7 +20,7 @@ const IndexPage = () => {
       <Tompiler path="/" exact />
       <Contact path="/contact" />
       <CV path="/cv" />
-      <Mission path="/mission" />
+      <Aims path="/aims" />
       <Tutorials path="/tutorials" />
       <Articles path="/articles" />
     </App>

@@ -11,7 +11,7 @@ const TransitionCell = () => {
     <TransitionState>
       {props => (
         <>
-          <MobileLink {...props} to={"mission"} location={location} />
+          <MobileLink {...props} to={"aims"} location={location} />
           <MobileLink {...props} to={"articles"} location={location} />
           <MobileLink {...props} to={"tutorials"} location={location} />
           <MobileLink {...props} to={"contact"} location={location} />

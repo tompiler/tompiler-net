@@ -2,14 +2,14 @@ import React from "react"
 import Layout from "../components/Layout"
 
 import TransitionCell from "../components/Content/TransitionCell"
-import Mission from "../components/Content/Mission/Mission"
+import Aims from "../components/Content/Aims/Aims"
 
-const mission = () => {
+const aims = () => {
   return (
     <Layout left={<TransitionCell />}>
-      <Mission />
+      <Aims />
     </Layout>
   )
 }
 
-export default mission
+export default aims

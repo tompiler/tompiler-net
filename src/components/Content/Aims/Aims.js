@@ -4,21 +4,21 @@ import useWindowSize from "../../useWindowSize"
 
 import styled from "styled-components"
 
-const MissionItem = styled("div")`
+const AimsItem = styled("div")`
   display: inline-block;
   width: ${props => (props.mobile ? "90%" : "75%")};
   height: 0;
   text-align: justify;
   color: ${props => props.theme.color};
   line-height: 1.6;
-  font-size: 0.88em;
+  font-size: ${props => (props.mobile ? "0.8em" : "0.88em")};
 `
 
-const Mission = () => {
+const Aims = () => {
   const windowSize = useWindowSize()
 
   return (
-    <MissionItem mobile={windowSize.width < 650 ? true : false}>
+    <AimsItem mobile={windowSize.width < 650 ? true : false}>
       I've made this site primarily as a place to host bits of work I do from
       time to time.
       <br />
@@ -52,8 +52,8 @@ const Mission = () => {
       <br />
       <br />
       March 19th, 2020
-    </MissionItem>
+    </AimsItem>
   )
 }
 
-export default Mission
+export default Aims
