@@ -2,11 +2,10 @@ import React, { useContext } from "react"
 import Context from "./store/context"
 
 import Toolbar from "./Toolbar/Toolbar"
-import Content from "./Content/Content"
+import ContentContainer from "./Content/TransitionStateWrapper"
 import Navigation from "./Navigation/Navigation"
 
 import useWindowSize from "./useWindowSize"
-import { useLocation } from "@reach/router"
 
 import styled, { ThemeProvider } from "styled-components"
 import { lightTheme, darkTheme } from "../components/theme/theme"
@@ -43,9 +42,6 @@ const Layout = props => {
   const windowSize = useWindowSize()
   const { state } = useContext(Context)
 
-  const location = useLocation()
-  const route = location.pathname.substr(1)
-
   return (
     <ThemeProvider theme={state.isDark ? darkTheme : lightTheme}>
       <>
@@ -60,7 +56,7 @@ const Layout = props => {
             </div>
           </NavigationContainer>
           <ContainerRight mobile={windowSize.width < 650 ? true : false}>
-            {route !== "cv" && <Content>{props.children}</Content>}
+            <ContentContainer>{props.children}</ContentContainer>
           </ContainerRight>
         </div>
       </>

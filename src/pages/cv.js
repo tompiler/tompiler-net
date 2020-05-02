@@ -4,7 +4,9 @@ import Layout from "../components/Layout"
 const cv = () => {
   return (
     <Layout>
-      <div></div>
+      <div>
+        A placeholder for where the interactive CV module will be developed
+      </div>
     </Layout>
   )
 }
