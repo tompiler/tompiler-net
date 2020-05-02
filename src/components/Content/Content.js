@@ -20,11 +20,11 @@ const Title = styled(animated.div)`
   padding: 1vh 0;
 `
 
-const HeaderContainer = styled("div")`
+const HeaderContainer = styled(animated.div)`
   display: flex;
   justify-content: center;
   width: 100%;
-  height: ${props => (props.mobile ? "0px" : "6vh")};
+  height: ${props => (props.mobile === "true" ? "0px" : "6vh")};
   border-bottom: ${props => `1px solid ${props.theme.color}`};
 `
 
@@ -48,9 +48,22 @@ const Content = ({ children }) => {
   // needed to fix 'first' link via transitionLink
   const [firstURL] = useState(location.pathname === "/" ? "tompiler" : route)
 
+  // const props = useSpring({
+  //   from: { opacity: 0 },
+  //   to: {
+  //     opacity: mount ? 1 : 0,
+  //   },
+  //   config: {
+  //     //   duration: 1000,
+  //     mass: 1,
+  //     tension: 120,
+  //     friction: 15,
+  //   },
+  // })
+
   return (
     <TransitionState>
-      {({ mount, exit, entry }) => {
+      {({ mount, transitionStatus, exit, entry }) => {
         const header =
           location.pathname === "/" &&
           exit.state.exitState === undefined &&
@@ -59,6 +72,16 @@ const Content = ({ children }) => {
             : entry.state.entryState === undefined //&&
             ? firstURL
             : entry.state.entryState
+        console.log(
+          route,
+          mount,
+          transitionStatus,
+          exit.state.exitState,
+          entry.state.entryState
+        )
+
+        const entryState = entry.state.entryState
+        const exitState = exit.state.exitState
 
         return (
           <Spring
@@ -73,30 +96,43 @@ const Content = ({ children }) => {
           >
             {props => {
               return (
-                <>
-                  <HeaderContainer
-                    mobile={windowSize.width < 650 ? true : false}
-                  >
-                    {windowSize.width > 650 && (
-                      <Title
+                route !== "cv" && (
+                  <>
+                    <HeaderContainer
+                      mobile={windowSize.width < 650 ? "true" : "false"}
+                      // style={{
+                      //   opacity:
+                      //     entryState === "cv" && transitionStatus === "entered"
+                      //       ? 0
+                      //       : entryState === "cv" &&
+                      //         transitionStatus !== "entered"
+                      //       ? 0
+                      //       : route === "cv" || (mount && exitState === "cv")
+                      //       ? props.opacity
+                      //       : 1,
+                      // }}
+                    >
+                      {windowSize.width > 650 && (
+                        <Title
+                          style={{
+                            opacity: props.opacity,
+                          }}
+                        >
+                          {header}
+                        </Title>
+                      )}
+                    </HeaderContainer>
+                    <div>
+                      <ContentContainer
                         style={{
                           opacity: props.opacity,
                         }}
                       >
-                        {header}
-                      </Title>
-                    )}
-                  </HeaderContainer>
-                  <div>
-                    <ContentContainer
-                      style={{
-                        opacity: props.opacity,
-                      }}
-                    >
-                      {children}
-                    </ContentContainer>
-                  </div>
-                </>
+                        {children}
+                      </ContentContainer>
+                    </div>
+                  </>
+                )
               )
             }}
           </Spring>

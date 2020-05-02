@@ -6,6 +6,7 @@ import Content from "./Content/Content"
 import Navigation from "./Navigation/Navigation"
 
 import useWindowSize from "./useWindowSize"
+import { useLocation } from "@reach/router"
 
 import styled, { ThemeProvider } from "styled-components"
 import { lightTheme, darkTheme } from "../components/theme/theme"
@@ -40,8 +41,11 @@ const ContainerRight = styled("div")`
 
 const Layout = props => {
   const windowSize = useWindowSize()
-
   const { state } = useContext(Context)
+
+  const location = useLocation()
+  const route = location.pathname.substr(1)
+
   return (
     <ThemeProvider theme={state.isDark ? darkTheme : lightTheme}>
       <>
@@ -56,7 +60,7 @@ const Layout = props => {
             </div>
           </NavigationContainer>
           <ContainerRight mobile={windowSize.width < 650 ? true : false}>
-            <Content name={props.name}>{props.children}</Content>
+            {route !== "cv" && <Content>{props.children}</Content>}
           </ContainerRight>
         </div>
       </>

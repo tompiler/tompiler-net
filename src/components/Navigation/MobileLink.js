@@ -37,7 +37,11 @@ const MobileLink = props => {
         entryLength={0.5}
         entryDelay={0.5}
         entryState={props.to}
-        exitState={props.location.pathname === "/" ? "tompiler" : props.route}
+        exitState={
+          props.location.pathname === "/"
+            ? "tompiler"
+            : props.location.pathname.substr(1)
+        }
         mobile={windowSize.width < 650 ? true : false}
       >
         {props.to === "tompiler" ? "home" : props.to}
