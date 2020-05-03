@@ -8,6 +8,17 @@ const SvgContainer = styled(animated.svg)`
   border-bottom: "3px solid white";
 `
 
+const Line = styled(animated.line)`
+  stroke: ${props => props.theme.color};
+  stroke-width: 1.2;
+`
+
+const Circle = styled(animated.circle)`
+  stroke: ${props => props.theme.color};
+  stroke-width: 1.8;
+  fill: ${props => props.theme.background};
+`
+
 const Timeline = ({
   open,
   mobile,
@@ -148,93 +159,61 @@ const Timeline = ({
   return (
     <SvgContainer height={svgHeight} width="100">
       <g>
-        <animated.circle
-          r={circleProps0.r}
-          cx="50"
-          cy={innerSvgHeight}
-          stroke="#d4cac1"
-          strokeWidth="1.5"
-          fill="#323745"
-        />
-        <animated.line
+        <Circle r={circleProps0.r} cx="50" cy={innerSvgHeight} />
+        <Line
           x1="50"
           y1={lineProps.y}
           x2="50"
           y2={innerSvgHeight - circleRadius}
-          stroke="#d4cac1"
-          strokeWidth="2"
         />
-        <animated.circle
+        <Circle
           r={circleProps.r}
           cx="50"
           cy={innerSvgHeight - lineLength - circleRadius}
-          stroke="#d4cac1"
-          strokeWidth="1.5"
-          fill="#323745"
         />
-        <animated.line
+        <Line
           x1="50"
           y1={lineProps2.y}
           x2="50"
           y2={innerSvgHeight - lineLength - circleRadius * 2}
-          stroke="#d4cac1"
-          strokeWidth="2"
         />
-        <animated.circle
+        <Circle
           r={circleProps2.r}
           cx="50"
           cy={innerSvgHeight - lineLength * 2 - circleRadius * 2}
-          stroke="#d4cac1"
-          strokeWidth="1.5"
-          fill="#323745"
         />
-        <animated.line
+        <Line
           x1="50"
           y1={lineProps3.y}
           x2="50"
           y2={innerSvgHeight - lineLength * 2 - circleRadius * 3}
-          stroke="#d4cac1"
-          strokeWidth="2"
         />
-        <animated.circle
+        <Circle
           r={circleProps3.r}
           cx="50"
           cy={innerSvgHeight - lineLength * 3 - circleRadius * 3}
-          stroke="#d4cac1"
-          strokeWidth="1.5"
-          fill="#323745"
         />
-        <animated.line
+        <Line
           x1="50"
           y1={lineProps4.y}
           x2="50"
           y2={innerSvgHeight - lineLength * 3 - circleRadius * 4}
-          stroke="#d4cac1"
-          strokeWidth="2"
         />
-        <animated.circle
+        <Circle
           r={circleProps4.r}
           cx="50"
           cy={innerSvgHeight - lineLength * 4 - circleRadius * 4}
-          stroke="#d4cac1"
-          strokeWidth="1.5"
-          fill="#323745"
         />
-        <animated.line
+        <Line
           x1="50"
           y1={lineProps5.y}
           x2="50"
           y2={innerSvgHeight - lineLength * 4 - circleRadius * 5}
-          stroke="#d4cac1"
-          strokeWidth="2"
         />
-        <animated.circle
+        <Circle
           r={circleProps5.r}
           cx="50"
           cy={innerSvgHeight - lineLength * 5 - circleRadius * 5}
-          stroke="#d4cac1"
-          strokeWidth="1.5"
-          fill="#323745"
         />
       </g>
     </SvgContainer>
