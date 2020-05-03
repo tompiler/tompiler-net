@@ -16,7 +16,7 @@ const NavigationContainer = styled("div")`
   height: ${props => (props.mobile ? "56px" : "70vh")};
   top: 56px;
   left: 0;
-  width: ${props => (props.mobile ? "100%" : "50%")};
+  width: ${props => (props.mobile ? "100%" : "15%")};
   z-index: 0;
   display: ${props => (props.mobile ? "block" : "flex")};
   align-items: ${props => (props.mobile ? "stretch" : "center")};
@@ -26,16 +26,6 @@ const LinkContainer = styled("div")`
   display: flex;
   justify-content: center;
   flex-direction: ${props => (props.mobile ? "row" : "column")};
-`
-
-const ContainerRight = styled("div")`
-  display: block;
-  position: fixed;
-  top: ${props => (props.mobile ? "105px" : "140px")};
-  left: ${props => (props.mobile ? "10%" : "30vw")};
-  width: ${props => (props.mobile ? "80%" : "40vw")};
-  height: 100vh;
-  text-align: center;
 `
 
 const Layout = props => {
@@ -55,9 +45,9 @@ const Layout = props => {
               </LinkContainer>
             </div>
           </NavigationContainer>
-          <ContainerRight mobile={windowSize.width < 650 ? true : false}>
-            <ContentContainer>{props.children}</ContentContainer>
-          </ContainerRight>
+          {/* <ContainerRight mobile={windowSize.width < 650 ? true : false}> */}
+          <ContentContainer>{props.children}</ContentContainer>
+          {/* </ContainerRight> */}
         </div>
       </>
     </ThemeProvider>

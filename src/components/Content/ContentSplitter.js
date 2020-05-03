@@ -1,7 +1,7 @@
 import React from "react"
 
 import Content from "./Content"
-import CV from "./CV"
+import CV from "./CV/CV"
 
 import { useTransition } from "react-spring"
 

@@ -25,7 +25,7 @@ const HeaderContainer = styled(animated.div)`
   border-bottom: ${props => `1px solid ${props.theme.color}`};
 `
 
-const Container = styled(animated.div)`
+const ChildContainer = styled(animated.div)`
   display: block;
   position: relative;
   padding: 3vh 0;
@@ -35,6 +35,16 @@ const Container = styled(animated.div)`
   justify-items: center;
   align-items: top;
   height: 100vh;
+`
+
+const ContentContainer = styled("div")`
+  display: block;
+  position: fixed;
+  top: ${props => (props.mobile ? "105px" : "140px")};
+  left: ${props => (props.mobile ? "10%" : "30vw")};
+  width: ${props => (props.mobile ? "80%" : "40%")};
+  height: 100vh;
+  text-align: center;
 `
 
 const Content = ({
@@ -77,40 +87,42 @@ const Content = ({
   })
 
   return (
-    <>
-      <HeaderContainer
-        mobile={windowSize.width < 650 ? "true" : "false"}
-        style={{
-          opacity:
-            entryState === "cv" && transitionStatus === "entered"
-              ? 0
-              : entryState === "cv" && transitionStatus !== "entered"
-              ? 0
-              : route === "cv" || (mount && exitState === "cv")
-              ? props.opacity
-              : 1,
-        }}
-      >
-        {windowSize.width > 650 && (
-          <Title
+    <ContentContainer>
+      <>
+        <HeaderContainer
+          mobile={windowSize.width < 650 ? "true" : "false"}
+          style={{
+            opacity:
+              entryState === "cv" && transitionStatus === "entered"
+                ? 0
+                : entryState === "cv" && transitionStatus !== "entered"
+                ? 0
+                : route === "cv" || (mount && exitState === "cv")
+                ? props.opacity
+                : 1,
+          }}
+        >
+          {windowSize.width > 650 && (
+            <Title
+              style={{
+                opacity: props.opacity,
+              }}
+            >
+              {header}
+            </Title>
+          )}
+        </HeaderContainer>
+        <div>
+          <ChildContainer
             style={{
               opacity: props.opacity,
             }}
           >
-            {header}
-          </Title>
-        )}
-      </HeaderContainer>
-      <div>
-        <Container
-          style={{
-            opacity: props.opacity,
-          }}
-        >
-          {children}
-        </Container>
-      </div>
-    </>
+            {children}
+          </ChildContainer>
+        </div>
+      </>
+    </ContentContainer>
   )
 }
 
