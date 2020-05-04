@@ -1,9 +1,11 @@
-import React, { useState, useInterval } from "react"
+import React, { useState, useEffect } from "react"
 import { useSpring, animated } from "react-spring"
 
 import useWindowSize from "../../useWindowSize"
+import useInterval from "../../useInterval"
 
 import Timeline from "./Timeline"
+import Dendogram from "./Dendogram"
 
 import styled from "styled-components"
 
@@ -14,11 +16,13 @@ const ContentContainer = styled("div")`
   left: ${props => (props.mobile ? "10%" : "15%")};
   width: ${props => (props.mobile ? "80%" : "80%")};
   height: 100vh;
-  text-align: center;
 `
 
 const Button = styled("button")`
-  display: inline-block;
+  position: fixed;
+  top: 200px;
+  left: 50px;
+  display: inline;
 `
 
 const CV = ({ mount, transitionStatus, exit, entry, location, children }) => {
@@ -42,6 +46,7 @@ const CV = ({ mount, transitionStatus, exit, entry, location, children }) => {
 
   // springs for CV component transitions
   const [open, toggle] = useState(false)
+  const [first, toggleFirst] = useState(true)
   const mobile = windowSize.width < 650 ? true : false
 
   const height = windowSize.height
@@ -56,12 +61,24 @@ const CV = ({ mount, transitionStatus, exit, entry, location, children }) => {
 
   const padding = {
     bottom: 50,
+    top: 50,
   }
 
+  const circleNodes = 5
+  const circleRadius = 6
   const svgHeight = height - margin.top - margin.bottom
   const innerSvgHeight = svgHeight - padding.bottom
-  const lineLength = 140
-  const circleRadius = 6
+  // const lineLength = innerSvgHeight / 6 - circleRadius * 6
+  const lineLength =
+    (innerSvgHeight - circleRadius * circleNodes) / circleNodes -
+    padding.top / circleNodes
+
+  useInterval(() => {
+    toggleFirst(false)
+    if (first) {
+      toggle(true)
+    }
+  }, 1000)
 
   return (
     <ContentContainer mobile={mobile}>
@@ -74,6 +91,16 @@ const CV = ({ mount, transitionStatus, exit, entry, location, children }) => {
           innerSvgHeight={innerSvgHeight}
           lineLength={lineLength}
           circleRadius={circleRadius}
+          padding={padding}
+        />
+        <Dendogram
+          open={open}
+          mobile={mobile}
+          svgHeight={svgHeight}
+          innerSvgHeight={innerSvgHeight}
+          lineLength={lineLength}
+          circleRadius={circleRadius}
+          padding={padding}
         />
       </animated.div>
     </ContentContainer>
