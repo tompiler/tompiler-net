@@ -2,8 +2,16 @@ import React, { useRef } from "react"
 import { useSpring, useChain, animated } from "react-spring"
 
 import useWindowSize from "../../useWindowSize"
+import { DendogramContainer } from "./DendogramLayer1"
+import {
+  SkillCategoryContainer,
+  InnerSkillCategoryContainer,
+  Skill,
+} from "./SkillCategory"
 
 import styled from "styled-components"
+
+import data from "./links"
 
 const Container = styled("div")`
   display: inline-block;
@@ -11,7 +19,6 @@ const Container = styled("div")`
 `
 
 const SvgContainer = styled(animated.svg)`
-  float: left;
   border-bottom: "3px solid white";
 `
 
@@ -61,9 +68,78 @@ const Timeline = ({
   circleRadiusInv,
   padding,
 }) => {
-  const yStart = i => {
+  const windowSize = useWindowSize()
+
+  const svgWidth = windowSize.width * 0.15
+
+  const toPxH = h => (h / 100) * windowSize.height
+
+  const innerSvgHeightPx = toPxH(innerSvgHeight)
+  const lineLengthPx = toPxH(lineLength)
+
+  const yStartInv = i => {
     return innerSvgHeight - lineLength * i - circleRadiusInv * i
   }
+
+  const yStartPx = i => {
+    return innerSvgHeightPx - lineLengthPx * i - circleRadius * i
+  }
+
+  // DENDOGRAM LAYER 1
+
+  const pathRef = useRef()
+  const pathProps = useSpring({
+    to: {
+      x: open ? -1200 : -700,
+    },
+    from: { x: -200 },
+    config: {
+      mass: 1,
+      tension: 150,
+      friction: 50,
+    },
+    ref: pathRef,
+  })
+
+  console.log(pathProps.x.value)
+
+  var links = []
+
+  data.skillCategoryLinks.forEach(link => {
+    links.push(
+      <animated.path
+        key={link.key}
+        d={`
+    M ${[0, yStartPx(link.y0.order)]}
+    C  ${[
+      svgWidth * 0.33,
+      innerSvgHeightPx -
+        lineLengthPx * link.y0.order -
+        circleRadius * link.y0.order,
+    ]} ${[svgWidth * 0.66, toPxH(link.y1.vh)]} ${[svgWidth, toPxH(link.y1.vh)]}
+  `}
+        fill="none"
+        stroke="lightgray"
+        strokeWidth={0.7}
+        strokeDasharray="800"
+        strokeDashoffset={pathProps.x}
+      />
+    )
+  })
+
+  var skills = []
+  const skillCategories = Object.values(data.skillCategories)
+  skillCategories.forEach(skillCategory => {
+    skills.push(
+      <InnerSkillCategoryContainer
+        height={svgHeight}
+        top={skillCategory.vh}
+        key={skillCategory.name}
+      >
+        <Skill style={{ opacity: 1 }}>{skillCategory.name}</Skill>
+      </InnerSkillCategoryContainer>
+    )
+  })
 
   const circleRef0 = useRef()
   const circleProps0 = useSpring({
@@ -177,8 +253,10 @@ const Timeline = ({
           circleRef4,
           lineRef5,
           circleRef5,
+          pathRef,
         ]
       : [
+          pathRef,
           circleRef5,
           lineRef5,
           circleRef4,
@@ -191,106 +269,122 @@ const Timeline = ({
           lineRef,
           circleRef0,
         ],
-    [0, 0.2, 0.5, 0.7, 1, 1.2, 1.5, 1.7, 2, 2.2, 2.5]
+    [0, 0.2, 0.5, 0.7, 1, 1.2, 1.5, 1.7, 2, 2.2, 2.5, 3]
   )
 
   return (
-    <Container>
-      <SvgContainer
-        height={svgHeight + "vh"}
-        width="5vw"
-        // style={{ border: "1px dashed white" }}
-      >
-        <g>
-          <Circle r={circleProps0.r} cx="2.5vw" cy={innerSvgHeight + "vh"} />
-          <Line
-            x1="2.5vw"
-            y1={lineProps.y}
-            x2="2.5vw"
-            y2={innerSvgHeight - circleRadiusInv + "vh"}
-          />
-          <Circle
-            r={circleProps.r}
-            cx="2.5vw"
-            cy={innerSvgHeight - lineLength - circleRadiusInv + "vh"}
-          />
-          <Line
-            x1="2.5vw"
-            y1={lineProps2.y}
-            x2="2.5vw"
-            y2={innerSvgHeight - lineLength - circleRadiusInv * 2 + "vh"}
-          />
-          <Circle
-            r={circleProps2.r}
-            cx="2.5vw"
-            cy={innerSvgHeight - lineLength * 2 - circleRadiusInv * 2 + "vh"}
-          />
-          <Line
-            x1="2.5vw"
-            y1={lineProps3.y}
-            x2="2.5vw"
-            y2={innerSvgHeight - lineLength * 2 - circleRadiusInv * 3 + "vh"}
-          />
-          <Circle
-            r={circleProps3.r}
-            cx="2.5vw"
-            cy={innerSvgHeight - lineLength * 3 - circleRadiusInv * 3 + "vh"}
-          />
-          <Line
-            x1="2.5vw"
-            y1={lineProps4.y}
-            x2="2.5vw"
-            y2={innerSvgHeight - lineLength * 3 - circleRadiusInv * 4 + "vh"}
-          />
-          <Circle
-            r={circleProps4.r}
-            cx="2.5vw"
-            cy={innerSvgHeight - lineLength * 4 - circleRadiusInv * 4 + "vh"}
-          />
-          <Line
-            x1="2.5vw"
-            y1={lineProps5.y}
-            x2="2.5vw"
-            y2={innerSvgHeight - lineLength * 4 - circleRadiusInv * 5 + "vh"}
-          />
-          <Circle
-            r={circleProps5.r}
-            cx="2.5vw"
-            cy={innerSvgHeight - lineLength * 5 - circleRadiusInv * 5 + "vh"}
-          />
-        </g>
-      </SvgContainer>
-      <TimelineHeadingsContainer height={svgHeight}>
-        <HeadingContainer height={10} top={yStart(5) - 5}>
-          <Heading style={{ opacity: circleProps5.opacity }}>
-            Infinity Works
-          </Heading>
-        </HeadingContainer>
-        <HeadingContainer height={10} top={yStart(4) - 5}>
-          <Heading style={{ opacity: circleProps4.opacity }}>
-            Decathlon UK (contract)
-          </Heading>
-        </HeadingContainer>
-        <HeadingContainer height={10} top={yStart(3) - 5}>
-          <Heading style={{ opacity: circleProps3.opacity }}>
-            Charles River Associates
-          </Heading>
-        </HeadingContainer>
-        <HeadingContainer height={10} top={yStart(2) - 5}>
-          <Heading style={{ opacity: circleProps2.opacity }}>
-            Rated People
-          </Heading>
-        </HeadingContainer>
-        <HeadingContainer height={10} top={yStart(1) - 5}>
-          <Heading style={{ opacity: circleProps.opacity }}>
-            Mindshare Worldwide
-          </Heading>
-        </HeadingContainer>
-        <HeadingContainer height={10} top={yStart(0) - 5}>
-          <Heading style={{ opacity: circleProps0.opacity }}>Education</Heading>
-        </HeadingContainer>
-      </TimelineHeadingsContainer>
-    </Container>
+    <>
+      <Container>
+        <SvgContainer
+          height={svgHeight + "vh"}
+          width="5vw"
+          style={{ border: "1px dashed white" }}
+        >
+          <g>
+            <Circle r={circleProps0.r} cx="2.5vw" cy={innerSvgHeight + "vh"} />
+            <Line
+              x1="2.5vw"
+              y1={lineProps.y}
+              x2="2.5vw"
+              y2={innerSvgHeight - circleRadiusInv + "vh"}
+            />
+            <Circle
+              r={circleProps.r}
+              cx="2.5vw"
+              cy={innerSvgHeight - lineLength - circleRadiusInv + "vh"}
+            />
+            <Line
+              x1="2.5vw"
+              y1={lineProps2.y}
+              x2="2.5vw"
+              y2={innerSvgHeight - lineLength - circleRadiusInv * 2 + "vh"}
+            />
+            <Circle
+              r={circleProps2.r}
+              cx="2.5vw"
+              cy={innerSvgHeight - lineLength * 2 - circleRadiusInv * 2 + "vh"}
+            />
+            <Line
+              x1="2.5vw"
+              y1={lineProps3.y}
+              x2="2.5vw"
+              y2={innerSvgHeight - lineLength * 2 - circleRadiusInv * 3 + "vh"}
+            />
+            <Circle
+              r={circleProps3.r}
+              cx="2.5vw"
+              cy={innerSvgHeight - lineLength * 3 - circleRadiusInv * 3 + "vh"}
+            />
+            <Line
+              x1="2.5vw"
+              y1={lineProps4.y}
+              x2="2.5vw"
+              y2={innerSvgHeight - lineLength * 3 - circleRadiusInv * 4 + "vh"}
+            />
+            <Circle
+              r={circleProps4.r}
+              cx="2.5vw"
+              cy={innerSvgHeight - lineLength * 4 - circleRadiusInv * 4 + "vh"}
+            />
+            <Line
+              x1="2.5vw"
+              y1={lineProps5.y}
+              x2="2.5vw"
+              y2={innerSvgHeight - lineLength * 4 - circleRadiusInv * 5 + "vh"}
+            />
+            <Circle
+              r={circleProps5.r}
+              cx="2.5vw"
+              cy={innerSvgHeight - lineLength * 5 - circleRadiusInv * 5 + "vh"}
+            />
+          </g>
+        </SvgContainer>
+        <TimelineHeadingsContainer height={svgHeight}>
+          <HeadingContainer height={10} top={yStartInv(5) - 5}>
+            <Heading style={{ opacity: circleProps5.opacity }}>
+              Infinity Works
+            </Heading>
+          </HeadingContainer>
+          <HeadingContainer height={10} top={yStartInv(4) - 5}>
+            <Heading style={{ opacity: circleProps4.opacity }}>
+              Decathlon UK (contract)
+            </Heading>
+          </HeadingContainer>
+          <HeadingContainer height={10} top={yStartInv(3) - 5}>
+            <Heading style={{ opacity: circleProps3.opacity }}>
+              Charles River Associates
+            </Heading>
+          </HeadingContainer>
+          <HeadingContainer height={10} top={yStartInv(2) - 5}>
+            <Heading style={{ opacity: circleProps2.opacity }}>
+              Rated People
+            </Heading>
+          </HeadingContainer>
+          <HeadingContainer height={10} top={yStartInv(1) - 5}>
+            <Heading style={{ opacity: circleProps.opacity }}>
+              Mindshare Worldwide
+            </Heading>
+          </HeadingContainer>
+          <HeadingContainer height={10} top={yStartInv(0) - 5}>
+            <Heading style={{ opacity: circleProps0.opacity }}>
+              Education
+            </Heading>
+          </HeadingContainer>
+        </TimelineHeadingsContainer>
+      </Container>
+      <DendogramContainer height={svgHeight}>
+        <animated.svg
+          height={svgHeight + "vh"}
+          width="15vw"
+          style={{ border: "1px dashed white" }}
+        >
+          {links}
+        </animated.svg>
+      </DendogramContainer>
+      <SkillCategoryContainer height={svgHeight}>
+        {skills}
+      </SkillCategoryContainer>
+    </>
   )
 }
 

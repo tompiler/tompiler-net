@@ -29,6 +29,13 @@ const Button = styled("button")`
   display: inline;
 `
 
+const ButtonLine = styled("button")`
+  position: fixed;
+  top: 220px;
+  left: 50px;
+  display: inline;
+`
+
 const CV = ({ mount, transitionStatus, exit, entry, location, children }) => {
   const windowSize = useWindowSize()
   // console.log(windowSize)
@@ -96,6 +103,7 @@ const CV = ({ mount, transitionStatus, exit, entry, location, children }) => {
     <ContentContainer mobile={mobile}>
       <animated.div style={{ opacity: opacityProps.opacity }}>
         <Button onClick={() => toggle(!open)}>TOGGLE ME</Button>
+
         <Timeline
           open={open}
           mobile={mobile}
@@ -106,7 +114,7 @@ const CV = ({ mount, transitionStatus, exit, entry, location, children }) => {
           circleRadiusInv={circleRadiusInv}
           padding={padding}
         />
-        <DendogramLayer1
+        {/* <DendogramLayer1
           open={open}
           mobile={mobile}
           svgHeight={svgHeight}
@@ -134,7 +142,7 @@ const CV = ({ mount, transitionStatus, exit, entry, location, children }) => {
           lineLength={lineLength}
           circleRadius={circleRadius}
           padding={padding}
-        />
+        /> */}
         {/*
         <SkillItem
           open={open}

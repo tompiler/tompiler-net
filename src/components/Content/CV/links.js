@@ -31,11 +31,20 @@ const data = {
   timelineNodes: timelineNodes,
   skillCategories: skillCategories,
   skillCategoryLinks: [
-    { y0: timelineNodes.infinityWorks, y1: skillCategories.cloudServices },
-    { y0: timelineNodes.infinityWorks, y1: skillCategories.python },
-    { y0: timelineNodes.infinityWorks, y1: skillCategories.webDevelopment },
-    { y0: timelineNodes.decathlonUK, y1: skillCategories.python },
-    { y0: timelineNodes.decathlonUK, y1: skillCategories.API },
+    {
+      key: 1,
+      y0: timelineNodes.infinityWorks,
+      y1: skillCategories.cloudServices,
+    },
+    { key: 2, y0: timelineNodes.infinityWorks, y1: skillCategories.python },
+    {
+      key: 3,
+      y0: timelineNodes.infinityWorks,
+      y1: skillCategories.webDevelopment,
+    },
+    { key: 4, y0: timelineNodes.decathlonUK, y1: skillCategories.python },
+    { key: 5, y0: timelineNodes.decathlonUK, y1: skillCategories.API },
+    { key: 6, y0: timelineNodes.decathlonUK, y1: skillCategories.databases },
   ],
 }
 
