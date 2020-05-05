@@ -16,7 +16,7 @@ const NavigationContainer = styled("div")`
   height: ${props => (props.mobile ? "56px" : "70vh")};
   top: 56px;
   left: 0;
-  width: ${props => (props.mobile ? "100%" : "15%")};
+  width: ${props => (props.mobile ? "100%" : "12%")};
   z-index: 0;
   display: ${props => (props.mobile ? "block" : "flex")};
   align-items: ${props => (props.mobile ? "stretch" : "center")};

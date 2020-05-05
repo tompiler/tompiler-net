@@ -5,15 +5,19 @@ import useWindowSize from "../../useWindowSize"
 import useInterval from "../../useInterval"
 
 import Timeline from "./Timeline"
-import Dendogram from "./Dendogram"
-
+import DendogramLayer1 from "./DendogramLayer1"
+import SkillCategory from "./SkillCategory"
+import DendogramLayer2 from "./DendogramLayer2"
+import SkillItem from "./SkillItem"
 import styled from "styled-components"
+
+import data from "./links"
 
 const ContentContainer = styled("div")`
   display: inline-block;
   position: fixed;
   top: ${props => (props.mobile ? "105px" : "80px")};
-  left: ${props => (props.mobile ? "10%" : "15%")};
+  left: ${props => (props.mobile ? "10%" : "12%")};
   width: ${props => (props.mobile ? "80%" : "80%")};
   height: 100vh;
 `
@@ -50,28 +54,36 @@ const CV = ({ mount, transitionStatus, exit, entry, location, children }) => {
   const mobile = windowSize.width < 650 ? true : false
 
   const height = windowSize.height
-  // const width = windowSize.width
+  const width = windowSize.width
 
   const margin = {
-    top: mobile ? 105 : 80,
+    top: mobile ? 15 : 10,
     right: 0,
-    bottom: 50,
+    bottom: 5,
     left: 0,
   }
 
   const padding = {
-    bottom: 50,
-    top: 50,
+    bottom: 5,
+    top: 5,
   }
 
-  const circleNodes = 5
+  const circleNodes = Object.keys(data.timelineNodes).length
   const circleRadius = 6
-  const svgHeight = height - margin.top - margin.bottom
+  const circleRadiusInv = (circleRadius / windowSize.height) * 100
+  const svgHeight = 100 - margin.top - margin.bottom
+  const svgWidth = width * 0.12
   const innerSvgHeight = svgHeight - padding.bottom
   // const lineLength = innerSvgHeight / 6 - circleRadius * 6
+
   const lineLength =
-    (innerSvgHeight - circleRadius * circleNodes) / circleNodes -
-    padding.top / circleNodes
+    (svgHeight - padding.top - padding.bottom) / (circleNodes - 1) -
+    circleRadiusInv
+  // const lineLength =
+  //   (innerSvgHeight - circleRadiusInv * circleNodes) / circleNodes -
+  //   padding.top / circleNodes
+
+  console.log(svgHeight)
 
   useInterval(() => {
     toggleFirst(false)
@@ -91,9 +103,20 @@ const CV = ({ mount, transitionStatus, exit, entry, location, children }) => {
           innerSvgHeight={innerSvgHeight}
           lineLength={lineLength}
           circleRadius={circleRadius}
+          circleRadiusInv={circleRadiusInv}
           padding={padding}
         />
-        <Dendogram
+        <DendogramLayer1
+          open={open}
+          mobile={mobile}
+          svgHeight={svgHeight}
+          innerSvgHeight={innerSvgHeight}
+          lineLength={lineLength}
+          circleRadius={circleRadius}
+          circleRadiusInv={circleRadiusInv}
+          padding={padding}
+        />
+        <SkillCategory
           open={open}
           mobile={mobile}
           svgHeight={svgHeight}
@@ -102,6 +125,26 @@ const CV = ({ mount, transitionStatus, exit, entry, location, children }) => {
           circleRadius={circleRadius}
           padding={padding}
         />
+
+        <DendogramLayer2
+          open={open}
+          mobile={mobile}
+          svgHeight={svgHeight}
+          innerSvgHeight={innerSvgHeight}
+          lineLength={lineLength}
+          circleRadius={circleRadius}
+          padding={padding}
+        />
+        {/*
+        <SkillItem
+          open={open}
+          mobile={mobile}
+          svgHeight={svgHeight}
+          innerSvgHeight={innerSvgHeight}
+          lineLength={lineLength}
+          circleRadius={circleRadius}
+          padding={padding}
+        /> */}
       </animated.div>
     </ContentContainer>
   )

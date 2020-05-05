@@ -1,7 +1,14 @@
 import React, { useRef } from "react"
 import { useSpring, useChain, animated } from "react-spring"
 
+import useWindowSize from "../../useWindowSize"
+
 import styled from "styled-components"
+
+const Container = styled("div")`
+  display: inline-block;
+  width: 15vw;
+`
 
 const SvgContainer = styled(animated.svg)`
   float: left;
@@ -23,7 +30,7 @@ const TimelineHeadingsContainer = styled("div")`
   display: inline-block;
   /* position: relative; */
   left: ${props => (props.mobile ? "10%" : "20%")};
-  height: ${props => props.height + "px"};
+  height: ${props => props.height + "vh"};
   width: 10vw;
   /* border: 1px dashed lightgrey; */
 `
@@ -31,8 +38,8 @@ const TimelineHeadingsContainer = styled("div")`
 const HeadingContainer = styled("div")`
   display: flex;
   position: absolute;
-  top: ${props => props.top + "px"};
-  height: ${props => props.height / 20 + "px"};
+  top: ${props => props.top + "vh"};
+  height: ${props => props.height + "vh"};
   width: 10vw;
   /* border: 1px dashed lightgrey; */
 `
@@ -51,8 +58,13 @@ const Timeline = ({
   innerSvgHeight,
   lineLength,
   circleRadius,
+  circleRadiusInv,
   padding,
 }) => {
+  const yStart = i => {
+    return innerSvgHeight - lineLength * i - circleRadiusInv * i
+  }
+
   const circleRef0 = useRef()
   const circleProps0 = useSpring({
     to: { r: open ? circleRadius : 0, opacity: open ? 1 : 0 },
@@ -64,10 +76,10 @@ const Timeline = ({
   const lineProps = useSpring({
     to: {
       y: open
-        ? innerSvgHeight - lineLength - circleRadius
-        : innerSvgHeight - circleRadius,
+        ? innerSvgHeight - lineLength - circleRadiusInv + "vh"
+        : innerSvgHeight - circleRadiusInv + "vh",
     },
-    from: { y: innerSvgHeight - circleRadius },
+    from: { y: innerSvgHeight - circleRadiusInv + "vh" },
     ref: lineRef,
   })
 
@@ -82,10 +94,10 @@ const Timeline = ({
   const lineProps2 = useSpring({
     to: {
       y: open
-        ? innerSvgHeight - lineLength * 2 - circleRadius * 2
-        : innerSvgHeight - lineLength - circleRadius * 2,
+        ? innerSvgHeight - lineLength * 2 - circleRadiusInv * 2 + "vh"
+        : innerSvgHeight - lineLength - circleRadiusInv * 2 + "vh",
     },
-    from: { y: innerSvgHeight - lineLength - circleRadius * 2 },
+    from: { y: innerSvgHeight - lineLength - circleRadiusInv * 2 + "vh" },
     ref: lineRef2,
   })
 
@@ -100,10 +112,10 @@ const Timeline = ({
   const lineProps3 = useSpring({
     to: {
       y: open
-        ? innerSvgHeight - lineLength * 3 - circleRadius * 3
-        : innerSvgHeight - lineLength * 2 - circleRadius * 3,
+        ? innerSvgHeight - lineLength * 3 - circleRadiusInv * 3 + "vh"
+        : innerSvgHeight - lineLength * 2 - circleRadiusInv * 3 + "vh",
     },
-    from: { y: innerSvgHeight - lineLength * 2 - circleRadius * 3 },
+    from: { y: innerSvgHeight - lineLength * 2 - circleRadiusInv * 3 + "vh" },
     ref: lineRef3,
   })
 
@@ -118,10 +130,10 @@ const Timeline = ({
   const lineProps4 = useSpring({
     to: {
       y: open
-        ? innerSvgHeight - lineLength * 4 - circleRadius * 4
-        : innerSvgHeight - lineLength * 3 - circleRadius * 4,
+        ? innerSvgHeight - lineLength * 4 - circleRadiusInv * 4 + "vh"
+        : innerSvgHeight - lineLength * 3 - circleRadiusInv * 4 + "vh",
     },
-    from: { y: innerSvgHeight - lineLength * 3 - circleRadius * 4 },
+    from: { y: innerSvgHeight - lineLength * 3 - circleRadiusInv * 4 + "vh" },
     ref: lineRef4,
   })
 
@@ -136,10 +148,10 @@ const Timeline = ({
   const lineProps5 = useSpring({
     to: {
       y: open
-        ? innerSvgHeight - lineLength * 5 - circleRadius * 5
-        : innerSvgHeight - lineLength * 4 - circleRadius * 5,
+        ? innerSvgHeight - lineLength * 5 - circleRadiusInv * 5 + "vh"
+        : innerSvgHeight - lineLength * 4 - circleRadiusInv * 5 + "vh",
     },
-    from: { y: innerSvgHeight - lineLength * 4 - circleRadius * 5 },
+    from: { y: innerSvgHeight - lineLength * 4 - circleRadiusInv * 5 + "vh" },
     ref: lineRef5,
   })
 
@@ -183,117 +195,102 @@ const Timeline = ({
   )
 
   return (
-    <>
+    <Container>
       <SvgContainer
-        height={svgHeight}
+        height={svgHeight + "vh"}
         width="5vw"
         // style={{ border: "1px dashed white" }}
       >
         <g>
-          <Circle r={circleProps0.r} cx="2.5vw" cy={innerSvgHeight} />
+          <Circle r={circleProps0.r} cx="2.5vw" cy={innerSvgHeight + "vh"} />
           <Line
             x1="2.5vw"
             y1={lineProps.y}
             x2="2.5vw"
-            y2={innerSvgHeight - circleRadius}
+            y2={innerSvgHeight - circleRadiusInv + "vh"}
           />
           <Circle
             r={circleProps.r}
             cx="2.5vw"
-            cy={innerSvgHeight - lineLength - circleRadius}
+            cy={innerSvgHeight - lineLength - circleRadiusInv + "vh"}
           />
           <Line
             x1="2.5vw"
             y1={lineProps2.y}
             x2="2.5vw"
-            y2={innerSvgHeight - lineLength - circleRadius * 2}
+            y2={innerSvgHeight - lineLength - circleRadiusInv * 2 + "vh"}
           />
           <Circle
             r={circleProps2.r}
             cx="2.5vw"
-            cy={innerSvgHeight - lineLength * 2 - circleRadius * 2}
+            cy={innerSvgHeight - lineLength * 2 - circleRadiusInv * 2 + "vh"}
           />
           <Line
             x1="2.5vw"
             y1={lineProps3.y}
             x2="2.5vw"
-            y2={innerSvgHeight - lineLength * 2 - circleRadius * 3}
+            y2={innerSvgHeight - lineLength * 2 - circleRadiusInv * 3 + "vh"}
           />
           <Circle
             r={circleProps3.r}
             cx="2.5vw"
-            cy={innerSvgHeight - lineLength * 3 - circleRadius * 3}
+            cy={innerSvgHeight - lineLength * 3 - circleRadiusInv * 3 + "vh"}
           />
           <Line
             x1="2.5vw"
             y1={lineProps4.y}
             x2="2.5vw"
-            y2={innerSvgHeight - lineLength * 3 - circleRadius * 4}
+            y2={innerSvgHeight - lineLength * 3 - circleRadiusInv * 4 + "vh"}
           />
           <Circle
             r={circleProps4.r}
             cx="2.5vw"
-            cy={innerSvgHeight - lineLength * 4 - circleRadius * 4}
+            cy={innerSvgHeight - lineLength * 4 - circleRadiusInv * 4 + "vh"}
           />
           <Line
             x1="2.5vw"
             y1={lineProps5.y}
             x2="2.5vw"
-            y2={innerSvgHeight - lineLength * 4 - circleRadius * 5}
+            y2={innerSvgHeight - lineLength * 4 - circleRadiusInv * 5 + "vh"}
           />
           <Circle
             r={circleProps5.r}
             cx="2.5vw"
-            cy={innerSvgHeight - lineLength * 5 - circleRadius * 5}
+            cy={innerSvgHeight - lineLength * 5 - circleRadiusInv * 5 + "vh"}
           />
         </g>
       </SvgContainer>
       <TimelineHeadingsContainer height={svgHeight}>
-        <HeadingContainer height={svgHeight} top={padding.top - svgHeight / 40}>
+        <HeadingContainer height={10} top={yStart(5) - 5}>
           <Heading style={{ opacity: circleProps5.opacity }}>
             Infinity Works
           </Heading>
         </HeadingContainer>
-        <HeadingContainer
-          height={svgHeight}
-          top={padding.top + lineLength + circleRadius * 1 - svgHeight / 40}
-        >
+        <HeadingContainer height={10} top={yStart(4) - 5}>
           <Heading style={{ opacity: circleProps4.opacity }}>
             Decathlon UK (contract)
           </Heading>
         </HeadingContainer>
-        <HeadingContainer
-          height={svgHeight}
-          top={padding.top + lineLength * 2 + circleRadius * 2 - svgHeight / 40}
-        >
+        <HeadingContainer height={10} top={yStart(3) - 5}>
           <Heading style={{ opacity: circleProps3.opacity }}>
             Charles River Associates
           </Heading>
         </HeadingContainer>
-        <HeadingContainer
-          height={svgHeight}
-          top={padding.top + lineLength * 3 + circleRadius * 3 - svgHeight / 40}
-        >
+        <HeadingContainer height={10} top={yStart(2) - 5}>
           <Heading style={{ opacity: circleProps2.opacity }}>
             Rated People
           </Heading>
         </HeadingContainer>
-        <HeadingContainer
-          height={svgHeight}
-          top={padding.top + lineLength * 4 + circleRadius * 4 - svgHeight / 40}
-        >
+        <HeadingContainer height={10} top={yStart(1) - 5}>
           <Heading style={{ opacity: circleProps.opacity }}>
             Mindshare Worldwide
           </Heading>
         </HeadingContainer>
-        <HeadingContainer
-          height={svgHeight}
-          top={padding.top + lineLength * 5 + circleRadius * 5 - svgHeight / 40}
-        >
+        <HeadingContainer height={10} top={yStart(0) - 5}>
           <Heading style={{ opacity: circleProps0.opacity }}>Education</Heading>
         </HeadingContainer>
       </TimelineHeadingsContainer>
-    </>
+    </Container>
   )
 }
 
