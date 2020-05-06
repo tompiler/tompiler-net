@@ -2,12 +2,18 @@ import React, { useRef } from "react"
 import { useSpring, useChain, animated } from "react-spring"
 
 import useWindowSize from "../../useWindowSize"
-import { DendogramContainer } from "./DendogramLayer1"
+import { SkillCategoryDendogramContainer } from "./DendogramLayer1"
+import { SkillItemDendogramContainer } from "./DendogramLayer2"
 import {
   SkillCategoryContainer,
   InnerSkillCategoryContainer,
-  Skill,
+  SkillCategory,
 } from "./SkillCategory"
+import {
+  SkillItemContainer,
+  InnerSkillItemContainer,
+  SkillItem,
+} from "./SkillItem"
 
 import styled from "styled-components"
 
@@ -39,6 +45,7 @@ const TimelineHeadingsContainer = styled("div")`
   left: ${props => (props.mobile ? "10%" : "20%")};
   height: ${props => props.height + "vh"};
   width: 10vw;
+
   /* border: 1px dashed lightgrey; */
 `
 
@@ -56,11 +63,24 @@ const Heading = styled(animated.div)`
   align-items: center;
   font-family: "Open Sans";
   font-size: 1.2em;
+  font-weight: ${props => (props.hover === "true" ? 500 : 400)};
+  &:hover {
+    color: #fafafa;
+  }
+  cursor: pointer;
+`
+
+const DendrogramPath = styled(animated.path)`
+  fill: none;
+  stroke: lightgray;
+  stroke-width: ${props => (props.hover === "true" ? 1.4 : 0.7)};
 `
 
 const Timeline = ({
   open,
   mobile,
+  hover,
+  setHover,
   svgHeight,
   innerSvgHeight,
   lineLength,
@@ -87,27 +107,25 @@ const Timeline = ({
 
   // DENDOGRAM LAYER 1
 
-  const pathRef = useRef()
-  const pathProps = useSpring({
+  const DendogramLayer1Ref = useRef()
+  const DendogramLayer1Props = useSpring({
     to: {
-      x: open ? -1200 : -700,
+      x: open ? -3000 : -1200,
     },
-    from: { x: -200 },
+    from: { x: -1200 },
     config: {
       mass: 1,
-      tension: 150,
-      friction: 50,
+      tension: 30,
+      friction: 15,
     },
-    ref: pathRef,
+    ref: DendogramLayer1Ref,
   })
 
-  console.log(pathProps.x.value)
-
-  var links = []
+  var skillCategorylinks = []
 
   data.skillCategoryLinks.forEach(link => {
-    links.push(
-      <animated.path
+    skillCategorylinks.push(
+      <DendrogramPath
         key={link.key}
         d={`
     M ${[0, yStartPx(link.y0.order)]}
@@ -118,28 +136,123 @@ const Timeline = ({
         circleRadius * link.y0.order,
     ]} ${[svgWidth * 0.66, toPxH(link.y1.vh)]} ${[svgWidth, toPxH(link.y1.vh)]}
   `}
-        fill="none"
-        stroke="lightgray"
-        strokeWidth={0.7}
-        strokeDasharray="800"
-        strokeDashoffset={pathProps.x}
+        hover={hover === link.y0.order ? "true" : "false"}
       />
     )
   })
 
-  var skills = []
+  // SKILL CATEGORY LAYER
+
+  const skillCategoryRef = useRef()
+  const skillCategoryProps = useSpring({
+    to: {
+      opacity: open ? 1 : 0,
+    },
+    from: { opacity: 0 },
+    ref: skillCategoryRef,
+    config: {
+      mass: 1,
+      tension: 150,
+      friction: 35,
+    },
+  })
+
+  var skillCategoryList = []
   const skillCategories = Object.values(data.skillCategories)
   skillCategories.forEach(skillCategory => {
-    skills.push(
+    skillCategoryList.push(
       <InnerSkillCategoryContainer
         height={svgHeight}
         top={skillCategory.vh}
         key={skillCategory.name}
       >
-        <Skill style={{ opacity: 1 }}>{skillCategory.name}</Skill>
+        <SkillCategory
+          style={{ opacity: skillCategoryProps.opacity }}
+          hover={
+            skillCategory.validTimelineNodesOrder.includes(hover)
+              ? "true"
+              : "false"
+          }
+        >
+          {skillCategory.name}
+        </SkillCategory>
       </InnerSkillCategoryContainer>
     )
   })
+
+  // DENDOGRAM LAYER 2
+
+  const DendogramLayer2Ref = useRef()
+  const DendogramLayer2Props = useSpring({
+    to: {
+      x: open ? -2300 : -1000,
+    },
+    from: { x: -1000 },
+    config: {
+      mass: 1,
+      tension: 30,
+      friction: 15,
+    },
+    ref: DendogramLayer2Ref,
+  })
+
+  var skillItemlinks = []
+
+  data.skillItemLinks.forEach(link => {
+    skillItemlinks.push(
+      <DendrogramPath
+        key={link.key}
+        d={`
+    M ${[0, toPxH(link.y0.vh)]}
+    C  ${[svgWidth * 0.33, toPxH(link.y0.vh)]} ${[
+          svgWidth * 0.66,
+          toPxH(link.y1.vh),
+        ]} ${[svgWidth, toPxH(link.y1.vh)]}
+  `}
+        hover={
+          link.y1.validTimelineNodesOrder.includes(hover) ? "true" : "false"
+        }
+      />
+    )
+  })
+
+  // SKILL ITEM LAYER
+
+  const skillItemRef = useRef()
+  const skillItemProps = useSpring({
+    to: {
+      opacity: open ? 1 : 0,
+    },
+    from: { opacity: 0 },
+    ref: skillItemRef,
+    config: {
+      mass: 1,
+      tension: 150,
+      friction: 35,
+    },
+  })
+
+  var skillItemList = []
+  const skillItems = Object.values(data.skillItems)
+  skillItems.forEach(skillItem => {
+    skillItemList.push(
+      <InnerSkillItemContainer
+        height={svgHeight}
+        top={skillItem.vh}
+        key={skillItem.name}
+      >
+        <SkillItem
+          style={{ opacity: skillItemProps.opacity }}
+          hover={
+            skillItem.validTimelineNodesOrder.includes(hover) ? "true" : "false"
+          }
+        >
+          {skillItem.name}
+        </SkillItem>
+      </InnerSkillItemContainer>
+    )
+  })
+  console.log(skillItemList)
 
   const circleRef0 = useRef()
   const circleProps0 = useSpring({
@@ -238,6 +351,28 @@ const Timeline = ({
     ref: circleRef5,
   })
 
+  const lineRef6 = useRef()
+  const lineProps6 = useSpring({
+    to: {
+      y: open
+        ? innerSvgHeight - lineLength * 6 - circleRadiusInv * 6 + "vh"
+        : innerSvgHeight - lineLength * 5 - circleRadiusInv * 6 + "vh",
+      x: open ? 3.5 + "vw" : 2.5 + "vw",
+    },
+    from: {
+      y: innerSvgHeight - lineLength * 5 - circleRadiusInv * 6 + "vh",
+      x: 2.5 + "vw",
+    },
+    ref: lineRef6,
+  })
+
+  const circleRef6 = useRef()
+  const circleProps6 = useSpring({
+    to: { r: open ? circleRadius : 0, opacity: open ? 1 : 0 },
+    from: { r: 0, opacity: 0 },
+    ref: circleRef6,
+  })
+
   // chain
   useChain(
     open
@@ -253,10 +388,20 @@ const Timeline = ({
           circleRef4,
           lineRef5,
           circleRef5,
-          pathRef,
+          lineRef6,
+          circleRef6,
+          DendogramLayer1Ref,
+          skillCategoryRef,
+          DendogramLayer2Ref,
+          skillItemRef,
         ]
       : [
-          pathRef,
+          skillItemRef,
+          DendogramLayer2Ref,
+          skillCategoryRef,
+          DendogramLayer1Ref,
+          circleRef6,
+          lineRef6,
           circleRef5,
           lineRef5,
           circleRef4,
@@ -269,7 +414,25 @@ const Timeline = ({
           lineRef,
           circleRef0,
         ],
-    [0, 0.2, 0.5, 0.7, 1, 1.2, 1.5, 1.7, 2, 2.2, 2.5, 3]
+    [
+      0,
+      0,
+      0.3,
+      0.3,
+      0.6,
+      0.6,
+      0.9,
+      0.9,
+      1.2,
+      1.2,
+      1.5,
+      1.5,
+      1.8,
+      1.8,
+      2.8,
+      2.9,
+      3.3,
+    ]
   )
 
   return (
@@ -278,7 +441,7 @@ const Timeline = ({
         <SvgContainer
           height={svgHeight + "vh"}
           width="5vw"
-          style={{ border: "1px dashed white" }}
+          // style={{ border: "1px dashed white" }}
         >
           <g>
             <Circle r={circleProps0.r} cx="2.5vw" cy={innerSvgHeight + "vh"} />
@@ -337,53 +500,121 @@ const Timeline = ({
               cx="2.5vw"
               cy={innerSvgHeight - lineLength * 5 - circleRadiusInv * 5 + "vh"}
             />
+            <Line
+              x1={lineProps6.x}
+              y1={lineProps6.y}
+              x2="2.5vw"
+              y2={innerSvgHeight - lineLength * 5 - circleRadiusInv * 6 + "vh"}
+              strokeDasharray="4 8"
+            />
+            <Circle
+              r={circleProps6.r}
+              cx="3.5vw"
+              cy={innerSvgHeight - lineLength * 6 - circleRadiusInv * 6 + "vh"}
+            />
           </g>
         </SvgContainer>
         <TimelineHeadingsContainer height={svgHeight}>
+          <HeadingContainer height={10} top={yStartInv(6) - 5}>
+            <Heading
+              style={{ opacity: circleProps6.opacity }}
+              onMouseOver={() => setHover(6)}
+              onMouseOut={() => setHover(null)}
+              hover={hover === 6 ? "true" : "false"}
+            >
+              Side Projects
+            </Heading>
+          </HeadingContainer>
           <HeadingContainer height={10} top={yStartInv(5) - 5}>
-            <Heading style={{ opacity: circleProps5.opacity }}>
+            <Heading
+              style={{ opacity: circleProps5.opacity }}
+              onMouseOver={() => setHover(5)}
+              onMouseOut={() => setHover(null)}
+              hover={hover === 5 ? "true" : "false"}
+            >
               Infinity Works
             </Heading>
           </HeadingContainer>
           <HeadingContainer height={10} top={yStartInv(4) - 5}>
-            <Heading style={{ opacity: circleProps4.opacity }}>
+            <Heading
+              style={{ opacity: circleProps4.opacity }}
+              onMouseOver={() => setHover(4)}
+              onMouseOut={() => setHover(null)}
+              hover={hover === 4 ? "true" : "false"}
+            >
               Decathlon UK (contract)
             </Heading>
           </HeadingContainer>
           <HeadingContainer height={10} top={yStartInv(3) - 5}>
-            <Heading style={{ opacity: circleProps3.opacity }}>
+            <Heading
+              style={{ opacity: circleProps3.opacity }}
+              onMouseOver={() => setHover(3)}
+              onMouseOut={() => setHover(null)}
+              hover={hover === 3 ? "true" : "false"}
+            >
               Charles River Associates
             </Heading>
           </HeadingContainer>
           <HeadingContainer height={10} top={yStartInv(2) - 5}>
-            <Heading style={{ opacity: circleProps2.opacity }}>
+            <Heading
+              style={{ opacity: circleProps2.opacity }}
+              onMouseOver={() => setHover(2)}
+              onMouseOut={() => setHover(null)}
+              hover={hover === 2 ? "true" : "false"}
+            >
               Rated People
             </Heading>
           </HeadingContainer>
           <HeadingContainer height={10} top={yStartInv(1) - 5}>
-            <Heading style={{ opacity: circleProps.opacity }}>
+            <Heading
+              style={{ opacity: circleProps.opacity }}
+              onMouseOver={() => setHover(1)}
+              onMouseOut={() => setHover(null)}
+              hover={hover === 1 ? "true" : "false"}
+            >
               Mindshare Worldwide
             </Heading>
           </HeadingContainer>
           <HeadingContainer height={10} top={yStartInv(0) - 5}>
-            <Heading style={{ opacity: circleProps0.opacity }}>
+            <Heading
+              style={{ opacity: circleProps0.opacity }}
+              onMouseOver={() => setHover(9)}
+              onMouseOut={() => setHover(null)}
+              hover={hover === 0 ? "true" : "false"}
+            >
               Education
             </Heading>
           </HeadingContainer>
         </TimelineHeadingsContainer>
       </Container>
-      <DendogramContainer height={svgHeight}>
+      <SkillCategoryDendogramContainer height={svgHeight}>
         <animated.svg
           height={svgHeight + "vh"}
           width="15vw"
-          style={{ border: "1px dashed white" }}
+          // style={{ border: "1px dashed white" }}
+          strokeDasharray="1900"
+          strokeDashoffset={DendogramLayer1Props.x}
         >
-          {links}
+          {skillCategorylinks}
         </animated.svg>
-      </DendogramContainer>
+      </SkillCategoryDendogramContainer>
       <SkillCategoryContainer height={svgHeight}>
-        {skills}
+        {skillCategoryList}
       </SkillCategoryContainer>
+      <SkillItemDendogramContainer height={svgHeight}>
+        <animated.svg
+          height={svgHeight + "vh"}
+          width="15vw"
+          // style={{ border: "1px dashed white" }}
+          strokeDasharray="1300"
+          strokeDashoffset={DendogramLayer2Props.x}
+        >
+          {skillItemlinks}
+        </animated.svg>
+      </SkillItemDendogramContainer>
+      <SkillItemContainer height={svgHeight}>
+        {skillItemList}
+      </SkillItemContainer>
     </>
   )
 }

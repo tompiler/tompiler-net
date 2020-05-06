@@ -57,6 +57,7 @@ const CV = ({ mount, transitionStatus, exit, entry, location, children }) => {
 
   // springs for CV component transitions
   const [open, toggle] = useState(false)
+  const [hover, setHover] = useState(null)
   const [first, toggleFirst] = useState(true)
   const mobile = windowSize.width < 650 ? true : false
 
@@ -90,8 +91,6 @@ const CV = ({ mount, transitionStatus, exit, entry, location, children }) => {
   //   (innerSvgHeight - circleRadiusInv * circleNodes) / circleNodes -
   //   padding.top / circleNodes
 
-  console.log(svgHeight)
-
   useInterval(() => {
     toggleFirst(false)
     if (first) {
@@ -107,6 +106,8 @@ const CV = ({ mount, transitionStatus, exit, entry, location, children }) => {
         <Timeline
           open={open}
           mobile={mobile}
+          hover={hover}
+          setHover={setHover}
           svgHeight={svgHeight}
           innerSvgHeight={innerSvgHeight}
           lineLength={lineLength}

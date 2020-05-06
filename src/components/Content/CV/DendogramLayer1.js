@@ -1,6 +1,6 @@
 import styled from "styled-components"
 
-const DendogramContainer = styled("div")`
+const SkillCategoryDendogramContainer = styled("div")`
   display: inline-block;
   width: 15vw;
   height: ${props => props.height + "vh"};
@@ -9,4 +9,4 @@ const DendogramContainer = styled("div")`
   left: ${props => (props.mobile ? "10%" : "25vw")};
 `
 
-export { DendogramContainer }
+export { SkillCategoryDendogramContainer }
