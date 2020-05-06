@@ -1,4 +1,3 @@
-import React from "react"
 import { animated } from "react-spring"
 
 import styled from "styled-components"
@@ -6,8 +5,8 @@ import styled from "styled-components"
 const SkillItemContainer = styled("div")`
   display: inline-block;
   position: fixed;
-  left: ${props => (props.mobile ? "10%" : "63vw")};
-  height: ${props => props.height + "vh"};
+  left: ${props => (props.mobile ? "10%" : "58vw")};
+  height: 92vh;
   width: 8vw;
   /* border: 1px dashed lightpink; */
 `
@@ -17,19 +16,19 @@ const InnerSkillItemContainer = styled("div")`
   justify-content: left;
   position: absolute;
   top: ${props => props.top + "vh"};
-  height: ${props => props.height / 20 + "px"};
+  margin-left: 0.5vw;
   width: 8vw;
-  padding-left: 0.5vw;
-  /* border: 1px dashed lightgrey; */
+  text-align: center;
+  /* border: 1px dashed black; */
 `
 
 const SkillItem = styled(animated.div)`
   display: flex;
-  margin-bottom: 0.5vh;
-  align-items: center;
   font-family: "Open Sans";
   font-size: 0.9rem;
-  color: ${props => (props.hover === "true" ? "#fafafa" : props.theme.color)};
+  font-weight: ${props => (props.hover === "true" ? 600 : 400)};
+  color: ${props =>
+    props.hover === "true" ? props.theme.cv.hover : props.theme.cv.color};
 `
 
 export { SkillItemContainer, InnerSkillItemContainer, SkillItem }

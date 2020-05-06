@@ -24,26 +24,30 @@ module.exports = {
         path: `${__dirname}/src/`,
       },
     },
-    {
-      resolve: "gatsby-plugin-google-fonts",
-      options: {
-        fonts: [
-          "Montserrat sans-serif",
-          "Open Sans sans-serif",
-          "Quicksand, sans-serif:100",
-          "Crimson Text, serif",
-          "source sans pro:200,300,400,400i,700",
-        ],
-        display: "swap",
-      },
-    },
+    // {
+    //   resolve: "gatsby-plugin-google-fonts",
+    //   options: {
+    //     fonts: [
+    //       "Montserrat sans-serif",
+    //       "Open Sans sans-serif:200,300,400,500,600,700",
+    //       "Quicksand, sans-serif:100",
+    //       "Crimson Text, serif",
+    //       "source sans pro:200,300,400,400i,700",
+    //     ],
+    //     display: "swap",
+    //   },
+    // },
     {
       resolve: "gatsby-plugin-prefetch-google-fonts",
       options: {
         fonts: [
           {
             family: "Open Sans",
-            variants: ["200", "400", "500", "700"],
+            variants: ["300", "400", "600", "700"],
+          },
+          {
+            family: "Hammersmith One",
+            variants: ["Regular"],
           },
         ],
       },

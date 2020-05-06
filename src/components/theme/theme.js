@@ -2,6 +2,13 @@ export const lightTheme = {
   background: "#D6D6D6",
   color: "#212121",
   contactItem: { color: "#424242", hover: "#6A6A6A" },
+  cv: {
+    color: "#505050",
+    hover: "#202020",
+    line: { color: "#686868", hover: "#202020" },
+    circle: { hover: "#A9A9A9" },
+  },
+
   pageColours: {
     tompiler: { red: 74, green: 171, blue: 255, a: 0.7 }, // #4AABFF
     tutorials: { red: 250, green: 146, blue: 63, a: 0.7 }, // #FA923F
@@ -16,6 +23,13 @@ export const darkTheme = {
   background: "#323745",
   color: "#d4cac1",
   contactItem: { color: "#d4cac1", hover: "#F3E9DE" },
+  cv: {
+    color: "#DCDCDC",
+    hover: "#fafafa",
+    line: { color: "#DCDCDC", hover: "#fafafa" },
+    circle: { hover: "#606060" },
+  },
+
   pageColours: {
     tompiler: { red: 125, green: 197, blue: 255, a: 1 }, // #A5D7FF
     tutorials: { red: 251, green: 174, blue: 112, a: 1 }, // #FBAE70

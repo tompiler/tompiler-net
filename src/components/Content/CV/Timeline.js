@@ -21,11 +21,15 @@ import data from "./links"
 
 const Container = styled("div")`
   display: inline-block;
-  width: 15vw;
+  width: 12vw;
+  height: 92vh;
+  /* border: 1px dashed blue; */
 `
 
 const SvgContainer = styled(animated.svg)`
-  border-bottom: "3px solid white";
+  height: ${props => props.height + "vh"};
+  width: 5vw;
+  overflow: visible;
 `
 
 const Line = styled(animated.line)`
@@ -36,7 +40,25 @@ const Line = styled(animated.line)`
 const Circle = styled(animated.circle)`
   stroke: ${props => props.theme.color};
   stroke-width: 1.8;
-  fill: ${props => props.theme.background};
+  fill: ${props =>
+    props.hover === "true"
+      ? props.theme.cv.circle.hover
+      : props.theme.background};
+`
+
+const ColumnHeading = styled(animated.div)`
+  display: inline-block;
+  height: 3vh;
+  width: 100%;
+  text-align: center;
+  font-family: "Hammersmith One";
+  font-size: 1.1em;
+  color: ${props => props.theme.cv.color};
+  border-bottom: ${props => `1px solid ${props.theme.cv.color}`};
+`
+
+const ColumnBody = styled("div")`
+  height: 89vh;
 `
 
 const TimelineHeadingsContainer = styled("div")`
@@ -44,36 +66,48 @@ const TimelineHeadingsContainer = styled("div")`
   /* position: relative; */
   left: ${props => (props.mobile ? "10%" : "20%")};
   height: ${props => props.height + "vh"};
-  width: 10vw;
-
+  width: 7vw;
   /* border: 1px dashed lightgrey; */
 `
 
-const HeadingContainer = styled("div")`
+const HeadingContainer = styled(animated.div)`
   display: flex;
+  flex-direction: column;
+  align-items: top;
   position: absolute;
   top: ${props => props.top + "vh"};
   height: ${props => props.height + "vh"};
-  width: 10vw;
+  width: 7vw;
   /* border: 1px dashed lightgrey; */
 `
 
-const Heading = styled(animated.div)`
-  display: flex;
+const Heading = styled("div")`
+  /* display: flex; */
   align-items: center;
   font-family: "Open Sans";
-  font-size: 1.2em;
-  font-weight: ${props => (props.hover === "true" ? 500 : 400)};
+  font-size: 1em;
+  font-weight: ${props => (props.hover === "true" ? 700 : 600)};
+  color: ${props => props.theme.cv.color};
   &:hover {
-    color: #fafafa;
+    color: ${props => props.theme.cv.hover};
   }
   cursor: pointer;
 `
 
+const HeadingDuration = styled("div")`
+  font-style: italic;
+  font-size: 0.8em;
+  color: ${props => props.theme.cv.color};
+  width: 6vw;
+`
+
 const DendrogramPath = styled(animated.path)`
   fill: none;
-  stroke: lightgray;
-  stroke-width: ${props => (props.hover === "true" ? 1.4 : 0.7)};
+  stroke: ${props =>
+    props.hover === "true"
+      ? props.theme.cv.line.hover
+      : props.theme.cv.line.color};
+  stroke-width: ${props => (props.hover === "true" ? 1.2 : 0.7)};
 `
 
 const Timeline = ({
@@ -90,7 +124,7 @@ const Timeline = ({
 }) => {
   const windowSize = useWindowSize()
 
-  const svgWidth = windowSize.width * 0.15
+  const svgWidth = windowSize.width * 0.13
 
   const toPxH = h => (h / 100) * windowSize.height
 
@@ -115,8 +149,8 @@ const Timeline = ({
     from: { x: -1200 },
     config: {
       mass: 1,
-      tension: 30,
-      friction: 15,
+      tension: 20,
+      friction: 20,
     },
     ref: DendogramLayer1Ref,
   })
@@ -134,7 +168,10 @@ const Timeline = ({
       innerSvgHeightPx -
         lineLengthPx * link.y0.order -
         circleRadius * link.y0.order,
-    ]} ${[svgWidth * 0.66, toPxH(link.y1.vh)]} ${[svgWidth, toPxH(link.y1.vh)]}
+    ]} ${[svgWidth * 0.66, toPxH(link.y1.vh - 1.8)]} ${[
+          svgWidth,
+          toPxH(link.y1.vh - 1.8),
+        ]}
   `}
         hover={hover === link.y0.order ? "true" : "false"}
       />
@@ -162,7 +199,6 @@ const Timeline = ({
   skillCategories.forEach(skillCategory => {
     skillCategoryList.push(
       <InnerSkillCategoryContainer
-        height={svgHeight}
         top={skillCategory.vh}
         key={skillCategory.name}
       >
@@ -190,8 +226,8 @@ const Timeline = ({
     from: { x: -1000 },
     config: {
       mass: 1,
-      tension: 30,
-      friction: 15,
+      tension: 20,
+      friction: 20,
     },
     ref: DendogramLayer2Ref,
   })
@@ -203,11 +239,11 @@ const Timeline = ({
       <DendrogramPath
         key={link.key}
         d={`
-    M ${[0, toPxH(link.y0.vh)]}
-    C  ${[svgWidth * 0.33, toPxH(link.y0.vh)]} ${[
+    M ${[0, toPxH(link.y0.vh - 1.8)]}
+    C  ${[svgWidth * 0.33, toPxH(link.y0.vh - 1.8)]} ${[
           svgWidth * 0.66,
-          toPxH(link.y1.vh),
-        ]} ${[svgWidth, toPxH(link.y1.vh)]}
+          toPxH(link.y1.vh - 1.8),
+        ]} ${[svgWidth, toPxH(link.y1.vh - 1.8)]}
   `}
         hover={
           link.y1.validTimelineNodesOrder.includes(hover) ? "true" : "false"
@@ -252,7 +288,6 @@ const Timeline = ({
       </InnerSkillItemContainer>
     )
   })
-  console.log(skillItemList)
 
   const circleRef0 = useRef()
   const circleProps0 = useSpring({
@@ -357,7 +392,7 @@ const Timeline = ({
       y: open
         ? innerSvgHeight - lineLength * 6 - circleRadiusInv * 6 + "vh"
         : innerSvgHeight - lineLength * 5 - circleRadiusInv * 6 + "vh",
-      x: open ? 3.5 + "vw" : 2.5 + "vw",
+      x: open ? 4 + "vw" : 2.5 + "vw",
     },
     from: {
       y: innerSvgHeight - lineLength * 5 - circleRadiusInv * 6 + "vh",
@@ -414,37 +449,63 @@ const Timeline = ({
           lineRef,
           circleRef0,
         ],
-    [
-      0,
-      0,
-      0.3,
-      0.3,
-      0.6,
-      0.6,
-      0.9,
-      0.9,
-      1.2,
-      1.2,
-      1.5,
-      1.5,
-      1.8,
-      1.8,
-      2.8,
-      2.9,
-      3.3,
-    ]
+    open
+      ? [
+          0,
+          0,
+          0.3,
+          0.3,
+          0.6,
+          0.6,
+          0.9,
+          0.9,
+          1.2,
+          1.2,
+          1.5,
+          1.5,
+          1.8,
+          1.8,
+          2.8,
+          2.9,
+          3.3,
+        ]
+      : [
+          0.4,
+          0.5,
+          1.5,
+          1.5,
+          1.8,
+          1.8,
+          2.1,
+          2.1,
+          2.3,
+          2.3,
+          2.6,
+          2.6,
+          2.9,
+          2.9,
+          3.2,
+          3.2,
+          3.5,
+        ]
   )
 
   return (
     <>
       <Container>
+        <ColumnHeading style={{ opacity: circleProps6.opacity }}>
+          EMPLOYMENT
+        </ColumnHeading>
         <SvgContainer
-          height={svgHeight + "vh"}
-          width="5vw"
-          // style={{ border: "1px dashed white" }}
+          height={svgHeight} /*style={{ border: "1px dashed white" }}*/
         >
           <g>
-            <Circle r={circleProps0.r} cx="2.5vw" cy={innerSvgHeight + "vh"} />
+            <Circle
+              r={circleProps0.r}
+              cx="2.5vw"
+              cy={innerSvgHeight + "vh"}
+              hover={hover === 0 ? "true" : "false"}
+            />
             <Line
               x1="2.5vw"
               y1={lineProps.y}
@@ -455,6 +516,7 @@ const Timeline = ({
               r={circleProps.r}
               cx="2.5vw"
               cy={innerSvgHeight - lineLength - circleRadiusInv + "vh"}
+              hover={hover === 1 ? "true" : "false"}
             />
             <Line
               x1="2.5vw"
@@ -466,6 +528,7 @@ const Timeline = ({
               r={circleProps2.r}
               cx="2.5vw"
               cy={innerSvgHeight - lineLength * 2 - circleRadiusInv * 2 + "vh"}
+              hover={hover === 2 ? "true" : "false"}
             />
             <Line
               x1="2.5vw"
@@ -477,6 +540,7 @@ const Timeline = ({
               r={circleProps3.r}
               cx="2.5vw"
               cy={innerSvgHeight - lineLength * 3 - circleRadiusInv * 3 + "vh"}
+              hover={hover === 3 ? "true" : "false"}
             />
             <Line
               x1="2.5vw"
@@ -488,6 +552,7 @@ const Timeline = ({
               r={circleProps4.r}
               cx="2.5vw"
               cy={innerSvgHeight - lineLength * 4 - circleRadiusInv * 4 + "vh"}
+              hover={hover === 4 ? "true" : "false"}
             />
             <Line
               x1="2.5vw"
@@ -499,6 +564,7 @@ const Timeline = ({
               r={circleProps5.r}
               cx="2.5vw"
               cy={innerSvgHeight - lineLength * 5 - circleRadiusInv * 5 + "vh"}
+              hover={hover === 5 ? "true" : "false"}
             />
             <Line
               x1={lineProps6.x}
@@ -509,111 +575,164 @@ const Timeline = ({
             />
             <Circle
               r={circleProps6.r}
-              cx="3.5vw"
+              cx="4vw"
               cy={innerSvgHeight - lineLength * 6 - circleRadiusInv * 6 + "vh"}
+              hover={hover === 6 ? "true" : "false"}
             />
           </g>
         </SvgContainer>
-        <TimelineHeadingsContainer height={svgHeight}>
-          <HeadingContainer height={10} top={yStartInv(6) - 5}>
+        <TimelineHeadingsContainer
+          height={svgHeight}
+          // style={{ border: "1px dashed green" }}
+        >
+          <HeadingContainer
+            height={8}
+            top={yStartInv(6) + 2}
+            style={{ opacity: circleProps6.opacity }}
+          >
             <Heading
-              style={{ opacity: circleProps6.opacity }}
               onMouseOver={() => setHover(6)}
               onMouseOut={() => setHover(null)}
+              onFocus={() => void 0}
+              onBlur={() => void 0}
               hover={hover === 6 ? "true" : "false"}
             >
               Side Projects
             </Heading>
+            <HeadingDuration>Ongoing</HeadingDuration>
           </HeadingContainer>
-          <HeadingContainer height={10} top={yStartInv(5) - 5}>
+          <HeadingContainer
+            height={8}
+            top={yStartInv(5) + 2}
+            style={{ opacity: circleProps5.opacity }}
+          >
             <Heading
-              style={{ opacity: circleProps5.opacity }}
               onMouseOver={() => setHover(5)}
               onMouseOut={() => setHover(null)}
+              onFocus={() => void 0}
+              onBlur={() => void 0}
               hover={hover === 5 ? "true" : "false"}
             >
               Infinity Works
             </Heading>
+            <HeadingDuration>July 2019 - present</HeadingDuration>
           </HeadingContainer>
-          <HeadingContainer height={10} top={yStartInv(4) - 5}>
+          <HeadingContainer
+            height={8}
+            top={yStartInv(4) + 2}
+            style={{ opacity: circleProps4.opacity }}
+          >
             <Heading
-              style={{ opacity: circleProps4.opacity }}
               onMouseOver={() => setHover(4)}
               onMouseOut={() => setHover(null)}
+              onFocus={() => void 0}
+              onBlur={() => void 0}
               hover={hover === 4 ? "true" : "false"}
             >
               Decathlon UK (contract)
             </Heading>
+            <HeadingDuration>January 2019 - June 2019</HeadingDuration>
           </HeadingContainer>
-          <HeadingContainer height={10} top={yStartInv(3) - 5}>
+          <HeadingContainer
+            height={8}
+            top={yStartInv(3) + 2}
+            style={{ opacity: circleProps3.opacity }}
+          >
             <Heading
-              style={{ opacity: circleProps3.opacity }}
               onMouseOver={() => setHover(3)}
               onMouseOut={() => setHover(null)}
+              onFocus={() => void 0}
+              onBlur={() => void 0}
               hover={hover === 3 ? "true" : "false"}
             >
               Charles River Associates
             </Heading>
+            <HeadingDuration>October 2016 - December 2018</HeadingDuration>
           </HeadingContainer>
-          <HeadingContainer height={10} top={yStartInv(2) - 5}>
+          <HeadingContainer
+            height={8}
+            top={yStartInv(2) + 2}
+            style={{ opacity: circleProps2.opacity }}
+          >
             <Heading
-              style={{ opacity: circleProps2.opacity }}
               onMouseOver={() => setHover(2)}
               onMouseOut={() => setHover(null)}
+              onFocus={() => void 0}
+              onBlur={() => void 0}
               hover={hover === 2 ? "true" : "false"}
             >
               Rated People
             </Heading>
+            <HeadingDuration>September 2014 - September 2016</HeadingDuration>
           </HeadingContainer>
-          <HeadingContainer height={10} top={yStartInv(1) - 5}>
+
+          <HeadingContainer
+            height={8}
+            top={yStartInv(1) + 1.8}
+            style={{ opacity: circleProps.opacity }}
+          >
             <Heading
-              style={{ opacity: circleProps.opacity }}
               onMouseOver={() => setHover(1)}
               onMouseOut={() => setHover(null)}
+              onFocus={() => void 0}
+              onBlur={() => void 0}
               hover={hover === 1 ? "true" : "false"}
             >
               Mindshare Worldwide
             </Heading>
+            <HeadingDuration>November 2013 - August 2014</HeadingDuration>
           </HeadingContainer>
-          <HeadingContainer height={10} top={yStartInv(0) - 5}>
+          <HeadingContainer
+            height={8}
+            top={yStartInv(0) + 2}
+            style={{ opacity: circleProps0.opacity }}
+          >
             <Heading
-              style={{ opacity: circleProps0.opacity }}
-              onMouseOver={() => setHover(9)}
+              onMouseOver={() => setHover(0)}
               onMouseOut={() => setHover(null)}
+              onFocus={() => void 0}
+              onBlur={() => void 0}
               hover={hover === 0 ? "true" : "false"}
             >
               Education
             </Heading>
+            <HeadingDuration>September 2009 - August 2013</HeadingDuration>
           </HeadingContainer>
         </TimelineHeadingsContainer>
       </Container>
-      <SkillCategoryDendogramContainer height={svgHeight}>
+
+      <SkillCategoryDendogramContainer /*style={{ border: "1px dashed white" }}*/
+      >
         <animated.svg
           height={svgHeight + "vh"}
           width="15vw"
-          // style={{ border: "1px dashed white" }}
           strokeDasharray="1900"
           strokeDashoffset={DendogramLayer1Props.x}
         >
           {skillCategorylinks}
         </animated.svg>
       </SkillCategoryDendogramContainer>
-      <SkillCategoryContainer height={svgHeight}>
-        {skillCategoryList}
+      <SkillCategoryContainer>
+        <ColumnHeading style={{ opacity: skillCategoryProps.opacity }}>
+          SKILL
+        </ColumnHeading>
+        <ColumnBody>{skillCategoryList}</ColumnBody>
       </SkillCategoryContainer>
-      <SkillItemDendogramContainer height={svgHeight}>
+      <SkillItemDendogramContainer /*style={{ border: "1px dashed white" }}*/>
         <animated.svg
-          height={svgHeight + "vh"}
+          height={svgHeight + 5 + "vh"}
           width="15vw"
-          // style={{ border: "1px dashed white" }}
           strokeDasharray="1300"
           strokeDashoffset={DendogramLayer2Props.x}
         >
           {skillItemlinks}
         </animated.svg>
       </SkillItemDendogramContainer>
-      <SkillItemContainer height={svgHeight}>
-        {skillItemList}
+      <SkillItemContainer>
+        <ColumnHeading style={{ opacity: skillItemProps.opacity }}>
+          TECHNOLOGY
+        </ColumnHeading>
+        <ColumnBody>{skillItemList}</ColumnBody>
       </SkillItemContainer>
     </>
   )
