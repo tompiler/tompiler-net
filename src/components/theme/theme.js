@@ -6,7 +6,8 @@ export const lightTheme = {
     color: "#505050",
     hover: "#202020",
     line: { color: "#686868", hover: "#202020" },
-    circle: { hover: "#A9A9A9" },
+    circle: { hover: "#C29E0D" },
+    toggle: { hover: "#bababa" },
   },
 
   pageColours: {
@@ -27,7 +28,8 @@ export const darkTheme = {
     color: "#DCDCDC",
     hover: "#fafafa",
     line: { color: "#DCDCDC", hover: "#fafafa" },
-    circle: { hover: "#606060" },
+    circle: { hover: "#C29E0D" },
+    toggle: { hover: "#414654" },
   },
 
   pageColours: {

@@ -21,9 +21,27 @@ const ContentContainer = styled("div")`
 
 const Button = styled("button")`
   position: fixed;
-  top: 200px;
+  bottom: 5vh;
   left: 50px;
-  display: inline;
+  background: none;
+  width: 5vw;
+  height: 5vh;
+
+  font-family: "Open Sans";
+  font-weight: 600;
+  color: ${props => props.theme.color};
+  -webkit-appearance: button;
+  border-radius: 5px;
+  box-shadow: none;
+
+  &:focus {
+    outline: none;
+  }
+  cursor: pointer;
+  &:hover {
+    background-color: ${props => `${props.theme.cv.toggle.hover}`};
+  }
+  transition: background-color 250ms;
 `
 
 const CV = ({ mount, transitionStatus, exit, entry, location, children }) => {
@@ -47,6 +65,7 @@ const CV = ({ mount, transitionStatus, exit, entry, location, children }) => {
 
   // springs for CV component transitions
   const [open, toggle] = useState(false)
+  const [selected, setSelected] = useState(null)
   const [hover, setHover] = useState(null)
   const [first, toggleFirst] = useState(true)
   const mobile = windowSize.width < 650 ? true : false
@@ -87,12 +106,14 @@ const CV = ({ mount, transitionStatus, exit, entry, location, children }) => {
   return (
     <ContentContainer mobile={mobile}>
       <animated.div style={{ opacity: opacityProps.opacity }}>
-        <Button onClick={() => toggle(!open)}>TOGGLE ME</Button>
+        {/* <Button onClick={() => toggle(!open)}>Toggle Animation</Button> */}
         <Timeline
           open={open}
           mobile={mobile}
           hover={hover}
+          selected={selected}
           setHover={setHover}
+          setSelected={setSelected}
           svgHeight={svgHeight}
           innerSvgHeight={innerSvgHeight}
           lineLength={lineLength}

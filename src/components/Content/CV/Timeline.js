@@ -41,7 +41,7 @@ const Circle = styled(animated.circle)`
   stroke: ${props => props.theme.color};
   stroke-width: 1.8;
   fill: ${props =>
-    props.hover === "true"
+    props.hover === "true" || props.selected === "true"
       ? props.theme.cv.circle.hover
       : props.theme.background};
 `
@@ -86,7 +86,8 @@ const Heading = styled("div")`
   align-items: center;
   font-family: "Open Sans";
   font-size: 1em;
-  font-weight: ${props => (props.hover === "true" ? 700 : 600)};
+  font-weight: ${props =>
+    props.hover === "true" || props.selected === "true" ? 700 : 600};
   color: ${props => props.theme.cv.color};
   &:hover {
     color: ${props => props.theme.cv.hover};
@@ -104,17 +105,20 @@ const HeadingDuration = styled("div")`
 const DendrogramPath = styled(animated.path)`
   fill: none;
   stroke: ${props =>
-    props.hover === "true"
+    props.hover === "true" || props.selected === "true"
       ? props.theme.cv.line.hover
       : props.theme.cv.line.color};
-  stroke-width: ${props => (props.hover === "true" ? 1.2 : 0.7)};
+  stroke-width: ${props =>
+    props.hover === "true" || props.selected === "true" ? 1.2 : 0.7};
 `
 
 const Timeline = ({
   open,
   mobile,
   hover,
+  selected,
   setHover,
+  setSelected,
   svgHeight,
   innerSvgHeight,
   lineLength,
@@ -138,6 +142,8 @@ const Timeline = ({
   const yStartPx = i => {
     return innerSvgHeightPx - lineLengthPx * i - circleRadius * i
   }
+
+  console.log("Selected:", selected)
 
   // DENDOGRAM LAYER 1
 
@@ -174,6 +180,7 @@ const Timeline = ({
         ]}
   `}
         hover={hover === link.y0.order ? "true" : "false"}
+        selected={selected === link.y0.order ? "true" : "false"}
       />
     )
   })
@@ -206,6 +213,11 @@ const Timeline = ({
           style={{ opacity: skillCategoryProps.opacity }}
           hover={
             skillCategory.validTimelineNodesOrder.includes(hover)
+              ? "true"
+              : "false"
+          }
+          selected={
+            skillCategory.validTimelineNodesOrder.includes(selected)
               ? "true"
               : "false"
           }
@@ -248,6 +260,9 @@ const Timeline = ({
         hover={
           link.y1.validTimelineNodesOrder.includes(hover) ? "true" : "false"
         }
+        selected={
+          link.y1.validTimelineNodesOrder.includes(selected) ? "true" : "false"
+        }
       />
     )
   })
@@ -281,6 +296,11 @@ const Timeline = ({
           style={{ opacity: skillItemProps.opacity }}
           hover={
             skillItem.validTimelineNodesOrder.includes(hover) ? "true" : "false"
+          }
+          selected={
+            skillItem.validTimelineNodesOrder.includes(selected)
+              ? "true"
+              : "false"
           }
         >
           {skillItem.name}
@@ -505,6 +525,7 @@ const Timeline = ({
               cx="2.5vw"
               cy={innerSvgHeight + "vh"}
               hover={hover === 0 ? "true" : "false"}
+              selected={selected === 0 ? "true" : "false"}
             />
             <Line
               x1="2.5vw"
@@ -517,6 +538,7 @@ const Timeline = ({
               cx="2.5vw"
               cy={innerSvgHeight - lineLength - circleRadiusInv + "vh"}
               hover={hover === 1 ? "true" : "false"}
+              selected={selected === 1 ? "true" : "false"}
             />
             <Line
               x1="2.5vw"
@@ -529,6 +551,7 @@ const Timeline = ({
               cx="2.5vw"
               cy={innerSvgHeight - lineLength * 2 - circleRadiusInv * 2 + "vh"}
               hover={hover === 2 ? "true" : "false"}
+              selected={selected === 2 ? "true" : "false"}
             />
             <Line
               x1="2.5vw"
@@ -541,6 +564,7 @@ const Timeline = ({
               cx="2.5vw"
               cy={innerSvgHeight - lineLength * 3 - circleRadiusInv * 3 + "vh"}
               hover={hover === 3 ? "true" : "false"}
+              selected={selected === 3 ? "true" : "false"}
             />
             <Line
               x1="2.5vw"
@@ -553,6 +577,7 @@ const Timeline = ({
               cx="2.5vw"
               cy={innerSvgHeight - lineLength * 4 - circleRadiusInv * 4 + "vh"}
               hover={hover === 4 ? "true" : "false"}
+              selected={selected === 4 ? "true" : "false"}
             />
             <Line
               x1="2.5vw"
@@ -565,6 +590,7 @@ const Timeline = ({
               cx="2.5vw"
               cy={innerSvgHeight - lineLength * 5 - circleRadiusInv * 5 + "vh"}
               hover={hover === 5 ? "true" : "false"}
+              selected={selected === 5 ? "true" : "false"}
             />
             <Line
               x1={lineProps6.x}
@@ -578,6 +604,7 @@ const Timeline = ({
               cx="4vw"
               cy={innerSvgHeight - lineLength * 6 - circleRadiusInv * 6 + "vh"}
               hover={hover === 6 ? "true" : "false"}
+              selected={selected === 6 ? "true" : "false"}
             />
           </g>
         </SvgContainer>
@@ -593,9 +620,11 @@ const Timeline = ({
             <Heading
               onMouseOver={() => setHover(6)}
               onMouseOut={() => setHover(null)}
+              onClick={() => setSelected(6)}
               onFocus={() => void 0}
               onBlur={() => void 0}
               hover={hover === 6 ? "true" : "false"}
+              selected={selected === 6 ? "true" : "false"}
             >
               Side Projects
             </Heading>
@@ -609,9 +638,11 @@ const Timeline = ({
             <Heading
               onMouseOver={() => setHover(5)}
               onMouseOut={() => setHover(null)}
+              onClick={() => setSelected(5)}
               onFocus={() => void 0}
               onBlur={() => void 0}
               hover={hover === 5 ? "true" : "false"}
+              selected={selected === 5 ? "true" : "false"}
             >
               Infinity Works
             </Heading>
@@ -625,9 +656,11 @@ const Timeline = ({
             <Heading
               onMouseOver={() => setHover(4)}
               onMouseOut={() => setHover(null)}
+              onClick={() => setSelected(4)}
               onFocus={() => void 0}
               onBlur={() => void 0}
               hover={hover === 4 ? "true" : "false"}
+              selected={selected === 4 ? "true" : "false"}
             >
               Decathlon UK (contract)
             </Heading>
@@ -641,9 +674,11 @@ const Timeline = ({
             <Heading
               onMouseOver={() => setHover(3)}
               onMouseOut={() => setHover(null)}
+              onClick={() => setSelected(3)}
               onFocus={() => void 0}
               onBlur={() => void 0}
               hover={hover === 3 ? "true" : "false"}
+              selected={selected === 3 ? "true" : "false"}
             >
               Charles River Associates
             </Heading>
@@ -657,9 +692,11 @@ const Timeline = ({
             <Heading
               onMouseOver={() => setHover(2)}
               onMouseOut={() => setHover(null)}
+              onClick={() => setSelected(2)}
               onFocus={() => void 0}
               onBlur={() => void 0}
               hover={hover === 2 ? "true" : "false"}
+              selected={selected === 2 ? "true" : "false"}
             >
               Rated People
             </Heading>
@@ -674,9 +711,11 @@ const Timeline = ({
             <Heading
               onMouseOver={() => setHover(1)}
               onMouseOut={() => setHover(null)}
+              onClick={() => setSelected(1)}
               onFocus={() => void 0}
               onBlur={() => void 0}
               hover={hover === 1 ? "true" : "false"}
+              selected={selected === 1 ? "true" : "false"}
             >
               Mindshare Worldwide
             </Heading>
@@ -690,9 +729,11 @@ const Timeline = ({
             <Heading
               onMouseOver={() => setHover(0)}
               onMouseOut={() => setHover(null)}
+              onClick={() => setSelected(0)}
               onFocus={() => void 0}
               onBlur={() => void 0}
               hover={hover === 0 ? "true" : "false"}
+              selected={selected === 0 ? "true" : "false"}
             >
               Education
             </Heading>

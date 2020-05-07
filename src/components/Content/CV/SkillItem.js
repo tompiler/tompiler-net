@@ -26,9 +26,12 @@ const SkillItem = styled(animated.div)`
   display: flex;
   font-family: "Open Sans";
   font-size: 0.9rem;
-  font-weight: ${props => (props.hover === "true" ? 600 : 400)};
+  font-weight: ${props =>
+    props.hover === "true" || props.selected === "true" ? 600 : 400};
   color: ${props =>
-    props.hover === "true" ? props.theme.cv.hover : props.theme.cv.color};
+    props.hover === "true" || props.selected === "true"
+      ? props.theme.cv.hover
+      : props.theme.cv.color};
 `
 
 export { SkillItemContainer, InnerSkillItemContainer, SkillItem }
