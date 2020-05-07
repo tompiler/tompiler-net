@@ -1,5 +1,5 @@
 import React, { useRef } from "react"
-import { useSpring, useChain, animated } from "react-spring"
+import { useSpring, useTransition, useChain, animated } from "react-spring"
 
 import useWindowSize from "../../useWindowSize"
 import { SkillCategoryDendogramContainer } from "./DendogramLayer1"
@@ -14,6 +14,8 @@ import {
   InnerSkillItemContainer,
   SkillItem,
 } from "./SkillItem"
+
+import EmploymentDetail from "./EmploymentDetail"
 
 import styled from "styled-components"
 
@@ -41,7 +43,7 @@ const Circle = styled(animated.circle)`
   stroke: ${props => props.theme.color};
   stroke-width: 1.8;
   fill: ${props =>
-    props.hover === "true" || props.selected === "true"
+    props.hover === "true" || props.selected
       ? props.theme.cv.circle.hover
       : props.theme.background};
 `
@@ -105,11 +107,11 @@ const HeadingDuration = styled("div")`
 const DendrogramPath = styled(animated.path)`
   fill: none;
   stroke: ${props =>
-    props.hover === "true" || props.selected === "true"
+    props.hover === "true" || props.selected
       ? props.theme.cv.line.hover
       : props.theme.cv.line.color};
   stroke-width: ${props =>
-    props.hover === "true" || props.selected === "true" ? 1.2 : 0.7};
+    props.hover === "true" || props.selected ? 1.2 : 0.7};
 `
 
 const Timeline = ({
@@ -142,8 +144,6 @@ const Timeline = ({
   const yStartPx = i => {
     return innerSvgHeightPx - lineLengthPx * i - circleRadius * i
   }
-
-  console.log("Selected:", selected)
 
   // DENDOGRAM LAYER 1
 
@@ -180,7 +180,7 @@ const Timeline = ({
         ]}
   `}
         hover={hover === link.y0.order ? "true" : "false"}
-        selected={selected === link.y0.order ? "true" : "false"}
+        selected={selected.value === link.y0.order}
       />
     )
   })
@@ -216,11 +216,9 @@ const Timeline = ({
               ? "true"
               : "false"
           }
-          selected={
-            skillCategory.validTimelineNodesOrder.includes(selected)
-              ? "true"
-              : "false"
-          }
+          selected={skillCategory.validTimelineNodesOrder.includes(
+            selected.value
+          )}
         >
           {skillCategory.name}
         </SkillCategory>
@@ -260,9 +258,7 @@ const Timeline = ({
         hover={
           link.y1.validTimelineNodesOrder.includes(hover) ? "true" : "false"
         }
-        selected={
-          link.y1.validTimelineNodesOrder.includes(selected) ? "true" : "false"
-        }
+        selected={link.y1.validTimelineNodesOrder.includes(selected.value)}
       />
     )
   })
@@ -297,11 +293,7 @@ const Timeline = ({
           hover={
             skillItem.validTimelineNodesOrder.includes(hover) ? "true" : "false"
           }
-          selected={
-            skillItem.validTimelineNodesOrder.includes(selected)
-              ? "true"
-              : "false"
-          }
+          selected={skillItem.validTimelineNodesOrder.includes(selected.value)}
         >
           {skillItem.name}
         </SkillItem>
@@ -428,6 +420,29 @@ const Timeline = ({
     ref: circleRef6,
   })
 
+  const detailRef = useRef()
+  const detailProps = useSpring({
+    to: {
+      opacity: open ? 1 : 0,
+    },
+    from: {
+      opacity: 0,
+    },
+    ref: detailRef,
+  })
+
+  const transitions = useTransition(selected.value.toString(), null, {
+    from: {
+      cy: selected.value > selected.prevValue ? "15%" : "85%",
+      opacity: 0,
+    },
+    enter: { cy: "50%", opacity: 1 },
+    leave: {
+      cy: selected.value > selected.prevValue ? "85%" : "15%",
+      opacity: 0,
+    },
+  })
+
   // chain
   useChain(
     open
@@ -449,8 +464,10 @@ const Timeline = ({
           skillCategoryRef,
           DendogramLayer2Ref,
           skillItemRef,
+          detailRef,
         ]
       : [
+          detailRef,
           skillItemRef,
           DendogramLayer2Ref,
           skillCategoryRef,
@@ -488,6 +505,7 @@ const Timeline = ({
           2.8,
           2.9,
           3.3,
+          3.6,
         ]
       : [
           0.4,
@@ -507,6 +525,7 @@ const Timeline = ({
           3.2,
           3.2,
           3.5,
+          3.6,
         ]
   )
 
@@ -525,7 +544,7 @@ const Timeline = ({
               cx="2.5vw"
               cy={innerSvgHeight + "vh"}
               hover={hover === 0 ? "true" : "false"}
-              selected={selected === 0 ? "true" : "false"}
+              selected={selected.value === 0 ? true : false}
             />
             <Line
               x1="2.5vw"
@@ -538,7 +557,7 @@ const Timeline = ({
               cx="2.5vw"
               cy={innerSvgHeight - lineLength - circleRadiusInv + "vh"}
               hover={hover === 1 ? "true" : "false"}
-              selected={selected === 1 ? "true" : "false"}
+              selected={selected.value === 1 ? true : false}
             />
             <Line
               x1="2.5vw"
@@ -551,7 +570,7 @@ const Timeline = ({
               cx="2.5vw"
               cy={innerSvgHeight - lineLength * 2 - circleRadiusInv * 2 + "vh"}
               hover={hover === 2 ? "true" : "false"}
-              selected={selected === 2 ? "true" : "false"}
+              selected={selected.value === 2 ? true : false}
             />
             <Line
               x1="2.5vw"
@@ -564,7 +583,7 @@ const Timeline = ({
               cx="2.5vw"
               cy={innerSvgHeight - lineLength * 3 - circleRadiusInv * 3 + "vh"}
               hover={hover === 3 ? "true" : "false"}
-              selected={selected === 3 ? "true" : "false"}
+              selected={selected.value === 3 ? true : false}
             />
             <Line
               x1="2.5vw"
@@ -577,7 +596,7 @@ const Timeline = ({
               cx="2.5vw"
               cy={innerSvgHeight - lineLength * 4 - circleRadiusInv * 4 + "vh"}
               hover={hover === 4 ? "true" : "false"}
-              selected={selected === 4 ? "true" : "false"}
+              selected={selected.value === 4 ? true : false}
             />
             <Line
               x1="2.5vw"
@@ -590,7 +609,7 @@ const Timeline = ({
               cx="2.5vw"
               cy={innerSvgHeight - lineLength * 5 - circleRadiusInv * 5 + "vh"}
               hover={hover === 5 ? "true" : "false"}
-              selected={selected === 5 ? "true" : "false"}
+              selected={selected.value === 5 ? true : false}
             />
             <Line
               x1={lineProps6.x}
@@ -604,7 +623,7 @@ const Timeline = ({
               cx="4vw"
               cy={innerSvgHeight - lineLength * 6 - circleRadiusInv * 6 + "vh"}
               hover={hover === 6 ? "true" : "false"}
-              selected={selected === 6 ? "true" : "false"}
+              selected={selected.value === 6 ? true : false}
             />
           </g>
         </SvgContainer>
@@ -620,11 +639,13 @@ const Timeline = ({
             <Heading
               onMouseOver={() => setHover(6)}
               onMouseOut={() => setHover(null)}
-              onClick={() => setSelected(6)}
+              onClick={() =>
+                setSelected(state => ({ value: 6, prevValue: state.value }))
+              }
               onFocus={() => void 0}
               onBlur={() => void 0}
               hover={hover === 6 ? "true" : "false"}
-              selected={selected === 6 ? "true" : "false"}
+              selected={selected.value === 6}
             >
               Side Projects
             </Heading>
@@ -638,11 +659,13 @@ const Timeline = ({
             <Heading
               onMouseOver={() => setHover(5)}
               onMouseOut={() => setHover(null)}
-              onClick={() => setSelected(5)}
+              onClick={() =>
+                setSelected(state => ({ value: 5, prevValue: state.value }))
+              }
               onFocus={() => void 0}
               onBlur={() => void 0}
               hover={hover === 5 ? "true" : "false"}
-              selected={selected === 5 ? "true" : "false"}
+              selected={selected.value === 5}
             >
               Infinity Works
             </Heading>
@@ -656,11 +679,13 @@ const Timeline = ({
             <Heading
               onMouseOver={() => setHover(4)}
               onMouseOut={() => setHover(null)}
-              onClick={() => setSelected(4)}
+              onClick={() =>
+                setSelected(state => ({ value: 4, prevValue: state.value }))
+              }
               onFocus={() => void 0}
               onBlur={() => void 0}
               hover={hover === 4 ? "true" : "false"}
-              selected={selected === 4 ? "true" : "false"}
+              selected={selected.value === 4}
             >
               Decathlon UK (contract)
             </Heading>
@@ -674,11 +699,13 @@ const Timeline = ({
             <Heading
               onMouseOver={() => setHover(3)}
               onMouseOut={() => setHover(null)}
-              onClick={() => setSelected(3)}
+              onClick={() =>
+                setSelected(state => ({ value: 3, prevValue: state.value }))
+              }
               onFocus={() => void 0}
               onBlur={() => void 0}
               hover={hover === 3 ? "true" : "false"}
-              selected={selected === 3 ? "true" : "false"}
+              selected={selected.value === 3}
             >
               Charles River Associates
             </Heading>
@@ -692,11 +719,13 @@ const Timeline = ({
             <Heading
               onMouseOver={() => setHover(2)}
               onMouseOut={() => setHover(null)}
-              onClick={() => setSelected(2)}
+              onClick={() =>
+                setSelected(state => ({ value: 2, prevValue: state.value }))
+              }
               onFocus={() => void 0}
               onBlur={() => void 0}
               hover={hover === 2 ? "true" : "false"}
-              selected={selected === 2 ? "true" : "false"}
+              selected={selected.value === 2}
             >
               Rated People
             </Heading>
@@ -711,11 +740,13 @@ const Timeline = ({
             <Heading
               onMouseOver={() => setHover(1)}
               onMouseOut={() => setHover(null)}
-              onClick={() => setSelected(1)}
+              onClick={() =>
+                setSelected(state => ({ value: 1, prevValue: state.value }))
+              }
               onFocus={() => void 0}
               onBlur={() => void 0}
               hover={hover === 1 ? "true" : "false"}
-              selected={selected === 1 ? "true" : "false"}
+              selected={selected.value === 1}
             >
               Mindshare Worldwide
             </Heading>
@@ -729,11 +760,13 @@ const Timeline = ({
             <Heading
               onMouseOver={() => setHover(0)}
               onMouseOut={() => setHover(null)}
-              onClick={() => setSelected(0)}
+              onClick={() =>
+                setSelected(state => ({ value: 0, prevValue: state.value }))
+              }
               onFocus={() => void 0}
               onBlur={() => void 0}
               hover={hover === 0 ? "true" : "false"}
-              selected={selected === 0 ? "true" : "false"}
+              selected={selected.value === 0}
             >
               Education
             </Heading>
@@ -775,8 +808,12 @@ const Timeline = ({
         </ColumnHeading>
         <ColumnBody>{skillItemList}</ColumnBody>
       </SkillItemContainer>
+      <EmploymentDetail
+        detailProps={detailProps}
+        transitions={transitions}
+      ></EmploymentDetail>
     </>
   )
 }
 
-export default Timeline
+export { Timeline, Line, Circle }

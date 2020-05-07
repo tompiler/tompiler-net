@@ -6,10 +6,10 @@ export const lightTheme = {
     color: "#505050",
     hover: "#202020",
     line: { color: "#686868", hover: "#202020" },
-    circle: { hover: "#C29E0D" },
+    circle: { hover: "#7a7a7a" },
     toggle: { hover: "#bababa" },
   },
-
+  scrollbar: { track: "#bababa", thumb: "#999999" },
   pageColours: {
     tompiler: { red: 74, green: 171, blue: 255, a: 0.7 }, // #4AABFF
     tutorials: { red: 250, green: 146, blue: 63, a: 0.7 }, // #FA923F
@@ -28,9 +28,10 @@ export const darkTheme = {
     color: "#DCDCDC",
     hover: "#fafafa",
     line: { color: "#DCDCDC", hover: "#fafafa" },
-    circle: { hover: "#C29E0D" },
+    circle: { hover: "#aba49d" },
     toggle: { hover: "#414654" },
   },
+  scrollbar: { track: "#414654", thumb: "#6a7080" },
 
   pageColours: {
     tompiler: { red: 125, green: 197, blue: 255, a: 1 }, // #A5D7FF

@@ -4,7 +4,7 @@ import { useSpring, animated } from "react-spring"
 import useWindowSize from "../../useWindowSize"
 import useInterval from "../../useInterval"
 
-import Timeline from "./Timeline"
+import { Timeline } from "./Timeline"
 
 import styled from "styled-components"
 
@@ -19,30 +19,30 @@ const ContentContainer = styled("div")`
   height: 100vh;
 `
 
-const Button = styled("button")`
-  position: fixed;
-  bottom: 5vh;
-  left: 50px;
-  background: none;
-  width: 5vw;
-  height: 5vh;
+// const Button = styled("button")`
+//   position: fixed;
+//   bottom: 5vh;
+//   left: 50px;
+//   background: none;
+//   width: 5vw;
+//   height: 5vh;
 
-  font-family: "Open Sans";
-  font-weight: 600;
-  color: ${props => props.theme.color};
-  -webkit-appearance: button;
-  border-radius: 5px;
-  box-shadow: none;
+//   font-family: "Open Sans";
+//   font-weight: 600;
+//   color: ${props => props.theme.color};
+//   -webkit-appearance: button;
+//   border-radius: 5px;
+//   box-shadow: none;
 
-  &:focus {
-    outline: none;
-  }
-  cursor: pointer;
-  &:hover {
-    background-color: ${props => `${props.theme.cv.toggle.hover}`};
-  }
-  transition: background-color 250ms;
-`
+//   &:focus {
+//     outline: none;
+//   }
+//   cursor: pointer;
+//   &:hover {
+//     background-color: ${props => `${props.theme.cv.toggle.hover}`};
+//   }
+//   transition: background-color 250ms;
+// `
 
 const CV = ({ mount, transitionStatus, exit, entry, location, children }) => {
   const windowSize = useWindowSize()
@@ -65,7 +65,7 @@ const CV = ({ mount, transitionStatus, exit, entry, location, children }) => {
 
   // springs for CV component transitions
   const [open, toggle] = useState(false)
-  const [selected, setSelected] = useState(null)
+  const [selected, setSelected] = useState({ value: 5, prevValue: null })
   const [hover, setHover] = useState(null)
   const [first, toggleFirst] = useState(true)
   const mobile = windowSize.width < 650 ? true : false
@@ -87,14 +87,10 @@ const CV = ({ mount, transitionStatus, exit, entry, location, children }) => {
   const circleRadiusInv = (circleRadius / windowSize.height) * 100
   const svgHeight = 100 - margin.top - margin.bottom
   const innerSvgHeight = svgHeight - padding.bottom
-  // const lineLength = innerSvgHeight / 6 - circleRadius * 6
 
   const lineLength =
     (svgHeight - padding.top - padding.bottom) / (circleNodes - 1) -
     circleRadiusInv
-  // const lineLength =
-  //   (innerSvgHeight - circleRadiusInv * circleNodes) / circleNodes -
-  //   padding.top / circleNodes
 
   useInterval(() => {
     toggleFirst(false)
@@ -121,45 +117,6 @@ const CV = ({ mount, transitionStatus, exit, entry, location, children }) => {
           circleRadiusInv={circleRadiusInv}
           padding={padding}
         />
-        {/* <DendogramLayer1
-          open={open}
-          mobile={mobile}
-          svgHeight={svgHeight}
-          innerSvgHeight={innerSvgHeight}
-          lineLength={lineLength}
-          circleRadius={circleRadius}
-          circleRadiusInv={circleRadiusInv}
-          padding={padding}
-        />
-        <SkillCategory
-          open={open}
-          mobile={mobile}
-          svgHeight={svgHeight}
-          innerSvgHeight={innerSvgHeight}
-          lineLength={lineLength}
-          circleRadius={circleRadius}
-          padding={padding}
-        />
-
-        <DendogramLayer2
-          open={open}
-          mobile={mobile}
-          svgHeight={svgHeight}
-          innerSvgHeight={innerSvgHeight}
-          lineLength={lineLength}
-          circleRadius={circleRadius}
-          padding={padding}
-        /> */}
-        {/*
-        <SkillItem
-          open={open}
-          mobile={mobile}
-          svgHeight={svgHeight}
-          innerSvgHeight={innerSvgHeight}
-          lineLength={lineLength}
-          circleRadius={circleRadius}
-          padding={padding}
-        /> */}
       </animated.div>
     </ContentContainer>
   )
