@@ -12,6 +12,8 @@ import SideProjects from "./EmploymentItems/SideProjects"
 import Mindshare from "./EmploymentItems/Mindshare"
 import Education from "./EmploymentItems/Education"
 
+import CVDetailLayout from "./CVDetailLayout"
+
 import styled from "styled-components"
 
 const DetailContainer = styled(animated.div)`
@@ -20,29 +22,10 @@ const DetailContainer = styled(animated.div)`
   left: 56vw;
   height: 89vh;
   width: 30vw;
-  /* border: 1px dashed lightpink; */
+  border: 1px dashed lightpink;
   overflow: hidden;
 `
 
-const DetailSubContainer = styled("div")`
-  display: inline-block;
-  position: absolute;
-  left: 18%;
-  width: 82%;
-  height: 70%;
-  /* border: 1px dashed lightpink; */
-  overflow-y: scroll;
-  overflow-x: hidden;
-`
-
-const DetailTitleContainer = styled("div")`
-  display: inline-block;
-  position: absolute;
-  top: 15%;
-  width: 18%;
-  height: 55%;
-  /* border: 1px dashed lightpink; */
-`
 const JobTitle = styled("p")`
   top: 2%;
   text-align: center;
@@ -59,14 +42,6 @@ const JobDuration = styled("p")`
   margin: 1vh 0.5vw;
 `
 
-const DetailSvgContainer = styled("div")`
-  display: inline-block;
-  position: absolute;
-  width: 18%;
-  height: 15%;
-  /* border: 1px dashed lightpink; */
-`
-
 const ExplainContainer = styled("div")`
   display: inline-block;
   position: absolute;
@@ -74,24 +49,17 @@ const ExplainContainer = styled("div")`
   width: 100%;
   height: 30%;
   padding: 1vh 2vw;
-  /* border: 1px dashed lightpink; */
+  border: 1px dashed lightpink;
 `
 
 const ExplainContainerHeading = styled("h3")`
   /* display: inline-block; */
   position: relative;
-  /* border: 1px dashed lightpink; */
+  border: 1px dashed lightpink;
 `
 
 const ExplainContainerContent = styled("p")`
   position: relative;
-`
-
-const DetailSvg = styled(animated.svg)`
-  display: inline-block;
-  position: absolute;
-  width: 100%;
-  height: 100%;
 `
 
 const AnimatedDetailDiv = styled(animated.div)`
@@ -103,146 +71,11 @@ const AnimatedDetailDiv = styled(animated.div)`
 const EmploymentDetail = ({ detailProps, transitions }) => {
   return (
     <DetailContainer style={{ opacity: detailProps.opacity }}>
-      <DetailSvgContainer>
-        <DetailSvg>
-          <Line x1="50%" x2="50%" y1="15%" y2="85%" />
-
-          {transitions.map(
-            ({ item, key, props }) =>
-              item && (
-                <Circle
-                  key={key}
-                  cx="50%"
-                  cy={props.cy}
-                  r="6"
-                  selected={true}
-                  style={{ opacity: props.opacity }}
-                />
-              )
-          )}
-        </DetailSvg>
-      </DetailSvgContainer>
-      <DetailTitleContainer>
-        {transitions.map(({ item, key, props }) => {
-          switch (item) {
-            case "0":
-              return null
-            case "1":
-              return (
-                <AnimatedDetailDiv key={key} style={{ opacity: props.opacity }}>
-                  <JobTitle>Data Analyst</JobTitle>
-                  <JobDuration>November 2013 - August 2014</JobDuration>
-                </AnimatedDetailDiv>
-              )
-            case "2":
-              return (
-                <AnimatedDetailDiv key={key} style={{ opacity: props.opacity }}>
-                  <JobTitle>Business Intelligence Developer</JobTitle>
-                  <JobDuration>September 2014 - September 2016</JobDuration>
-                </AnimatedDetailDiv>
-              )
-            case "3":
-              return (
-                <AnimatedDetailDiv key={key} style={{ opacity: props.opacity }}>
-                  <JobTitle>Data Scientist</JobTitle>
-                  <JobDuration>October 2016 - December 2018</JobDuration>
-                </AnimatedDetailDiv>
-              )
-            case "4":
-              return (
-                <AnimatedDetailDiv key={key} style={{ opacity: props.opacity }}>
-                  <JobTitle>React Developer</JobTitle>
-                  <JobDuration>January 2019 - June 2019</JobDuration>
-                </AnimatedDetailDiv>
-              )
-            case "5":
-              return (
-                <AnimatedDetailDiv key={key} style={{ opacity: props.opacity }}>
-                  <JobTitle>Data Engineer</JobTitle>
-                  <JobDuration>July 2019 - present</JobDuration>
-                </AnimatedDetailDiv>
-              )
-            case "6":
-              return null
-            default:
-              return (
-                <AnimatedDetailDiv key={key} style={{ opacity: props.opacity }}>
-                  <JobTitle>Data Engineer</JobTitle>
-                  <JobDuration>July 2019 - present</JobDuration>
-                </AnimatedDetailDiv>
-              )
-          }
-        })}
-      </DetailTitleContainer>
-      <DetailSubContainer>
-        {transitions.map(({ item, key, props }) => {
-          switch (item) {
-            case "0":
-              return (
-                <AnimatedDetailDiv key={key} style={{ opacity: props.opacity }}>
-                  <Education />
-                </AnimatedDetailDiv>
-              )
-            case "1":
-              return (
-                <AnimatedDetailDiv
-                  key={key}
-                  style={{
-                    opacity: props.opacity,
-                  }}
-                >
-                  <Mindshare />
-                </AnimatedDetailDiv>
-              )
-            case "2":
-              return (
-                <AnimatedDetailDiv key={key} style={{ opacity: props.opacity }}>
-                  <RatedPeople />
-                </AnimatedDetailDiv>
-              )
-            case "3":
-              return (
-                <AnimatedDetailDiv key={key} style={{ opacity: props.opacity }}>
-                  <CRA />
-                </AnimatedDetailDiv>
-              )
-            case "4":
-              return (
-                <AnimatedDetailDiv key={key} style={{ opacity: props.opacity }}>
-                  <Decathlon />
-                </AnimatedDetailDiv>
-              )
-            case "5":
-              return (
-                <AnimatedDetailDiv
-                  key={key}
-                  style={{
-                    opacity: props.opacity,
-                  }}
-                >
-                  <InfinityWorks />
-                </AnimatedDetailDiv>
-              )
-            case "6":
-              return (
-                <AnimatedDetailDiv key={key} style={{ opacity: props.opacity }}>
-                  <SideProjects />
-                </AnimatedDetailDiv>
-              )
-            default:
-              return (
-                <AnimatedDetailDiv
-                  key={key}
-                  style={{
-                    opacity: props.opacity,
-                  }}
-                >
-                  <InfinityWorks />
-                </AnimatedDetailDiv>
-              )
-          }
-        })}
-      </DetailSubContainer>
+      {transitions.map(({ item, key, props }) => (
+        <CVDetailLayout key={key} item={item}>
+          blah
+        </CVDetailLayout>
+      ))}
       <ExplainContainer>
         <ExplainContainerHeading>
           Work Experience Dendogram

@@ -11,7 +11,7 @@ import {
 
 const Institution = styled("p")`
   font-weight: 600;
-  margin: 0;
+  margin: 4.5vh 0;
 `
 
 const Education = () => {

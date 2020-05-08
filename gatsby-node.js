@@ -23,7 +23,7 @@ module.exports.createPages = async ({ graphql, actions }) => {
 
   const res = await graphql(`
     query {
-      allMarkdownRemark {
+      allMarkdownRemark(filter: { fields: { slug: { eq: "react" } } }) {
         edges {
           node {
             fields {
@@ -39,7 +39,7 @@ module.exports.createPages = async ({ graphql, actions }) => {
     createPage({
       path: `/blog/${edge.node.fields.slug}`,
       context: {
-        slug: edge.node.fields.slug,
+        sluggfefef: edge.node.fields.slug,
       },
       component: blogTemplate,
     })

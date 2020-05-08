@@ -2,7 +2,7 @@ import React, { useContext } from "react"
 import Context from "./store/context"
 
 import Toolbar from "./Toolbar/Toolbar"
-import ContentContainer from "./Content/TransitionStateWrapper"
+import TransitionStateWrapper from "./Content/TransitionStateWrapper"
 import Navigation from "./Navigation/Navigation"
 
 import useWindowSize from "./useWindowSize"
@@ -46,7 +46,7 @@ const Layout = props => {
             </div>
           </NavigationContainer>
           {/* <ContainerRight mobile={windowSize.width < 650 ? true : false}> */}
-          <ContentContainer>{props.children}</ContentContainer>
+          <TransitionStateWrapper>{props.children}</TransitionStateWrapper>
           {/* </ContainerRight> */}
         </div>
       </>

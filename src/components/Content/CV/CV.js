@@ -47,21 +47,21 @@ const ContentContainer = styled("div")`
 const CV = ({ mount, transitionStatus, exit, entry, location, children }) => {
   const windowSize = useWindowSize()
   // console.log(windowSize)
-  const route = location.pathname.substr(1)
+  // const route = location.pathname.substr(1)
 
   // spring for page transitions
-  const opacityProps = useSpring({
-    from: { opacity: 0 },
-    to: {
-      opacity: mount && route === "cv" ? 1 : 0,
-    },
-    config: {
-      //   duration: 1000,
-      mass: 1,
-      tension: 120,
-      friction: 15,
-    },
-  })
+  // const opacityProps = useSpring({
+  //   from: { opacity: 0 },
+  //   to: {
+  //     opacity: mount && route === "cv" ? 1 : 0,
+  //   },
+  //   config: {
+  //     //   duration: 1000,
+  //     mass: 1,
+  //     tension: 120,
+  //     friction: 15,
+  //   },
+  // })
 
   // springs for CV component transitions
   const [open, toggle] = useState(false)
@@ -101,23 +101,23 @@ const CV = ({ mount, transitionStatus, exit, entry, location, children }) => {
 
   return (
     <ContentContainer mobile={mobile}>
-      <animated.div style={{ opacity: opacityProps.opacity }}>
-        {/* <Button onClick={() => toggle(!open)}>Toggle Animation</Button> */}
-        <Timeline
-          open={open}
-          mobile={mobile}
-          hover={hover}
-          selected={selected}
-          setHover={setHover}
-          setSelected={setSelected}
-          svgHeight={svgHeight}
-          innerSvgHeight={innerSvgHeight}
-          lineLength={lineLength}
-          circleRadius={circleRadius}
-          circleRadiusInv={circleRadiusInv}
-          padding={padding}
-        />
-      </animated.div>
+      {/* <animated.div style={{ opacity: opacityProps.opacity }}> */}
+      {/* <Button onClick={() => toggle(!open)}>Toggle Animation</Button> */}
+      <Timeline
+        open={open}
+        mobile={mobile}
+        hover={hover}
+        selected={selected}
+        setHover={setHover}
+        setSelected={setSelected}
+        svgHeight={svgHeight}
+        innerSvgHeight={innerSvgHeight}
+        lineLength={lineLength}
+        circleRadius={circleRadius}
+        circleRadiusInv={circleRadiusInv}
+        padding={padding}
+      />
+      {/* </animated.div> */}
     </ContentContainer>
   )
 }

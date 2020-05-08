@@ -748,7 +748,7 @@ const Timeline = ({
               hover={hover === 1 ? "true" : "false"}
               selected={selected.value === 1}
             >
-              Mindshare Worldwide
+              Mindshare
             </Heading>
             <HeadingDuration>November 2013 - August 2014</HeadingDuration>
           </HeadingContainer>
