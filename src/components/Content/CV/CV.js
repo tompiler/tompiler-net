@@ -1,5 +1,4 @@
 import React, { useState } from "react"
-import { useSpring, animated } from "react-spring"
 
 import useWindowSize from "../../useWindowSize"
 import useInterval from "../../useInterval"
@@ -44,26 +43,9 @@ const ContentContainer = styled("div")`
 //   transition: background-color 250ms;
 // `
 
-const CV = ({ mount, transitionStatus, exit, entry, location, children }) => {
+const CV = () => {
   const windowSize = useWindowSize()
-  // console.log(windowSize)
-  // const route = location.pathname.substr(1)
 
-  // spring for page transitions
-  // const opacityProps = useSpring({
-  //   from: { opacity: 0 },
-  //   to: {
-  //     opacity: mount && route === "cv" ? 1 : 0,
-  //   },
-  //   config: {
-  //     //   duration: 1000,
-  //     mass: 1,
-  //     tension: 120,
-  //     friction: 15,
-  //   },
-  // })
-
-  // springs for CV component transitions
   const [open, toggle] = useState(false)
   const [selected, setSelected] = useState({ value: 5, prevValue: null })
   const [hover, setHover] = useState(null)
@@ -101,7 +83,6 @@ const CV = ({ mount, transitionStatus, exit, entry, location, children }) => {
 
   return (
     <ContentContainer mobile={mobile}>
-      {/* <animated.div style={{ opacity: opacityProps.opacity }}> */}
       {/* <Button onClick={() => toggle(!open)}>Toggle Animation</Button> */}
       <Timeline
         open={open}
@@ -117,7 +98,6 @@ const CV = ({ mount, transitionStatus, exit, entry, location, children }) => {
         circleRadiusInv={circleRadiusInv}
         padding={padding}
       />
-      {/* </animated.div> */}
     </ContentContainer>
   )
 }

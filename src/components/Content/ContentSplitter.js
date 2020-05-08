@@ -1,14 +1,12 @@
 import React from "react"
 
 import Content from "./Content"
-import CV from "./CV/CV"
+import CVContainer from "./CV/CVContainer"
 
 import { useTransition } from "react-spring"
 
 const ContentSplitter = props => {
-  const route = props.location.pathname.substr(1)
-
-  const toggle = props.exit.state.exitState !== "cv" //|| route !== "cv" //|| props.exit.state.exitState === "cv"
+  const toggle = props.entry.state.entryState === "cv"
   const transitions = useTransition(toggle, null, {
     from: { opacity: 0 },
     enter: { opacity: 1 },
@@ -20,20 +18,12 @@ const ContentSplitter = props => {
     },
   })
 
-  console.log(
-    route,
-    props.mount,
-    props.transitionStatus,
-    props.exit.state.exitState,
-    props.entry.state.entryState
-  )
-
   // not sure why this works but it does :/
   return transitions.map(({ item, key, transitionProps }) =>
     item ? (
-      <div key={key} {...props}>
+      <CVContainer key={key} {...props}>
         {props.children}
-      </div>
+      </CVContainer>
     ) : (
       <Content key={key} {...props}>
         {props.children}
