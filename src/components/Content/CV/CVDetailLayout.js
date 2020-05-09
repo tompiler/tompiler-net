@@ -1,84 +1,119 @@
 import React from "react"
 
+import { useTransition, animated } from "react-spring"
+import { graphql, useStaticQuery } from "gatsby"
+
 import styled from "styled-components"
 
-const DetailTitleContainer = styled("div")`
+const TitleContainer = styled("div")`
   display: inline-block;
   position: absolute;
   top: 0%;
   left: 0%;
   width: 100%;
   height: 10%;
-  border: 1px dashed lightpink;
+  /* border: 1px dashed lightpink; */
 `
 
-const DetailTitleInnerContainer = styled("div")`
+const TitleInnerContainer = styled("div")`
   display: inline-block;
   position: absolute;
   top: 0%;
   left: 0%;
-  width: 70%;
+  width: 80%;
   height: 70%;
-  border: 1px dashed lightpink;
+  /* border: 1px dashed lightpink; */
 `
 
 const JobHeading = styled("p")`
   width: 100%;
   font-size: 1.5em;
   text-align: left;
-  font-weight: 600;
+  font-weight: 700;
   margin: 1em 0 0 2vw;
 `
 
-const DetailTitlePositionContainer = styled("div")`
+const PositionContainer = styled("div")`
   display: inline-block;
   position: absolute;
   top: 0%;
-  left: 70%;
-  width: 30%;
-  height: 70%;
-  border: 1px dashed lightpink;
+  left: 80%;
+  width: 20%;
+  height: 100%;
+  /* border: 1px dashed lightpink; */
 `
 
 const JobTitle = styled("p")`
   top: 2%;
   text-align: center;
   font-style: italic;
-  font-size: 0.8em;
+  font-size: 0.9em;
   margin: 1.5em 0.8vw;
 `
 
-const DetailTitleDurationContainer = styled("div")`
+const DurationContainer = styled("div")`
   display: inline-block;
   position: absolute;
   top: 70%;
   left: 0%;
-  width: 100%;
+  width: 80%;
   height: 30%;
-  border: 1px dashed lightpink;
+  /* border: 1px dashed lightpink; */
 `
 
 const JobDuration = styled("p")`
   text-align: left;
   font-style: italic;
-  font-size: 0.8em;
+  font-size: 0.9em;
   margin: 0 0 0 2vw;
 `
 
 const JobSubheading = styled("p")`
   font-size: 1em;
   font-weight: 600;
+  margin: 0;
+  padding: 2vh 0vw 0vh 2vw;
 `
 
 const JobSummary = styled("p")`
   font-size: 0.95em;
-  margin: 4.5vh 0;
+  margin: 0vh 0vw 1vh 2vw;
+  font-weight: 600;
+`
+
+const EducationContainer = styled("div")`
+  margin: 0vh 0vw 1vh 2vw;
+`
+
+const Education = styled("p")`
+  font-size: 0.95em;
+  font-weight: ${props => (props.title ? 600 : 400)};
+  margin: 0;
+`
+
+const JobDescriptionUL = styled("ul")`
+  /* margin: 2.5vh 0vw 0 0vw; */
+  /* padding-inline-start: 2vw; */
+  display: block;
+  list-style-type: disc;
+  margin-block-start: 0em;
+  margin-block-end: 0em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  margin: 0 2vw;
+  padding-inline-start: 0;
 `
 
 const JobDescription = styled("li")`
   position: relative;
-  margin: 0.8vh 0;
-  font-size: 0.9em;
+  font-size: 0.85em;
+  margin: 2vh 0vw 0 0vw;
+`
+
+const JobSubDescription = styled("li")`
+  position: relative;
+  font-size: 0.85em;
+  margin: 1vh 0vw 0 0vw;
 `
 
 const DetailContentContainer = styled("div")`
@@ -88,59 +123,116 @@ const DetailContentContainer = styled("div")`
   left: 0%;
   width: 100%;
   height: 40%;
-  border: 1px dashed lightpink;
+  /* border: 1px dashed lightpink; */
   overflow-y: scroll;
   overflow-x: hidden;
+  padding: 2vh 0;
 `
 
-const DetailInnerContentContainer = styled("div")`
-  padding: 1vh 2vw;
-`
+const CVDetailLayout = ({ selected }) => {
+  // console.log(data)
+  const data = useStaticQuery(graphql`
+    query CVQuery {
+      allCvDataJson {
+        edges {
+          node {
+            heading
+            selected
+            values {
+              placements {
+                name
+                description {
+                  text
+                  subText
+                }
+              }
+              education {
+                name
+                award
+              }
+              duration
+              summary
+              title
+            }
+          }
+        }
+      }
+    }
+  `)
+  console.log("SELECTED:", selected, data)
 
-const CVDetailLayout = props => {
+  const [node] = data.allCvDataJson.edges.filter(edge => {
+    console.log(edge.node.selected === selected)
+    return edge.node.selected === selected
+  })
+
+  if (node === undefined) {
+    return null
+  }
+
+  const { heading } = node.node
+  const { education, title, duration, summary, placements } = node.node.values
+
   return (
-    <>
-      <DetailTitleContainer>
-        <DetailTitleInnerContainer>
-          <JobHeading>Mindshare</JobHeading>
-        </DetailTitleInnerContainer>
-        <DetailTitlePositionContainer>
-          <JobTitle>Data Analyst</JobTitle>
-        </DetailTitlePositionContainer>
-        <DetailTitleDurationContainer>
-          <JobDuration>November 2013-August 2014</JobDuration>
-        </DetailTitleDurationContainer>
-      </DetailTitleContainer>
+    <div>
+      <TitleContainer>
+        <TitleInnerContainer>
+          <JobHeading>{heading}</JobHeading>
+        </TitleInnerContainer>
+        <PositionContainer>
+          <JobTitle>{title}</JobTitle>
+        </PositionContainer>
+        <DurationContainer>
+          <JobDuration>{duration}</JobDuration>
+        </DurationContainer>
+      </TitleContainer>
       <DetailContentContainer>
-        <DetailInnerContentContainer>
-          Lorem ipsum dolor sit amet, pri quas luptatum comprehensam cu. Omittam
-          intellegebat sit ne, per dicam similique in. Ceteros suavitate
-          consequat ex has, at suas case solum sit, his et inermis nusquam. Ad
-          quo utinam comprehensam, nec fabulas senserit intellegam no. Ex sit
-          error semper voluptatum, te meliore pertinacia consetetur vis, quod
-          omittam mea et. Adhuc tritani insolens id eum. Vim soluta democritum
-          suscipiantur et. Et vix munere minimum, ei labore nemore eam. Pro
-          dicit eirmod intellegebat ad, his sint novum mollis ut. His recusabo
-          interpretaris at. Per id liber corpora eloquentiam, eos id dicunt
-          accusam. Ut decore laudem percipit has, quis graeco aliquando et mel.
-          Ea utinam viderer qui, meis salutatus usu ut. Cu aliquam voluptatibus
-          vix, ne eam velit liberavisse, eam ei magna delenit scripserit. Nihil
-          deserunt disputando ei eam, vel te mutat essent, pri iuvaret
-          moderatius an. Duo ad utamur alienum sensibus, eu est hinc choro
-          mnesarchum, no soluta persius has. Te reque voluptaria nec, iuvaret
-          feugait te eam, nullam eligendi consequat eum ut. An pri soluta
-          iuvaret, aliquam repudiandae at vim, ne probo legere contentiones vis.
-          Inani harum sadipscing cum at, in vel nominati molestiae suscipiantur.
-          Labore splendide hendrerit an vim. Te duo quem consectetuer, ex usu
-          enim erat. Has tantas volutpat mediocrem eu, brute cotidieque eos ne.
-          Eam duis vocibus maiorum in, graecis blandit vituperata usu ei, vel cu
-          brute molestiae. Et case instructior eos, ex his quod consequuntur
-          voluptatibus. Adhuc simul iriure mei et, cu has quando interesset,
-          feugiat laboramus pri te. Nec phaedrum cotidieque eu, id porro integre
-          eam. Ut etiam dolor legimus qui.
-        </DetailInnerContentContainer>
+        {summary && <JobSummary>{summary}</JobSummary>}
+        {selected === -1 &&
+          education.map(uni => (
+            <EducationContainer>
+              <Education title>{uni.name}</Education>
+              <Education>{uni.award}</Education>
+            </EducationContainer>
+          ))}
+        {placements &&
+          placements.map(placement => {
+            return (
+              <>
+                {placement.name && (
+                  <JobSubheading>{placement.name}</JobSubheading>
+                )}
+                {placement.description.map((desc, i) => (
+                  <JobDescriptionUL key={"desc" + i}>
+                    <JobDescription>{desc.text}</JobDescription>
+                    {desc.subText &&
+                      desc.subText.map((subText, i) => (
+                        <ul key={"sub" + i}>
+                          <JobSubDescription>{subText}</JobSubDescription>
+                        </ul>
+                      ))}
+                  </JobDescriptionUL>
+                ))}
+              </>
+            )
+          })}
+        {/* {placements.map(placement => {
+          placement.description.map;
+          return <JobSubheading>{placement.name}</JobSubheading>;
+        })}
+        {description.map((desc, i) => (
+          <JobDescriptionUL key={"desc" + i}>
+            <JobDescription>{desc.text}</JobDescription>
+            {desc.subText &&
+              desc.subText.map((subText, i) => (
+                <ul key={"sub" + i}>
+                  <JobSubDescription>{subText}</JobSubDescription>
+                </ul>
+              ))}
+          </JobDescriptionUL>
+        ))} */}
       </DetailContentContainer>
-    </>
+    </div>
   )
 }
 

@@ -6,7 +6,7 @@ import {
   JobSubheading,
   JobSummary,
   BulletList,
-  JobDescription,
+  JobDescription
 } from "./EmploymentStyles"
 
 const InfinityWorks = () => {

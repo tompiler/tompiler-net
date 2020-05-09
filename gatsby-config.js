@@ -17,6 +17,7 @@ module.exports = {
         injectPageProps: false,
       },
     },
+    "gatsby-transformer-json",
     {
       resolve: "gatsby-source-filesystem",
       options: {

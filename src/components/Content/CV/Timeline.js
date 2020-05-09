@@ -7,12 +7,12 @@ import { SkillItemDendogramContainer } from "./DendogramLayer2"
 import {
   SkillCategoryContainer,
   InnerSkillCategoryContainer,
-  SkillCategory,
+  SkillCategory
 } from "./SkillCategory"
 import {
   SkillItemContainer,
   InnerSkillItemContainer,
-  SkillItem,
+  SkillItem
 } from "./SkillItem"
 
 import EmploymentDetail from "./EmploymentDetail"
@@ -126,7 +126,7 @@ const Timeline = ({
   lineLength,
   circleRadius,
   circleRadiusInv,
-  padding,
+  padding
 }) => {
   const windowSize = useWindowSize()
 
@@ -150,15 +150,15 @@ const Timeline = ({
   const DendogramLayer1Ref = useRef()
   const DendogramLayer1Props = useSpring({
     to: {
-      x: open ? -3000 : -1200,
+      x: open ? -3000 : -1200
     },
     from: { x: -1200 },
     config: {
       mass: 1,
       tension: 20,
-      friction: 20,
+      friction: 20
     },
-    ref: DendogramLayer1Ref,
+    ref: DendogramLayer1Ref
   })
 
   var skillCategorylinks = []
@@ -173,10 +173,10 @@ const Timeline = ({
       svgWidth * 0.33,
       innerSvgHeightPx -
         lineLengthPx * link.y0.order -
-        circleRadius * link.y0.order,
+        circleRadius * link.y0.order
     ]} ${[svgWidth * 0.66, toPxH(link.y1.vh - 1.8)]} ${[
           svgWidth,
-          toPxH(link.y1.vh - 1.8),
+          toPxH(link.y1.vh - 1.8)
         ]}
   `}
         hover={hover === link.y0.order ? "true" : "false"}
@@ -190,15 +190,15 @@ const Timeline = ({
   const skillCategoryRef = useRef()
   const skillCategoryProps = useSpring({
     to: {
-      opacity: open ? 1 : 0,
+      opacity: open ? 1 : 0
     },
     from: { opacity: 0 },
     ref: skillCategoryRef,
     config: {
       mass: 1,
       tension: 150,
-      friction: 35,
-    },
+      friction: 35
+    }
   })
 
   var skillCategoryList = []
@@ -231,15 +231,15 @@ const Timeline = ({
   const DendogramLayer2Ref = useRef()
   const DendogramLayer2Props = useSpring({
     to: {
-      x: open ? -2300 : -1000,
+      x: open ? -2300 : -1000
     },
     from: { x: -1000 },
     config: {
       mass: 1,
       tension: 20,
-      friction: 20,
+      friction: 20
     },
-    ref: DendogramLayer2Ref,
+    ref: DendogramLayer2Ref
   })
 
   var skillItemlinks = []
@@ -252,7 +252,7 @@ const Timeline = ({
     M ${[0, toPxH(link.y0.vh - 1.8)]}
     C  ${[svgWidth * 0.33, toPxH(link.y0.vh - 1.8)]} ${[
           svgWidth * 0.66,
-          toPxH(link.y1.vh - 1.8),
+          toPxH(link.y1.vh - 1.8)
         ]} ${[svgWidth, toPxH(link.y1.vh - 1.8)]}
   `}
         hover={
@@ -268,15 +268,15 @@ const Timeline = ({
   const skillItemRef = useRef()
   const skillItemProps = useSpring({
     to: {
-      opacity: open ? 1 : 0,
+      opacity: open ? 1 : 0
     },
     from: { opacity: 0 },
     ref: skillItemRef,
     config: {
       mass: 1,
       tension: 150,
-      friction: 35,
-    },
+      friction: 35
+    }
   })
 
   var skillItemList = []
@@ -305,7 +305,7 @@ const Timeline = ({
   const circleProps0 = useSpring({
     to: { r: open ? circleRadius : 0, opacity: open ? 1 : 0 },
     from: { r: 0, opacity: 0 },
-    ref: circleRef0,
+    ref: circleRef0
   })
 
   const lineRef = useRef()
@@ -313,17 +313,17 @@ const Timeline = ({
     to: {
       y: open
         ? innerSvgHeight - lineLength - circleRadiusInv + "vh"
-        : innerSvgHeight - circleRadiusInv + "vh",
+        : innerSvgHeight - circleRadiusInv + "vh"
     },
     from: { y: innerSvgHeight - circleRadiusInv + "vh" },
-    ref: lineRef,
+    ref: lineRef
   })
 
   const circleRef = useRef()
   const circleProps = useSpring({
     to: { r: open ? circleRadius : 0, opacity: open ? 1 : 0 },
     from: { r: 0, opacity: 0 },
-    ref: circleRef,
+    ref: circleRef
   })
 
   const lineRef2 = useRef()
@@ -331,17 +331,17 @@ const Timeline = ({
     to: {
       y: open
         ? innerSvgHeight - lineLength * 2 - circleRadiusInv * 2 + "vh"
-        : innerSvgHeight - lineLength - circleRadiusInv * 2 + "vh",
+        : innerSvgHeight - lineLength - circleRadiusInv * 2 + "vh"
     },
     from: { y: innerSvgHeight - lineLength - circleRadiusInv * 2 + "vh" },
-    ref: lineRef2,
+    ref: lineRef2
   })
 
   const circleRef2 = useRef()
   const circleProps2 = useSpring({
     to: { r: open ? circleRadius : 0, opacity: open ? 1 : 0 },
     from: { r: 0, opacity: 0 },
-    ref: circleRef2,
+    ref: circleRef2
   })
 
   const lineRef3 = useRef()
@@ -349,17 +349,17 @@ const Timeline = ({
     to: {
       y: open
         ? innerSvgHeight - lineLength * 3 - circleRadiusInv * 3 + "vh"
-        : innerSvgHeight - lineLength * 2 - circleRadiusInv * 3 + "vh",
+        : innerSvgHeight - lineLength * 2 - circleRadiusInv * 3 + "vh"
     },
     from: { y: innerSvgHeight - lineLength * 2 - circleRadiusInv * 3 + "vh" },
-    ref: lineRef3,
+    ref: lineRef3
   })
 
   const circleRef3 = useRef()
   const circleProps3 = useSpring({
     to: { r: open ? circleRadius : 0, opacity: open ? 1 : 0 },
     from: { r: 0, opacity: 0 },
-    ref: circleRef3,
+    ref: circleRef3
   })
 
   const lineRef4 = useRef()
@@ -367,17 +367,17 @@ const Timeline = ({
     to: {
       y: open
         ? innerSvgHeight - lineLength * 4 - circleRadiusInv * 4 + "vh"
-        : innerSvgHeight - lineLength * 3 - circleRadiusInv * 4 + "vh",
+        : innerSvgHeight - lineLength * 3 - circleRadiusInv * 4 + "vh"
     },
     from: { y: innerSvgHeight - lineLength * 3 - circleRadiusInv * 4 + "vh" },
-    ref: lineRef4,
+    ref: lineRef4
   })
 
   const circleRef4 = useRef()
   const circleProps4 = useSpring({
     to: { r: open ? circleRadius : 0, opacity: open ? 1 : 0 },
     from: { r: 0, opacity: 0 },
-    ref: circleRef4,
+    ref: circleRef4
   })
 
   const lineRef5 = useRef()
@@ -385,17 +385,17 @@ const Timeline = ({
     to: {
       y: open
         ? innerSvgHeight - lineLength * 5 - circleRadiusInv * 5 + "vh"
-        : innerSvgHeight - lineLength * 4 - circleRadiusInv * 5 + "vh",
+        : innerSvgHeight - lineLength * 4 - circleRadiusInv * 5 + "vh"
     },
     from: { y: innerSvgHeight - lineLength * 4 - circleRadiusInv * 5 + "vh" },
-    ref: lineRef5,
+    ref: lineRef5
   })
 
   const circleRef5 = useRef()
   const circleProps5 = useSpring({
     to: { r: open ? circleRadius : 0, opacity: open ? 1 : 0 },
     from: { r: 0, opacity: 0 },
-    ref: circleRef5,
+    ref: circleRef5
   })
 
   const lineRef6 = useRef()
@@ -404,43 +404,31 @@ const Timeline = ({
       y: open
         ? innerSvgHeight - lineLength * 6 - circleRadiusInv * 6 + "vh"
         : innerSvgHeight - lineLength * 5 - circleRadiusInv * 6 + "vh",
-      x: open ? 4 + "vw" : 2.5 + "vw",
+      x: open ? 4 + "vw" : 2.5 + "vw"
     },
     from: {
       y: innerSvgHeight - lineLength * 5 - circleRadiusInv * 6 + "vh",
-      x: 2.5 + "vw",
+      x: 2.5 + "vw"
     },
-    ref: lineRef6,
+    ref: lineRef6
   })
 
   const circleRef6 = useRef()
   const circleProps6 = useSpring({
     to: { r: open ? circleRadius : 0, opacity: open ? 1 : 0 },
     from: { r: 0, opacity: 0 },
-    ref: circleRef6,
+    ref: circleRef6
   })
 
   const detailRef = useRef()
   const detailProps = useSpring({
     to: {
-      opacity: open ? 1 : 0,
+      opacity: open ? 1 : 0
     },
     from: {
-      opacity: 0,
+      opacity: 0
     },
-    ref: detailRef,
-  })
-
-  const transitions = useTransition(selected.value.toString(), null, {
-    from: {
-      cy: selected.value > selected.prevValue ? "15%" : "85%",
-      opacity: 0,
-    },
-    enter: { cy: "50%", opacity: 1 },
-    leave: {
-      cy: selected.value > selected.prevValue ? "85%" : "15%",
-      opacity: 0,
-    },
+    ref: detailRef
   })
 
   // chain
@@ -464,7 +452,7 @@ const Timeline = ({
           skillCategoryRef,
           DendogramLayer2Ref,
           skillItemRef,
-          detailRef,
+          detailRef
         ]
       : [
           detailRef,
@@ -484,7 +472,7 @@ const Timeline = ({
           lineRef2,
           circleRef,
           lineRef,
-          circleRef0,
+          circleRef0
         ],
     open
       ? [
@@ -505,7 +493,7 @@ const Timeline = ({
           2.8,
           2.9,
           3.3,
-          3.6,
+          3.6
         ]
       : [
           0.4,
@@ -525,7 +513,7 @@ const Timeline = ({
           3.2,
           3.2,
           3.5,
-          3.6,
+          3.6
         ]
   )
 
@@ -543,8 +531,8 @@ const Timeline = ({
               r={circleProps0.r}
               cx="2.5vw"
               cy={innerSvgHeight + "vh"}
-              hover={hover === 0 ? "true" : "false"}
-              selected={selected.value === 0 ? true : false}
+              hover={hover === -1 ? "true" : "false"}
+              selected={selected.value === -1 ? true : false}
             />
             <Line
               x1="2.5vw"
@@ -758,15 +746,15 @@ const Timeline = ({
             style={{ opacity: circleProps0.opacity }}
           >
             <Heading
-              onMouseOver={() => setHover(0)}
+              onMouseOver={() => setHover(-1)}
               onMouseOut={() => setHover(null)}
               onClick={() =>
-                setSelected(state => ({ value: 0, prevValue: state.value }))
+                setSelected(state => ({ value: -1, prevValue: state.value }))
               }
               onFocus={() => void 0}
               onBlur={() => void 0}
-              hover={hover === 0 ? "true" : "false"}
-              selected={selected.value === 0}
+              hover={hover === -1 ? "true" : "false"}
+              selected={selected.value === -1}
             >
               Education
             </Heading>
@@ -809,8 +797,8 @@ const Timeline = ({
         <ColumnBody>{skillItemList}</ColumnBody>
       </SkillItemContainer>
       <EmploymentDetail
+        selected={selected}
         detailProps={detailProps}
-        transitions={transitions}
       ></EmploymentDetail>
     </>
   )

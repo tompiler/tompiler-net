@@ -6,7 +6,9 @@ import CVContainer from "./CV/CVContainer"
 import { useTransition } from "react-spring"
 
 const ContentSplitter = props => {
-  const toggle = props.entry.state.entryState === "cv"
+  const route = props.location.pathname.substr(1)
+
+  const toggle = props.entry.state.entryState === "cv" || route === "cv"
   const transitions = useTransition(toggle, null, {
     from: { opacity: 0 },
     enter: { opacity: 1 },

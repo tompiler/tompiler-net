@@ -23,6 +23,7 @@ const BlogPage = () => {
       }
     }
   `)
+
   return (
     <Layout>
       <h1>Blog</h1>

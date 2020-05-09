@@ -1,0 +1,174 @@
+[
+  {
+    "heading": "Education",
+    "selected": -1,
+    "values": {
+      "title": null,
+      "duration": null,
+      "education": [
+        {
+          "name": "University of Nottingham, 2012-13",
+          "award": "Msc Economics"
+        },
+        {
+          "name": "Keele University, 2012-13",
+          "award": "BA Economics (First class)"
+        }
+      ]
+    }
+  },
+  {
+    "heading": "Mindshare",
+    "selected": 1,
+    "values": {
+      "title": "Data Analyst",
+      "duration": "November 2013 - August 2014",
+      "summary": "Mindshare WorldWide is a global media agency, part of WPP Group.",
+      "placements": [
+        {
+          "name": null,
+          "description": [
+            {
+              "text": "Primarily a data analysis and reporting role for the American Express account, driven by Excel, SQL Server and Python."
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "heading": "Rated People",
+    "selected": 2,
+    "values": {
+      "title": "Business Intelligence Developer",
+      "duration": "September 2014 - September 2016",
+      "summary": "Rated People is an online marketplace connecting homeowners and tradespeople throughout the UK.",
+      "placements": [
+        {
+          "name": null,
+          "description": [
+            {
+              "text": "Migrating business intelligence away from MS Office applications by developing and maintaining a code base in python that automated all non-web based reports to the business"
+            },
+            {
+              "text": "Managing several complex dashboards in Excel using data from internal databases on active users, sales, jobs posted and much more"
+            },
+            {
+              "text": "Improved performance by removing slow MS Access/Excel stages in the BI reporting pipeline where possible, by writing efficient SQL queries embedded in python scripts"
+            },
+            {
+              "text": "Developed a user-friendly interactive dashboard in d3.js, showing vital information to the business and helping insight to circulate amongst non-technical colleagues"
+            },
+            {
+              "text": "Deployed a random forest model to predict customer churn on a monthly basis"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "heading": "Charles River Associates",
+    "selected": 3,
+    "values": {
+      "title": "Data Scientist",
+      "duration": "October 2016 - December 2018",
+      "summary": "Charles River Associates (CRA) is a leading global consulting firm that offers business, financial, and economic consulting services to major law firms, corporations, and governments around the world.",
+      "placements": [
+        {
+          "name": null,
+          "description": [
+            {
+              "text": "Leading a sub-team of up to two other data scientists, supporting a wider group of 60+ economic consultants in the European Competition Practice with ongoing casework."
+            },
+            {
+              "text": "Analysis typically involves anticipating theories of harm in the context of the litigation - local overlap, entry & exit, price modelling analyses are common in retail mergers."
+            },
+            {
+              "text": "Extremely fast-paced environment, a significant proportion of ad-hoc, exploratory analysis"
+            },
+            {
+              "text": "Built & maintained end-to-end data pipelines from databases or other storage methods to final analysis across multiple workstreams & cases Data occasionally large (108+ rows)."
+            },
+            {
+              "text": "Managed ArcGIS software and most geospatial analysis, plus various other technology functions"
+            },
+            {
+              "text": "Played an evangelical role in supporting the company to use modern computing practices, provided training to colleagues worldwide covering python, ArcGIS, Excel, data visualisation and web scraping"
+            },
+            {
+              "text": "Built extensive core infrastructure in python including:",
+              "subText": [
+                "Software to process the calculation of millions of driving times per hour",
+                "Automated map generation API with ArcPy & ArcGIS, saving hundreds of hours of consultant time",
+                "Generalised & customised WSS & Fascia Count calculators for a vast array of scenarios based on regulatory precedents",
+                "Google Maps API connector using asyncio + aiohttp"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "heading": "Decathlon",
+    "selected": 4,
+    "values": {
+      "title": "React Developer",
+      "duration": "January 2019 - June 2019",
+      "summary": "Decathlon is a global sporting goods retailer with a presence in nearly 50 countries worldwide.",
+      "placements": [
+        {
+          "name": null,
+          "description": [
+            {
+              "text": "Solely responsible for the entire build and delivery of a interactive business intelligence dashboard application (“Playbook”)"
+            },
+            {
+              "text": "Designed to make Decathlon’s data more accessible to store managers, sport leaders and other stakeholders throughout the business."
+            },
+            {
+              "text": "Modern web development tools such as React, D3, Node, GraphQL, Python and MongoDB used throughouts"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "heading": "Infinity Works",
+    "selected": 5,
+    "values": {
+      "title": "Data Engineer",
+      "duration": "July 2019 - present",
+      "summary": "Infinity Works is one of the UK's leading digital transformation and engineering consultancies, delivering value in large technology-led projects in a variety of sectors including government, retail, energy, and financial services.",
+      "placements": [
+        {
+          "name": "Placement 1: Online Tech Company",
+          "description": [
+            {
+              "text": "Assisted a team to migrate a system of some 160+ data pipelines, shifting several TB/day of data orchestrated by cron to being scheduled using an airflow cluster."
+            },
+            {
+              "text": "Main role in supporting other teams reliant on this legacy system, fixing ongoing issues, weighing heavily on a variety of AWS services such as ECS, EMR, Athena, Redshift and more."
+            }
+          ]
+        },
+        {
+          "name": "Placement 2: FTSE 100 Multinational",
+          "description": [
+            {
+              "text": "A green-field project, worked within a team to build a developer compliance tool to help senior stakeholders understand developer maturity and best practices amongst engineering teams globally, from proof-of-concept stage all the way to a fully scalable application."
+            },
+            {
+              "text": "This was achieved using Azure Data Factory, SQL Server and Power BI, deployable via a CI/CD pipeline using Azure DevOps and ARM templates."
+            },
+            {
+              "text": "My focus was on the data lifecycle, designing and building the data model and database, and visualising the output in Power BI."
+            }
+          ]
+        }
+      ]
+    }
+  }
+]
