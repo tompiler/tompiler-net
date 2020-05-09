@@ -12,10 +12,11 @@ import data from "./links"
 const ContentContainer = styled("div")`
   display: inline-block;
   position: fixed;
-  top: ${props => (props.mobile ? "105px" : "68px")};
+  top: ${props => (props.mobile ? "105px" : "50px")};
   left: ${props => (props.mobile ? "10%" : "12%")};
-  width: ${props => (props.mobile ? "80%" : "80%")};
-  height: 100vh;
+  width: ${props => (props.mobile ? "80%" : "56%")};
+  height: 92vh;
+  /* border: 1px dashed lightpink; */
 `
 
 // const Button = styled("button")`

@@ -5,9 +5,9 @@ import styled from "styled-components"
 const SkillItemContainer = styled("div")`
   display: inline-block;
   position: fixed;
-  left: ${props => (props.mobile ? "10%" : "58vw")};
+  left: ${props => (props.mobile ? "10%" : "59vw")};
   height: 92vh;
-  width: 8vw;
+  width: 9vw;
   /* border: 1px dashed lightpink; */
 `
 
@@ -17,7 +17,7 @@ const InnerSkillItemContainer = styled("div")`
   position: absolute;
   top: ${props => props.top + "vh"};
   margin-left: 0.5vw;
-  width: 8vw;
+  width: 9vw;
   text-align: center;
   /* border: 1px dashed black; */
 `
@@ -25,7 +25,7 @@ const InnerSkillItemContainer = styled("div")`
 const SkillItem = styled(animated.div)`
   display: flex;
   font-family: "Open Sans";
-  font-size: 0.9rem;
+  font-size: 0.87rem;
   font-weight: ${props =>
     props.hover === "true" || props.selected === "true" ? 600 : 400};
   color: ${props =>
@@ -35,47 +35,3 @@ const SkillItem = styled(animated.div)`
 `
 
 export { SkillItemContainer, InnerSkillItemContainer, SkillItem }
-
-// const SkillItems = ({
-//   open,
-//   mobile,
-//   svgHeight,
-//   innerSvgHeight,
-//   lineLength,
-//   circleRadius,
-//   padding,
-// }) => {
-//   return (
-//     <SkillItemContainer height={svgHeight}>
-//       <InnerSkillItemContainer height={svgHeight} top={5}>
-//         <Skill style={{ opacity: 1 }}>EC2</Skill>
-//       </InnerSkillItemContainer>
-//       <InnerSkillItemContainer height={svgHeight} top={8}>
-//         <Skill style={{ opacity: 1 }}>EMR</Skill>
-//       </InnerSkillItemContainer>
-//       <InnerSkillItemContainer height={svgHeight} top={11}>
-//         <Skill style={{ opacity: 1 }}>Glue</Skill>
-//       </InnerSkillItemContainer>
-//       <InnerSkillItemContainer height={svgHeight} top={18}>
-//         <Skill style={{ opacity: 1 }}>Pandas</Skill>
-//       </InnerSkillItemContainer>
-//       <InnerSkillItemContainer height={svgHeight} top={21}>
-//         <Skill style={{ opacity: 1 }}>NumPy</Skill>
-//       </InnerSkillItemContainer>
-//       <InnerSkillItemContainer height={svgHeight} top={24}>
-//         <Skill style={{ opacity: 1 }}>matplotlib</Skill>
-//       </InnerSkillItemContainer>
-//       <InnerSkillItemContainer height={svgHeight} top={29}>
-//         <Skill style={{ opacity: 1 }}>sklearn</Skill>
-//       </InnerSkillItemContainer>
-//       <InnerSkillItemContainer height={svgHeight} top={32}>
-//         <Skill style={{ opacity: 1 }}>Selenium</Skill>
-//       </InnerSkillItemContainer>
-//       <InnerSkillItemContainer height={svgHeight} top={35}>
-//         <Skill style={{ opacity: 1 }}>ArcGIS</Skill>
-//       </InnerSkillItemContainer>
-//     </SkillItemContainer>
-//   )
-// }
-
-// export default SkillItems

@@ -77,7 +77,7 @@ const JobSubheading = styled("p")`
 
 const JobSummary = styled("p")`
   font-size: 0.95em;
-  margin: 0vh 0vw 1vh 2vw;
+  margin: 0vh 2vw 1vh 2vw;
   font-weight: 600;
 `
 
@@ -130,7 +130,6 @@ const DetailContentContainer = styled("div")`
 `
 
 const CVDetailLayout = ({ selected }) => {
-  // console.log(data)
   const data = useStaticQuery(graphql`
     query CVQuery {
       allCvDataJson {
@@ -159,10 +158,8 @@ const CVDetailLayout = ({ selected }) => {
       }
     }
   `)
-  console.log("SELECTED:", selected, data)
 
   const [node] = data.allCvDataJson.edges.filter(edge => {
-    console.log(edge.node.selected === selected)
     return edge.node.selected === selected
   })
 
@@ -198,39 +195,24 @@ const CVDetailLayout = ({ selected }) => {
         {placements &&
           placements.map(placement => {
             return (
-              <>
+              <div key={placement.name}>
                 {placement.name && (
                   <JobSubheading>{placement.name}</JobSubheading>
                 )}
                 {placement.description.map((desc, i) => (
-                  <JobDescriptionUL key={"desc" + i}>
+                  <JobDescriptionUL key={"descUL" + i}>
                     <JobDescription>{desc.text}</JobDescription>
                     {desc.subText &&
                       desc.subText.map((subText, i) => (
-                        <ul key={"sub" + i}>
+                        <ul key={"subUL" + i}>
                           <JobSubDescription>{subText}</JobSubDescription>
                         </ul>
                       ))}
                   </JobDescriptionUL>
                 ))}
-              </>
+              </div>
             )
           })}
-        {/* {placements.map(placement => {
-          placement.description.map;
-          return <JobSubheading>{placement.name}</JobSubheading>;
-        })}
-        {description.map((desc, i) => (
-          <JobDescriptionUL key={"desc" + i}>
-            <JobDescription>{desc.text}</JobDescription>
-            {desc.subText &&
-              desc.subText.map((subText, i) => (
-                <ul key={"sub" + i}>
-                  <JobSubDescription>{subText}</JobSubDescription>
-                </ul>
-              ))}
-          </JobDescriptionUL>
-        ))} */}
       </DetailContentContainer>
     </div>
   )

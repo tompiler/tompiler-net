@@ -9,9 +9,9 @@ import styled from "styled-components"
 const DetailContainer = styled(animated.div)`
   display: inline-block;
   position: absolute;
-  left: 56vw;
-  height: 89vh;
-  width: 30vw;
+  left: 58vw;
+  height: 92vh;
+  width: 28vw;
   /* border: 1px dashed lightpink; */
   overflow: hidden;
 `
@@ -21,8 +21,10 @@ const ExplainContainer = styled("div")`
   position: absolute;
   top: 65%;
   width: 100%;
-  height: 35%;
+  height: 40%;
   padding: 1vh 2vw;
+  overflow-y: scroll;
+  overflow-x: hidden;
   /* border: 1px dashed lightpink; */
 `
 
@@ -65,14 +67,14 @@ const EmploymentDetail = ({ selected, detailProps }) => {
       )}
       <ExplainContainer>
         <ExplainContainerHeading>
-          Work Experience Dendogram
+          Work Experience Dendrogram
         </ExplainContainerHeading>
         <ExplainContainerContent>
           The chart to the left shows the relationship between my work
           experience and the skills I acquired during that time.
         </ExplainContainerContent>
         <ExplainContainerContent>
-          The first heading, 'Experience', details each job I've had. The next
+          The first heading, 'Employment', details each job I've had. The next
           lists broad categories in which the individual tools under the final
           heading belong to. Hovering over each job in the left-hand column
           highlights each of the links between those categories and tools.

@@ -158,7 +158,7 @@
               "text": "Assisted a team to migrate a system of some 160+ data pipelines, shifting several TB/day of data orchestrated by cron to being scheduled using an airflow cluster."
             },
             {
-              "text": "Main role in supporting other teams reliant on this legacy system, fixing ongoing issues, weighing heavily on a variety of AWS services such as ECS, EMR, Athena, Redshift and more."
+              "text": "Supporting other teams reliant on this legacy system, fixing ongoing issues, weighing heavily on a variety of AWS services such as ECS, EMR, Athena, Redshift and more."
             }
           ]
         },
@@ -177,6 +177,14 @@
           ]
         }
       ]
+    }
+  },
+  {
+    "heading": "Side Projects",
+    "selected": 6,
+    "values": {
+      "duration": "Ongoing",
+      "summary": "Like most software engineers I meet, I've got a lot of side projects, and far more that have been started than have been finished. However, my inbox is always open and I'd love to hear from anyone looking to collaborate."
     }
   }
 ]

@@ -55,8 +55,9 @@ const ColumnHeading = styled(animated.div)`
   text-align: center;
   font-family: "Hammersmith One";
   font-size: 1.1em;
-  color: ${props => props.theme.cv.color};
+  color: ${props => props.theme.color};
   border-bottom: ${props => `1px solid ${props.theme.cv.color}`};
+  /* border: 1px dashed lightpink; */
 `
 
 const ColumnBody = styled("div")`
@@ -130,7 +131,7 @@ const Timeline = ({
 }) => {
   const windowSize = useWindowSize()
 
-  const svgWidth = windowSize.width * 0.13
+  const svgWidth = windowSize.width * 0.14
 
   const toPxH = h => (h / 100) * windowSize.height
 
@@ -782,7 +783,7 @@ const Timeline = ({
       </SkillCategoryContainer>
       <SkillItemDendogramContainer /*style={{ border: "1px dashed white" }}*/>
         <animated.svg
-          height={svgHeight + 5 + "vh"}
+          height={svgHeight + 10 + "vh"}
           width="15vw"
           strokeDasharray="1300"
           strokeDashoffset={DendogramLayer2Props.x}

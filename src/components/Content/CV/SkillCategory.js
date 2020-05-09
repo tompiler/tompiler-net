@@ -6,7 +6,7 @@ const SkillCategoryContainer = styled("div")`
   position: fixed;
   left: ${props => (props.mobile ? "10%" : "38vw")};
   height: 92vh;
-  width: 6vw;
+  width: 7vw;
   /* border: 1px dashed lightpink; */
 `
 
@@ -17,14 +17,14 @@ const InnerSkillCategoryContainer = styled("div")`
   top: ${props => props.top + "vh"};
   /* height: 5vh; */
   align-items: center;
-
-  width: 6vw;
+  width: 7vw;
   text-align: center;
   /* border: 1px dashed lightgrey; */
 `
 
 const SkillCategory = styled(animated.div)`
   display: flex;
+  margin: 0 1vw;
   align-items: center;
   font-family: "Open Sans";
   font-size: 0.95rem;

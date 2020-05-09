@@ -7,7 +7,7 @@ export const lightTheme = {
     hover: "#202020",
     line: { color: "#686868", hover: "#202020" },
     circle: { hover: "#7a7a7a" },
-    toggle: { hover: "#bababa" },
+    toggle: { hover: "#bababa" }
   },
   scrollbar: { track: "#bababa", thumb: "#999999" },
   pageColours: {
@@ -16,8 +16,8 @@ export const lightTheme = {
     contact: { red: 29, green: 129, blue: 98, a: 0.7 }, // #1D8162
     articles: { red: 221, green: 33, blue: 83, a: 0.6 }, // #DD2153
     cv: { red: 255, green: 201, blue: 3, a: 0.9 }, // #C29E0D
-    aims: { red: 169, green: 39, blue: 207, a: 0.6 }, // #A927CF
-  },
+    aims: { red: 169, green: 39, blue: 207, a: 0.6 } // #A927CF
+  }
 }
 
 export const darkTheme = {
@@ -29,7 +29,7 @@ export const darkTheme = {
     hover: "#fafafa",
     line: { color: "#DCDCDC", hover: "#fafafa" },
     circle: { hover: "#aba49d" },
-    toggle: { hover: "#414654" },
+    toggle: { hover: "#414654" }
   },
   scrollbar: { track: "#414654", thumb: "#6a7080" },
 
@@ -39,6 +39,6 @@ export const darkTheme = {
     contact: { red: 72, green: 153, blue: 98, a: 1 }, // #528172
     articles: { red: 221, green: 109, blue: 138, a: 1 }, // #DD8DA2
     cv: { red: 245, green: 218, blue: 116, a: 1 }, // #F5E39D
-    aims: { red: 186, green: 130, blue: 207, a: 1 }, // #BA82CF
-  },
+    aims: { red: 186, green: 130, blue: 207, a: 1 } // #BA82CF
+  }
 }
