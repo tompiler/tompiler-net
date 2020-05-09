@@ -1,18 +1,6 @@
 import React from "react"
 
-import useInterval from "../../useInterval"
-
 import { useTransition, animated } from "react-spring"
-
-// import { Line, Circle } from "./Timeline"
-
-// import CRA from "./EmploymentItems/CRA"
-// import Decathlon from "./EmploymentItems/Decathlon"
-// import InfinityWorks from "./EmploymentItems/InfinityWorks"
-// import RatedPeople from "./EmploymentItems/RatedPeople"
-// import SideProjects from "./EmploymentItems/SideProjects"
-// import Mindshare from "./EmploymentItems/Mindshare"
-// import Education from "./EmploymentItems/Education"
 
 import CVDetailLayout from "./CVDetailLayout"
 
@@ -28,34 +16,17 @@ const DetailContainer = styled(animated.div)`
   overflow: hidden;
 `
 
-// const JobTitle = styled("p")`
-//   top: 2%;
-//   text-align: center;
-//   font-style: italic;
-//   font-size: 0.8em;
-//   margin: 1vh 0.8vw;
-// `
-
-// const JobDuration = styled("p")`
-//   top: 10%;
-//   text-align: center;
-//   font-style: italic;
-//   font-size: 0.8em;
-//   margin: 1vh 0.5vw;
-// `
-
 const ExplainContainer = styled("div")`
   display: inline-block;
   position: absolute;
-  top: 70%;
+  top: 65%;
   width: 100%;
-  height: 30%;
+  height: 35%;
   padding: 1vh 2vw;
   /* border: 1px dashed lightpink; */
 `
 
 const ExplainContainerHeading = styled("h3")`
-  /* display: inline-block; */
   position: relative;
   /* border: 1px dashed lightpink; */
   font-weight: 700;
@@ -63,31 +34,11 @@ const ExplainContainerHeading = styled("h3")`
 
 const ExplainContainerContent = styled("p")`
   position: relative;
+  font-size: 0.95em;
 `
 
-// const AnimatedDetailDiv = styled(animated.div)`
-//   position: absolute;
-//   width: 100%;
-//   overflow: hidden;
-// `
-
 const EmploymentDetail = ({ selected, detailProps }) => {
-  //   console.log(node)
-
-  //   if (node === undefined) {
-  //     return null
-  //   }
-
-  //   const { heading } = { heading: "Mindshare" }
-  //   const { title, duration, description } = {
-  //     title: "Data Analyst",
-  //     duration: "November 2013 - August 2014",
-  //     description: "blah",
-  //   }
-
-  console.log(selected.value, selected.prevValue)
   const transitions = useTransition(selected.value, null, {
-    // initial: { opacity: 0 },
     from: {
       opacity: 0
     },
@@ -97,7 +48,7 @@ const EmploymentDetail = ({ selected, detailProps }) => {
     },
     config: {
       mass: 1,
-      tension: 470,
+      tension: 270,
       friction: 30
     }
   })
@@ -107,13 +58,7 @@ const EmploymentDetail = ({ selected, detailProps }) => {
       {transitions.map(
         ({ item, key, props }) =>
           item && (
-            <animated.div
-              item={item}
-              key={key}
-              style={props}
-              //   style={{ ...props, textAlign: "center" }}
-            >
-              {/* {selected.value} */}
+            <animated.div item={item} key={key} style={props}>
               <CVDetailLayout selected={item}></CVDetailLayout>
             </animated.div>
           )

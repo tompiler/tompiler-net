@@ -36,10 +36,10 @@ const JobHeading = styled("p")`
 const PositionContainer = styled("div")`
   display: inline-block;
   position: absolute;
-  top: 0%;
+  top: 20%;
   left: 80%;
   width: 20%;
-  height: 100%;
+  height: 80%;
   /* border: 1px dashed lightpink; */
 `
 
@@ -122,7 +122,7 @@ const DetailContentContainer = styled("div")`
   top: 10%;
   left: 0%;
   width: 100%;
-  height: 40%;
+  height: 50%;
   /* border: 1px dashed lightpink; */
   overflow-y: scroll;
   overflow-x: hidden;

@@ -40,7 +40,7 @@
     "heading": "Rated People",
     "selected": 2,
     "values": {
-      "title": "Business Intelligence Developer",
+      "title": "BI Developer",
       "duration": "September 2014 - September 2016",
       "summary": "Rated People is an online marketplace connecting homeowners and tradespeople throughout the UK.",
       "placements": [
@@ -82,6 +82,14 @@
               "text": "Leading a sub-team of up to two other data scientists, supporting a wider group of 60+ economic consultants in the European Competition Practice with ongoing casework."
             },
             {
+              "text": "Working on a number of high-profile retail mergers, including:",
+              "subText": [
+                "BP-Woolworths, 2016-18 (ACCA)",
+                "ASDA-Sainsburys, 2017-18 (CMA)",
+                "DFS-Sofology, 2017 (CMA)"
+              ]
+            },
+            {
               "text": "Analysis typically involves anticipating theories of harm in the context of the litigation - local overlap, entry & exit, price modelling analyses are common in retail mergers."
             },
             {
@@ -111,7 +119,7 @@
     }
   },
   {
-    "heading": "Decathlon",
+    "heading": "Decathlon UK",
     "selected": 4,
     "values": {
       "title": "React Developer",
