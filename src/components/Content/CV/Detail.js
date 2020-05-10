@@ -4,12 +4,9 @@ import styled from "styled-components"
 
 const TitleContainer = styled("div")`
   display: inline-block;
-  position: absolute;
   top: 0%;
   left: 0%;
-  width: 100%;
-  height: 5%;
-  /* border: 1px dashed lightpink; */
+  border: 1px dashed lightpink;
 `
 
 const TitleInnerContainer = styled("div")`
@@ -18,19 +15,19 @@ const TitleInnerContainer = styled("div")`
   top: 0%;
   left: 0%;
   width: 80%;
-  height: 70%;
   /* border: 1px dashed lightpink; */
 `
 
-const JobHeading = styled("p")`
-  position: absolute;
+const JobHeading = styled("h3")`
+  position: relative;
+  font-weight: 700;
   line-height: 2vh;
-  top: 0%;
+  top: 15%;
   width: 100%;
   font-size: 1.5em;
-  text-align: left;
   font-weight: 700;
-  margin: 0em 0 0 2vw;
+  margin: 0em 0 0 0vw;
+  padding: 0vh 2vw;
 `
 
 const PositionContainer = styled("div")`
@@ -39,26 +36,26 @@ const PositionContainer = styled("div")`
   top: 0%;
   left: 80%;
   width: 20%;
-  height: 100%;
   /* border: 1px dashed lightpink; */
 `
 
 const JobTitle = styled("p")`
-  top: 2%;
-  text-align: center;
-  vertical-align: top;
+  display: inline;
+  vertical-align: bottom;
+  top: 0%;
+  text-align: left;
   font-style: italic;
   font-size: 0.9em;
-  margin: 0.2em 0.8vw;
+  margin: 0 0 0 0;
 `
 
 const DurationContainer = styled("div")`
   display: inline-block;
-  position: absolute;
-  top: 70%;
+  position: relative;
+  top: 0%;
   left: 0%;
   width: 80%;
-  height: 30%;
+  height: 35%;
   /* border: 1px dashed lightpink; */
 `
 
@@ -67,31 +64,32 @@ const JobDuration = styled("p")`
   text-align: left;
   font-style: italic;
   font-size: 0.9em;
-  margin: 0 0 0 2vw;
+  margin: 0 0 0 0vw;
+  padding: 0vh 2vw;
 `
 
 const DetailContentContainer = styled("div")`
   display: inline-block;
   position: absolute;
-  top: 5%;
+  top: 12%;
   left: 0%;
   width: 100%;
-  height: 50%;
-  /* border: 1px dashed lightpink; */
+  height: 80%;
   overflow-y: scroll;
   overflow-x: hidden;
-  padding: 1vh 0 2vh 0;
-  margin: 2vh 0 0 0;
+  padding: 0 2vw 0 2vw;
+  margin: ${props => (props.education ? "0 0 0 0" : "2vh 0 0 0")};
+  /* border: 1px dashed lightpink; */
 `
 
 const JobSummary = styled("p")`
   font-size: 0.95em;
-  margin: 0vh 2vw 1vh 2vw;
+  margin: 0 0 2vh 0;
   font-weight: 600;
 `
 
 const EducationContainer = styled("div")`
-  margin: 0vh 0vw 1vh 2vw;
+  margin: 0 0 1vh 0;
 `
 
 const Education = styled("p")`
@@ -100,30 +98,29 @@ const Education = styled("p")`
   margin: 0;
 `
 
-const JobSubheading = styled("p")`
+const Placement = styled("p")`
   font-size: 1em;
   font-weight: 600;
-  margin: 0;
-  padding: 2vh 0vw 0vh 2vw;
+  margin: 2.5vh 0 0 0;
 `
 
 const JobDescriptionUL = styled("ul")`
   display: block;
   list-style-type: disc;
-  margin: 0 2vw;
+  margin: 0 0 0 0;
   padding-inline-start: 0;
 `
 
-const JobDescription = styled("li")`
+const JobDescriptionLI = styled("li")`
   position: relative;
   font-size: 0.85em;
-  margin: 2vh 0vw 0 0vw;
+  margin: 1vh 0vw 1vh 0vw;
 `
 
-const JobSubDescription = styled("li")`
+const JobSubDescriptionLI = styled("li")`
   position: relative;
   font-size: 0.85em;
-  margin: 1vh 0vw 0 0vw;
+  margin: 1vh 0vw 1vh 0vw;
 `
 
 const CVDetailLayout = ({ selected, data }) => {
@@ -131,15 +128,11 @@ const CVDetailLayout = ({ selected, data }) => {
     return job.selected === selected
   })
 
-  // if (jobDetail === undefined) {
-  //   return null
-  // }
-
   const { heading } = jobDetail
   const { education, title, duration, summary, placements } = jobDetail.values
 
   return (
-    <div>
+    <>
       <TitleContainer>
         <TitleInnerContainer>
           <JobHeading>{heading}</JobHeading>
@@ -151,7 +144,7 @@ const CVDetailLayout = ({ selected, data }) => {
           <JobDuration>{duration}</JobDuration>
         </DurationContainer>
       </TitleContainer>
-      <DetailContentContainer>
+      <DetailContentContainer education={selected === -1}>
         {summary && <JobSummary>{summary}</JobSummary>}
         {selected === -1 &&
           education.map(uni => (
@@ -164,16 +157,14 @@ const CVDetailLayout = ({ selected, data }) => {
           placements.map(placement => {
             return (
               <div key={placement.name}>
-                {placement.name && (
-                  <JobSubheading>{placement.name}</JobSubheading>
-                )}
+                {placement.name && <Placement>{placement.name}</Placement>}
                 {placement.description.map((desc, i) => (
                   <JobDescriptionUL key={"descUL" + i}>
-                    <JobDescription>{desc.text}</JobDescription>
+                    <JobDescriptionLI>{desc.text}</JobDescriptionLI>
                     {desc.subText &&
                       desc.subText.map((subText, i) => (
                         <ul key={"subUL" + i}>
-                          <JobSubDescription>{subText}</JobSubDescription>
+                          <JobSubDescriptionLI>{subText}</JobSubDescriptionLI>
                         </ul>
                       ))}
                   </JobDescriptionUL>
@@ -182,7 +173,7 @@ const CVDetailLayout = ({ selected, data }) => {
             )
           })}
       </DetailContentContainer>
-    </div>
+    </>
   )
 }
 

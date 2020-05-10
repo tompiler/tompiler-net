@@ -17,7 +17,7 @@ import {
   SkillItem
 } from "./SkillItem"
 
-import EmploymentDetail from "./EmploymentDetail"
+import EmploymentDetail from "./SummaryDetailExplain"
 
 import styled from "styled-components"
 
@@ -590,7 +590,7 @@ const Timeline = ({
         <TimelineHeadingsContainer height={svgHeight}>
           {circleSprings.map((spring, i) => (
             <HeadingContainer
-              top={yStartInv(i) + 2}
+              top={yStartInv(i) + 1.8}
               style={{ opacity: spring.opacity }}
               key={"headingContainer" + i}
             >

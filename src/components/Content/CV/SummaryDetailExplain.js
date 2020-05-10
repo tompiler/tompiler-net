@@ -3,18 +3,44 @@ import React from "react"
 import { graphql, useStaticQuery } from "gatsby"
 import { useTransition, animated } from "react-spring"
 
-import CVDetailLayout from "./CVDetailLayout"
+import Detail from "./Detail"
+import Summary from "./Summary"
+import Explain from "./Explain"
 
 import styled from "styled-components"
 
-const DetailContainer = styled(animated.div)`
+const SummaryDetailExplain = styled(animated.div)`
   display: inline-block;
   position: absolute;
+  top: 0vh;
   left: 58vw;
   height: 92vh;
   width: 28vw;
-  /* border: 1px dashed lightpink; */
+  border: 1px dashed lightpink;
   overflow: hidden;
+`
+
+const SummaryContainer = styled("div")`
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  left: 0%;
+  width: 100%;
+  height: 15%;
+  margin: 0vh 0vw;
+
+  border: 1px dashed lightpink;
+`
+
+const DetailContainer = styled("div")`
+  display: inline-block;
+  position: absolute;
+  top: 20%;
+  left: 0%;
+  width: 100%;
+  height: 40%;
+  margin: 0vh 0vw;
+  border: 1px dashed lightpink;
 `
 
 const ExplainContainer = styled("div")`
@@ -23,27 +49,18 @@ const ExplainContainer = styled("div")`
   top: 65%;
   width: 100%;
   height: 40%;
-  padding: 1vh 2vw;
-  overflow-y: scroll;
-  overflow-x: hidden;
-  /* border: 1px dashed lightpink; */
-`
-
-const ExplainContainerHeading = styled("h3")`
-  position: relative;
-  /* border: 1px dashed lightpink; */
-  font-weight: 700;
-`
-
-const ExplainContainerContent = styled("p")`
-  position: relative;
-  font-size: 0.95em;
+  margin: 0vh 0vw;
+  border: 1px dashed lightpink;
 `
 
 const EmploymentDetail = ({ selected, detailProps }) => {
   const data = useStaticQuery(graphql`
     query CVQuery {
       dataJson {
+        summary {
+          heading
+          text
+        }
         explain {
           heading
           paragraphs
@@ -88,24 +105,24 @@ const EmploymentDetail = ({ selected, detailProps }) => {
   })
 
   return (
-    <DetailContainer style={{ opacity: detailProps.opacity }}>
-      {transitions.map(
-        ({ item, key, props }) =>
-          item && (
-            <animated.div key={key} style={props}>
-              <CVDetailLayout selected={item} data={data} />
-            </animated.div>
-          )
-      )}
+    <SummaryDetailExplain style={{ opacity: detailProps.opacity }}>
+      <SummaryContainer>
+        <Summary data={data} />
+      </SummaryContainer>
+      <DetailContainer>
+        {transitions.map(
+          ({ item, key, props }) =>
+            item && (
+              <animated.div key={key} style={props}>
+                <Detail selected={item} data={data} />
+              </animated.div>
+            )
+        )}
+      </DetailContainer>
       <ExplainContainer>
-        <ExplainContainerHeading>
-          {data.dataJson.explain.heading}
-        </ExplainContainerHeading>
-        {data.dataJson.explain.paragraphs.map((paragraph, i) => (
-          <ExplainContainerContent key={i}>{paragraph}</ExplainContainerContent>
-        ))}
+        <Explain data={data} />
       </ExplainContainer>
-    </DetailContainer>
+    </SummaryDetailExplain>
   )
 }
 

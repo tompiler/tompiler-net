@@ -1,11 +1,15 @@
 {
   "main": { "columnHeadings": ["EMPLOYMENT", "SKILL", "TECHNOLOGY"] },
+  "summary": {
+    "heading": "Summary",
+    "text": "Analytics specialist with 5 years’ experience in a variety of functions. Highly capable problem solver with substantial technical acumen in application development, statistical analysis, data modelling, engineering, and visualisation across front and backend technologies."
+  },
   "explain": {
     "heading": "Work Experience Dendrogram",
     "paragraphs": [
-      "The chart to the left shows the relationship between my work experience and the skills I acquired during that time.",
-      "The first heading, 'Employment', details each job I've had. The next lists broad categories in which the individual tools under the final heading belong to. Hovering over each job in the left-hand column highlights each of the links between those categories and tools.",
-      "To see more detail on each job, click on one of these jobs in the left hand column and more detail will be visible in the panel directly above this one."
+      "The chart to the left shows the relationship between my work experience and the skills I acquired during those roles.",
+      "The first heading, 'Employment', details each role I've had. The next lists some higher level skill categories in which the items under the technology column belong. Hovering over each role in the left-hand column highlights each of the links between those categories and tools.",
+      "To see more detail on each role, click on one of these roles in the left hand column and more detail will be visible in the panel directly above this one."
     ]
   },
   "detail": [
