@@ -190,10 +190,31 @@
       }
     },
     {
-      "heading": "Side Projects",
+      "heading": "Side Projects & Volunteering",
       "selected": 6,
       "values": {
-        "duration": "Ongoing"
+        "duration": "Ongoing",
+        "placements": [
+          {
+            "name": "Codeclub & CoderDojo volunteering",
+            "description": [
+              {
+                "text": "Working with Code Club, an international network of volunteers and educators running free coding clubs for young people across the UK."
+              },
+              {
+                "text": "Teaching groups children of ages 7+ on a weekly basis. Activities usually involve taking students through exercises in scratch, HTML & CSS, Python, and introducing students to robotics with the BBC Microbit."
+              }
+            ]
+          },
+          {
+            "name": "Side projects",
+            "description": [
+              {
+                "text": "Like many engineers, I start a lot more side projects than I finish. However, I'm planning to change this trend and will be looking forward to collaborating on some interesting and meaningful work soon."
+              }
+            ]
+          }
+        ]
       }
     }
   ]
