@@ -6,7 +6,7 @@ const SkillCategoryDendogramContainer = styled("div")`
   height: 89vh;
   margin-top: 3vh;
   position: fixed;
-  top: ${props => (props.mobile ? "105px" : "50px")};
+  top: ${props => (props.mobile ? "105px" : "55px")};
   left: ${props => (props.mobile ? "10%" : "24vw")};
   /* border: 1px dashed lightpink; */
 `

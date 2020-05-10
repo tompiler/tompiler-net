@@ -1,5 +1,6 @@
 import React from "react"
 
+import { graphql, useStaticQuery } from "gatsby"
 import { useTransition, animated } from "react-spring"
 
 import CVDetailLayout from "./CVDetailLayout"
@@ -40,6 +41,37 @@ const ExplainContainerContent = styled("p")`
 `
 
 const EmploymentDetail = ({ selected, detailProps }) => {
+  const data = useStaticQuery(graphql`
+    query CVQuery {
+      dataJson {
+        explain {
+          heading
+          paragraphs
+        }
+        detail {
+          heading
+          selected
+          values {
+            placements {
+              name
+              description {
+                text
+                subText
+              }
+            }
+            education {
+              name
+              award
+            }
+            duration
+            summary
+            title
+          }
+        }
+      }
+    }
+  `)
+
   const transitions = useTransition(selected.value, null, {
     from: {
       opacity: 0
@@ -60,30 +92,18 @@ const EmploymentDetail = ({ selected, detailProps }) => {
       {transitions.map(
         ({ item, key, props }) =>
           item && (
-            <animated.div item={item} key={key} style={props}>
-              <CVDetailLayout selected={item}></CVDetailLayout>
+            <animated.div key={key} style={props}>
+              <CVDetailLayout selected={item} data={data} />
             </animated.div>
           )
       )}
       <ExplainContainer>
         <ExplainContainerHeading>
-          Work Experience Dendrogram
+          {data.dataJson.explain.heading}
         </ExplainContainerHeading>
-        <ExplainContainerContent>
-          The chart to the left shows the relationship between my work
-          experience and the skills I acquired during that time.
-        </ExplainContainerContent>
-        <ExplainContainerContent>
-          The first heading, 'Employment', details each job I've had. The next
-          lists broad categories in which the individual tools under the final
-          heading belong to. Hovering over each job in the left-hand column
-          highlights each of the links between those categories and tools.
-        </ExplainContainerContent>
-        <ExplainContainerContent>
-          To see more detail on each job, click on one of these jobs in the left
-          hand column and more detail will be visible in the panel directly
-          above this one.
-        </ExplainContainerContent>
+        {data.dataJson.explain.paragraphs.map((paragraph, i) => (
+          <ExplainContainerContent key={i}>{paragraph}</ExplainContainerContent>
+        ))}
       </ExplainContainer>
     </DetailContainer>
   )

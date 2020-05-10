@@ -1,5 +1,7 @@
 import React, { useRef } from "react"
-import { useSpring, useTransition, useChain, animated } from "react-spring"
+import { useSpring, useChain, animated } from "react-spring"
+
+import { graphql, useStaticQuery } from "gatsby"
 
 import useWindowSize from "../../useWindowSize"
 import { SkillCategoryDendogramContainer } from "./DendogramLayer1"
@@ -79,7 +81,7 @@ const HeadingContainer = styled(animated.div)`
   align-items: top;
   position: absolute;
   top: ${props => props.top + "vh"};
-  height: ${props => props.height + "vh"};
+  height: 8vh;
   width: 7vw;
   /* border: 1px dashed lightgrey; */
 `
@@ -126,8 +128,7 @@ const Timeline = ({
   innerSvgHeight,
   lineLength,
   circleRadius,
-  circleRadiusInv,
-  padding
+  circleRadiusInv
 }) => {
   const windowSize = useWindowSize()
 
@@ -162,13 +163,10 @@ const Timeline = ({
     ref: DendogramLayer1Ref
   })
 
-  var skillCategorylinks = []
-
-  data.skillCategoryLinks.forEach(link => {
-    skillCategorylinks.push(
-      <DendrogramPath
-        key={link.key}
-        d={`
+  const skillCategorylinks = data.skillCategoryLinks.map(link => (
+    <DendrogramPath
+      key={link.key}
+      d={`
     M ${[0, yStartPx(link.y0.order)]}
     C  ${[
       svgWidth * 0.33,
@@ -176,15 +174,14 @@ const Timeline = ({
         lineLengthPx * link.y0.order -
         circleRadius * link.y0.order
     ]} ${[svgWidth * 0.66, toPxH(link.y1.vh - 1.8)]} ${[
-          svgWidth,
-          toPxH(link.y1.vh - 1.8)
-        ]}
+        svgWidth,
+        toPxH(link.y1.vh - 1.8)
+      ]}
   `}
-        hover={hover === link.y0.order ? "true" : "false"}
-        selected={selected.value === link.y0.order}
-      />
-    )
-  })
+      hover={hover === link.y0.order ? "true" : "false"}
+      selected={selected.value === link.y0.order}
+    />
+  ))
 
   // SKILL CATEGORY LAYER
 
@@ -202,10 +199,8 @@ const Timeline = ({
     }
   })
 
-  var skillCategoryList = []
-  const skillCategories = Object.values(data.skillCategories)
-  skillCategories.forEach(skillCategory => {
-    skillCategoryList.push(
+  const skillCategoryList = Object.values(data.skillCategories).map(
+    skillCategory => (
       <InnerSkillCategoryContainer
         top={skillCategory.vh}
         key={skillCategory.name}
@@ -225,7 +220,7 @@ const Timeline = ({
         </SkillCategory>
       </InnerSkillCategoryContainer>
     )
-  })
+  )
 
   // DENDOGRAM LAYER 2
 
@@ -243,26 +238,20 @@ const Timeline = ({
     ref: DendogramLayer2Ref
   })
 
-  var skillItemlinks = []
-
-  data.skillItemLinks.forEach(link => {
-    skillItemlinks.push(
-      <DendrogramPath
-        key={link.key}
-        d={`
+  const skillItemlinks = data.skillItemLinks.map(link => (
+    <DendrogramPath
+      key={link.key}
+      d={`
     M ${[0, toPxH(link.y0.vh - 1.8)]}
     C  ${[svgWidth * 0.33, toPxH(link.y0.vh - 1.8)]} ${[
-          svgWidth * 0.66,
-          toPxH(link.y1.vh - 1.8)
-        ]} ${[svgWidth, toPxH(link.y1.vh - 1.8)]}
+        svgWidth * 0.66,
+        toPxH(link.y1.vh - 1.8)
+      ]} ${[svgWidth, toPxH(link.y1.vh - 1.8)]}
   `}
-        hover={
-          link.y1.validTimelineNodesOrder.includes(hover) ? "true" : "false"
-        }
-        selected={link.y1.validTimelineNodesOrder.includes(selected.value)}
-      />
-    )
-  })
+      hover={link.y1.validTimelineNodesOrder.includes(hover) ? "true" : "false"}
+      selected={link.y1.validTimelineNodesOrder.includes(selected.value)}
+    />
+  ))
 
   // SKILL ITEM LAYER
 
@@ -280,27 +269,23 @@ const Timeline = ({
     }
   })
 
-  var skillItemList = []
-  const skillItems = Object.values(data.skillItems)
-  skillItems.forEach(skillItem => {
-    skillItemList.push(
-      <InnerSkillItemContainer
-        height={svgHeight}
-        top={skillItem.vh}
-        key={skillItem.name}
+  const skillItemList = Object.values(data.skillItems).map(skillItem => (
+    <InnerSkillItemContainer
+      height={svgHeight}
+      top={skillItem.vh}
+      key={skillItem.name}
+    >
+      <SkillItem
+        style={{ opacity: skillItemProps.opacity }}
+        hover={
+          skillItem.validTimelineNodesOrder.includes(hover) ? "true" : "false"
+        }
+        selected={skillItem.validTimelineNodesOrder.includes(selected.value)}
       >
-        <SkillItem
-          style={{ opacity: skillItemProps.opacity }}
-          hover={
-            skillItem.validTimelineNodesOrder.includes(hover) ? "true" : "false"
-          }
-          selected={skillItem.validTimelineNodesOrder.includes(selected.value)}
-        >
-          {skillItem.name}
-        </SkillItem>
-      </InnerSkillItemContainer>
-    )
-  })
+        {skillItem.name}
+      </SkillItem>
+    </InnerSkillItemContainer>
+  ))
 
   const circleRef0 = useRef()
   const circleProps0 = useSpring({
@@ -309,22 +294,22 @@ const Timeline = ({
     ref: circleRef0
   })
 
-  const lineRef = useRef()
-  const lineProps = useSpring({
+  const lineRef1 = useRef()
+  const lineProps1 = useSpring({
     to: {
       y: open
         ? innerSvgHeight - lineLength - circleRadiusInv + "vh"
         : innerSvgHeight - circleRadiusInv + "vh"
     },
     from: { y: innerSvgHeight - circleRadiusInv + "vh" },
-    ref: lineRef
+    ref: lineRef1
   })
 
-  const circleRef = useRef()
-  const circleProps = useSpring({
+  const circleRef1 = useRef()
+  const circleProps1 = useSpring({
     to: { r: open ? circleRadius : 0, opacity: open ? 1 : 0 },
     from: { r: 0, opacity: 0 },
-    ref: circleRef
+    ref: circleRef1
   })
 
   const lineRef2 = useRef()
@@ -437,8 +422,8 @@ const Timeline = ({
     open
       ? [
           circleRef0,
-          lineRef,
-          circleRef,
+          lineRef1,
+          circleRef1,
           lineRef2,
           circleRef2,
           lineRef3,
@@ -471,8 +456,8 @@ const Timeline = ({
           lineRef3,
           circleRef2,
           lineRef2,
-          circleRef,
-          lineRef,
+          circleRef1,
+          lineRef1,
           circleRef0
         ],
     open
@@ -518,88 +503,55 @@ const Timeline = ({
         ]
   )
 
+  const circleSprings = [
+    circleProps0,
+    circleProps1,
+    circleProps2,
+    circleProps3,
+    circleProps4,
+    circleProps5,
+    circleProps6
+  ]
+
+  const lineSprings = [
+    lineProps1,
+    lineProps2,
+    lineProps3,
+    lineProps4,
+    lineProps5
+  ]
+
+  const selectedArray = [-1, 1, 2, 3, 4, 5, 6]
+
+  const result = useStaticQuery(graphql`
+    query TimelineQuery {
+      dataJson {
+        main {
+          columnHeadings
+        }
+        detail {
+          heading
+          selected
+          values {
+            duration
+          }
+        }
+      }
+    }
+  `)
+
+  const detail = result.dataJson.detail
+  const columnHeadings = result.dataJson.main.columnHeadings
   return (
     <>
       <Container>
         <ColumnHeading style={{ opacity: circleProps6.opacity }}>
-          EMPLOYMENT
+          {columnHeadings[0]}
         </ColumnHeading>
         <SvgContainer
           height={svgHeight} /*style={{ border: "1px dashed white" }}*/
         >
           <g>
-            <Circle
-              r={circleProps0.r}
-              cx="2.5vw"
-              cy={innerSvgHeight + "vh"}
-              hover={hover === -1 ? "true" : "false"}
-              selected={selected.value === -1 ? true : false}
-            />
-            <Line
-              x1="2.5vw"
-              y1={lineProps.y}
-              x2="2.5vw"
-              y2={innerSvgHeight - circleRadiusInv + "vh"}
-            />
-            <Circle
-              r={circleProps.r}
-              cx="2.5vw"
-              cy={innerSvgHeight - lineLength - circleRadiusInv + "vh"}
-              hover={hover === 1 ? "true" : "false"}
-              selected={selected.value === 1 ? true : false}
-            />
-            <Line
-              x1="2.5vw"
-              y1={lineProps2.y}
-              x2="2.5vw"
-              y2={innerSvgHeight - lineLength - circleRadiusInv * 2 + "vh"}
-            />
-            <Circle
-              r={circleProps2.r}
-              cx="2.5vw"
-              cy={innerSvgHeight - lineLength * 2 - circleRadiusInv * 2 + "vh"}
-              hover={hover === 2 ? "true" : "false"}
-              selected={selected.value === 2 ? true : false}
-            />
-            <Line
-              x1="2.5vw"
-              y1={lineProps3.y}
-              x2="2.5vw"
-              y2={innerSvgHeight - lineLength * 2 - circleRadiusInv * 3 + "vh"}
-            />
-            <Circle
-              r={circleProps3.r}
-              cx="2.5vw"
-              cy={innerSvgHeight - lineLength * 3 - circleRadiusInv * 3 + "vh"}
-              hover={hover === 3 ? "true" : "false"}
-              selected={selected.value === 3 ? true : false}
-            />
-            <Line
-              x1="2.5vw"
-              y1={lineProps4.y}
-              x2="2.5vw"
-              y2={innerSvgHeight - lineLength * 3 - circleRadiusInv * 4 + "vh"}
-            />
-            <Circle
-              r={circleProps4.r}
-              cx="2.5vw"
-              cy={innerSvgHeight - lineLength * 4 - circleRadiusInv * 4 + "vh"}
-              hover={hover === 4 ? "true" : "false"}
-              selected={selected.value === 4 ? true : false}
-            />
-            <Line
-              x1="2.5vw"
-              y1={lineProps5.y}
-              x2="2.5vw"
-              y2={innerSvgHeight - lineLength * 4 - circleRadiusInv * 5 + "vh"}
-            />
-            <Circle
-              r={circleProps5.r}
-              cx="2.5vw"
-              cy={innerSvgHeight - lineLength * 5 - circleRadiusInv * 5 + "vh"}
-              hover={hover === 5 ? "true" : "false"}
-              selected={selected.value === 5 ? true : false}
-            />
             <Line
               x1={lineProps6.x}
               y1={lineProps6.y}
@@ -607,163 +559,62 @@ const Timeline = ({
               y2={innerSvgHeight - lineLength * 5 - circleRadiusInv * 6 + "vh"}
               strokeDasharray="4 8"
             />
-            <Circle
-              r={circleProps6.r}
-              cx="4vw"
-              cy={innerSvgHeight - lineLength * 6 - circleRadiusInv * 6 + "vh"}
-              hover={hover === 6 ? "true" : "false"}
-              selected={selected.value === 6 ? true : false}
-            />
+            {lineSprings.map((spring, i) => (
+              <Line
+                x1="2.5vw"
+                y1={spring.y}
+                x2="2.5vw"
+                y2={
+                  innerSvgHeight -
+                  lineLength * i -
+                  circleRadiusInv * (i + 1) +
+                  "vh"
+                }
+                key={"lineSpring-" + i}
+              />
+            ))}
+            {circleSprings.map((spring, i) => (
+              <Circle
+                r={spring.r}
+                cx={i === 6 ? "4vw" : "2.5vw"}
+                cy={
+                  innerSvgHeight - lineLength * i - circleRadiusInv * i + "vh"
+                }
+                hover={hover === selectedArray[i] ? "true" : "false"}
+                selected={selected.value === selectedArray[i]}
+                key={"circleSpring-" + i}
+              />
+            ))}
           </g>
         </SvgContainer>
-        <TimelineHeadingsContainer
-          height={svgHeight}
-          // style={{ border: "1px dashed green" }}
-        >
-          <HeadingContainer
-            height={8}
-            top={yStartInv(6) + 2}
-            style={{ opacity: circleProps6.opacity }}
-          >
-            <Heading
-              onMouseOver={() => setHover(6)}
-              onMouseOut={() => setHover(null)}
-              onClick={() =>
-                setSelected(state => ({ value: 6, prevValue: state.value }))
-              }
-              onFocus={() => void 0}
-              onBlur={() => void 0}
-              hover={hover === 6 ? "true" : "false"}
-              selected={selected.value === 6}
+        <TimelineHeadingsContainer height={svgHeight}>
+          {circleSprings.map((spring, i) => (
+            <HeadingContainer
+              top={yStartInv(i) + 2}
+              style={{ opacity: spring.opacity }}
+              key={"headingContainer" + i}
             >
-              Side Projects
-            </Heading>
-            <HeadingDuration>Ongoing</HeadingDuration>
-          </HeadingContainer>
-          <HeadingContainer
-            height={8}
-            top={yStartInv(5) + 2}
-            style={{ opacity: circleProps5.opacity }}
-          >
-            <Heading
-              onMouseOver={() => setHover(5)}
-              onMouseOut={() => setHover(null)}
-              onClick={() =>
-                setSelected(state => ({ value: 5, prevValue: state.value }))
-              }
-              onFocus={() => void 0}
-              onBlur={() => void 0}
-              hover={hover === 5 ? "true" : "false"}
-              selected={selected.value === 5}
-            >
-              Infinity Works
-            </Heading>
-            <HeadingDuration>July 2019 - present</HeadingDuration>
-          </HeadingContainer>
-          <HeadingContainer
-            height={8}
-            top={yStartInv(4) + 2}
-            style={{ opacity: circleProps4.opacity }}
-          >
-            <Heading
-              onMouseOver={() => setHover(4)}
-              onMouseOut={() => setHover(null)}
-              onClick={() =>
-                setSelected(state => ({ value: 4, prevValue: state.value }))
-              }
-              onFocus={() => void 0}
-              onBlur={() => void 0}
-              hover={hover === 4 ? "true" : "false"}
-              selected={selected.value === 4}
-            >
-              Decathlon UK (contract)
-            </Heading>
-            <HeadingDuration>January 2019 - June 2019</HeadingDuration>
-          </HeadingContainer>
-          <HeadingContainer
-            height={8}
-            top={yStartInv(3) + 2}
-            style={{ opacity: circleProps3.opacity }}
-          >
-            <Heading
-              onMouseOver={() => setHover(3)}
-              onMouseOut={() => setHover(null)}
-              onClick={() =>
-                setSelected(state => ({ value: 3, prevValue: state.value }))
-              }
-              onFocus={() => void 0}
-              onBlur={() => void 0}
-              hover={hover === 3 ? "true" : "false"}
-              selected={selected.value === 3}
-            >
-              Charles River Associates
-            </Heading>
-            <HeadingDuration>October 2016 - December 2018</HeadingDuration>
-          </HeadingContainer>
-          <HeadingContainer
-            height={8}
-            top={yStartInv(2) + 2}
-            style={{ opacity: circleProps2.opacity }}
-          >
-            <Heading
-              onMouseOver={() => setHover(2)}
-              onMouseOut={() => setHover(null)}
-              onClick={() =>
-                setSelected(state => ({ value: 2, prevValue: state.value }))
-              }
-              onFocus={() => void 0}
-              onBlur={() => void 0}
-              hover={hover === 2 ? "true" : "false"}
-              selected={selected.value === 2}
-            >
-              Rated People
-            </Heading>
-            <HeadingDuration>September 2014 - September 2016</HeadingDuration>
-          </HeadingContainer>
-
-          <HeadingContainer
-            height={8}
-            top={yStartInv(1) + 1.8}
-            style={{ opacity: circleProps.opacity }}
-          >
-            <Heading
-              onMouseOver={() => setHover(1)}
-              onMouseOut={() => setHover(null)}
-              onClick={() =>
-                setSelected(state => ({ value: 1, prevValue: state.value }))
-              }
-              onFocus={() => void 0}
-              onBlur={() => void 0}
-              hover={hover === 1 ? "true" : "false"}
-              selected={selected.value === 1}
-            >
-              Mindshare
-            </Heading>
-            <HeadingDuration>November 2013 - August 2014</HeadingDuration>
-          </HeadingContainer>
-          <HeadingContainer
-            height={8}
-            top={yStartInv(0) + 2}
-            style={{ opacity: circleProps0.opacity }}
-          >
-            <Heading
-              onMouseOver={() => setHover(-1)}
-              onMouseOut={() => setHover(null)}
-              onClick={() =>
-                setSelected(state => ({ value: -1, prevValue: state.value }))
-              }
-              onFocus={() => void 0}
-              onBlur={() => void 0}
-              hover={hover === -1 ? "true" : "false"}
-              selected={selected.value === -1}
-            >
-              Education
-            </Heading>
-            <HeadingDuration>September 2009 - August 2013</HeadingDuration>
-          </HeadingContainer>
+              <Heading
+                onMouseOver={() => setHover(selectedArray[i])}
+                onMouseOut={() => setHover(null)}
+                onClick={() =>
+                  setSelected(state => ({
+                    value: selectedArray[i],
+                    prevValue: state.value
+                  }))
+                }
+                onFocus={() => void 0}
+                onBlur={() => void 0}
+                hover={hover === selectedArray[i] ? "true" : "false"}
+                selected={selected.value === selectedArray[i]}
+              >
+                {detail[i].heading}
+              </Heading>
+              <HeadingDuration>{detail[i].values.duration}</HeadingDuration>
+            </HeadingContainer>
+          ))}
         </TimelineHeadingsContainer>
       </Container>
-
       <SkillCategoryDendogramContainer /*style={{ border: "1px dashed white" }}*/
       >
         <animated.svg
@@ -777,7 +628,7 @@ const Timeline = ({
       </SkillCategoryDendogramContainer>
       <SkillCategoryContainer>
         <ColumnHeading style={{ opacity: skillCategoryProps.opacity }}>
-          SKILL
+          {columnHeadings[1]}
         </ColumnHeading>
         <ColumnBody>{skillCategoryList}</ColumnBody>
       </SkillCategoryContainer>
@@ -793,7 +644,7 @@ const Timeline = ({
       </SkillItemDendogramContainer>
       <SkillItemContainer>
         <ColumnHeading style={{ opacity: skillItemProps.opacity }}>
-          TECHNOLOGY
+          {columnHeadings[2]}
         </ColumnHeading>
         <ColumnBody>{skillItemList}</ColumnBody>
       </SkillItemContainer>

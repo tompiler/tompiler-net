@@ -1,8 +1,5 @@
 import React from "react"
 
-import { useTransition, animated } from "react-spring"
-import { graphql, useStaticQuery } from "gatsby"
-
 import styled from "styled-components"
 
 const TitleContainer = styled("div")`
@@ -11,13 +8,13 @@ const TitleContainer = styled("div")`
   top: 0%;
   left: 0%;
   width: 100%;
-  height: 10%;
+  height: 5%;
   /* border: 1px dashed lightpink; */
 `
 
 const TitleInnerContainer = styled("div")`
   display: inline-block;
-  position: absolute;
+  position: relative;
   top: 0%;
   left: 0%;
   width: 80%;
@@ -26,29 +23,33 @@ const TitleInnerContainer = styled("div")`
 `
 
 const JobHeading = styled("p")`
+  position: absolute;
+  line-height: 2vh;
+  top: 0%;
   width: 100%;
   font-size: 1.5em;
   text-align: left;
   font-weight: 700;
-  margin: 1em 0 0 2vw;
+  margin: 0em 0 0 2vw;
 `
 
 const PositionContainer = styled("div")`
   display: inline-block;
   position: absolute;
-  top: 20%;
+  top: 0%;
   left: 80%;
   width: 20%;
-  height: 80%;
+  height: 100%;
   /* border: 1px dashed lightpink; */
 `
 
 const JobTitle = styled("p")`
   top: 2%;
   text-align: center;
+  vertical-align: top;
   font-style: italic;
   font-size: 0.9em;
-  margin: 1.5em 0.8vw;
+  margin: 0.2em 0.8vw;
 `
 
 const DurationContainer = styled("div")`
@@ -62,17 +63,25 @@ const DurationContainer = styled("div")`
 `
 
 const JobDuration = styled("p")`
+  line-height: 1vh;
   text-align: left;
   font-style: italic;
   font-size: 0.9em;
   margin: 0 0 0 2vw;
 `
 
-const JobSubheading = styled("p")`
-  font-size: 1em;
-  font-weight: 600;
-  margin: 0;
-  padding: 2vh 0vw 0vh 2vw;
+const DetailContentContainer = styled("div")`
+  display: inline-block;
+  position: absolute;
+  top: 5%;
+  left: 0%;
+  width: 100%;
+  height: 50%;
+  /* border: 1px dashed lightpink; */
+  overflow-y: scroll;
+  overflow-x: hidden;
+  padding: 1vh 0 2vh 0;
+  margin: 2vh 0 0 0;
 `
 
 const JobSummary = styled("p")`
@@ -91,15 +100,16 @@ const Education = styled("p")`
   margin: 0;
 `
 
+const JobSubheading = styled("p")`
+  font-size: 1em;
+  font-weight: 600;
+  margin: 0;
+  padding: 2vh 0vw 0vh 2vw;
+`
+
 const JobDescriptionUL = styled("ul")`
-  /* margin: 2.5vh 0vw 0 0vw; */
-  /* padding-inline-start: 2vw; */
   display: block;
   list-style-type: disc;
-  margin-block-start: 0em;
-  margin-block-end: 0em;
-  margin-inline-start: 0px;
-  margin-inline-end: 0px;
   margin: 0 2vw;
   padding-inline-start: 0;
 `
@@ -116,59 +126,17 @@ const JobSubDescription = styled("li")`
   margin: 1vh 0vw 0 0vw;
 `
 
-const DetailContentContainer = styled("div")`
-  display: inline-block;
-  position: absolute;
-  top: 10%;
-  left: 0%;
-  width: 100%;
-  height: 50%;
-  /* border: 1px dashed lightpink; */
-  overflow-y: scroll;
-  overflow-x: hidden;
-  padding: 2vh 0;
-`
-
-const CVDetailLayout = ({ selected }) => {
-  const data = useStaticQuery(graphql`
-    query CVQuery {
-      allCvDataJson {
-        edges {
-          node {
-            heading
-            selected
-            values {
-              placements {
-                name
-                description {
-                  text
-                  subText
-                }
-              }
-              education {
-                name
-                award
-              }
-              duration
-              summary
-              title
-            }
-          }
-        }
-      }
-    }
-  `)
-
-  const [node] = data.allCvDataJson.edges.filter(edge => {
-    return edge.node.selected === selected
+const CVDetailLayout = ({ selected, data }) => {
+  const [jobDetail] = data.dataJson.detail.filter(job => {
+    return job.selected === selected
   })
 
-  if (node === undefined) {
-    return null
-  }
+  // if (jobDetail === undefined) {
+  //   return null
+  // }
 
-  const { heading } = node.node
-  const { education, title, duration, summary, placements } = node.node.values
+  const { heading } = jobDetail
+  const { education, title, duration, summary, placements } = jobDetail.values
 
   return (
     <div>
