@@ -8,7 +8,7 @@ const SkillCategoryContainer = styled("div")`
   left: ${props => (props.mobile ? "10%" : "28%")};
   height: 100%;
   width: 7%;
-  border: 1px dashed lightpink;
+  /* border: 1px dashed lightpink; */
 `
 
 const InnerSkillCategoryContainer = styled("div")`

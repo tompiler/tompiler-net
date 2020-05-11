@@ -9,7 +9,7 @@ const SkillItemContainer = styled("div")`
   left: ${props => (props.mobile ? "10%" : "51%")};
   height: 100%;
   width: 8%;
-  border: 1px dashed lightpink;
+  /* border: 1px dashed lightpink; */
 `
 
 const InnerSkillItemContainer = styled("div")`

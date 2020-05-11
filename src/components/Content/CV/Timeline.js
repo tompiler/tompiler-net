@@ -30,7 +30,7 @@ const Container = styled("div")`
   left: ${props => (props.mobile ? "10%" : "0%")};
   width: ${props => (props.mobile ? "80%" : "12%")};
   height: ${props => (props.mobile ? "70%" : "100%")};
-  border: 1px dashed papayawhip;
+  /* border: 1px dashed papayawhip; */
 `
 
 const SvgContainer = styled(animated.svg)`

@@ -8,7 +8,7 @@ const SkillItemDendogramContainer = styled("div")`
   position: absolute;
   top: ${props => (props.mobile ? "15%" : "0%")};
   left: ${props => (props.mobile ? "10%" : "35%")};
-  border: 1px dashed lightpink;
+  /* border: 1px dashed lightpink; */
 `
 
 export { SkillItemDendogramContainer }

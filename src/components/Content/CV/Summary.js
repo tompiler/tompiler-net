@@ -9,8 +9,11 @@ const SummaryHeadingContainer = styled("div")`
   left: 0%;
   width: 100%;
   height: 20%;
-  border: 1px dashed lightpink;
-  padding: 0vh 2vw;
+  padding: ${props => (props.mobile ? "1vh 2vw 0 0" : "0 2vw")};
+  margin: ${props => (props.mobile ? "1vh 0 0 0" : "0")};
+  border-top: ${props =>
+    props.mobile ? `1px solid ${props.theme.color}` : "none"};
+  /* border: 1px dashed lightpink; */
 `
 
 const SummaryHeading = styled("h3")`
@@ -28,10 +31,10 @@ const SummaryDescriptionContainer = styled("div")`
   left: 0%;
   width: 100%;
   height: 80%;
-  border: 1px dashed lightpink;
-  overflow-y: scroll;
+  overflow-y: auto;
   overflow-x: hidden;
   padding: 0vh 2vw;
+  /* border: 1px dashed lightpink; */
 `
 
 const SummaryDescription = styled("p")`
@@ -41,10 +44,11 @@ const SummaryDescription = styled("p")`
   /* font-weight: 600; */
 `
 
-const Summary = ({ data }) => {
+const Summary = ({ mobile, data }) => {
+  console.log(mobile)
   return (
     <>
-      <SummaryHeadingContainer>
+      <SummaryHeadingContainer mobile={mobile}>
         <SummaryHeading>{data.dataJson.summary.heading}</SummaryHeading>
       </SummaryHeadingContainer>
       <SummaryDescriptionContainer>

@@ -7,7 +7,8 @@ export const lightTheme = {
     hover: "#202020",
     line: { color: "#686868", hover: "#202020" },
     circle: { hover: "#7a7a7a" },
-    toggle: { hover: "#bababa" }
+    toggle: { hover: "#bababa" },
+    button: { background: "#e6ebeb", color: "#212121", border: "#c9c9c9" }
   },
   scrollbar: { track: "#bababa", thumb: "#999999" },
   pageColours: {
@@ -29,7 +30,8 @@ export const darkTheme = {
     hover: "#fafafa",
     line: { color: "#DCDCDC", hover: "#fafafa" },
     circle: { hover: "#aba49d" },
-    toggle: { hover: "#414654" }
+    toggle: { hover: "#414654" },
+    button: { background: "#313e57", color: "#d4cac1", border: "#535e73" }
   },
   scrollbar: { track: "#414654", thumb: "#6a7080" },
 

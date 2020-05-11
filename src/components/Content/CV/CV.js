@@ -56,6 +56,7 @@ const CV = () => {
   const [hover, setHover] = useState(null)
   const [first, toggleFirst] = useState(true)
 
+  console.log(selected)
   const margin = {
     top: mobile ? 0 : 10,
     right: 0,

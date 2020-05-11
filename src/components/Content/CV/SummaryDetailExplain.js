@@ -25,18 +25,8 @@ const SummaryDetailExplainContainer = styled(animated.div)`
       ? "auto"
       : "92vh"};
   width: ${props => (props.mobile ? "80%" : "24%")};
-
-  /*
-    Four scenarios:
-      menu is true, mobile is true = view of summary and employment timeline
-      menu is false, mobile is true = view of summary and selected job
-      menu is true, mobile is false = ?
-      menu is false, mobile is false = usual desktop view
-    */
-
-  /* width: 28vw; */
-  border: 1px dashed lightpink;
   overflow: hidden;
+  /* border: 1px dashed lightpink; */
 `
 
 const SummaryContainer = styled("div")`
@@ -47,8 +37,7 @@ const SummaryContainer = styled("div")`
   width: 100%;
   height: ${props => (props.mobile ? "23vh" : "18%")};
   margin: ${props => (props.mobile ? "0" : "0 0vw 2vh 0")};
-
-  border: 1px dashed lightpink;
+  /* border: 1px dashed lightpink; */
 `
 
 const DetailContainer = styled("div")`
@@ -58,7 +47,7 @@ const DetailContainer = styled("div")`
   left: 0%;
   width: 100%;
   margin: 0vh 0vw;
-  border: 1px dashed lightpink;
+  /* border: 1px dashed lightpink; */
 `
 
 const ExplainContainer = styled("div")`
@@ -69,23 +58,27 @@ const ExplainContainer = styled("div")`
   width: 100%;
   height: 40%;
   margin: 0vh 0vw;
-  border: 1px dashed lightpink;
+  /* border: 1px dashed lightpink; */
 `
 
 const BackButton = styled("button")`
   position: relative;
   height: auto;
-  top: -1vh;
+  top: -2vh;
   /* margin: 0.5vh 0; */
   width: 100%;
   font-size: 0.9em;
   font-weight: 600;
   border-radius: 5px;
-  background-color: #e6ebeb;
-  color: ${props => props.theme.color};
-  border: none;
+  background-color: ${props => props.theme.cv.button.background};
+  color: ${props => props.theme.cv.button.color};
+  border: ${props => `1px solid ${props.theme.cv.button.border}`};
   text-align: ${props => (props.mobile ? "center" : "right")};
   cursor: pointer;
+
+  &:focus {
+    outline: none;
+  }
 `
 
 const SummaryDetailExplain = ({
@@ -150,7 +143,7 @@ const SummaryDetailExplain = ({
       style={{ opacity: detailProps.opacity }}
     >
       <SummaryContainer mobile={mobile ? 1 : 0} menu={selected.menu ? 1 : 0}>
-        <Summary data={data} />
+        <Summary data={data} mobile={mobile ? 1 : 0} />
       </SummaryContainer>
       {mobile ? (
         <BackButton

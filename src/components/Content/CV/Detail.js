@@ -9,7 +9,7 @@ const HeadlineCompany = styled("div")`
   top: 0%;
   left: 0%;
   height: auto;
-  border: 1px dashed lightpink;
+  /* border: 1px dashed lightpink; */
 `
 
 const HeadlineCompanyInner = styled("div")`
@@ -19,8 +19,7 @@ const HeadlineCompanyInner = styled("div")`
   left: 0;
   width: 100%;
   height: auto;
-  border: 1px dashed lightpink;
-  /* padding: 1vh 0; */
+  /* border: 1px dashed lightpink; */
 `
 
 const Company = styled("h3")`
@@ -36,12 +35,12 @@ const Company = styled("h3")`
 
 const CompanyContainer = styled("div")`
   flex: 3;
-  border: 1px dashed lightpink;
+  /* border: 1px dashed lightpink; */
 `
 
 const RoleContainer = styled("div")`
   flex: 1;
-  border: 1px dashed lightpink;
+  /* border: 1px dashed lightpink; */
 `
 
 const FlexContainer = styled("div")`
@@ -53,7 +52,7 @@ const FlexContainer = styled("div")`
 const Role = styled("p")`
   text-align: center;
   font-style: italic;
-  font-size: 0.9em;
+  font-size: ${props => (props.mobile ? "0.8em" : "0.9em")};
   margin: 1vh 0 1vh 0;
   line-height: 1vh;
 `
@@ -61,29 +60,28 @@ const Role = styled("p")`
 const DurationContainer = styled("div")`
   display: flex;
   flex: 2;
-  border: 1px dashed lightpink;
+  /* border: 1px dashed lightpink; */
 `
 
 const Duration = styled("p")`
   display: flex;
-  line-height: 1vh;
   text-align: left;
   font-style: italic;
-  font-size: ${props => (props.mobile ? "0.75em" : "0.9em")};
-  margin: 0.5vh 0 0.5vh 2vw;
-  padding: 0vh 0vw;
+  font-size: ${props => (props.mobile ? "0.8em" : "0.9em")};
+  line-height: 1vh;
+  margin: 1vh 0 1vh 2vw;
 `
 
 const DetailContentContainer = styled("div")`
   /* display: block; */
   flex-grow: ${props => (!props.menu && props.mobile ? 0 : 1)};
   width: 100%;
-  overflow-y: ${props => (!props.menu && props.mobile ? "auto" : "scroll")};
+  overflow-y: auto;
   /* overflow-x: hidden; */
   padding: 0 1vw 0 2vw;
   text-align: left;
   margin: ${props => (props.education ? "0 0 0 0" : "2vh 0 0 0")};
-  border: 1px dashed lightpink;
+  /* border: 1px dashed lightpink; */
 `
 
 const JobSummary = styled("p")`
@@ -112,7 +110,7 @@ const JobDescriptionUL = styled("ul")`
   display: block;
   list-style-type: disc;
   margin: 0 0 0 0;
-  padding-inline-start: 0;
+  padding-inline-start: ${props => (props.mobile ? "4vw" : "0")};
 `
 
 const JobDescriptionLI = styled("li")`
@@ -178,7 +176,7 @@ const Detail = ({ mobile, selected, data, setSelected }) => {
               <div key={placement.name}>
                 {placement.name && <Placement>{placement.name}</Placement>}
                 {placement.description.map((desc, i) => (
-                  <JobDescriptionUL key={"descUL" + i}>
+                  <JobDescriptionUL key={"descUL" + i} mobile={mobile}>
                     <JobDescriptionLI>{desc.text}</JobDescriptionLI>
                     {desc.subText &&
                       desc.subText.map((subText, i) => (

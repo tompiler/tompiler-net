@@ -8,8 +8,8 @@ const ExplainContainerHeading = styled("h3")`
   font-weight: 700;
   padding: 1vh 0 1vh 2vw;
   margin: 0;
-  border: 1px dashed lightpink;
   text-align: left;
+  /* border: 1px dashed lightpink; */
 `
 
 const ExplainDescription = styled("p")`
@@ -25,11 +25,11 @@ const ExplainDescriptionContainer = styled("div")`
   left: 0%;
   width: 100%;
   height: 80%;
-  border: 1px dashed lightpink;
-  overflow-y: scroll;
+  overflow-y: auto;
   overflow-x: hidden;
   padding: 0 0 0 2vw;
   text-align: left;
+  /* border: 1px dashed lightpink; */
 `
 
 const Explain = ({ data }) => {

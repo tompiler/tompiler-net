@@ -2,7 +2,7 @@
   "main": { "columnHeadings": ["EMPLOYMENT", "SKILL", "TECHNOLOGY"] },
   "summary": {
     "heading": "Summary",
-    "text": "Analytics specialist with 5 years’ experience in a variety of functions. Highly capable problem solver with substantial technical acumen in application development, statistical analysis, data modelling, engineering, and visualisation across front and backend technologies."
+    "text": "I have broad skills in technology, with depth in areas of analytics, data engineering and frontend development, all developed over 6 years’ experience in a variety of functions where problem solving has been a main component throughout."
   },
   "explain": {
     "heading": "Work Experience Dendrogram",
@@ -133,7 +133,7 @@
       }
     },
     {
-      "heading": "Decathlon UK",
+      "heading": "Decathlon UK (contract)",
       "selected": 4,
       "values": {
         "title": "React Developer",
