@@ -23,8 +23,6 @@ export const GlobalStyles = createGlobalStyle`
     position: absolute;
     height: 100%;
     width: 100%;
-    margin: auto;
-    overflow-x: hidden;
   }
 
   body {
@@ -32,5 +30,6 @@ export const GlobalStyles = createGlobalStyle`
     color: ${({ theme }) => theme.color};
     font-family: "Open Sans";
     font-weight: 400;
+    margin: 0;
   }
 `

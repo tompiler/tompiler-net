@@ -26,10 +26,10 @@ import data from "./links"
 const Container = styled("div")`
   display: inline-block;
   position: absolute;
-  top: 0;
+  top: ${props => (props.mobile ? "5%" : "0")};
   left: ${props => (props.mobile ? "10%" : "0%")};
   width: ${props => (props.mobile ? "80%" : "12%")};
-  height: 100%;
+  height: ${props => (props.mobile ? "90%" : "100%")};
   border: 1px dashed papayawhip;
 `
 
@@ -86,7 +86,7 @@ const HeadingContainer = styled(animated.div)`
   top: ${props => props.top + "vh"};
   left: 0%;
   height: 8vh;
-  width: ${props => (props.mobile ? "20vw" : "100%")};
+  width: ${props => (props.mobile ? "100%" : "100%")};
   text-align: left;
   /* border: 1px dashed lightgrey; */
 `
@@ -108,7 +108,7 @@ const HeadingDuration = styled("div")`
   font-style: italic;
   font-size: 0.8em;
   color: ${props => props.theme.cv.color};
-  width: ${props => (props.mobile ? "38vw" : "80%")};
+  width: ${props => (props.mobile ? "80%" : "80%")};
 `
 
 const DendrogramPath = styled(animated.path)`
@@ -151,7 +151,7 @@ const Timeline = ({
     return innerSvgHeightPx - lineLengthPx * i - circleRadius * i
   }
 
-  const mobileAdj = mobile ? 5 : 0
+  const mobileAdj = mobile ? 15 : 0
 
   console.log(selected, mobileAdj)
 
@@ -398,7 +398,7 @@ const Timeline = ({
       y: open
         ? innerSvgHeight - lineLength * 6 - circleRadiusInv * 6 + "vh"
         : innerSvgHeight - lineLength * 5 - circleRadiusInv * 6 + "vh",
-      x: open ? 3 + mobileAdj * 2.5 + "vw" : 1 + mobileAdj + "vw"
+      x: open ? 3 + mobileAdj * 1.5 + "vw" : 1 + mobileAdj + "vw"
     },
     from: {
       y: innerSvgHeight - lineLength * 5 - circleRadiusInv * 6 + "vh",
@@ -592,7 +592,7 @@ const Timeline = ({
                 <Circle
                   r={spring.r}
                   cx={
-                    i === 6 ? 3 + mobileAdj * 2.5 + "vw" : 1 + mobileAdj + "vw"
+                    i === 6 ? 3 + mobileAdj * 1.5 + "vw" : 1 + mobileAdj + "vw"
                   }
                   cy={
                     innerSvgHeight - lineLength * i - circleRadiusInv * i + "vh"

@@ -65,7 +65,7 @@ const CV = () => {
 
   const padding = {
     bottom: 3,
-    top: 10
+    top: mobile ? 3 : 10
   }
 
   const circleNodes = Object.keys(data.timelineNodes).length
