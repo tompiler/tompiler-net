@@ -13,11 +13,9 @@ const SummaryHeadingContainer = styled("div")`
   padding: 0vh 2vw;
 `
 
-const SummaryHeading = styled("p")`
-  line-height: 2vh;
+const SummaryHeading = styled("h3")`
   top: 0%;
   width: 100%;
-  font-size: 1.5em;
   text-align: left;
   font-weight: 700;
   margin: 0em 0 0 0vw;

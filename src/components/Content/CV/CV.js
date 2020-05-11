@@ -51,27 +51,27 @@ const CV = () => {
   const [selected, setSelected] = useState({
     value: mobile ? null : 5, // no default job view in detail with mobile view
     prevValue: null,
-    menu: true
+    menu: !mobile ? false : true
   })
   const [hover, setHover] = useState(null)
   const [first, toggleFirst] = useState(true)
 
   const margin = {
-    top: mobile ? 15 : 10,
+    top: mobile ? 0 : 10,
     right: 0,
-    bottom: 8,
+    bottom: mobile ? 4 : 8,
     left: 0
   }
 
   const padding = {
-    bottom: 3,
+    bottom: mobile ? 0 : 3,
     top: mobile ? 3 : 10
   }
 
   const circleNodes = Object.keys(data.timelineNodes).length
   const circleRadius = 6
   const circleRadiusInv = (circleRadius / windowSize.height) * 100
-  const svgHeight = 100 - margin.top - margin.bottom
+  const svgHeight = (mobile ? 60 : 100) - margin.top - margin.bottom
   const innerSvgHeight = svgHeight - padding.bottom
 
   const lineLength =

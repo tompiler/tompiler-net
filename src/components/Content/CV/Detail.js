@@ -2,6 +2,9 @@ import React from "react"
 
 import styled from "styled-components"
 
+import { faAngleRight } from "@fortawesome/free-solid-svg-icons"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+
 const HeadlineCompany = styled("div")`
   display: inline-block;
   /* position: absolute; */
@@ -25,16 +28,18 @@ const HeadlineCompanyInner = styled("div")`
 
 const Company = styled("h3")`
   position: relative;
-  font-weight: 700;
-  /* line-height: 2vh; */
   top: 15%;
   height: auto;
   width: 100%;
-  font-size: 1.5em;
   font-weight: 700;
   margin: 0em 0 0 0vw;
   padding: 0vh 2vw;
   text-align: left;
+`
+
+const CompanyContainer = styled("div")`
+  flex: 3;
+  border: 1px dashed lightpink;
 `
 
 const RoleContainer = styled("div")`
@@ -57,6 +62,7 @@ const Role = styled("p")`
 `
 
 const DurationContainer = styled("div")`
+  display: flex;
   flex: 2;
   border: 1px dashed lightpink;
 `
@@ -66,17 +72,17 @@ const Duration = styled("p")`
   line-height: 1vh;
   text-align: left;
   font-style: italic;
-  font-size: 0.9em;
-  margin: 1vh 0 1vh 2vw;
+  font-size: ${props => (props.mobile ? "0.75em" : "0.9em")};
+  margin: 0.5vh 0 0.5vh 2vw;
   padding: 0vh 0vw;
 `
 
 const DetailContentContainer = styled("div")`
-  display: block;
+  /* display: block; */
+  flex-grow: ${props => (!props.menu && props.mobile ? 0 : 1)};
   width: 100%;
-  height: 32vh;
-  overflow-y: scroll;
-  overflow-x: hidden;
+  overflow-y: ${props => (!props.menu && props.mobile ? "auto" : "scroll")};
+  /* overflow-x: hidden; */
   padding: 0 1vw 0 2vw;
   text-align: left;
   margin: ${props => (props.education ? "0 0 0 0" : "2vh 0 0 0")};
@@ -102,7 +108,7 @@ const Education = styled("p")`
 const Placement = styled("p")`
   font-size: 1em;
   font-weight: 600;
-  margin: 2.5vh 0 0 0;
+  margin: 0.5vh 0 0 0;
 `
 
 const JobDescriptionUL = styled("ul")`
@@ -114,7 +120,7 @@ const JobDescriptionUL = styled("ul")`
 
 const JobDescriptionLI = styled("li")`
   position: relative;
-  font-size: 0.85em;
+  font-size: 0.9em;
   margin: 1vh 0vw 1vh 0vw;
 `
 
@@ -124,7 +130,26 @@ const JobSubDescriptionLI = styled("li")`
   margin: 1vh 0vw 1vh 0vw;
 `
 
-const CVDetailLayout = ({ selected, data }) => {
+const BackButton = styled("button")`
+  position: relative;
+  align-self: flex-end;
+
+  right: 0;
+  height: auto;
+  width: 100%;
+  font-size: 0.9em;
+  font-weight: 600;
+  /* font-style: italic; */
+  border-radius: 5px;
+  background-color: #e6ebeb;
+  color: ${props => props.theme.color};
+  border: none;
+  text-align: right;
+  cursor: pointer;
+  /* text-decoration: underline; */
+`
+
+const Detail = ({ mobile, selected, data, setSelected }) => {
   const [jobDetail] = data.dataJson.detail.filter(job => {
     return job.selected === selected
   })
@@ -133,21 +158,50 @@ const CVDetailLayout = ({ selected, data }) => {
   const { education, title, duration, summary, placements } = jobDetail.values
 
   return (
-    <>
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        height: !selected.menu & mobile ? "auto" : "40vh",
+        margin: !selected.menu & mobile ? "0 0 2vh 0" : "0"
+      }}
+    >
       <HeadlineCompany>
-        <HeadlineCompanyInner>
-          <Company>{heading}</Company>
-        </HeadlineCompanyInner>
+        <FlexContainer>
+          <CompanyContainer>
+            <Company>{heading}</Company>
+          </CompanyContainer>
+          {mobile ? (
+            <DurationContainer>
+              <BackButton
+                onClick={() =>
+                  setSelected(state => ({
+                    value: state.value,
+                    prevValue: state.prevValue,
+                    menu: true
+                  }))
+                }
+              >
+                {"Back"}
+                <FontAwesomeIcon icon={faAngleRight} />
+              </BackButton>
+            </DurationContainer>
+          ) : null}
+        </FlexContainer>
         <FlexContainer>
           <DurationContainer>
-            <Duration>{duration}</Duration>
+            <Duration mobile={mobile}>{duration}</Duration>
           </DurationContainer>
           <RoleContainer>
             <Role>{title}</Role>
           </RoleContainer>
         </FlexContainer>
       </HeadlineCompany>
-      <DetailContentContainer education={selected === -1}>
+      <DetailContentContainer
+        education={selected === -1}
+        mobile={mobile ? 1 : 0}
+        menu={selected.menu ? 1 : 0}
+      >
         {summary && <JobSummary>{summary}</JobSummary>}
         {selected === -1 &&
           education.map(uni => (
@@ -176,8 +230,8 @@ const CVDetailLayout = ({ selected, data }) => {
             )
           })}
       </DetailContentContainer>
-    </>
+    </div>
   )
 }
 
-export default CVDetailLayout
+export default Detail

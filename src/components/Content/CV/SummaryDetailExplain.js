@@ -9,14 +9,28 @@ import Explain from "./Explain"
 
 import styled from "styled-components"
 
-const SummaryDetailExplain = styled(animated.div)`
+const SummaryDetailExplainContainer = styled(animated.div)`
   display: inline-block;
-  position: absolute;
-  top: 0vh;
-  left: ${props => (!props.menu && props.mobile ? "0%" : "62%")};
+  position: ${props => (props.mobile ? "relative" : "absolute")};
+  top: ${props => (props.mobile ? "3%" : "0%")};
+  left: ${props => (props.mobile ? "0%" : "62%")};
   /* left: 58vw; */
-  height: 93vh;
-  width: ${props => (!props.menu && props.mobile ? "80%" : "24%")};
+  height: ${props =>
+    props.menu && props.mobile
+      ? "24vh"
+      : !props.menu && props.mobile
+      ? "auto"
+      : "92vh"};
+  width: ${props => (props.mobile ? "80%" : "24%")};
+
+  /*
+    Four scenarios:
+      menu is true, mobile is true = view of summary and employment timeline
+      menu is false, mobile is true = view of summary and selected job
+      menu is true, mobile is false = ?
+      menu is false, mobile is false = usual desktop view
+    */
+
   /* width: 28vw; */
   border: 1px dashed lightpink;
   overflow: hidden;
@@ -24,31 +38,30 @@ const SummaryDetailExplain = styled(animated.div)`
 
 const SummaryContainer = styled("div")`
   display: inline-block;
-  position: absolute;
+  position: ${props => (props.mobile ? "relative" : "absolute")};
   top: 0;
   left: 0%;
   width: 100%;
-  height: 18%;
-  margin: 0vh 0vw;
+  height: ${props => (props.mobile ? "24vh" : "18%")};
+  margin: ${props => (props.mobile ? "0" : "0 0vw 2vh 0")};
 
   border: 1px dashed lightpink;
 `
 
 const DetailContainer = styled("div")`
-  display: inline-block;
-  position: absolute;
-  top: 21%;
+  /* display: inline-block; */
+  position: ${props => (!props.menu && props.mobile ? "relative" : "absolute")};
+  top: ${props => (!props.menu && props.mobile ? "4%" : "20.5%")};
   left: 0%;
   width: 100%;
-  height: auto;
   margin: 0vh 0vw;
   border: 1px dashed lightpink;
 `
 
 const ExplainContainer = styled("div")`
   display: inline-block;
-  position: absolute;
-  top: 67%;
+  position: ${props => (!props.menu && props.mobile ? "relative" : "absolute")};
+  top: ${props => (!props.menu && props.mobile ? "25%" : "67%")};
   left: 0%;
   width: 100%;
   height: 40%;
@@ -56,7 +69,12 @@ const ExplainContainer = styled("div")`
   border: 1px dashed lightpink;
 `
 
-const EmploymentDetail = ({ mobile, selected, detailProps }) => {
+const SummaryDetailExplain = ({
+  mobile,
+  selected,
+  detailProps,
+  setSelected
+}) => {
   const data = useStaticQuery(graphql`
     query CVQuery {
       dataJson {
@@ -94,11 +112,11 @@ const EmploymentDetail = ({ mobile, selected, detailProps }) => {
 
   const transitions = useTransition(selected.value, null, {
     from: {
-      opacity: 0
+      opacity: mobile ? 1 : 0
     },
     update: { opacity: 1 },
     leave: {
-      opacity: 0
+      opacity: mobile ? 1 : 0
     },
     config: {
       mass: 1,
@@ -106,33 +124,39 @@ const EmploymentDetail = ({ mobile, selected, detailProps }) => {
       friction: 30
     }
   })
-
   return (
-    (!mobile || !selected.menu) && (
-      <SummaryDetailExplain
-        menu={selected.menu ? 1 : 0}
-        mobile={mobile ? 1 : 0}
-        style={{ opacity: detailProps.opacity }}
-      >
-        <SummaryContainer>
-          <Summary data={data} />
-        </SummaryContainer>
-        <DetailContainer>
+    <SummaryDetailExplainContainer
+      menu={selected.menu ? 1 : 0}
+      mobile={mobile ? 1 : 0}
+      style={{ opacity: detailProps.opacity }}
+    >
+      <SummaryContainer mobile={mobile ? 1 : 0} menu={selected.menu ? 1 : 0}>
+        <Summary data={data} />
+      </SummaryContainer>
+      {(!mobile || !selected.menu) && (
+        <DetailContainer mobile={mobile ? 1 : 0} menu={selected.menu ? 1 : 0}>
           {transitions.map(
             ({ item, key, props }) =>
               item && (
                 <animated.div key={key} style={props}>
-                  <Detail selected={item} data={data} />
+                  <Detail
+                    selected={item}
+                    data={data}
+                    mobile={mobile ? 1 : 0}
+                    setSelected={setSelected}
+                  />
                 </animated.div>
               )
           )}
         </DetailContainer>
-        <ExplainContainer>
+      )}
+      {!mobile && (
+        <ExplainContainer mobile={mobile ? 1 : 0} menu={selected.menu ? 1 : 0}>
           <Explain data={data} />
         </ExplainContainer>
-      </SummaryDetailExplain>
-    )
+      )}
+    </SummaryDetailExplainContainer>
   )
 }
 
-export default EmploymentDetail
+export default SummaryDetailExplain

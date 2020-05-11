@@ -9,7 +9,7 @@ const ContentContainer = styled(animated.div)`
   display: block;
   text-align: center;
   position: absolute;
-  height: 93vh;
+  height: ${props => (props.mobile ? "82vh" : "93vh")};
   top: ${props => (props.mobile ? "10vh" : "5vh")};
   left: ${props => (props.mobile ? "0vw" : "12vw")};
   width: ${props => (props.mobile ? "100vw" : "100vw")};

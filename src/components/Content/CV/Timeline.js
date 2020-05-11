@@ -26,17 +26,17 @@ import data from "./links"
 const Container = styled("div")`
   display: inline-block;
   position: absolute;
-  top: ${props => (props.mobile ? "5%" : "0")};
+  top: ${props => (props.mobile ? "32%" : "0")};
   left: ${props => (props.mobile ? "10%" : "0%")};
   width: ${props => (props.mobile ? "80%" : "12%")};
-  height: ${props => (props.mobile ? "90%" : "100%")};
+  height: ${props => (props.mobile ? "70%" : "100%")};
   border: 1px dashed papayawhip;
 `
 
 const SvgContainer = styled(animated.svg)`
   height: ${props => props.height + "vh"};
-  left: 0;
-  width: ${props => (!props.menu ? "0vw" : props.mobile ? "40vw" : "35%")};
+  float: left;
+  width: ${props => (props.mobile ? "15vw" : "35%")};
   overflow: visible;
 `
 
@@ -75,7 +75,7 @@ const TimelineHeadingsContainer = styled("div")`
   position: relative;
   left: ${props => (props.mobile ? "0%" : "0%")};
   height: ${props => props.height + "vh"};
-  width: ${props => (props.mobile ? "40%" : "65%")};
+  width: ${props => (props.mobile ? "75%" : "65%")};
   /* border: 1px dashed lightgrey; */
 `
 
@@ -108,7 +108,7 @@ const HeadingDuration = styled("div")`
   font-style: italic;
   font-size: 0.8em;
   color: ${props => props.theme.cv.color};
-  width: ${props => (props.mobile ? "80%" : "80%")};
+  width: ${props => (props.mobile ? "90%" : "80%")};
 `
 
 const DendrogramPath = styled(animated.path)`
@@ -151,9 +151,7 @@ const Timeline = ({
     return innerSvgHeightPx - lineLengthPx * i - circleRadius * i
   }
 
-  const mobileAdj = mobile ? 15 : 0
-
-  console.log(selected, mobileAdj)
+  const mobileAdj = mobile ? 8 : 0
 
   // DENDOGRAM LAYER 1
 
@@ -427,7 +425,24 @@ const Timeline = ({
 
   // chain
   useChain(
-    open
+    mobile && open
+      ? [
+          detailRef,
+          circleRef0,
+          lineRef1,
+          circleRef1,
+          lineRef2,
+          circleRef2,
+          lineRef3,
+          circleRef3,
+          lineRef4,
+          circleRef4,
+          lineRef5,
+          circleRef5,
+          lineRef6,
+          circleRef6
+        ]
+      : open
       ? [
           circleRef0,
           lineRef1,
@@ -468,7 +483,9 @@ const Timeline = ({
           lineRef1,
           circleRef0
         ],
-    open
+    mobile && open
+      ? [0.3, 0.3, 0.6, 0.6, 0.9, 0.9, 1.2, 1.2, 1.5, 1.5, 1.8, 1.8, 2.1, 2.1]
+      : open
       ? [
           0,
           0,
@@ -553,11 +570,13 @@ const Timeline = ({
 
   return (
     <>
-      {selected.menu && (
+      {(selected.menu || !mobile) && (
         <Container mobile={mobile}>
-          <ColumnHeading style={{ opacity: circleProps6.opacity }}>
-            {columnHeadings[0]}
-          </ColumnHeading>
+          {!mobile && (
+            <ColumnHeading style={{ opacity: circleProps6.opacity }}>
+              {columnHeadings[0]}
+            </ColumnHeading>
+          )}
           <SvgContainer
             height={svgHeight}
             mobile={mobile ? 1 : 0}
@@ -619,7 +638,7 @@ const Timeline = ({
                     setSelected(state => ({
                       value: selectedArray[i],
                       prevValue: state.value,
-                      menu: true
+                      menu: false
                     }))
                   }
                   onFocus={() => void 0}
@@ -681,6 +700,7 @@ const Timeline = ({
         mobile={mobile}
         selected={selected}
         detailProps={detailProps}
+        setSelected={setSelected}
       ></SummaryDetailExplain>
     </>
   )
