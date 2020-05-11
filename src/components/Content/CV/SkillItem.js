@@ -4,11 +4,12 @@ import styled from "styled-components"
 
 const SkillItemContainer = styled("div")`
   display: inline-block;
-  position: fixed;
-  left: ${props => (props.mobile ? "10%" : "59vw")};
-  height: 92vh;
-  width: 9vw;
-  /* border: 1px dashed lightpink; */
+  position: absolute;
+  top: 0;
+  left: ${props => (props.mobile ? "10%" : "51%")};
+  height: 100%;
+  width: 8%;
+  border: 1px dashed lightpink;
 `
 
 const InnerSkillItemContainer = styled("div")`
@@ -16,8 +17,8 @@ const InnerSkillItemContainer = styled("div")`
   justify-content: left;
   position: absolute;
   top: ${props => props.top + "vh"};
-  margin-left: 0.5vw;
-  width: 9vw;
+  margin-left: 5%;
+  width: 95%;
   text-align: center;
   /* border: 1px dashed black; */
 `

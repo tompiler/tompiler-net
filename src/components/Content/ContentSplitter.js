@@ -16,8 +16,8 @@ const ContentSplitter = props => {
     config: {
       mass: 1,
       tension: 120,
-      friction: 15,
-    },
+      friction: 15
+    }
   })
 
   // not sure why this works but it does :/

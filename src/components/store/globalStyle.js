@@ -19,6 +19,14 @@ export const GlobalStyles = createGlobalStyle`
     background: ${({ theme }) => theme.scrollbar.thumb};
   }
 
+  html {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    margin: auto;
+    overflow-x: hidden;
+  }
+
   body {
     background: ${({ theme }) => theme.background};
     color: ${({ theme }) => theme.color};

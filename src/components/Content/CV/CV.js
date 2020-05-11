@@ -1,23 +1,23 @@
 import React, { useState } from "react"
 
-import useWindowSize from "../../useWindowSize"
 import useInterval from "../../useInterval"
 
 import { Timeline } from "./Timeline"
+import useWindowSize from "../../useWindowSize"
 
 import styled from "styled-components"
 
 import data from "./links"
 
-const ContentContainer = styled("div")`
-  display: inline-block;
-  position: fixed;
-  top: ${props => (props.mobile ? "105px" : "55px")};
-  left: ${props => (props.mobile ? "10%" : "12%")};
-  width: ${props => (props.mobile ? "80%" : "56%")};
-  height: 92vh;
-  /* border: 1px dashed lightpink; */
-`
+// const ContentContainer = styled("div")`
+//   display: block;
+//   position: fixed;
+//   top: ${props => (props.mobile ? "105px" : "55px")};
+//   left: ${props => (props.mobile ? "10%" : "12%")};
+//   width: ${props => (props.mobile ? "80%" : "56%")};
+//   height: 92vh;
+//   /* border: 1px dashed lightpink; */
+// `
 
 // const Button = styled("button")`
 //   position: fixed;
@@ -46,12 +46,15 @@ const ContentContainer = styled("div")`
 
 const CV = () => {
   const windowSize = useWindowSize()
-
+  const mobile = windowSize.width < 650 ? true : false
   const [open, toggle] = useState(false)
-  const [selected, setSelected] = useState({ value: 5, prevValue: null })
+  const [selected, setSelected] = useState({
+    value: mobile ? null : 5, // no default job view in detail with mobile view
+    prevValue: null,
+    menu: true
+  })
   const [hover, setHover] = useState(null)
   const [first, toggleFirst] = useState(true)
-  const mobile = windowSize.width < 650 ? true : false
 
   const margin = {
     top: mobile ? 15 : 10,
@@ -83,7 +86,7 @@ const CV = () => {
   }, 1000)
 
   return (
-    <ContentContainer mobile={mobile}>
+    <>
       {/* <Button onClick={() => toggle(!open)}>Toggle Animation</Button> */}
       <Timeline
         open={open}
@@ -98,7 +101,7 @@ const CV = () => {
         circleRadius={circleRadius}
         circleRadiusInv={circleRadiusInv}
       />
-    </ContentContainer>
+    </>
   )
 }
 

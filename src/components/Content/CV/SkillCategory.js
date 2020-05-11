@@ -3,11 +3,12 @@ import styled from "styled-components"
 
 const SkillCategoryContainer = styled("div")`
   display: inline-block;
-  position: fixed;
-  left: ${props => (props.mobile ? "10%" : "38vw")};
-  height: 92vh;
-  width: 7vw;
-  /* border: 1px dashed lightpink; */
+  position: absolute;
+  top: 0;
+  left: ${props => (props.mobile ? "10%" : "28%")};
+  height: 100%;
+  width: 7%;
+  border: 1px dashed lightpink;
 `
 
 const InnerSkillCategoryContainer = styled("div")`
@@ -17,7 +18,7 @@ const InnerSkillCategoryContainer = styled("div")`
   top: ${props => props.top + "vh"};
   /* height: 5vh; */
   align-items: center;
-  width: 7vw;
+  width: 100%;
   text-align: center;
   /* border: 1px dashed lightgrey; */
 `

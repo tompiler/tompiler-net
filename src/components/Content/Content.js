@@ -53,7 +53,7 @@ const Content = ({
   exit,
   entry,
   location,
-  children,
+  children
 }) => {
   const route = location.pathname.substr(1)
   const windowSize = useWindowSize()
@@ -76,14 +76,14 @@ const Content = ({
   const props = useSpring({
     from: { opacity: 0 },
     to: {
-      opacity: mount && route !== "cv" ? 1 : 0,
+      opacity: mount && route !== "cv" ? 1 : 0
     },
     config: {
       //   duration: 1000,
       mass: 1,
       tension: 120,
-      friction: 15,
-    },
+      friction: 15
+    }
   })
 
   return (
@@ -99,13 +99,13 @@ const Content = ({
                 ? 0
                 : route === "cv" || (mount && exitState === "cv")
                 ? props.opacity
-                : 1,
+                : 1
           }}
         >
           {windowSize.width > 650 && (
             <Title
               style={{
-                opacity: props.opacity,
+                opacity: props.opacity
               }}
             >
               {header}
@@ -115,7 +115,7 @@ const Content = ({
         <div>
           <ChildContainer
             style={{
-              opacity: props.opacity,
+              opacity: props.opacity
             }}
           >
             {children}

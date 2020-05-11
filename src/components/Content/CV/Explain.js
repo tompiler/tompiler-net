@@ -3,11 +3,13 @@ import React from "react"
 import styled from "styled-components"
 
 const ExplainContainerHeading = styled("h3")`
-  position: relative;
+  display: inline-block;
+  width: 100%;
   font-weight: 700;
-  padding: 0vh 2vw;
-  margin: 2vh 0 1vh 0;
-  /* border: 1px dashed lightpink; */
+  padding: 1vh 0 1vh 2vw;
+  margin: 0;
+  border: 1px dashed lightpink;
+  text-align: left;
 `
 
 const ExplainDescription = styled("p")`
@@ -26,8 +28,8 @@ const ExplainDescriptionContainer = styled("div")`
   border: 1px dashed lightpink;
   overflow-y: scroll;
   overflow-x: hidden;
-  padding: 0 2vw;
-  /* margin: 2vh 0; */
+  padding: 0 0 0 2vw;
+  text-align: left;
 `
 
 const Explain = ({ data }) => {

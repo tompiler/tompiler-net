@@ -12,7 +12,7 @@ import { lightTheme, darkTheme } from "../components/theme/theme"
 import { GlobalStyles } from "../components/store/globalStyle"
 
 const NavigationContainer = styled("div")`
-  position: fixed;
+  position: absolute;
   height: ${props => (props.mobile ? "56px" : "70vh")};
   top: 56px;
   left: 0;
@@ -28,27 +28,42 @@ const LinkContainer = styled("div")`
   flex-direction: ${props => (props.mobile ? "row" : "column")};
 `
 
+const Scroller = styled("div")`
+  position: absolute;
+
+  height: auto;
+  overflow-y: scroll;
+  overflow-x: hidden;
+`
+
+const Scroller2 = styled("div")`
+  top: 20%;
+  height: auto;
+  width: 100%;
+  overflow-y: scroll;
+  overflow-x: hidden;
+`
+
 const Layout = props => {
   const windowSize = useWindowSize()
   const { state } = useContext(Context)
 
   return (
     <ThemeProvider theme={state.isDark ? darkTheme : lightTheme}>
+      <GlobalStyles />
+      <Toolbar />
       <>
-        <GlobalStyles />
-        <Toolbar />
-        <div>
-          <NavigationContainer mobile={windowSize.width < 650 ? true : false}>
-            <div>
-              <LinkContainer mobile={windowSize.width < 650 ? true : false}>
-                <Navigation />
-              </LinkContainer>
-            </div>
-          </NavigationContainer>
-          {/* <ContainerRight mobile={windowSize.width < 650 ? true : false}> */}
-          <TransitionStateWrapper>{props.children}</TransitionStateWrapper>
-          {/* </ContainerRight> */}
-        </div>
+        <NavigationContainer mobile={windowSize.width < 650 ? true : false}>
+          <div>
+            <LinkContainer mobile={windowSize.width < 650 ? true : false}>
+              <Navigation />
+            </LinkContainer>
+          </div>
+        </NavigationContainer>
+        {/* <Scroller2></Scroller2> */}
+        {/* <ContainerRight mobile={windowSize.width < 650 ? true : false}> */}
+        <TransitionStateWrapper>{props.children}</TransitionStateWrapper>
+        {/* </ContainerRight> */}
       </>
     </ThemeProvider>
   )

@@ -2,13 +2,13 @@ import styled from "styled-components"
 
 const SkillCategoryDendogramContainer = styled("div")`
   display: inline-block;
-  width: 14vw;
-  height: 89vh;
+  width: 16%;
+  height: 97%;
   margin-top: 3vh;
-  position: fixed;
-  top: ${props => (props.mobile ? "105px" : "55px")};
-  left: ${props => (props.mobile ? "10%" : "24vw")};
-  /* border: 1px dashed lightpink; */
+  position: absolute;
+  top: ${props => (props.mobile ? "15%" : "0%")};
+  left: ${props => (props.mobile ? "10%" : "12%")};
+  border: 1px dashed lightpink;
 `
 
 export { SkillCategoryDendogramContainer }

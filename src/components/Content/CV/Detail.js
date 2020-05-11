@@ -2,84 +2,85 @@ import React from "react"
 
 import styled from "styled-components"
 
-const TitleContainer = styled("div")`
+const HeadlineCompany = styled("div")`
   display: inline-block;
+  /* position: absolute; */
+  width: 100%;
   top: 0%;
   left: 0%;
+  height: auto;
   border: 1px dashed lightpink;
 `
 
-const TitleInnerContainer = styled("div")`
+const HeadlineCompanyInner = styled("div")`
   display: inline-block;
   position: relative;
-  top: 0%;
-  left: 0%;
-  width: 80%;
-  /* border: 1px dashed lightpink; */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+  border: 1px dashed lightpink;
+  /* padding: 1vh 0; */
 `
 
-const JobHeading = styled("h3")`
+const Company = styled("h3")`
   position: relative;
   font-weight: 700;
-  line-height: 2vh;
+  /* line-height: 2vh; */
   top: 15%;
+  height: auto;
   width: 100%;
   font-size: 1.5em;
   font-weight: 700;
   margin: 0em 0 0 0vw;
   padding: 0vh 2vw;
-`
-
-const PositionContainer = styled("div")`
-  display: inline-block;
-  position: absolute;
-  top: 0%;
-  left: 80%;
-  width: 20%;
-  /* border: 1px dashed lightpink; */
-`
-
-const JobTitle = styled("p")`
-  display: inline;
-  vertical-align: bottom;
-  top: 0%;
   text-align: left;
+`
+
+const RoleContainer = styled("div")`
+  flex: 1;
+  border: 1px dashed lightpink;
+`
+
+const FlexContainer = styled("div")`
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+`
+
+const Role = styled("p")`
+  text-align: center;
   font-style: italic;
   font-size: 0.9em;
-  margin: 0 0 0 0;
+  margin: 1vh 0 1vh 0;
+  line-height: 1vh;
 `
 
 const DurationContainer = styled("div")`
-  display: inline-block;
-  position: relative;
-  top: 0%;
-  left: 0%;
-  width: 80%;
-  height: 35%;
-  /* border: 1px dashed lightpink; */
+  flex: 2;
+  border: 1px dashed lightpink;
 `
 
-const JobDuration = styled("p")`
+const Duration = styled("p")`
+  display: flex;
   line-height: 1vh;
   text-align: left;
   font-style: italic;
   font-size: 0.9em;
-  margin: 0 0 0 0vw;
-  padding: 0vh 2vw;
+  margin: 1vh 0 1vh 2vw;
+  padding: 0vh 0vw;
 `
 
 const DetailContentContainer = styled("div")`
-  display: inline-block;
-  position: absolute;
-  top: 12%;
-  left: 0%;
+  display: block;
   width: 100%;
-  height: 80%;
+  height: 32vh;
   overflow-y: scroll;
   overflow-x: hidden;
-  padding: 0 2vw 0 2vw;
+  padding: 0 1vw 0 2vw;
+  text-align: left;
   margin: ${props => (props.education ? "0 0 0 0" : "2vh 0 0 0")};
-  /* border: 1px dashed lightpink; */
+  border: 1px dashed lightpink;
 `
 
 const JobSummary = styled("p")`
@@ -133,17 +134,19 @@ const CVDetailLayout = ({ selected, data }) => {
 
   return (
     <>
-      <TitleContainer>
-        <TitleInnerContainer>
-          <JobHeading>{heading}</JobHeading>
-        </TitleInnerContainer>
-        <PositionContainer>
-          <JobTitle>{title}</JobTitle>
-        </PositionContainer>
-        <DurationContainer>
-          <JobDuration>{duration}</JobDuration>
-        </DurationContainer>
-      </TitleContainer>
+      <HeadlineCompany>
+        <HeadlineCompanyInner>
+          <Company>{heading}</Company>
+        </HeadlineCompanyInner>
+        <FlexContainer>
+          <DurationContainer>
+            <Duration>{duration}</Duration>
+          </DurationContainer>
+          <RoleContainer>
+            <Role>{title}</Role>
+          </RoleContainer>
+        </FlexContainer>
+      </HeadlineCompany>
       <DetailContentContainer education={selected === -1}>
         {summary && <JobSummary>{summary}</JobSummary>}
         {selected === -1 &&

@@ -17,7 +17,7 @@ import {
   SkillItem
 } from "./SkillItem"
 
-import EmploymentDetail from "./SummaryDetailExplain"
+import SummaryDetailExplain from "./SummaryDetailExplain"
 
 import styled from "styled-components"
 
@@ -25,14 +25,18 @@ import data from "./links"
 
 const Container = styled("div")`
   display: inline-block;
-  width: 12vw;
-  height: 92vh;
-  /* border: 1px dashed blue; */
+  position: absolute;
+  top: 0;
+  left: ${props => (props.mobile ? "10%" : "0%")};
+  width: ${props => (props.mobile ? "80%" : "12%")};
+  height: 100%;
+  border: 1px dashed papayawhip;
 `
 
 const SvgContainer = styled(animated.svg)`
   height: ${props => props.height + "vh"};
-  width: 5vw;
+  left: 0;
+  width: ${props => (!props.menu ? "0vw" : props.mobile ? "40vw" : "35%")};
   overflow: visible;
 `
 
@@ -68,27 +72,27 @@ const ColumnBody = styled("div")`
 
 const TimelineHeadingsContainer = styled("div")`
   display: inline-block;
-  /* position: relative; */
-  left: ${props => (props.mobile ? "10%" : "20%")};
+  position: relative;
+  left: ${props => (props.mobile ? "0%" : "0%")};
   height: ${props => props.height + "vh"};
-  width: 7vw;
+  width: ${props => (props.mobile ? "40%" : "65%")};
   /* border: 1px dashed lightgrey; */
 `
 
 const HeadingContainer = styled(animated.div)`
   display: flex;
   flex-direction: column;
-  align-items: top;
   position: absolute;
   top: ${props => props.top + "vh"};
+  left: 0%;
   height: 8vh;
-  width: 7vw;
+  width: ${props => (props.mobile ? "20vw" : "100%")};
+  text-align: left;
   /* border: 1px dashed lightgrey; */
 `
 
 const Heading = styled("div")`
   /* display: flex; */
-  align-items: center;
   font-family: "Open Sans";
   font-size: 1em;
   font-weight: ${props =>
@@ -104,7 +108,7 @@ const HeadingDuration = styled("div")`
   font-style: italic;
   font-size: 0.8em;
   color: ${props => props.theme.cv.color};
-  width: 6vw;
+  width: ${props => (props.mobile ? "38vw" : "80%")};
 `
 
 const DendrogramPath = styled(animated.path)`
@@ -132,7 +136,7 @@ const Timeline = ({
 }) => {
   const windowSize = useWindowSize()
 
-  const svgWidth = windowSize.width * 0.14
+  const svgWidth = windowSize.width * 0.16
 
   const toPxH = h => (h / 100) * windowSize.height
 
@@ -146,6 +150,10 @@ const Timeline = ({
   const yStartPx = i => {
     return innerSvgHeightPx - lineLengthPx * i - circleRadius * i
   }
+
+  const mobileAdj = mobile ? 5 : 0
+
+  console.log(selected, mobileAdj)
 
   // DENDOGRAM LAYER 1
 
@@ -390,11 +398,11 @@ const Timeline = ({
       y: open
         ? innerSvgHeight - lineLength * 6 - circleRadiusInv * 6 + "vh"
         : innerSvgHeight - lineLength * 5 - circleRadiusInv * 6 + "vh",
-      x: open ? 4 + "vw" : 2.5 + "vw"
+      x: open ? 3 + mobileAdj * 2.5 + "vw" : 1 + mobileAdj + "vw"
     },
     from: {
       y: innerSvgHeight - lineLength * 5 - circleRadiusInv * 6 + "vh",
-      x: 2.5 + "vw"
+      x: 1 + mobileAdj + "vw"
     },
     ref: lineRef6
   })
@@ -542,116 +550,138 @@ const Timeline = ({
 
   const detail = result.dataJson.detail
   const columnHeadings = result.dataJson.main.columnHeadings
+
   return (
     <>
-      <Container>
-        <ColumnHeading style={{ opacity: circleProps6.opacity }}>
-          {columnHeadings[0]}
-        </ColumnHeading>
-        <SvgContainer
-          height={svgHeight} /*style={{ border: "1px dashed white" }}*/
-        >
-          <g>
-            <Line
-              x1={lineProps6.x}
-              y1={lineProps6.y}
-              x2="2.5vw"
-              y2={innerSvgHeight - lineLength * 5 - circleRadiusInv * 6 + "vh"}
-              strokeDasharray="4 8"
-            />
-            {lineSprings.map((spring, i) => (
+      {selected.menu && (
+        <Container mobile={mobile}>
+          <ColumnHeading style={{ opacity: circleProps6.opacity }}>
+            {columnHeadings[0]}
+          </ColumnHeading>
+          <SvgContainer
+            height={svgHeight}
+            mobile={mobile ? 1 : 0}
+            menu={selected.menu ? 1 : 0}
+            // style={{ border: "1px dashed white" }}
+          >
+            <g>
               <Line
-                x1="2.5vw"
-                y1={spring.y}
-                x2="2.5vw"
+                x1={lineProps6.x}
+                y1={lineProps6.y}
+                x2={1 + mobileAdj + "vw"}
                 y2={
-                  innerSvgHeight -
-                  lineLength * i -
-                  circleRadiusInv * (i + 1) +
-                  "vh"
+                  innerSvgHeight - lineLength * 5 - circleRadiusInv * 6 + "vh"
                 }
-                key={"lineSpring-" + i}
+                strokeDasharray="4 8"
               />
-            ))}
+              {lineSprings.map((spring, i) => (
+                <Line
+                  x1={1 + mobileAdj + "vw"}
+                  y1={spring.y}
+                  x2={1 + mobileAdj + "vw"}
+                  y2={
+                    innerSvgHeight -
+                    lineLength * i -
+                    circleRadiusInv * (i + 1) +
+                    "vh"
+                  }
+                  key={"lineSpring-" + i}
+                />
+              ))}
+              {circleSprings.map((spring, i) => (
+                <Circle
+                  r={spring.r}
+                  cx={
+                    i === 6 ? 3 + mobileAdj * 2.5 + "vw" : 1 + mobileAdj + "vw"
+                  }
+                  cy={
+                    innerSvgHeight - lineLength * i - circleRadiusInv * i + "vh"
+                  }
+                  hover={hover === selectedArray[i] ? "true" : "false"}
+                  selected={selected.value === selectedArray[i]}
+                  key={"circleSpring-" + i}
+                />
+              ))}
+            </g>
+          </SvgContainer>
+          <TimelineHeadingsContainer mobile={mobile ? 1 : 0} height={svgHeight}>
             {circleSprings.map((spring, i) => (
-              <Circle
-                r={spring.r}
-                cx={i === 6 ? "4vw" : "2.5vw"}
-                cy={
-                  innerSvgHeight - lineLength * i - circleRadiusInv * i + "vh"
-                }
-                hover={hover === selectedArray[i] ? "true" : "false"}
-                selected={selected.value === selectedArray[i]}
-                key={"circleSpring-" + i}
-              />
-            ))}
-          </g>
-        </SvgContainer>
-        <TimelineHeadingsContainer height={svgHeight}>
-          {circleSprings.map((spring, i) => (
-            <HeadingContainer
-              top={yStartInv(i) + 1.8}
-              style={{ opacity: spring.opacity }}
-              key={"headingContainer" + i}
-            >
-              <Heading
-                onMouseOver={() => setHover(selectedArray[i])}
-                onMouseOut={() => setHover(null)}
-                onClick={() =>
-                  setSelected(state => ({
-                    value: selectedArray[i],
-                    prevValue: state.value
-                  }))
-                }
-                onFocus={() => void 0}
-                onBlur={() => void 0}
-                hover={hover === selectedArray[i] ? "true" : "false"}
-                selected={selected.value === selectedArray[i]}
+              <HeadingContainer
+                top={yStartInv(i) - 1.2}
+                style={{ opacity: spring.opacity }}
+                key={"headingContainer" + i}
+                mobile={mobile ? 1 : 0}
               >
-                {detail[i].heading}
-              </Heading>
-              <HeadingDuration>{detail[i].values.duration}</HeadingDuration>
-            </HeadingContainer>
-          ))}
-        </TimelineHeadingsContainer>
-      </Container>
-      <SkillCategoryDendogramContainer /*style={{ border: "1px dashed white" }}*/
-      >
-        <animated.svg
-          height={svgHeight + "vh"}
-          width="15vw"
-          strokeDasharray="1900"
-          strokeDashoffset={DendogramLayer1Props.x}
-        >
-          {skillCategorylinks}
-        </animated.svg>
-      </SkillCategoryDendogramContainer>
-      <SkillCategoryContainer>
-        <ColumnHeading style={{ opacity: skillCategoryProps.opacity }}>
-          {columnHeadings[1]}
-        </ColumnHeading>
-        <ColumnBody>{skillCategoryList}</ColumnBody>
-      </SkillCategoryContainer>
-      <SkillItemDendogramContainer /*style={{ border: "1px dashed white" }}*/>
-        <animated.svg
-          height={svgHeight + 10 + "vh"}
-          width="15vw"
-          strokeDasharray="1300"
-          strokeDashoffset={DendogramLayer2Props.x}
-        >
-          {skillItemlinks}
-        </animated.svg>
-      </SkillItemDendogramContainer>
-      <SkillItemContainer>
-        <ColumnHeading style={{ opacity: skillItemProps.opacity }}>
-          {columnHeadings[2]}
-        </ColumnHeading>
-        <ColumnBody>{skillItemList}</ColumnBody>
-      </SkillItemContainer>
-      <EmploymentDetail
+                <Heading
+                  onMouseOver={() => setHover(selectedArray[i])}
+                  onMouseOut={() => setHover(null)}
+                  onClick={() =>
+                    setSelected(state => ({
+                      value: selectedArray[i],
+                      prevValue: state.value,
+                      menu: true
+                    }))
+                  }
+                  onFocus={() => void 0}
+                  onBlur={() => void 0}
+                  hover={hover === selectedArray[i] ? "true" : "false"}
+                  selected={selected.value === selectedArray[i]}
+                  mobile={mobile ? 1 : 0}
+                >
+                  {detail[i].heading}
+                </Heading>
+                <HeadingDuration mobile={mobile ? 1 : 0}>
+                  {detail[i].values.duration}
+                </HeadingDuration>
+              </HeadingContainer>
+            ))}
+          </TimelineHeadingsContainer>
+        </Container>
+      )}
+      {!mobile && (
+        <>
+          <SkillCategoryDendogramContainer
+          // style={{ border: "1px dashed white" }}
+          >
+            <animated.svg
+              height="100%"
+              width="100%"
+              strokeDasharray="1900"
+              strokeDashoffset={DendogramLayer1Props.x}
+            >
+              {skillCategorylinks}
+            </animated.svg>
+          </SkillCategoryDendogramContainer>
+          <SkillCategoryContainer>
+            <ColumnHeading style={{ opacity: skillCategoryProps.opacity }}>
+              {columnHeadings[1]}
+            </ColumnHeading>
+            <ColumnBody>{skillCategoryList}</ColumnBody>
+          </SkillCategoryContainer>
+
+          <SkillItemDendogramContainer>
+            <animated.svg
+              height="100%"
+              width="100%"
+              strokeDasharray="1300"
+              strokeDashoffset={DendogramLayer2Props.x}
+            >
+              {skillItemlinks}
+            </animated.svg>
+          </SkillItemDendogramContainer>
+          <SkillItemContainer>
+            <ColumnHeading style={{ opacity: skillItemProps.opacity }}>
+              {columnHeadings[2]}
+            </ColumnHeading>
+            <ColumnBody>{skillItemList}</ColumnBody>
+          </SkillItemContainer>
+        </>
+      )}
+      <SummaryDetailExplain
+        mobile={mobile}
         selected={selected}
         detailProps={detailProps}
-      ></EmploymentDetail>
+      ></SummaryDetailExplain>
     </>
   )
 }

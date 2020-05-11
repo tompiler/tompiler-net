@@ -38,6 +38,7 @@ const SummaryDescriptionContainer = styled("div")`
 
 const SummaryDescription = styled("p")`
   font-size: 0.95em;
+  text-align: left;
   margin: 0vh 0vw 0vh 0vw;
   /* font-weight: 600; */
 `
