@@ -396,7 +396,7 @@ const Timeline = ({
       y: open
         ? innerSvgHeight - lineLength * 6 - circleRadiusInv * 6 + "vh"
         : innerSvgHeight - lineLength * 5 - circleRadiusInv * 6 + "vh",
-      x: open ? 3 + mobileAdj * 1.5 + "vw" : 1 + mobileAdj + "vw"
+      x: open ? 3 + mobileAdj * 1.2 + "vw" : 1 + mobileAdj + "vw"
     },
     from: {
       y: innerSvgHeight - lineLength * 5 - circleRadiusInv * 6 + "vh",
@@ -611,7 +611,7 @@ const Timeline = ({
                 <Circle
                   r={spring.r}
                   cx={
-                    i === 6 ? 3 + mobileAdj * 1.5 + "vw" : 1 + mobileAdj + "vw"
+                    i === 6 ? 3 + mobileAdj * 1.2 + "vw" : 1 + mobileAdj + "vw"
                   }
                   cy={
                     innerSvgHeight - lineLength * i - circleRadiusInv * i + "vh"

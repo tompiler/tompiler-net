@@ -9,7 +9,7 @@ const SummaryHeadingContainer = styled("div")`
   left: 0%;
   width: 100%;
   height: 20%;
-  padding: ${props => (props.mobile ? "1vh 2vw 0 0" : "0 2vw")};
+  padding: ${props => (props.mobile ? "1vh 2vw 0 2vw" : "0 2vw")};
   margin: ${props => (props.mobile ? "1vh 0 0 0" : "0")};
   border-top: ${props =>
     props.mobile ? `1px solid ${props.theme.color}` : "none"};

@@ -103,13 +103,13 @@ const Education = styled("p")`
 const Placement = styled("p")`
   font-size: 1em;
   font-weight: 600;
-  margin: 0.5vh 0 0 0;
+  margin: 0;
 `
 
 const JobDescriptionUL = styled("ul")`
   display: block;
   list-style-type: disc;
-  margin: 0 0 0 0;
+  margin: 0;
   padding-inline-start: ${props => (props.mobile ? "4vw" : "0")};
 `
 
