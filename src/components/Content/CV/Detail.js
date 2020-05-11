@@ -2,9 +2,6 @@ import React from "react"
 
 import styled from "styled-components"
 
-import { faAngleRight } from "@fortawesome/free-solid-svg-icons"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-
 const HeadlineCompany = styled("div")`
   display: inline-block;
   /* position: absolute; */
@@ -130,25 +127,6 @@ const JobSubDescriptionLI = styled("li")`
   margin: 1vh 0vw 1vh 0vw;
 `
 
-const BackButton = styled("button")`
-  position: relative;
-  align-self: flex-end;
-
-  right: 0;
-  height: auto;
-  width: 100%;
-  font-size: 0.9em;
-  font-weight: 600;
-  /* font-style: italic; */
-  border-radius: 5px;
-  background-color: #e6ebeb;
-  color: ${props => props.theme.color};
-  border: none;
-  text-align: right;
-  cursor: pointer;
-  /* text-decoration: underline; */
-`
-
 const Detail = ({ mobile, selected, data, setSelected }) => {
   const [jobDetail] = data.dataJson.detail.filter(job => {
     return job.selected === selected
@@ -171,22 +149,6 @@ const Detail = ({ mobile, selected, data, setSelected }) => {
           <CompanyContainer>
             <Company>{heading}</Company>
           </CompanyContainer>
-          {mobile ? (
-            <DurationContainer>
-              <BackButton
-                onClick={() =>
-                  setSelected(state => ({
-                    value: state.value,
-                    prevValue: state.prevValue,
-                    menu: true
-                  }))
-                }
-              >
-                {"Back"}
-                <FontAwesomeIcon icon={faAngleRight} />
-              </BackButton>
-            </DurationContainer>
-          ) : null}
         </FlexContainer>
         <FlexContainer>
           <DurationContainer>

@@ -71,7 +71,7 @@ const CV = () => {
   const circleNodes = Object.keys(data.timelineNodes).length
   const circleRadius = 6
   const circleRadiusInv = (circleRadius / windowSize.height) * 100
-  const svgHeight = (mobile ? 60 : 100) - margin.top - margin.bottom
+  const svgHeight = (mobile ? 58 : 100) - margin.top - margin.bottom
   const innerSvgHeight = svgHeight - padding.bottom
 
   const lineLength =

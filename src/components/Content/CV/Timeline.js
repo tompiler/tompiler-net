@@ -26,7 +26,7 @@ import data from "./links"
 const Container = styled("div")`
   display: inline-block;
   position: absolute;
-  top: ${props => (props.mobile ? "32%" : "0")};
+  top: ${props => (props.mobile ? "35%" : "0")};
   left: ${props => (props.mobile ? "10%" : "0%")};
   width: ${props => (props.mobile ? "80%" : "12%")};
   height: ${props => (props.mobile ? "70%" : "100%")};

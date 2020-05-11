@@ -7,6 +7,9 @@ import Detail from "./Detail"
 import Summary from "./Summary"
 import Explain from "./Explain"
 
+import { faAngleRight } from "@fortawesome/free-solid-svg-icons"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+
 import styled from "styled-components"
 
 const SummaryDetailExplainContainer = styled(animated.div)`
@@ -17,7 +20,7 @@ const SummaryDetailExplainContainer = styled(animated.div)`
   /* left: 58vw; */
   height: ${props =>
     props.menu && props.mobile
-      ? "24vh"
+      ? "27vh"
       : !props.menu && props.mobile
       ? "auto"
       : "92vh"};
@@ -42,7 +45,7 @@ const SummaryContainer = styled("div")`
   top: 0;
   left: 0%;
   width: 100%;
-  height: ${props => (props.mobile ? "24vh" : "18%")};
+  height: ${props => (props.mobile ? "23vh" : "18%")};
   margin: ${props => (props.mobile ? "0" : "0 0vw 2vh 0")};
 
   border: 1px dashed lightpink;
@@ -51,7 +54,7 @@ const SummaryContainer = styled("div")`
 const DetailContainer = styled("div")`
   /* display: inline-block; */
   position: ${props => (!props.menu && props.mobile ? "relative" : "absolute")};
-  top: ${props => (!props.menu && props.mobile ? "4%" : "20.5%")};
+  top: ${props => (!props.menu && props.mobile ? "0" : "20.5%")};
   left: 0%;
   width: 100%;
   margin: 0vh 0vw;
@@ -67,6 +70,22 @@ const ExplainContainer = styled("div")`
   height: 40%;
   margin: 0vh 0vw;
   border: 1px dashed lightpink;
+`
+
+const BackButton = styled("button")`
+  position: relative;
+  height: auto;
+  top: -1vh;
+  /* margin: 0.5vh 0; */
+  width: 100%;
+  font-size: 0.9em;
+  font-weight: 600;
+  border-radius: 5px;
+  background-color: #e6ebeb;
+  color: ${props => props.theme.color};
+  border: none;
+  text-align: ${props => (props.mobile ? "center" : "right")};
+  cursor: pointer;
 `
 
 const SummaryDetailExplain = ({
@@ -133,6 +152,22 @@ const SummaryDetailExplain = ({
       <SummaryContainer mobile={mobile ? 1 : 0} menu={selected.menu ? 1 : 0}>
         <Summary data={data} />
       </SummaryContainer>
+      {mobile ? (
+        <BackButton
+          mobile={mobile}
+          onClick={() =>
+            setSelected(state => ({
+              value: state.value,
+              prevValue: state.prevValue,
+              menu: true
+            }))
+          }
+        >
+          {selected.menu
+            ? "Click on a role in the timeline below"
+            : "Return to timeline"}
+        </BackButton>
+      ) : null}
       {(!mobile || !selected.menu) && (
         <DetailContainer mobile={mobile ? 1 : 0} menu={selected.menu ? 1 : 0}>
           {transitions.map(
