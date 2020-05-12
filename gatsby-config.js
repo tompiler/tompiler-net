@@ -7,23 +7,23 @@
 module.exports = {
   siteMetadata: {
     title: "tompiler",
-    author: "Andrew Mead",
+    author: "Andrew Mead"
   },
   plugins: [
     "gatsby-plugin-sass",
     {
       resolve: "gatsby-plugin-transition-link",
       options: {
-        injectPageProps: false,
-      },
+        injectPageProps: false
+      }
     },
     "gatsby-transformer-json",
     {
       resolve: "gatsby-source-filesystem",
       options: {
         name: "src",
-        path: `${__dirname}/src/`,
-      },
+        path: `${__dirname}/src/`
+      }
     },
     // {
     //   resolve: "gatsby-plugin-google-fonts",
@@ -44,16 +44,25 @@ module.exports = {
         fonts: [
           {
             family: "Open Sans",
-            variants: ["300", "400", "600", "700"],
+            variants: ["300", "400", "600", "700"]
           },
           {
             family: "Hammersmith One",
-            variants: ["Regular"],
-          },
-        ],
-      },
+            variants: ["Regular"]
+          }
+        ]
+      }
     },
     "gatsby-plugin-sharp",
+    {
+      resolve: "gatsby-source-filesystem",
+      options: {
+        name: "images",
+        path: `${__dirname}/src/img`
+      }
+    },
+    "gatsby-plugin-sharp",
+    "gatsby-transformer-sharp",
     {
       resolve: "gatsby-transformer-remark",
       options: {
@@ -64,11 +73,11 @@ module.exports = {
             options: {
               maxWidth: 750,
               linkImagesToOriginal: false,
-              ignoreFileExtensions: [],
-            },
-          },
-        ],
-      },
-    },
-  ],
+              ignoreFileExtensions: []
+            }
+          }
+        ]
+      }
+    }
+  ]
 }

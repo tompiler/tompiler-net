@@ -30,7 +30,7 @@ const ChildContainer = styled(animated.div)`
   position: relative;
   padding: 3vh 0;
   display: grid;
-  grid-template-rows: 25%;
+  grid-template-rows: 10%;
   grid-template-columns: 100%;
   justify-items: center;
   align-items: top;
