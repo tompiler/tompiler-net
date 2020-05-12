@@ -1,14 +1,25 @@
+const size = {
+  sm: "400px",
+  md: "650px"
+}
+
+const breakpoints = {
+  sm: `(max-width: ${size.sm})`,
+  md: `(max-width: ${size.md})`
+}
+
 export const lightTheme = {
-  background: "#D6D6D6",
+  background: "#ededed",
   color: "#212121",
   contactItem: { color: "#424242", hover: "#6A6A6A" },
+  tompiler: { border: "#999999" },
   cv: {
     color: "#505050",
     hover: "#202020",
     line: { color: "#686868", hover: "#202020" },
     circle: { hover: "#7a7a7a" },
     toggle: { hover: "#bababa" },
-    button: { background: "#e6ebeb", color: "#212121", border: "#c9c9c9" }
+    button: { background: "#d6d6d6", color: "#212121", border: "#adadad" }
   },
   scrollbar: { track: "#bababa", thumb: "#999999" },
   pageColours: {
@@ -18,13 +29,15 @@ export const lightTheme = {
     articles: { red: 221, green: 33, blue: 83, a: 0.6 }, // #DD2153
     cv: { red: 255, green: 201, blue: 3, a: 0.9 }, // #C29E0D
     aims: { red: 169, green: 39, blue: 207, a: 0.6 } // #A927CF
-  }
+  },
+  breakpoints: breakpoints
 }
 
 export const darkTheme = {
   background: "#323745",
   color: "#d4cac1",
   contactItem: { color: "#d4cac1", hover: "#F3E9DE" },
+  tompiler: { border: "#d4cac1" },
   cv: {
     color: "#DCDCDC",
     hover: "#fafafa",
@@ -42,5 +55,6 @@ export const darkTheme = {
     articles: { red: 221, green: 109, blue: 138, a: 1 }, // #DD8DA2
     cv: { red: 245, green: 218, blue: 116, a: 1 }, // #F5E39D
     aims: { red: 186, green: 130, blue: 207, a: 1 } // #BA82CF
-  }
+  },
+  breakpoints: breakpoints
 }

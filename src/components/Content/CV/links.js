@@ -125,17 +125,17 @@ const skillItems = {
   numpy: {
     name: "numPy",
     vh: 25,
-    validTimelineNodesOrder: [4, 3]
+    validTimelineNodesOrder: [6, 4, 3]
   },
   matplotlib: {
     name: "matplotlib/seaborn",
     vh: 27,
-    validTimelineNodesOrder: [3, 2]
+    validTimelineNodesOrder: [6, 3, 2]
   },
   sklearn: {
     name: "scikit learn",
     vh: 29,
-    validTimelineNodesOrder: [3, 2]
+    validTimelineNodesOrder: [6, 3, 2]
   },
   arcgis: {
     name: "ArcGIS",

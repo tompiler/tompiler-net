@@ -25,6 +25,10 @@ const StyledSpringLink = styled(SpringLink)`
     color: #fa923f;
     cursor: pointer;
   }
+
+  @media ${props => props.theme.breakpoints.md} {
+    font-size: 0.9em;
+  }
 `
 
 const MobileLink = props => {
@@ -34,7 +38,7 @@ const MobileLink = props => {
       <StyledSpringLink
         to={`/${props.to}`}
         exitLength={0.5}
-        entryLength={0.5}
+        entryLength={props.to === "cv" ? 0 : 0.5}
         entryDelay={0.5}
         entryState={props.to}
         exitState={

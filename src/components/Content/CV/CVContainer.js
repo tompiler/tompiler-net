@@ -9,19 +9,13 @@ const ContentContainer = styled(animated.div)`
   display: block;
   text-align: center;
   position: absolute;
-  height: ${props => (props.mobile ? "82vh" : "93vh")};
-  top: ${props => (props.mobile ? "10vh" : "5vh")};
+  height: ${props => (props.mobile ? "87vh" : "93vh")};
+  top: ${props => (props.mobile ? "12vh" : "5vh")};
   left: ${props => (props.mobile ? "0vw" : "12vw")};
   width: ${props => (props.mobile ? "100vw" : "100vw")};
   z-index: 0;
   display: ${props => (props.mobile ? "block" : "flex")};
   align-items: ${props => (props.mobile ? "stretch" : "center")};
-`
-
-const Container = styled("div")`
-  display: block;
-  background-color: ${props => props.color};
-  height: 50vh;
 `
 
 const CVContainer = ({ mount, location, children }) => {
@@ -47,11 +41,6 @@ const CVContainer = ({ mount, location, children }) => {
       mobile={mobile ? 1 : 0}
       style={{ opacity: opacityProps.opacity }}
     >
-      {/* <Container color="blue" />
-
-      <Container color="green" />
-      <Container color="red" /> */}
-
       {children}
     </ContentContainer>
   )

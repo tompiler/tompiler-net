@@ -1,14 +1,14 @@
 {
-  "main": { "columnHeadings": ["EMPLOYMENT", "SKILL", "TECHNOLOGY"] },
+  "main": { "columnHeadings": ["TIMELINE", "SKILL", "TECHNOLOGY"] },
   "summary": {
     "heading": "Summary",
-    "text": "I have broad skills across technologies, with depth in areas of analytics, data engineering and frontend development, all developed over 6 years’ experience in a variety of functions where problem solving has been a main component throughout."
+    "text": "I have broad skills across many technologies, with depth in areas of analytics, data engineering and frontend development, all developed over 6 years’ experience in a variety of functions where problem solving has played a crucial role."
   },
   "explain": {
     "heading": "Work Experience Dendrogram",
     "paragraphs": [
       "The chart to the left shows the relationship between my work experience and the skills I acquired during those roles.",
-      "Each role is listed under 'Employment'. The next column lists some broad skill categories in which the items under the technology column belong. Hovering over each role highlights each of the links between those categories and tools.",
+      "Each role is listed under 'Timeline'. The next column lists some broad skill categories in which the items under the technology column belong. Hovering over each role highlights each of the links between those categories and tools.",
       "To see more detail on each role, click on one of these roles in the left hand column and more detail will be visible in the panel directly above this one."
     ]
   },

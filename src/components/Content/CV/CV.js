@@ -5,44 +5,7 @@ import useInterval from "../../useInterval"
 import { Timeline } from "./Timeline"
 import useWindowSize from "../../useWindowSize"
 
-import styled from "styled-components"
-
 import data from "./links"
-
-// const ContentContainer = styled("div")`
-//   display: block;
-//   position: fixed;
-//   top: ${props => (props.mobile ? "105px" : "55px")};
-//   left: ${props => (props.mobile ? "10%" : "12%")};
-//   width: ${props => (props.mobile ? "80%" : "56%")};
-//   height: 92vh;
-//   /* border: 1px dashed lightpink; */
-// `
-
-// const Button = styled("button")`
-//   position: fixed;
-//   bottom: 5vh;
-//   left: 50px;
-//   background: none;
-//   width: 5vw;
-//   height: 5vh;
-
-//   font-family: "Open Sans";
-//   font-weight: 600;
-//   color: ${props => props.theme.color};
-//   -webkit-appearance: button;
-//   border-radius: 5px;
-//   box-shadow: none;
-
-//   &:focus {
-//     outline: none;
-//   }
-//   cursor: pointer;
-//   &:hover {
-//     background-color: ${props => `${props.theme.cv.toggle.hover}`};
-//   }
-//   transition: background-color 250ms;
-// `
 
 const CV = () => {
   const windowSize = useWindowSize()
@@ -56,7 +19,6 @@ const CV = () => {
   const [hover, setHover] = useState(null)
   const [first, toggleFirst] = useState(true)
 
-  console.log(selected)
   const margin = {
     top: mobile ? 0 : 10,
     right: 0,

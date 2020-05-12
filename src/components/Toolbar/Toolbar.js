@@ -9,7 +9,7 @@ const Header = styled("header")`
   top: 0;
   left: 0;
   width: 100%;
-  height: 56px;
+  height: 7vh;
   z-index: 500;
   font-family: "Open Sans";
   display: block;

@@ -13,8 +13,9 @@ import { GlobalStyles } from "../components/store/globalStyle"
 
 const NavigationContainer = styled("div")`
   position: absolute;
-  height: ${props => (props.mobile ? "56px" : "70vh")};
-  top: 56px;
+  margin: ${props => (props.mobile ? "2vh 0 0 0" : "0")};
+  height: ${props => (props.mobile ? "5vh" : "70vh")};
+  top: 6vh;
   left: 0;
   width: ${props => (props.mobile ? "100%" : "12%")};
   z-index: 0;
@@ -26,22 +27,6 @@ const LinkContainer = styled("div")`
   display: flex;
   justify-content: center;
   flex-direction: ${props => (props.mobile ? "row" : "column")};
-`
-
-const Scroller = styled("div")`
-  position: absolute;
-
-  height: auto;
-  overflow-y: scroll;
-  overflow-x: hidden;
-`
-
-const Scroller2 = styled("div")`
-  top: 20%;
-  height: auto;
-  width: 100%;
-  overflow-y: scroll;
-  overflow-x: hidden;
 `
 
 const Layout = props => {
@@ -60,10 +45,7 @@ const Layout = props => {
             </LinkContainer>
           </div>
         </NavigationContainer>
-        {/* <Scroller2></Scroller2> */}
-        {/* <ContainerRight mobile={windowSize.width < 650 ? true : false}> */}
         <TransitionStateWrapper>{props.children}</TransitionStateWrapper>
-        {/* </ContainerRight> */}
       </>
     </ThemeProvider>
   )

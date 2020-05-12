@@ -7,20 +7,17 @@ import Detail from "./Detail"
 import Summary from "./Summary"
 import Explain from "./Explain"
 
-import { faAngleRight } from "@fortawesome/free-solid-svg-icons"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-
 import styled from "styled-components"
 
 const SummaryDetailExplainContainer = styled(animated.div)`
   display: inline-block;
-  position: ${props => (props.mobile ? "relative" : "absolute")};
-  top: ${props => (props.mobile ? "3%" : "0%")};
+  position: ${props => (props.mobile ? "static" : "absolute")};
+  top: ${props => (props.mobile ? "0%" : "0%")};
   left: ${props => (props.mobile ? "0%" : "62%")};
   /* left: 58vw; */
   height: ${props =>
     props.menu && props.mobile
-      ? "27vh"
+      ? "auto"
       : !props.menu && props.mobile
       ? "auto"
       : "92vh"};
@@ -35,8 +32,8 @@ const SummaryContainer = styled("div")`
   top: 0;
   left: 0%;
   width: 100%;
-  height: ${props => (props.mobile ? "23vh" : "18%")};
-  margin: ${props => (props.mobile ? "0" : "0 0vw 2vh 0")};
+  height: ${props => (props.mobile ? "auto" : "18%")};
+  margin: ${props => (props.mobile ? "0 0 2vh 0" : "0 0vw 2vh 0")};
   /* border: 1px dashed lightpink; */
 `
 
@@ -64,8 +61,8 @@ const ExplainContainer = styled("div")`
 const BackButton = styled("button")`
   position: relative;
   height: auto;
-  top: -2vh;
-  /* margin: 0.5vh 0; */
+  top: -1vh;
+  margin: 1vh 0;
   width: 100%;
   font-size: 0.9em;
   font-weight: 600;
@@ -78,6 +75,10 @@ const BackButton = styled("button")`
 
   &:focus {
     outline: none;
+  }
+
+  @media ${props => props.theme.breakpoints.md} {
+    font-size: 0.8em;
   }
 `
 
@@ -157,7 +158,7 @@ const SummaryDetailExplain = ({
           }
         >
           {selected.menu
-            ? "Click on a role in the timeline below"
+            ? "Check out a role in the timeline below"
             : "Return to timeline"}
         </BackButton>
       ) : null}

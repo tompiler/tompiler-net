@@ -8,18 +8,19 @@ import { faHome, faEnvelope } from "@fortawesome/free-solid-svg-icons"
 import {
   faLinkedinIn,
   faTwitter,
-  faGithub,
+  faGithub
 } from "@fortawesome/free-brands-svg-icons"
 import styled from "styled-components"
 
 const ContactContainer = styled("div")`
   width: ${props => (props.mobile ? "100%" : "80%")};
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(70px, 2fr));
+  grid-template-columns: repeat(auto-fit, minmax(50px, 1.5fr));
   grid-template-rows: 7vh 7vh;
   grid-column-gap: 0.2vw;
   grid-row-gap: 2vh;
   justify-content: space-between;
+  /* border: 1px dashed lightpink; */
 `
 
 const Contact = () => {

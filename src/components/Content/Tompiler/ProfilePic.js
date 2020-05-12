@@ -30,12 +30,14 @@ export const FeatureImage = ({ fixed }) => {
     }
   `)
   return (
-    <ProfilePicWrapper>
-      <Img
-        fluid={data.file.childImageSharp.fluid}
-        alt={"A picture of tompiler"}
-        // fixed={fixed ? fixed : data.imageSharp.fixed}
-      />
-    </ProfilePicWrapper>
+    <div>
+      <ProfilePicWrapper>
+        <Img
+          fluid={data.file.childImageSharp.fluid}
+          alt={"A picture of tompiler"}
+          // fixed={fixed ? fixed : data.imageSharp.fixed}
+        />
+      </ProfilePicWrapper>
+    </div>
   )
 }

@@ -6,19 +6,27 @@ import styled from "styled-components"
 
 const AimsItem = styled("div")`
   display: inline-block;
-  width: ${props => (props.mobile ? "90%" : "75%")};
-  height: 0;
+  width: 75%;
+  height: auto;
   text-align: justify;
   color: ${props => props.theme.color};
   line-height: 1.6;
-  font-size: ${props => (props.mobile ? "0.8em" : "0.88em")};
+  font-size: 0.9em;
+
+  @media ${props => props.theme.breakpoints.md} {
+    font-size: 0.75em;
+    width: 90%;
+  }
+
+  @media ${props => props.theme.breakpoints.sm} {
+    font-size: 0.6em;
+    width: 90%;
+  }
 `
 
 const Aims = () => {
-  const windowSize = useWindowSize()
-
   return (
-    <AimsItem mobile={windowSize.width < 650 ? true : false}>
+    <AimsItem>
       I've made this site primarily as a place to host bits of work I do from
       time to time.
       <br />

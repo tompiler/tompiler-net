@@ -21,29 +21,31 @@ const HeaderContainer = styled(animated.div)`
   display: flex;
   justify-content: center;
   width: 100%;
-  height: ${props => (props.mobile === "true" ? "0px" : "6vh")};
+  height: ${props => (props.mobile ? "0px" : "6vh")};
   border-bottom: ${props => `1px solid ${props.theme.color}`};
 `
 
 const ChildContainer = styled(animated.div)`
   display: block;
-  position: relative;
+  /* position: relative; */
   padding: 3vh 0;
-  display: grid;
-  grid-template-rows: 10%;
-  grid-template-columns: 100%;
-  justify-items: center;
-  align-items: top;
-  height: 100vh;
+  display: flex;
+  width: 100%;
+  height: auto;
+  /* grid-template-rows: 20%; */
+  /* grid-template-columns: 100%; */
+  justify-content: center;
+  /* align-items: top; */
+  /* height: 20vh; */
 `
 
 const ContentContainer = styled("div")`
   display: block;
-  position: fixed;
-  top: ${props => (props.mobile ? "105px" : "140px")};
+  position: absolute;
+  top: ${props => (props.mobile ? "100px" : "140px")};
   left: ${props => (props.mobile ? "10%" : "30vw")};
   width: ${props => (props.mobile ? "80%" : "40%")};
-  height: 100vh;
+  height: auto;
   text-align: center;
 `
 
@@ -87,10 +89,10 @@ const Content = ({
   })
 
   return (
-    <ContentContainer>
+    <ContentContainer mobile={windowSize.width < 650 ? 1 : 0}>
       <>
         <HeaderContainer
-          mobile={windowSize.width < 650 ? "true" : "false"}
+          mobile={windowSize.width < 650 ? 1 : 0}
           style={{
             opacity:
               entryState === "cv" && transitionStatus === "entered"

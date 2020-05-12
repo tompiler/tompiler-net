@@ -25,9 +25,9 @@ import data from "./links"
 
 const Container = styled("div")`
   display: inline-block;
-  position: absolute;
-  top: ${props => (props.mobile ? "35%" : "0")};
-  left: ${props => (props.mobile ? "10%" : "0%")};
+  position: ${props => (props.mobile ? "relative" : "absolute")};
+  top: ${props => (props.mobile ? "0%" : "0")};
+  left: ${props => (props.mobile ? "0%" : "0%")};
   width: ${props => (props.mobile ? "80%" : "12%")};
   height: ${props => (props.mobile ? "70%" : "100%")};
   /* border: 1px dashed papayawhip; */
@@ -36,8 +36,9 @@ const Container = styled("div")`
 const SvgContainer = styled(animated.svg)`
   height: ${props => props.height + "vh"};
   float: left;
-  width: ${props => (props.mobile ? "15vw" : "35%")};
+  width: ${props => (props.mobile ? "40%" : "38%")};
   overflow: visible;
+  /* border: 1px dashed white; */
 `
 
 const Line = styled(animated.line)`
@@ -72,11 +73,11 @@ const ColumnBody = styled("div")`
 
 const TimelineHeadingsContainer = styled("div")`
   display: inline-block;
-  position: relative;
-  left: ${props => (props.mobile ? "0%" : "0%")};
+  /* position: absolute; */
+  left: ${props => (props.mobile ? "0%" : "40%")};
   height: ${props => props.height + "vh"};
-  width: ${props => (props.mobile ? "75%" : "65%")};
-  /* border: 1px dashed lightgrey; */
+  width: ${props => (props.mobile ? "60%" : "62%")};
+  /* border: 3px dashed lightgrey; */
 `
 
 const HeadingContainer = styled(animated.div)`
@@ -84,9 +85,9 @@ const HeadingContainer = styled(animated.div)`
   flex-direction: column;
   position: absolute;
   top: ${props => props.top + "vh"};
-  left: 0%;
-  height: 8vh;
-  width: ${props => (props.mobile ? "100%" : "100%")};
+  /* left: 0%; */
+  height: auto;
+  width: ${props => (props.mobile ? "60%" : "62%")};
   text-align: left;
   /* border: 1px dashed lightgrey; */
 `
@@ -102,13 +103,29 @@ const Heading = styled("div")`
     color: ${props => props.theme.cv.hover};
   }
   cursor: pointer;
+
+  @media ${props => props.theme.breakpoints.md} {
+    font-size: 0.85em;
+  }
+
+  @media ${props => props.theme.breakpoints.sm} {
+    font-size: 0.8em;
+  }
 `
 
 const HeadingDuration = styled("div")`
   font-style: italic;
   font-size: 0.8em;
   color: ${props => props.theme.cv.color};
-  width: ${props => (props.mobile ? "90%" : "80%")};
+  width: ${props => (props.mobile ? "100%" : "80%")};
+
+  @media ${props => props.theme.breakpoints.md} {
+    font-size: 0.7em;
+  }
+
+  @media ${props => props.theme.breakpoints.sm} {
+    font-size: 0.65em;
+  }
 `
 
 const DendrogramPath = styled(animated.path)`
@@ -151,7 +168,7 @@ const Timeline = ({
     return innerSvgHeightPx - lineLengthPx * i - circleRadius * i
   }
 
-  const mobileAdj = mobile ? 8 : 0
+  const mobileAdjY = mobile ? 12 : 0
 
   // DENDOGRAM LAYER 1
 
@@ -396,11 +413,11 @@ const Timeline = ({
       y: open
         ? innerSvgHeight - lineLength * 6 - circleRadiusInv * 6 + "vh"
         : innerSvgHeight - lineLength * 5 - circleRadiusInv * 6 + "vh",
-      x: open ? 3 + mobileAdj * 1.2 + "vw" : 1 + mobileAdj + "vw"
+      x: open ? 3 + mobileAdjY * 1.5 + "vw" : 1 + mobileAdjY + "vw"
     },
     from: {
       y: innerSvgHeight - lineLength * 5 - circleRadiusInv * 6 + "vh",
-      x: 1 + mobileAdj + "vw"
+      x: 1 + mobileAdjY + "vw"
     },
     ref: lineRef6
   })
@@ -484,7 +501,7 @@ const Timeline = ({
           circleRef0
         ],
     mobile && open
-      ? [0.3, 0.3, 0.6, 0.6, 0.9, 0.9, 1.2, 1.2, 1.5, 1.5, 1.8, 1.8, 2.1, 2.1]
+      ? [0, 0.3, 0.3, 0.6, 0.6, 0.9, 0.9, 1.2, 1.2, 1.5, 1.5, 1.8, 1.8, 2.1]
       : open
       ? [
           0,
@@ -570,6 +587,12 @@ const Timeline = ({
 
   return (
     <>
+      <SummaryDetailExplain
+        mobile={mobile}
+        selected={selected}
+        detailProps={detailProps}
+        setSelected={setSelected}
+      ></SummaryDetailExplain>
       {(selected.menu || !mobile) && (
         <Container mobile={mobile}>
           {!mobile && (
@@ -587,7 +610,7 @@ const Timeline = ({
               <Line
                 x1={lineProps6.x}
                 y1={lineProps6.y}
-                x2={1 + mobileAdj + "vw"}
+                x2={1 + mobileAdjY + "vw"}
                 y2={
                   innerSvgHeight - lineLength * 5 - circleRadiusInv * 6 + "vh"
                 }
@@ -595,9 +618,9 @@ const Timeline = ({
               />
               {lineSprings.map((spring, i) => (
                 <Line
-                  x1={1 + mobileAdj + "vw"}
+                  x1={1 + mobileAdjY + "vw"}
                   y1={spring.y}
-                  x2={1 + mobileAdj + "vw"}
+                  x2={1 + mobileAdjY + "vw"}
                   y2={
                     innerSvgHeight -
                     lineLength * i -
@@ -611,7 +634,9 @@ const Timeline = ({
                 <Circle
                   r={spring.r}
                   cx={
-                    i === 6 ? 3 + mobileAdj * 1.2 + "vw" : 1 + mobileAdj + "vw"
+                    i === 6
+                      ? 3 + mobileAdjY * 1.5 + "vw"
+                      : 1 + mobileAdjY + "vw"
                   }
                   cy={
                     innerSvgHeight - lineLength * i - circleRadiusInv * i + "vh"
@@ -626,7 +651,7 @@ const Timeline = ({
           <TimelineHeadingsContainer mobile={mobile ? 1 : 0} height={svgHeight}>
             {circleSprings.map((spring, i) => (
               <HeadingContainer
-                top={yStartInv(i) - 1.2}
+                top={yStartInv(i) + (mobile ? -1.3 : 1.8)}
                 style={{ opacity: spring.opacity }}
                 key={"headingContainer" + i}
                 mobile={mobile ? 1 : 0}
@@ -696,12 +721,6 @@ const Timeline = ({
           </SkillItemContainer>
         </>
       )}
-      <SummaryDetailExplain
-        mobile={mobile}
-        selected={selected}
-        detailProps={detailProps}
-        setSelected={setSelected}
-      ></SummaryDetailExplain>
     </>
   )
 }

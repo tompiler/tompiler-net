@@ -13,6 +13,7 @@ const SummaryHeadingContainer = styled("div")`
   margin: ${props => (props.mobile ? "1vh 0 0 0" : "0")};
   border-top: ${props =>
     props.mobile ? `1px solid ${props.theme.color}` : "none"};
+
   /* border: 1px dashed lightpink; */
 `
 
@@ -21,7 +22,11 @@ const SummaryHeading = styled("h3")`
   width: 100%;
   text-align: left;
   font-weight: 700;
-  margin: 0em 0 0 0vw;
+  margin: 0 0 0.2vh 0;
+
+  @media ${props => props.theme.breakpoints.md} {
+    font-size: 1em;
+  }
 `
 
 const SummaryDescriptionContainer = styled("div")`
@@ -30,7 +35,7 @@ const SummaryDescriptionContainer = styled("div")`
   top: 0%;
   left: 0%;
   width: 100%;
-  height: 80%;
+  height: 70%;
   overflow-y: auto;
   overflow-x: hidden;
   padding: 0vh 2vw;
@@ -38,21 +43,29 @@ const SummaryDescriptionContainer = styled("div")`
 `
 
 const SummaryDescription = styled("p")`
-  font-size: 0.95em;
+  font-size: ${props => (props.mobile ? "0.8em" : "0.95em")};
+  @media ${props => props.theme.breakpoints.md} {
+    font-size: 0.8em;
+  }
+
+  @media ${props => props.theme.breakpoints.sm} {
+    font-size: 0.75em;
+  }
   text-align: left;
   margin: 0vh 0vw 0vh 0vw;
   /* font-weight: 600; */
 `
 
 const Summary = ({ mobile, data }) => {
-  console.log(mobile)
   return (
     <>
       <SummaryHeadingContainer mobile={mobile}>
         <SummaryHeading>{data.dataJson.summary.heading}</SummaryHeading>
       </SummaryHeadingContainer>
       <SummaryDescriptionContainer>
-        <SummaryDescription>{data.dataJson.summary.text}</SummaryDescription>
+        <SummaryDescription mobile={mobile}>
+          {data.dataJson.summary.text}
+        </SummaryDescription>
       </SummaryDescriptionContainer>
     </>
   )
