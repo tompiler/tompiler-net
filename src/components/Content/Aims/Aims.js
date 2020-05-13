@@ -1,7 +1,5 @@
 import React from "react"
 
-import useWindowSize from "../../useWindowSize"
-
 import styled from "styled-components"
 
 const AimsItem = styled("div")`

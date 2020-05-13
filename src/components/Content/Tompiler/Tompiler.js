@@ -24,8 +24,6 @@ const TompilerContainer = styled("div")`
 
 const TompilerItem = styled("div")`
   display: block;
-  /* position: absolute; */
-  /* width: 100%; */
   min-height: 16%;
   text-align: justify;
   color: ${props => props.theme.color};

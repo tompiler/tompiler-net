@@ -25,18 +25,22 @@ import data from "./links"
 
 const Container = styled("div")`
   display: inline-block;
-  position: ${props => (props.mobile ? "relative" : "absolute")};
-  top: ${props => (props.mobile ? "0%" : "0")};
-  left: ${props => (props.mobile ? "0%" : "0%")};
-  width: ${props => (props.mobile ? "80%" : "12%")};
-  height: ${props => (props.mobile ? "70%" : "100%")};
+  position: absolute;
+  width: 12%;
+  height: 100%;
   /* border: 1px dashed papayawhip; */
+
+  @media ${props => props.theme.breakpoints.md} {
+    position: relative;
+    width: 80%;
+    height: 70%;
+  }
 `
 
 const SvgContainer = styled(animated.svg)`
   height: ${props => props.height + "vh"};
   float: left;
-  width: ${props => (props.mobile ? "40%" : "38%")};
+  width: 40%;
   overflow: visible;
   /* border: 1px dashed white; */
 `
@@ -73,11 +77,15 @@ const ColumnBody = styled("div")`
 
 const TimelineHeadingsContainer = styled("div")`
   display: inline-block;
-  /* position: absolute; */
-  left: ${props => (props.mobile ? "0%" : "40%")};
+  left: 40%;
   height: ${props => props.height + "vh"};
-  width: ${props => (props.mobile ? "60%" : "62%")};
-  /* border: 3px dashed lightgrey; */
+  width: 60%;
+  /* border: 1px dashed lightgrey; */
+
+  @media ${props => props.theme.breakpoints.md} {
+    left: 0%;
+    width: 60%;
+  }
 `
 
 const HeadingContainer = styled(animated.div)`
@@ -85,16 +93,12 @@ const HeadingContainer = styled(animated.div)`
   flex-direction: column;
   position: absolute;
   top: ${props => props.top + "vh"};
-  /* left: 0%; */
-  height: auto;
-  width: ${props => (props.mobile ? "60%" : "62%")};
+  width: 60%;
   text-align: left;
   /* border: 1px dashed lightgrey; */
 `
 
 const Heading = styled("div")`
-  /* display: flex; */
-  font-family: "Open Sans";
   font-size: 1em;
   font-weight: ${props =>
     props.hover === "true" || props.selected === "true" ? 700 : 600};
@@ -117,14 +121,16 @@ const HeadingDuration = styled("div")`
   font-style: italic;
   font-size: 0.8em;
   color: ${props => props.theme.cv.color};
-  width: ${props => (props.mobile ? "100%" : "80%")};
+  width: 80%;
 
   @media ${props => props.theme.breakpoints.md} {
     font-size: 0.7em;
+    width: 100%;
   }
 
   @media ${props => props.theme.breakpoints.sm} {
     font-size: 0.65em;
+    width: 100%;
   }
 `
 
@@ -594,7 +600,7 @@ const Timeline = ({
         setSelected={setSelected}
       ></SummaryDetailExplain>
       {(selected.menu || !mobile) && (
-        <Container mobile={mobile}>
+        <Container>
           {!mobile && (
             <ColumnHeading style={{ opacity: circleProps6.opacity }}>
               {columnHeadings[0]}
@@ -602,7 +608,6 @@ const Timeline = ({
           )}
           <SvgContainer
             height={svgHeight}
-            mobile={mobile ? 1 : 0}
             menu={selected.menu ? 1 : 0}
             // style={{ border: "1px dashed white" }}
           >
@@ -648,13 +653,12 @@ const Timeline = ({
               ))}
             </g>
           </SvgContainer>
-          <TimelineHeadingsContainer mobile={mobile ? 1 : 0} height={svgHeight}>
+          <TimelineHeadingsContainer height={svgHeight}>
             {circleSprings.map((spring, i) => (
               <HeadingContainer
                 top={yStartInv(i) + (mobile ? -1.3 : 1.8)}
                 style={{ opacity: spring.opacity }}
                 key={"headingContainer" + i}
-                mobile={mobile ? 1 : 0}
               >
                 <Heading
                   onMouseOver={() => setHover(selectedArray[i])}
@@ -670,13 +674,10 @@ const Timeline = ({
                   onBlur={() => void 0}
                   hover={hover === selectedArray[i] ? "true" : "false"}
                   selected={selected.value === selectedArray[i]}
-                  mobile={mobile ? 1 : 0}
                 >
                   {detail[i].heading}
                 </Heading>
-                <HeadingDuration mobile={mobile ? 1 : 0}>
-                  {detail[i].values.duration}
-                </HeadingDuration>
+                <HeadingDuration>{detail[i].values.duration}</HeadingDuration>
               </HeadingContainer>
             ))}
           </TimelineHeadingsContainer>

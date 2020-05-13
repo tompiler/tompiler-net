@@ -1,6 +1,5 @@
 import React from "react"
 import HomeButton from "./HomeButton"
-import useWindowSize from "../useWindowSize"
 import ToggleDarkMode from "./ToggleDarkMode"
 import styled from "styled-components"
 
@@ -18,17 +17,18 @@ const Header = styled("header")`
 const Nav = styled("nav")`
   display: inline-block;
   height: 100%;
-  padding: ${props => (props.mobile ? "0" : "0 1rem")};
-  /* justify-content: ${props => (props.mobile ? "center" : "flex-start")}; */
+  padding: 0 1rem;
   width: 100%;
+
+  @media ${props => props.theme.breakpoints.md} {
+    padding: 0;
+  }
 `
 
 const Toolbar = () => {
-  const windowSize = useWindowSize()
-
   return (
     <Header>
-      <Nav mobile={windowSize.width < 650 ? true : false}>
+      <Nav>
         <HomeButton />
         <ToggleDarkMode />
       </Nav>

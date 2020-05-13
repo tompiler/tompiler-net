@@ -16,7 +16,6 @@ const IconContainer = styled("div")`
 
 const ItemLink = styled("a")`
   display: flex;
-  /* color: rgb(54, 54, 54); */
   color: ${props => props.theme.contactItem.color};
   width: 100%;
   height: 100%;

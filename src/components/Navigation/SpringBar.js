@@ -16,10 +16,14 @@ const Bar = styled(animated.div)`
   position: relative;
   width: 200px;
   height: 3px;
-  margin: ${props => (props.mobile ? "0 0" : "0.2vh 0")};
+  margin: 0.2vh 0;
   cursor: pointer;
   border-radius: 1.5px;
-  /* border: ${props => (props.width > 0 ? props.color : `white`)}; */
+
+  @media ${props => props.theme.breakpoints.md} {
+    font-size: 0.9em;
+    margin: 0;
+  }
 `
 
 const SpringBar = ({ mount, entry, to, location, barColour }) => {
@@ -42,23 +46,22 @@ const SpringBar = ({ mount, entry, to, location, barColour }) => {
           ? to === "tompiler"
             ? 48
             : 36
-          : 0,
+          : 0
     },
     config: {
       //   duration: 1000,
       mass: 1,
       tension: 450,
-      friction: 55,
-    },
+      friction: 55
+    }
   })
 
   return (
-    <BarContainer mobile={windowSize.width < 650 ? true : false} to={to}>
+    <BarContainer mobile={windowSize.width < 650} to={to}>
       <Bar
-        mobile={windowSize.width < 650 ? 1 : 0}
         style={{
           width: props.width.interpolate(x => x + "px"),
-          background: `rgba(${colour.red},${colour.green},${colour.blue},${colour.a})`,
+          background: `rgba(${colour.red},${colour.green},${colour.blue},${colour.a})`
         }}
       ></Bar>
     </BarContainer>

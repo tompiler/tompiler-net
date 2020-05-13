@@ -3,7 +3,7 @@ import Context from "../store/context"
 
 import useWindowSize from "../useWindowSize"
 
-import styled, { ThemeContext } from "styled-components"
+import styled from "styled-components"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faMoon, faSun } from "@fortawesome/free-solid-svg-icons"
 
@@ -32,13 +32,11 @@ const Icon = styled(FontAwesomeIcon)`
 const ToggleDarkMode = () => {
   const windowSize = useWindowSize()
   const { state, dispatch } = useContext(Context)
-  const theme = useContext(ThemeContext)
 
   return (
     <ButtonContainer>
       <Button
         onClick={() => {
-          console.log("Clicked", theme, state)
           dispatch({ type: "TOGGLE_DARK_MODE" })
         }}
       >

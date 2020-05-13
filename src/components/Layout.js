@@ -5,32 +5,41 @@ import Toolbar from "./Toolbar/Toolbar"
 import TransitionStateWrapper from "./Content/TransitionStateWrapper"
 import Navigation from "./Navigation/Navigation"
 
-import useWindowSize from "./useWindowSize"
-
 import styled, { ThemeProvider } from "styled-components"
 import { lightTheme, darkTheme } from "../components/theme/theme"
 import { GlobalStyles } from "../components/store/globalStyle"
 
 const NavigationContainer = styled("div")`
   position: absolute;
-  margin: ${props => (props.mobile ? "2vh 0 0 0" : "0")};
-  height: ${props => (props.mobile ? "5vh" : "70vh")};
+  margin: 0;
+  height: 70vh;
   top: 6vh;
   left: 0;
-  width: ${props => (props.mobile ? "100%" : "12%")};
+  width: 12%;
   z-index: 0;
-  display: ${props => (props.mobile ? "block" : "flex")};
-  align-items: ${props => (props.mobile ? "stretch" : "center")};
+  display: flex;
+  align-items: center;
+
+  @media ${props => props.theme.breakpoints.md} {
+    display: block;
+    width: 100%;
+    height: 5vh;
+    margin: 2vh 0 2vh 0;
+    align-items: stretch;
+  }
 `
 
 const LinkContainer = styled("div")`
   display: flex;
   justify-content: center;
-  flex-direction: ${props => (props.mobile ? "row" : "column")};
+  flex-direction: column;
+
+  @media ${props => props.theme.breakpoints.md} {
+    flex-direction: row;
+  }
 `
 
 const Layout = props => {
-  const windowSize = useWindowSize()
   const { state } = useContext(Context)
 
   return (
@@ -38,9 +47,9 @@ const Layout = props => {
       <GlobalStyles />
       <Toolbar />
       <>
-        <NavigationContainer mobile={windowSize.width < 650 ? true : false}>
+        <NavigationContainer>
           <div>
-            <LinkContainer mobile={windowSize.width < 650 ? true : false}>
+            <LinkContainer>
               <Navigation />
             </LinkContainer>
           </div>

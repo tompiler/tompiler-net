@@ -9,13 +9,20 @@ const ContentContainer = styled(animated.div)`
   display: block;
   text-align: center;
   position: absolute;
-  height: ${props => (props.mobile ? "87vh" : "93vh")};
-  top: ${props => (props.mobile ? "12vh" : "5vh")};
-  left: ${props => (props.mobile ? "0vw" : "12vw")};
-  width: ${props => (props.mobile ? "100vw" : "100vw")};
+  height: 93vh;
+  top: 5vh;
+  left: 12vw;
+  width: 100vw;
   z-index: 0;
-  display: ${props => (props.mobile ? "block" : "flex")};
-  align-items: ${props => (props.mobile ? "stretch" : "center")};
+  display: flex;
+  /* align-items: ${props => (props.mobile ? "stretch" : "center")}; */
+
+  @media ${props => props.theme.breakpoints.md} {
+    height: 85vh;
+    top: 14vh;
+    left: 0vw;
+    display: block;
+  }
 `
 
 const CVContainer = ({ mount, location, children }) => {

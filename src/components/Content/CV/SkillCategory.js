@@ -5,10 +5,14 @@ const SkillCategoryContainer = styled("div")`
   display: inline-block;
   position: absolute;
   top: 0;
-  left: ${props => (props.mobile ? "10%" : "28%")};
+  left: 28%;
   height: 100%;
   width: 7%;
   /* border: 1px dashed lightpink; */
+
+  @media ${props => props.theme.breakpoints.md} {
+    left: 10%;
+  }
 `
 
 const InnerSkillCategoryContainer = styled("div")`
@@ -16,7 +20,6 @@ const InnerSkillCategoryContainer = styled("div")`
   justify-content: center;
   position: absolute;
   top: ${props => props.top + "vh"};
-  /* height: 5vh; */
   align-items: center;
   width: 100%;
   text-align: center;

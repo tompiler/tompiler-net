@@ -6,9 +6,14 @@ const SkillItemDendogramContainer = styled("div")`
   height: 97%;
   margin-top: 3vh;
   position: absolute;
-  top: ${props => (props.mobile ? "15%" : "0%")};
-  left: ${props => (props.mobile ? "10%" : "35%")};
+  top: 0%;
+  left: 35%;
   /* border: 1px dashed lightpink; */
+
+  @media ${props => props.theme.breakpoints.md} {
+    top: 15%;
+    left: 10%;
+  }
 `
 
 export { SkillItemDendogramContainer }

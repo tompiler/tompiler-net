@@ -9,7 +9,7 @@ import data from "./links"
 
 const CV = () => {
   const windowSize = useWindowSize()
-  const mobile = windowSize.width < 650 ? true : false
+  const mobile = windowSize.width < 650
   const [open, toggle] = useState(false)
   const [selected, setSelected] = useState({
     value: mobile ? null : 5, // no default job view in detail with mobile view

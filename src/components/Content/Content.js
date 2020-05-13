@@ -8,7 +8,6 @@ import styled from "styled-components"
 
 const Title = styled(animated.div)`
   width: 100%;
-  /* color: #000000; */
   text-align: center;
   font-size: 2rem;
   font-family: "Open Sans";
@@ -21,32 +20,37 @@ const HeaderContainer = styled(animated.div)`
   display: flex;
   justify-content: center;
   width: 100%;
-  height: ${props => (props.mobile ? "0px" : "6vh")};
+  height: 6vh;
   border-bottom: ${props => `1px solid ${props.theme.color}`};
+
+  @media ${props => props.theme.breakpoints.md} {
+    height: 0;
+  }
 `
 
 const ChildContainer = styled(animated.div)`
   display: block;
-  /* position: relative; */
   padding: 3vh 0;
   display: flex;
   width: 100%;
   height: auto;
-  /* grid-template-rows: 20%; */
-  /* grid-template-columns: 100%; */
   justify-content: center;
-  /* align-items: top; */
-  /* height: 20vh; */
 `
 
 const ContentContainer = styled("div")`
   display: block;
   position: absolute;
-  top: ${props => (props.mobile ? "100px" : "140px")};
-  left: ${props => (props.mobile ? "10%" : "30vw")};
-  width: ${props => (props.mobile ? "80%" : "40%")};
+  top: 140px;
+  left: 30vw;
+  width: 40%;
   height: auto;
   text-align: center;
+
+  @media ${props => props.theme.breakpoints.md} {
+    top: 100px;
+    left: 10%;
+    width: 80%;
+  }
 `
 
 const Content = ({
@@ -81,7 +85,6 @@ const Content = ({
       opacity: mount && route !== "cv" ? 1 : 0
     },
     config: {
-      //   duration: 1000,
       mass: 1,
       tension: 120,
       friction: 15
@@ -89,10 +92,9 @@ const Content = ({
   })
 
   return (
-    <ContentContainer mobile={windowSize.width < 650 ? 1 : 0}>
+    <ContentContainer>
       <>
         <HeaderContainer
-          mobile={windowSize.width < 650 ? 1 : 0}
           style={{
             opacity:
               entryState === "cv" && transitionStatus === "entered"

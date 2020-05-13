@@ -4,16 +4,7 @@ import Img from "gatsby-image"
 import { ProfilePicWrapper } from "./ProfilePicWrapper"
 import { useStaticQuery, graphql } from "gatsby"
 
-export const FeatureImage = ({ fixed }) => {
-  //   const data = useStaticQuery(graphql`
-  //     query {
-  //       imageSharp(fixed: { originalName: { eq: "self.jpg" } }) {
-  //         fixed {
-  //           ...GatsbyImageSharpFixed
-  //         }
-  //       }
-  //     }
-  //   `)
+export const FeatureImage = () => {
   const data = useStaticQuery(graphql`
     query MyQuery {
       file(relativePath: { eq: "img/self.jpg" }) {
@@ -30,14 +21,11 @@ export const FeatureImage = ({ fixed }) => {
     }
   `)
   return (
-    <div>
-      <ProfilePicWrapper>
-        <Img
-          fluid={data.file.childImageSharp.fluid}
-          alt={"A picture of tompiler"}
-          // fixed={fixed ? fixed : data.imageSharp.fixed}
-        />
-      </ProfilePicWrapper>
-    </div>
+    <ProfilePicWrapper>
+      <Img
+        fluid={data.file.childImageSharp.fluid}
+        alt={"A picture of tompiler"}
+      />
+    </ProfilePicWrapper>
   )
 }

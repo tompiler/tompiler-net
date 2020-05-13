@@ -50,8 +50,7 @@ const FlexContainer = styled("div")`
 const Role = styled("p")`
   text-align: center;
   font-style: italic;
-  font-size: 0.85em;
-  font-size: ${props => (props.mobile ? "0.8em" : "0.9em")};
+  font-size: 0.9em;
   margin: 1.5vh 0 1vh 0;
   line-height: 1vh;
 
@@ -80,11 +79,9 @@ const Duration = styled("p")`
 `
 
 const DetailContentContainer = styled("div")`
-  /* display: block; */
   flex-grow: ${props => (!props.menu && props.mobile ? 0 : 1)};
   width: 100%;
   overflow-y: auto;
-  /* overflow-x: hidden; */
   padding: 0 1vw 0 2vw;
   text-align: left;
   /* border: 1px dashed lightpink; */
@@ -93,7 +90,6 @@ const DetailContentContainer = styled("div")`
 const JobSummary = styled("p")`
   font-size: 0.95em;
   margin: 0vh 0 2vh 0;
-
   font-weight: 600;
 
   @media ${props => props.theme.breakpoints.md} {
@@ -125,7 +121,10 @@ const JobDescriptionUL = styled("ul")`
   display: block;
   list-style-type: disc;
   margin: 0;
-  padding-inline-start: ${props => (props.mobile ? "4vw" : "0")};
+  padding-inline-start: 0;
+  @media ${props => props.theme.breakpoints.md} {
+    padding-inline-start: 4vw;
+  }
 `
 
 const JobDescriptionLI = styled("li")`
@@ -134,7 +133,7 @@ const JobDescriptionLI = styled("li")`
   margin: 1vh 0vw 1vh 0vw;
 
   @media ${props => props.theme.breakpoints.md} {
-    font-size: 0.8em;
+    font-size: 0.75em;
   }
 `
 
@@ -144,7 +143,7 @@ const JobSubDescriptionLI = styled("li")`
   margin: 1vh 0vw 1vh 0vw;
 
   @media ${props => props.theme.breakpoints.md} {
-    font-size: 0.75em;
+    font-size: 0.7em;
   }
 `
 
@@ -168,12 +167,12 @@ const Detail = ({ mobile, selected, data, setSelected }) => {
       <HeadlineCompany>
         <FlexContainer>
           <CompanyContainer>
-            <Company mobile={mobile ? 1 : 0}>{heading}</Company>
+            <Company>{heading}</Company>
           </CompanyContainer>
         </FlexContainer>
         <FlexContainer>
           <DurationContainer>
-            <Duration mobile={mobile}>{duration}</Duration>
+            <Duration>{duration}</Duration>
           </DurationContainer>
           <RoleContainer>
             <Role>{title}</Role>
@@ -199,7 +198,7 @@ const Detail = ({ mobile, selected, data, setSelected }) => {
               <div key={placement.name}>
                 {placement.name && <Placement>{placement.name}</Placement>}
                 {placement.description.map((desc, i) => (
-                  <JobDescriptionUL key={"descUL" + i} mobile={mobile}>
+                  <JobDescriptionUL key={"descUL" + i}>
                     <JobDescriptionLI>{desc.text}</JobDescriptionLI>
                     {desc.subText &&
                       desc.subText.map((subText, i) => (

@@ -6,10 +6,14 @@ const SkillItemContainer = styled("div")`
   display: inline-block;
   position: absolute;
   top: 0;
-  left: ${props => (props.mobile ? "10%" : "51%")};
+  left: 51%;
   height: 100%;
   width: 8%;
   /* border: 1px dashed lightpink; */
+
+  @media ${props => props.theme.breakpoints.md} {
+    left: 10%;
+  }
 `
 
 const InnerSkillItemContainer = styled("div")`

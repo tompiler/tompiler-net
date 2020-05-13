@@ -28,13 +28,19 @@ const SummaryDetailExplainContainer = styled(animated.div)`
 
 const SummaryContainer = styled("div")`
   display: inline-block;
-  position: ${props => (props.mobile ? "relative" : "absolute")};
+  position: absolute;
   top: 0;
   left: 0%;
   width: 100%;
-  height: ${props => (props.mobile ? "auto" : "18%")};
-  margin: ${props => (props.mobile ? "0 0 2vh 0" : "0 0vw 2vh 0")};
+  height: 18%;
+  margin: 0 0vw 2vh 0;
   /* border: 1px dashed lightpink; */
+
+  @media ${props => props.theme.breakpoints.md} {
+    position: relative;
+    height: auto;
+    margin: 0 0 2vh 0;
+  }
 `
 
 const DetailContainer = styled("div")`
@@ -70,7 +76,7 @@ const BackButton = styled("button")`
   background-color: ${props => props.theme.cv.button.background};
   color: ${props => props.theme.cv.button.color};
   border: ${props => `1px solid ${props.theme.cv.button.border}`};
-  text-align: ${props => (props.mobile ? "center" : "right")};
+  text-align: right;
   cursor: pointer;
 
   &:focus {
@@ -79,6 +85,7 @@ const BackButton = styled("button")`
 
   @media ${props => props.theme.breakpoints.md} {
     font-size: 0.8em;
+    text-align: center;
   }
 `
 
@@ -148,7 +155,6 @@ const SummaryDetailExplain = ({
       </SummaryContainer>
       {mobile ? (
         <BackButton
-          mobile={mobile}
           onClick={() =>
             setSelected(state => ({
               value: state.value,
