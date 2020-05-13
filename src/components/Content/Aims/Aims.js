@@ -38,10 +38,7 @@ const Aims = () => {
   `)
   return (
     <AimsItem>
-      <div
-        className="boobieblahblah"
-        dangerouslySetInnerHTML={{ __html: data.markdownRemark.html }}
-      ></div>
+      <div dangerouslySetInnerHTML={{ __html: data.markdownRemark.html }}></div>
       <p>{data.markdownRemark.frontmatter.date}</p>
     </AimsItem>
   )

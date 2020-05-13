@@ -1,6 +1,7 @@
 import React from "react"
 
 import useWindowSize from "../../useWindowSize"
+import { graphql, useStaticQuery } from "gatsby"
 
 import styled from "styled-components"
 
@@ -38,22 +39,28 @@ const TompilerItem = styled("div")`
 const Tompiler = () => {
   const windowSize = useWindowSize()
 
+  const data = useStaticQuery(graphql`
+    query TompilerQuery {
+      markdownRemark(fields: { slug: { eq: "tompiler" } }) {
+        frontmatter {
+          title
+          date
+        }
+        html
+      }
+    }
+  `)
+
   return (
     <>
       <TompilerContainer>
         <TompilerItem mobile={windowSize.width < 650 ? true : false}>
-          Hello, my name is tom. <br />
-          <br />
-          I'm a software engineer living in London. I like learning a lot.
-          <br />
-          <br />
-          Here is a picture of me taken by a socially distanced photographer:
-          <br />
+          <div
+            dangerouslySetInnerHTML={{ __html: data.markdownRemark.html }}
+          ></div>
         </TompilerItem>
         <FeatureImage />
       </TompilerContainer>
-      {/* <TompilerItem> */}
-      {/* </TompilerItem> */}
     </>
   )
 }
