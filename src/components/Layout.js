@@ -5,6 +5,7 @@ import Toolbar from "./Toolbar/Toolbar"
 import TransitionStateWrapper from "./Content/TransitionStateWrapper"
 import Navigation from "./Navigation/Navigation"
 import Footer from "./Footer/Footer"
+import Seo from "./Seo"
 
 import styled, { ThemeProvider } from "styled-components"
 import { lightTheme, darkTheme } from "../components/theme/theme"
@@ -46,6 +47,7 @@ const Layout = props => {
   return (
     <ThemeProvider theme={state.isDark ? darkTheme : lightTheme}>
       <GlobalStyles />
+      <Seo />
       <Toolbar />
       <>
         <NavigationContainer>

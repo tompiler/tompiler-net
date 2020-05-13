@@ -6,8 +6,12 @@
 
 module.exports = {
   siteMetadata: {
-    title: "tompiler",
-    author: "Andrew Mead"
+    title: "Tompiler Data Blog",
+    description: "A personal site for blogging about data",
+    url: "https://tompiler.net",
+    image: "/img/self.jpg",
+    twitterUsername: "@tompiler",
+    author: "Thomas Lynch"
   },
   plugins: [
     "gatsby-plugin-sass",
