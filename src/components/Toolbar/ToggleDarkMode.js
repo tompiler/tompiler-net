@@ -17,7 +17,7 @@ const Button = styled("button")`
 
 const ButtonContainer = styled("div")`
   float: right;
-  margin: 1.3vh 8px 0 0;
+  margin: 1.3vh 0 0 0;
 `
 
 const Icon = styled(FontAwesomeIcon)`
@@ -41,13 +41,7 @@ const ToggleDarkMode = () => {
         }}
       >
         <Icon
-          size={
-            windowSize.width > 1900
-              ? "3x"
-              : windowSize.width > 1000
-              ? "2x"
-              : "lg"
-          }
+          size={windowSize.width > 1000 ? "2x" : "lg"}
           icon={state.isDark ? faSun : faMoon}
         />
       </Button>
