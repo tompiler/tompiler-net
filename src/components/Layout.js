@@ -4,6 +4,7 @@ import Context from "./store/context"
 import Toolbar from "./Toolbar/Toolbar"
 import TransitionStateWrapper from "./Content/TransitionStateWrapper"
 import Navigation from "./Navigation/Navigation"
+import Footer from "./Footer/Footer"
 
 import styled, { ThemeProvider } from "styled-components"
 import { lightTheme, darkTheme } from "../components/theme/theme"
@@ -55,6 +56,7 @@ const Layout = props => {
           </div>
         </NavigationContainer>
         <TransitionStateWrapper>{props.children}</TransitionStateWrapper>
+        <Footer />
       </>
     </ThemeProvider>
   )
