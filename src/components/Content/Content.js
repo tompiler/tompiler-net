@@ -61,7 +61,7 @@ const Content = ({
   location,
   children
 }) => {
-  const route = location.pathname.substr(1)
+  const route = location.pathname.replace(/\//g, "")
   const windowSize = useWindowSize()
 
   // needed to fix 'first' link via transitionLink

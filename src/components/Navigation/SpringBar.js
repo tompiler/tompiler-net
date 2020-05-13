@@ -29,7 +29,8 @@ const Bar = styled(animated.div)`
 const SpringBar = ({ mount, entry, to, location, barColour }) => {
   const windowSize = useWindowSize()
   const theme = useContext(ThemeContext)
-  const route = location.pathname.substr(1)
+  const route = location.pathname.replace(/\//g, "")
+
   const colour = theme.pageColours[to]
   const props = useSpring({
     from: { width: 0 },

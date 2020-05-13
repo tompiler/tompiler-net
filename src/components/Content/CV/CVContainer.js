@@ -26,7 +26,8 @@ const ContentContainer = styled(animated.div)`
 `
 
 const CVContainer = ({ mount, location, children }) => {
-  const route = location.pathname.substr(1)
+  const pathname = location.pathname
+  const route = pathname.replace(/\//g, "")
 
   const windowSize = useWindowSize()
   const mobile = windowSize.width < 650 ? true : false
