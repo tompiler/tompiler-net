@@ -10,14 +10,16 @@ import Tutorials from "./tutorials"
 
 const IndexPage = () => {
   return (
-    <App>
-      <Tompiler path="/tompiler" exact />
-      <Contact path="/contact" />
-      <CV path="/cv" />
-      <Aims path="/aims" />
-      <Tutorials path="/tutorials" />
-      <Articles path="/articles" />
-    </App>
+    <>
+      <Tompiler path="/" exact />
+      <App>
+        <Contact path="/contact" />
+        <CV path="/cv" />
+        <Aims path="/aims" />
+        <Tutorials path="/tutorials" />
+        <Articles path="/articles" />
+      </App>
+    </>
   )
 }
 

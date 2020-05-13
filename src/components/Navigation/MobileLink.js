@@ -42,6 +42,13 @@ const StyledSpringLink = styled(SpringLink)`
 
 const MobileLink = props => {
   const windowSize = useWindowSize()
+  const { transitionStatus, entry, exit } = props
+  // console.log(
+  //   transitionStatus,
+  //   entry.state,
+  //   exit.state,
+  //   props.location.pathname
+  // )
   return (
     <LinkContainer>
       <StyledSpringLink
@@ -52,7 +59,7 @@ const MobileLink = props => {
         entryState={props.to}
         exitState={
           props.location.pathname === "/"
-            ? "tompiler"
+            ? "/"
             : props.location.pathname.substr(1)
         }
         mobile={windowSize.width < 650 ? true : false}

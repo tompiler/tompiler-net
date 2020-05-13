@@ -79,6 +79,10 @@ const Content = ({
       ? firstURL
       : entryState
 
+  if (mount && route !== "cv") {
+    console.log("Mount:", mount, transitionStatus, route)
+  }
+
   const props = useSpring({
     from: { opacity: 0 },
     to: {
@@ -90,6 +94,8 @@ const Content = ({
       friction: 15
     }
   })
+
+  console.log(props.opacity.value)
 
   return (
     <ContentContainer>

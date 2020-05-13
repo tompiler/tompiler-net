@@ -20,6 +20,10 @@ const ContentSplitter = props => {
     }
   })
 
+  if (toggle) {
+    console.log("Transition fired")
+  }
+
   // not sure why this works but it does :/
   return transitions.map(({ item, key, transitionProps }) =>
     item ? (

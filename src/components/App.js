@@ -1,15 +1,10 @@
 import React from "react"
-import { Router, Location, Redirect } from "@reach/router"
+import { Router, Location } from "@reach/router"
 
 const App = props => {
   return (
     <Location>
-      {({ location }) => (
-        <Router location={location}>
-          <Redirect from="/" to="tompiler" noThrow />
-          {props.children}
-        </Router>
-      )}
+      {({ location }) => <Router location={location}>{props.children}</Router>}
     </Location>
   )
 }
