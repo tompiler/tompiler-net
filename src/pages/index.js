@@ -8,16 +8,10 @@ import CV from "./cv"
 import Articles from "./articles"
 import Tutorials from "./tutorials"
 
-// import "../styles/index.scss"
-
-// import { ThemeProvider } from "styled-components"
-// import { theme } from "../components/theme/theme"
-// import { GlobalStyles } from "../components/store/globalStyle"
-
 const IndexPage = () => {
   return (
     <App>
-      <Tompiler path="/" exact />
+      <Tompiler path="/tompiler" exact />
       <Contact path="/contact" />
       <CV path="/cv" />
       <Aims path="/aims" />

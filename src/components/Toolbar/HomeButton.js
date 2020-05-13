@@ -29,7 +29,7 @@ const StyledSpringLink = styled(SpringLink)`
   }
 `
 
-const DrawerToggleButton = () => {
+const HomeButton = () => {
   const location = useLocation()
   const windowSize = useWindowSize()
 
@@ -53,4 +53,4 @@ const DrawerToggleButton = () => {
   )
 }
 
-export default DrawerToggleButton
+export default HomeButton

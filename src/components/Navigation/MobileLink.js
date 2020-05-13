@@ -57,7 +57,7 @@ const MobileLink = props => {
         }
         mobile={windowSize.width < 650 ? true : false}
       >
-        {props.to === "tompiler" ? "home" : props.to}
+        {props.to}
       </StyledSpringLink>
       <SpringBar {...props} />
     </LinkContainer>
