@@ -42,13 +42,7 @@ const StyledSpringLink = styled(SpringLink)`
 
 const MobileLink = props => {
   const windowSize = useWindowSize()
-  const { transitionStatus, entry, exit } = props
-  // console.log(
-  //   transitionStatus,
-  //   entry.state,
-  //   exit.state,
-  //   props.location.pathname
-  // )
+
   return (
     <LinkContainer>
       <StyledSpringLink

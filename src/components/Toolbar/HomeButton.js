@@ -37,7 +37,7 @@ const HomeButton = () => {
     <Container>
       <StyledSpringLink
         mobile={windowSize.width < 650 ? 1 : 0}
-        to={""}
+        to={"/"}
         exitLength={0.6}
         entryLength={0.8}
         entryDelay={0.6}

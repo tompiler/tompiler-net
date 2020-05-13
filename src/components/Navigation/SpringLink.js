@@ -13,7 +13,6 @@ const SpringLink = ({
   exitDelay,
   entryDelay
 }) => {
-  // console.log("ExitState:", exitState)
   return (
     <TransitionLink
       className={className}

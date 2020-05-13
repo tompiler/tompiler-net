@@ -2,7 +2,6 @@ import React, { useContext } from "react"
 import Context from "../components/store/context"
 
 import useWindowSize from "../components/useWindowSize"
-import { SpringLink } from "../components/Navigation/SpringLink"
 
 import styled, { ThemeProvider } from "styled-components"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
