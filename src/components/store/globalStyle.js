@@ -19,6 +19,10 @@ export const GlobalStyles = createGlobalStyle`
     background: ${({ theme }) => theme.scrollbar.thumb};
   }
 
+  .tl-wrapper {
+    position: absolute;
+  }
+
   html {
     position: absolute;
     height: 100%;
