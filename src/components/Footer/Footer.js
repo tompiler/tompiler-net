@@ -10,6 +10,9 @@ const FooterContainer = styled("div")`
   width: 100%;
   font-size: 0.8em;
   text-align: center;
+  @media ${props => props.theme.breakpoints.md} {
+    display: none;
+  }
 `
 
 const Footer = () => {
