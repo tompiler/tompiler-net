@@ -29,19 +29,9 @@ module.exports = {
         path: `${__dirname}/src/`
       }
     },
-    // {
-    //   resolve: "gatsby-plugin-google-fonts",
-    //   options: {
-    //     fonts: [
-    //       "Montserrat sans-serif",
-    //       "Open Sans sans-serif:200,300,400,500,600,700",
-    //       "Quicksand, sans-serif:100",
-    //       "Crimson Text, serif",
-    //       "source sans pro:200,300,400,400i,700",
-    //     ],
-    //     display: "swap",
-    //   },
-    // },
+    {
+      resolve: "gatsby-plugin-styled-components"
+    },
     {
       resolve: "gatsby-plugin-prefetch-google-fonts",
       options: {
