@@ -29,16 +29,15 @@ const Bar = styled(animated.div)`
 const SpringBar = ({ mount, entry, to, location, barColour }) => {
   const windowSize = useWindowSize()
   const theme = useContext(ThemeContext)
-
+  const route = location.pathname.substr(1)
   const colour = theme.pageColours[to]
-
   const props = useSpring({
     from: { width: 0 },
     to: {
       width:
         mount &&
         entry.state.entryState === undefined &&
-        location.pathname.substr(1) === to
+        (route === to || (route === "" && to === "tompiler"))
           ? to === "tompiler"
             ? 48
             : 36
@@ -49,7 +48,6 @@ const SpringBar = ({ mount, entry, to, location, barColour }) => {
           : 0
     },
     config: {
-      //   duration: 1000,
       mass: 1,
       tension: 450,
       friction: 55
