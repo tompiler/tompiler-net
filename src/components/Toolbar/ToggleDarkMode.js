@@ -40,10 +40,7 @@ const ToggleDarkMode = () => {
           dispatch({ type: "TOGGLE_DARK_MODE" })
         }}
       >
-        <Icon
-          size={windowSize.width > 1000 ? "2x" : "lg"}
-          icon={state.isDark ? faSun : faMoon}
-        />
+        <Icon size={"lg"} icon={state.isDark ? faSun : faMoon} />
       </Button>
     </ButtonContainer>
   )
