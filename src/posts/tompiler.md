@@ -1,5 +1,5 @@
 Hello, my name is tom.
 
-I'm a software engineer living in London. I like learning a lot.
+I'm a software engineer living in London.
 
 Here is a picture of me taken by a socially distanced photographer:
