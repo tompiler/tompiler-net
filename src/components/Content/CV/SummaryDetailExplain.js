@@ -46,7 +46,7 @@ const SummaryContainer = styled("div")`
 const DetailContainer = styled("div")`
   /* display: inline-block; */
   position: ${props => (!props.menu && props.mobile ? "relative" : "absolute")};
-  top: ${props => (!props.menu && props.mobile ? "0" : "20.5%")};
+  top: ${props => (!props.menu && props.mobile ? "0" : "19.5%")};
   left: 0%;
   width: 100%;
   margin: 0vh 0vw;

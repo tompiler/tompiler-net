@@ -54,6 +54,12 @@ const Role = styled("p")`
   margin: 1.5vh 0 1vh 0;
   line-height: 1vh;
 
+  @media ${props => props.theme.breakpoints.desktopsm} {
+    font-size: 1em;
+    margin: 0vh 0 0vh 0;
+    line-height: 2vh;
+  }
+
   @media ${props => props.theme.breakpoints.md} {
     font-size: 0.75em;
   }

@@ -14,6 +14,26 @@ const LinkContainer = styled("div")`
   width: 12vw;
   text-align: left;
 
+  @media ${props => props.theme.breakpoints.desktopmd} {
+    font-size: 1.4em;
+    padding: 1vh 3vw;
+  }
+
+  @media ${props => props.theme.breakpoints.desktopsm} {
+    font-size: 1.25em;
+    padding: 1vh 2vw;
+  }
+
+  @media ${props => props.theme.breakpoints.tablet} {
+    font-size: 1.1em;
+    padding: 1vh 1vw;
+  }
+
+  @media ${props => props.theme.breakpoints.lg} {
+    font-size: 1em;
+    padding: 1vh 1vw;
+  }
+
   @media ${props => props.theme.breakpoints.md} {
     display: inline-block;
     padding: 1vh 0;

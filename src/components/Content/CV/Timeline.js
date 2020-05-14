@@ -57,6 +57,7 @@ const Circle = styled(animated.circle)`
     props.hover === "true" || props.selected
       ? props.theme.cv.circle.hover
       : props.theme.background};
+  cursor: pointer;
 `
 
 const ColumnHeading = styled(animated.div)`

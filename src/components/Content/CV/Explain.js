@@ -27,7 +27,7 @@ const ExplainDescriptionContainer = styled("div")`
   height: 80%;
   overflow-y: auto;
   overflow-x: hidden;
-  padding: 0 0 0 2vw;
+  padding: 0 0.5vw 2vw 2vw;
   text-align: left;
   /* border: 1px dashed lightpink; */
 `
