@@ -8,7 +8,8 @@
     "heading": "Work Experience Dendrogram",
     "paragraphs": [
       "The chart to the left shows the relationship between my work experience and the skills I acquired during those roles.",
-      "Each role is listed under 'Timeline'. The next column links each role to skill categories in which the tools listed under the technology column belong. Hovering over each role highlights each of the links between those categories and tools.",
+      "Each role is listed under 'Timeline'. The next column links each role to skill categories in which the tools listed under the technology column belong.",
+      "Hovering over or selecting each role highlights each of the links between those categories and tools.",
       "To see more detail on each role, click on one of these roles in the left hand column and more detail will be visible in the panel directly above this one."
     ]
   },

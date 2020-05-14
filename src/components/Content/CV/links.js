@@ -140,7 +140,7 @@ const skillItems = {
   arcgis: {
     name: "ArcGIS",
     vh: 32,
-    validTimelineNodesOrder: [3, 2]
+    validTimelineNodesOrder: [3]
   },
   sql: {
     name: "SQL",

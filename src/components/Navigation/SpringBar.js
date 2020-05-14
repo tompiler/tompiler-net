@@ -28,7 +28,8 @@ const Bar = styled(animated.div)`
   @media ${props => props.theme.breakpoints.md} {
     font-size: 0.9em;
     margin: 0;
-    height: 2px;
+    height: 1.5px;
+    border-radius: 0.75px;
   }
 `
 
@@ -45,11 +46,11 @@ const SpringBar = ({ mount, entry, to, location, barColour }) => {
         entry.state.entryState === undefined &&
         (route === to || (route === "" && to === "tompiler"))
           ? to === "tompiler"
-            ? 48
+            ? 54
             : 36
           : mount && entry.state.entryState === to
           ? to === "tompiler"
-            ? 48
+            ? 54
             : 36
           : 0
     },
