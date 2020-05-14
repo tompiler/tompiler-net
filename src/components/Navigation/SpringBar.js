@@ -12,7 +12,8 @@ const BarContainer = styled("div")`
   justify-content: flex-start;
 
   @media ${props => props.theme.breakpoints.md} {
-    justify-content: center;
+    justify-content: ${props =>
+      props.to === "tompiler" ? "flex-start" : "center"};
   }
 `
 const Bar = styled(animated.div)`
