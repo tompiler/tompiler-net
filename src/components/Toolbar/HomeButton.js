@@ -12,11 +12,11 @@ import styled from "styled-components"
 
 const Container = styled("div")`
   display: inline-block;
-  padding-left: 0.5rem;
+  padding-left: 0.5em;
   margin: 1vh 0 0 0;
   color: ${props => props.theme.color};
   text-decoration: none;
-  font-size: 1.7rem;
+  font-size: 1.7em;
   cursor: pointer;
 `
 

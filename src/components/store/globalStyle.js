@@ -37,5 +37,28 @@ export const GlobalStyles = createGlobalStyle`
     font-family: "Open Sans";
     font-weight: 400;
     margin: 0;
+    font-size: 100%;
+
+    @media ${({ theme }) => theme.breakpoints.desktopmd} {
+      font-size: 95%;
+    }
+
+    @media ${({ theme }) => theme.breakpoints.desktopsm} {
+      font-size: 90%;
+    }
+
+    @media ${({ theme }) => theme.breakpoints.lg} {
+      font-size: 80%;
+    }
+
+    @media ${({ theme }) => theme.breakpoints.md} {
+      font-size: 100%;
+    }
+
+    @media ${({ theme }) => theme.breakpoints.sm} {
+      font-size: 100%;
+    }
   }
+
+  
 `

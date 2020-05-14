@@ -8,8 +8,12 @@ import styled, { ThemeContext } from "styled-components"
 
 const BarContainer = styled("div")`
   display: flex;
-  justify-content: ${props =>
-    !props.mobile || props.to === "tompiler" ? "flex-start" : "center"};
+
+  justify-content: flex-start;
+
+  @media ${props => props.theme.breakpoints.md} {
+    justify-content: center;
+  }
 `
 const Bar = styled(animated.div)`
   display: inline-block;
@@ -23,11 +27,11 @@ const Bar = styled(animated.div)`
   @media ${props => props.theme.breakpoints.md} {
     font-size: 0.9em;
     margin: 0;
+    height: 2px;
   }
 `
 
 const SpringBar = ({ mount, entry, to, location, barColour }) => {
-  const windowSize = useWindowSize()
   const theme = useContext(ThemeContext)
   const route = location.pathname.replace(/\//g, "")
 
@@ -56,7 +60,7 @@ const SpringBar = ({ mount, entry, to, location, barColour }) => {
   })
 
   return (
-    <BarContainer mobile={windowSize.width < 650} to={to}>
+    <BarContainer to={to}>
       <Bar
         style={{
           width: props.width.interpolate(x => x + "px"),

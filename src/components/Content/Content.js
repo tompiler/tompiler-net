@@ -9,16 +9,17 @@ import styled from "styled-components"
 const Title = styled(animated.div)`
   width: 100%;
   text-align: center;
-  font-size: 2rem;
+  font-size: 2em;
   font-family: "Open Sans";
   font-weight: 300;
-  letter-spacing: 0.2rem;
-  padding: 1vh 0;
+  letter-spacing: 0.2em;
+  padding: 2vh 0;
 `
 
 const HeaderContainer = styled(animated.div)`
   display: flex;
   justify-content: center;
+  align-items: center;
   width: 100%;
   height: 6vh;
   border-bottom: ${props => `1px solid ${props.theme.color}`};
@@ -47,7 +48,7 @@ const ContentContainer = styled("div")`
   text-align: center;
 
   @media ${props => props.theme.breakpoints.md} {
-    top: 100px;
+    top: 110px;
     left: 10%;
     width: 80%;
   }

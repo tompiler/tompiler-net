@@ -1,11 +1,19 @@
 const size = {
   sm: "400px",
-  md: "650px"
+  md: "650px",
+  lg: "768px",
+  tablet: "1024px",
+  desktopsm: "1200px",
+  desktopmd: "1980px"
 }
 
 const breakpoints = {
   sm: `(max-width: ${size.sm})`,
-  md: `(max-width: ${size.md})`
+  md: `(max-width: ${size.md})`,
+  lg: `(max-width: ${size.lg})`,
+  tablet: `(max-width: ${size.tablet})`,
+  desktopsm: `(max-width: ${size.desktopsm})`,
+  desktopmd: `(max-width: ${size.desktopmd})`
 }
 
 export const lightTheme = {

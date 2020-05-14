@@ -31,7 +31,7 @@ const SkillCategory = styled(animated.div)`
   margin: 0 1vw;
   align-items: center;
   font-family: "Open Sans";
-  font-size: 0.95rem;
+  font-size: 0.95em;
   font-weight: ${props =>
     props.hover === "true" || props.selected === "true" ? 600 : 400};
   color: ${props =>

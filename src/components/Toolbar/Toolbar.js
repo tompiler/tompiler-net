@@ -17,7 +17,7 @@ const Header = styled("header")`
 const Nav = styled("nav")`
   display: inline-block;
   height: 100%;
-  padding: 0 1rem;
+  padding: 0 1em;
   width: 100%;
 
   @media ${props => props.theme.breakpoints.md} {
