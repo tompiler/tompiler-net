@@ -46,12 +46,12 @@ const SpringBar = ({ mount, entry, to, location, barColour }) => {
         entry.state.entryState === undefined &&
         (route === to || (route === "" && to === "tompiler"))
           ? to === "tompiler"
-            ? 54
-            : 36
+            ? 1.8
+            : 1.15
           : mount && entry.state.entryState === to
           ? to === "tompiler"
-            ? 54
-            : 36
+            ? 1.8
+            : 1.15
           : 0
     },
     config: {
@@ -65,7 +65,7 @@ const SpringBar = ({ mount, entry, to, location, barColour }) => {
     <BarContainer to={to}>
       <Bar
         style={{
-          width: props.width.interpolate(x => x + "px"),
+          width: props.width.interpolate(x => x + "em"),
           background: `rgba(${colour.red},${colour.green},${colour.blue},${colour.a})`
         }}
       ></Bar>
