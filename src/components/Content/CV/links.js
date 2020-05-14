@@ -12,7 +12,7 @@ const skillCategories = {
   webDevelopment: {
     name: "Web Development",
     vh: 9,
-    validTimelineNodesOrder: [6, 5, 4, 2]
+    validTimelineNodesOrder: [6, 5, 4, 3, 2]
   },
   visualisation: {
     name: "Data Visualisation",
@@ -145,7 +145,7 @@ const skillItems = {
   sql: {
     name: "SQL",
     vh: 35,
-    validTimelineNodesOrder: [3, 2]
+    validTimelineNodesOrder: [5, 4, 3, 2]
   },
   airflow: {
     name: "Airflow",
