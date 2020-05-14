@@ -13,10 +13,12 @@ const reducer = (state, action) => {
 }
 
 const useGlobalState = () => {
+  const isSSR = typeof window === "undefined"
   const [state, dispatch] = useReducer(reducer, {
-    isDark: storage.getItem("isDark")
-      ? JSON.parse(storage.getItem("isDark"))
-      : true // change to true for default = dark mode
+    isDark:
+      isSSR && storage.getItem("isDark")
+        ? JSON.parse(storage.getItem("isDark"))
+        : true // change to true for default = dark mode
   })
 
   return { state, dispatch }
