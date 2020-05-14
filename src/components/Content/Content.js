@@ -13,7 +13,7 @@ const Title = styled(animated.div)`
   font-family: "Open Sans";
   font-weight: 300;
   letter-spacing: 0.2em;
-  padding: 2vh 0;
+  padding: 2vh 0 15px 0;
 `
 
 const HeaderContainer = styled(animated.div)`
@@ -41,7 +41,7 @@ const ChildContainer = styled(animated.div)`
 const ContentContainer = styled("div")`
   display: block;
   position: absolute;
-  top: 140px;
+  top: 14vh;
   left: 30vw;
   width: 40%;
   height: auto;
