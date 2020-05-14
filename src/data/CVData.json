@@ -2,13 +2,13 @@
   "main": { "columnHeadings": ["TIMELINE", "SKILL", "TECHNOLOGY"] },
   "summary": {
     "heading": "Summary",
-    "text": "I have broad skills across many technologies, with depth in areas of analytics, data engineering and frontend development, all developed over 6 years’ experience in a variety of functions where problem solving has played a crucial role."
+    "text": "I have broad skillset covering many technologies, with depth in areas of analytics, data engineering and frontend development, all developed over 6 years’ experience in a variety of functions where problem solving has played a crucial role."
   },
   "explain": {
     "heading": "Work Experience Dendrogram",
     "paragraphs": [
       "The chart to the left shows the relationship between my work experience and the skills I acquired during those roles.",
-      "Each role is listed under 'Timeline'. The next column lists some broad skill categories in which the items under the technology column belong. Hovering over each role highlights each of the links between those categories and tools.",
+      "Each role is listed under 'Timeline'. The next column links each role to skill categories in which the tools listed under the technology column belong. Hovering over each role highlights each of the links between those categories and tools.",
       "To see more detail on each role, click on one of these roles in the left hand column and more detail will be visible in the panel directly above this one."
     ]
   },
@@ -68,10 +68,10 @@
                 "text": "Managing several complex dashboards in Excel using data from internal databases on active users, sales, jobs posted and much more"
               },
               {
-                "text": "Improved performance by removing slow MS Access/Excel stages in the BI reporting pipeline where possible, by writing efficient SQL queries embedded in python scripts"
+                "text": "Improved performance by removing slow MS Access/Excel steps in the BI reporting pipelines by writing efficient SQL queries embedded in python scripts"
               },
               {
-                "text": "Developed a user-friendly interactive dashboard in d3.js, showing vital information to the business and helping insight to circulate amongst non-technical colleagues"
+                "text": "Developed a user-friendly interactive dashboard in d3.js, showing vital information to the business and circulating insight to non-technical colleagues"
               },
               {
                 "text": "Deployed a random forest model to predict customer churn on a monthly basis"
@@ -104,13 +104,13 @@
                 ]
               },
               {
-                "text": "Analysis typically involves anticipating theories of harm in the context of the litigation - local overlap, entry & exit, price modelling analyses are common in retail mergers."
+                "text": "Analysis typically involves anticipating theories of harm in the context of the litigation - local overlap, entry & exit, price modelling analyses are common in retail mergers"
               },
               {
                 "text": "Extremely fast-paced environment, a significant proportion of ad-hoc, exploratory analysis"
               },
               {
-                "text": "Built & maintained end-to-end data pipelines from databases or other storage methods to final analysis across multiple workstreams & cases Data occasionally large (108+ rows)."
+                "text": "Built & maintained end-to-end data pipelines from databases or other storage methods to final analysis across multiple workstreams & cases. Data occasionally large (100m+ rows)."
               },
               {
                 "text": "Managed ArcGIS software and most geospatial analysis, plus various other technology functions"
@@ -144,13 +144,13 @@
             "name": null,
             "description": [
               {
-                "text": "Solely responsible for the entire build and delivery of a interactive business intelligence dashboard application (“Playbook”)"
+                "text": "Solely responsible for the entire build and delivery of an interactive business intelligence dashboard application (“Playbook”)"
               },
               {
-                "text": "Designed to make Decathlon’s data more accessible to store managers, sport leaders and other stakeholders throughout the business."
+                "text": "Designed to make data @ Decathlon more accessible to store managers, sport leaders and other stakeholders throughout the business"
               },
               {
-                "text": "Modern web development tools such as React, D3, Node, GraphQL, Python and MongoDB used throughouts"
+                "text": "Modern web development tools such as React, D3, Node, GraphQL, Python and MongoDB used throughout"
               }
             ]
           }
@@ -169,10 +169,10 @@
             "name": "Placement 1: Online Tech Company",
             "description": [
               {
-                "text": "Assisted a team to migrate a system of some 160+ data pipelines, shifting several TB/day of data orchestrated by cron to being scheduled using an airflow cluster."
+                "text": "Assisted a team to migrate a system of some 160+ data pipelines, shifting several TB/day of data orchestrated by cron to being scheduled using an airflow cluster"
               },
               {
-                "text": "Supporting other teams reliant on this legacy system, fixing ongoing issues, weighing heavily on a variety of AWS services such as ECS, EMR, Athena, Redshift and more."
+                "text": "Supporting other teams reliant on this legacy system, fixing ongoing issues, weighing heavily on a variety of AWS services - Redshift, EMR, Glue, Athena and more"
               }
             ]
           },
@@ -180,13 +180,13 @@
             "name": "Placement 2: FTSE 100 Multinational",
             "description": [
               {
-                "text": "A green-field project, worked within a team to build a developer compliance tool to help senior stakeholders understand developer maturity and best practices amongst engineering teams globally, from proof-of-concept stage all the way to a fully scalable application."
+                "text": "A green-field project, working within a team to build a developer compliance tool to help senior stakeholders understand developer maturity and best practices amongst engineering teams globally, from proof-of-concept stage all the way to a fully scalable application"
               },
               {
-                "text": "This was achieved using Azure Data Factory, SQL Server and Power BI, deployable via a CI/CD pipeline using Azure DevOps and ARM templates."
+                "text": "This was achieved using Azure Data Factory, SQL Server and Power BI, deployable via a CI/CD pipeline using Azure DevOps and ARM templates"
               },
               {
-                "text": "My focus was on the data lifecycle, designing and building the data model and database, and visualising the output in Power BI."
+                "text": "My focus was on the data lifecycle, designing and building the data model and database, and visualising the output in Power BI"
               }
             ]
           }
@@ -203,7 +203,7 @@
             "name": "Side projects",
             "description": [
               {
-                "text": "Like many engineers, I start a lot more side projects than I finish. However, I'm planning to change this trend and will be looking forward to collaborating on some interesting and meaningful work soon."
+                "text": "Like many engineers, I start a lot more side projects than I finish. However, I'm planning to change this trend and will be looking forward to collaborating on some interesting and meaningful work soon"
               }
             ]
           },
@@ -211,10 +211,10 @@
             "name": "Codeclub & CoderDojo volunteering",
             "description": [
               {
-                "text": "Working with Code Club, an international network of volunteers and educators running free coding clubs for young people across the UK."
+                "text": "Working with Code Club, an international network of volunteers and educators running free coding clubs for young people across the UK"
               },
               {
-                "text": "Teaching groups children of ages 7+ on a weekly basis. Activities usually involve taking students through exercises in scratch, HTML & CSS, Python, and introducing students to robotics with the BBC Microbit."
+                "text": "Teaching groups children of ages 7+ on a weekly basis. Activities usually involve taking students through exercises in scratch, HTML & CSS, Python, and introducing students to robotics with the BBC Microbit"
               }
             ]
           }

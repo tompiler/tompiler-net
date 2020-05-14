@@ -637,6 +637,13 @@ const Timeline = ({
               ))}
               {circleSprings.map((spring, i) => (
                 <Circle
+                  onClick={() =>
+                    setSelected(state => ({
+                      value: selectedArray[i],
+                      prevValue: state.value,
+                      menu: false
+                    }))
+                  }
                   r={spring.r}
                   cx={
                     i === 6

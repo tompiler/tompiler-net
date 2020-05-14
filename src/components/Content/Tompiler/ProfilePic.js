@@ -9,7 +9,7 @@ export const FeatureImage = () => {
     query TompilerProfilePic {
       file(relativePath: { eq: "img/self.jpg" }) {
         childImageSharp {
-          fluid(quality: 100, jpegQuality: 100, sizes: "800px") {
+          fluid(quality: 50, jpegQuality: 50, sizes: "800px") {
             ...GatsbyImageSharpFluid
           }
         }
