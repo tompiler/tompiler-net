@@ -6,7 +6,8 @@
 
 module.exports = {
   siteMetadata: {
-    title: "Tompiler Data Blog",
+    title: "tompiler",
+    titleTemplate: "%s",
     description: "A personal site for blogging about data",
     url: "https://tompiler.net",
     image: "/img/self.jpg",

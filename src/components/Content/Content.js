@@ -12,7 +12,7 @@ const Title = styled(animated.div)`
   font-size: 2em;
   font-family: "Open Sans";
   font-weight: 300;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.1em;
   padding: 2vh 0 15px 0;
 `
 

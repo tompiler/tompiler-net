@@ -36,6 +36,7 @@ const ToggleDarkMode = () => {
   return (
     <ButtonContainer>
       <Button
+        aria-label="Toggle Dark Mode"
         onClick={() => {
           dispatch({ type: "TOGGLE_DARK_MODE" })
         }}
