@@ -190,6 +190,20 @@
                 "text": "My focus was on the data lifecycle, designing and building the data model and database, and visualising the output in Power BI"
               }
             ]
+          },
+          {
+            "name": "Placement 3: Online Price Comparison Site",
+            "description": [
+              {
+                "text": "A CRM system migration project to allow real-time communication with customers based on the activity of each customer on the site."
+              },
+              {
+                "text": "Introduced to a vast array of new technologies, including Kafka and Kubernetes"
+              },
+              {
+                "text": "Responsible for the design and build of an automated testing application to be deployed across the platform, running data integrity tests between various touchpoints throughout complex data pipelines with multiple source/sink systems."
+              }
+            ]
           }
         ]
       }
