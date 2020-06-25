@@ -1,5 +1,7 @@
 import React, { useContext } from "react"
 
+import useWindowSize from "../useWindowSize"
+
 import { useSpring, animated } from "react-spring"
 
 import styled, { ThemeContext } from "styled-components"

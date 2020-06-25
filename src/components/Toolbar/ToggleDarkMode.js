@@ -28,7 +28,6 @@ const Icon = styled(FontAwesomeIcon)`
 `
 
 const ToggleDarkMode = () => {
-  const windowSize = useWindowSize()
   const { state, dispatch } = useContext(Context)
 
   return (
