@@ -27,11 +27,13 @@ const SEO = ({ title, lang, description, meta, image: metaImage, article }) => {
     titleTemplate,
     siteUrl,
     twitterUsername,
+    defaultTitle,
     defaultDescription,
     keywords
   } = site.siteMetadata
 
   const metaDescription = description || defaultDescription
+  const metaTitle = title || defaultTitle
   const image = metaImage && metaImage.src ? `${siteUrl}${metaImage.src}` : null
 
   const canonical = pathname ? `${siteUrl}${pathname}` : null
