@@ -1,5 +1,6 @@
 import React, { useContext } from "react"
 import Context from "./store/context"
+import { useStaticQuery, graphql } from "gatsby"
 
 import Toolbar from "./Toolbar/Toolbar"
 import TransitionStateWrapper from "./Content/TransitionStateWrapper"
@@ -44,10 +45,24 @@ const LinkContainer = styled("div")`
 const Layout = props => {
   const { state } = useContext(Context)
 
+  const data = useStaticQuery(graphql`
+    query ProfilePic {
+      file(relativePath: { eq: "img/self.jpg" }) {
+        childImageSharp {
+          resize(width: 1200) {
+            src
+            height
+            width
+          }
+        }
+      }
+    }
+  `)
+
   return (
     <ThemeProvider theme={state.isDark ? darkTheme : lightTheme}>
       <GlobalStyles />
-      <Seo />
+      <Seo image={data.file.childImageSharp.resize} />
       <Toolbar />
       <>
         <NavigationContainer>
