@@ -75,6 +75,14 @@ const SEO = ({ title, lang, description, meta, image: metaImage, article }) => {
           content: metaDescription
         },
         {
+          name: "twitter:site",
+          content: siteUrl
+        },
+        {
+          name: "twitter:description",
+          content: metaDescription
+        },
+        {
           property: "twitter:creator",
           content: twitterUsername
         }
@@ -93,6 +101,10 @@ const SEO = ({ title, lang, description, meta, image: metaImage, article }) => {
                 {
                   property: "og:image:height",
                   content: metaImage.height
+                },
+                {
+                  name: "twitter:image",
+                  context: image
                 },
                 {
                   name: "twitter:card",
