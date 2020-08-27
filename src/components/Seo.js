@@ -40,7 +40,7 @@ const SEO = ({ title, lang, description, meta, image: metaImage, article }) => {
 
   return (
     <Helmet
-      title={title}
+      title={metaTitle}
       titleTemplate={titleTemplate}
       htmlAttributes={{
         lang: "en"
@@ -66,7 +66,7 @@ const SEO = ({ title, lang, description, meta, image: metaImage, article }) => {
         },
         {
           property: "og:title",
-          content: title
+          content: metaTitle
         },
         {
           property: "og:type",
@@ -78,7 +78,7 @@ const SEO = ({ title, lang, description, meta, image: metaImage, article }) => {
         },
         {
           property: "twitter:title",
-          content: title
+          content: metaTitle
         },
         {
           name: "twitter:site",
