@@ -75,6 +75,10 @@ const SEO = ({ title, lang, description, meta, image: metaImage, article }) => {
           content: metaDescription
         },
         {
+          property: "twitter:title",
+          content: title
+        },
+        {
           name: "twitter:site",
           content: siteUrl
         },
