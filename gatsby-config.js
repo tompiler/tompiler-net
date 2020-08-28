@@ -58,6 +58,13 @@ module.exports = {
         path: `${__dirname}/src/img`
       }
     },
+    {
+      resolve: "gatsby-plugin-robots-txt",
+      options: {
+        policy: [{ userAgent: "*", allow: "/" }]
+      }
+    },
+    "gatsby-plugin-sitemap",
     "gatsby-plugin-react-helmet",
     "gatsby-transformer-sharp",
     {
