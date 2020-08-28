@@ -58,6 +58,7 @@ module.exports = {
         path: `${__dirname}/src/img`
       }
     },
+    "gatsby-plugin-react-helmet",
     "gatsby-transformer-sharp",
     {
       resolve: "gatsby-transformer-remark",
