@@ -97,6 +97,14 @@ const SEO = ({ title, lang, description, meta, image: metaImage, article }) => {
           metaImage
             ? [
                 {
+                  name: "twitter:image",
+                  context: image
+                },
+                {
+                  name: "twitter:card",
+                  content: "summary_large_image"
+                },
+                {
                   property: "og:image",
                   content: image
                 },
@@ -107,14 +115,6 @@ const SEO = ({ title, lang, description, meta, image: metaImage, article }) => {
                 {
                   property: "og:image:height",
                   content: metaImage.height
-                },
-                {
-                  name: "twitter:image",
-                  context: image
-                },
-                {
-                  name: "twitter:card",
-                  content: "summary_large_image"
                 }
               ]
             : [

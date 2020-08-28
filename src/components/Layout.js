@@ -49,7 +49,7 @@ const Layout = props => {
     query ProfilePic {
       file(relativePath: { eq: "img/self.jpg" }) {
         childImageSharp {
-          resize(width: 1200) {
+          resize(width: 1200, height: 800) {
             src
             height
             width
