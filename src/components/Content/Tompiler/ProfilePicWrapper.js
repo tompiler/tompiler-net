@@ -1,9 +1,9 @@
 import styled from "styled-components"
 
 const ProfilePicWrapper = styled("div")`
-  margin: 2vh 0;
+  margin: 1vh auto;
   display: block;
-  width: 100%;
+  width: 75%;
   height: auto;
   background: ${props => props.theme.color};
   border-radius: 5px;
