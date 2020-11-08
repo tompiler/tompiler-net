@@ -142,7 +142,7 @@ const DendrogramPath = styled(animated.path)`
       ? props.theme.cv.line.hover
       : props.theme.cv.line.color};
   stroke-width: ${props =>
-    props.hover === "true" || props.selected ? 1.2 : 0.7};
+    props.hover === "true" || props.selected ? 1.4 : 0.6};
 `
 
 const Timeline = ({

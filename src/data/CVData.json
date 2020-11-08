@@ -2,13 +2,13 @@
   "main": { "columnHeadings": ["TIMELINE", "SKILL", "TECHNOLOGY"] },
   "summary": {
     "heading": "Summary",
-    "text": "I have a broad skillset covering many technologies, with depth in areas of analytics, data engineering and frontend development, all developed over 6 years’ experience in a variety of functions where problem solving has played a crucial role."
+    "text": "Software engineer with very broad experience across data consultancy, working in teams to help clients face challenges with technology. Highly capable problem solver with substantial technical acumen in data science, data engineering, business intelligence, interactive data visualisation, and cloud technologies."
   },
   "explain": {
     "heading": "Work Experience Dendrogram",
     "paragraphs": [
       "The chart to the left shows the relationship between my work experience and the skills I acquired during those roles.",
-      "Each role is listed under 'Timeline'. The next column links each role to skill categories in which the tools listed under the technology column belong.",
+      "Each role is listed under 'Timeline'. The next column 'Skill' links each role to skill categories in which the tools that are listed under the technology column belong.",
       "Hovering over or selecting each role highlights each of the links between those categories and tools.",
       "To see more detail on each role, click on one of these roles in the left hand column and more detail will be visible in the panel directly above this one."
     ]
@@ -170,10 +170,16 @@
             "name": "Placement 1: Online Tech Company",
             "description": [
               {
-                "text": "Assisted a team to migrate a system of some 160+ data pipelines, shifting several TB/day of data orchestrated by cron to being scheduled using an airflow cluster"
+                "text": "Helped a team replace a system of some 160+ data pipelines, moving several TB/day through various systems."
               },
               {
-                "text": "Supporting other teams reliant on this legacy system, fixing ongoing issues, weighing heavily on a variety of AWS services - Redshift, EMR, Glue, Athena and more"
+                "text": "The project migrated the orchestration from cron triggers to being scheduled using an airflow cluster, working closely with another project to migrate from Qlikview to Looker."
+              },
+              {
+                "text": "Quickly grasped a huge legacy code base (100k lines+) to provide insight on data tracing data definitions in database tables for marketing, product, and analytics teams."
+              },
+              {
+                "text": "Supported other teams that relied on this legacy system, fixing ongoing issues, using a variety of AWS services such as ECS, EMR, Athena, Redshift and more."
               }
             ]
           },
@@ -181,13 +187,16 @@
             "name": "Placement 2: FTSE 100 Multinational",
             "description": [
               {
-                "text": "A green-field project, working within a team to build a developer compliance tool to help senior stakeholders understand developer maturity and best practices amongst engineering teams globally, from proof-of-concept stage all the way to a fully scalable application"
+                "text": "A green-field project to build a compliance tool to help senior stakeholders monitor maturity and best practices amongst engineering teams globally, from POC stage all the way to a fully scalable application."
               },
               {
-                "text": "This was achieved using Azure Data Factory, SQL Server and Power BI, deployable via a CI/CD pipeline using Azure DevOps and ARM templates"
+                "text": "This was achieved using Azure Data Factory, Azure SQL Server and Power BI, deployable via a CI/CD pipeline using Azure DevOps and ARM templates."
               },
               {
-                "text": "My focus was on the data lifecycle, designing and building the data model and database, and visualising the output in Power BI"
+                "text": "During this project, my focus was on designing, building and maintaining the data model from inception to handover, working with the client to adapt the model as more features were included."
+              },
+              {
+                "text": "Also played a large role in ensuring transformations were performed correctly, developing transformers in python that were deployed as Azure functions."
               }
             ]
           },
@@ -195,13 +204,16 @@
             "name": "Placement 3: Online Price Comparison Site",
             "description": [
               {
-                "text": "A CRM system migration project to allow real-time communication with customers based on the activity of each customer on the site."
+                "text": "A CRM system migration to allow streaming of events between the client’s web UI and Salesforce, enabling real-time communication to customers based on their activity."
               },
               {
-                "text": "Introduced to a vast array of new technologies, including Kafka and Kubernetes"
+                "text": "Introduced to a vast array of new technologies, e.g. Kafka, Kubernetes, Java."
               },
               {
-                "text": "Responsible for the design and build of an automated testing application to be deployed across the platform, running data integrity tests between various touchpoints throughout complex data pipelines with multiple source/sink systems."
+                "text": "Primarily an SDET role, but I played a key part as a BA to drive through and explain complex logical requirements of each transformer service in between the web UI and Salesforce to the team."
+              },
+              {
+                "text": "Developed an automated testing application using Behave, a BDD framework in python, defining and building a suite of test cases against each key transformer service, helping reduce reliance on manual testing, to increase coverage and improve confidence that business requirements were me."
               }
             ]
           }
@@ -219,6 +231,17 @@
             "description": [
               {
                 "text": "Like many engineers, I start a lot more side projects than I finish. However, I'm planning to change this trend and will be looking forward to collaborating on some interesting and meaningful work soon"
+              }
+            ]
+          },
+          {
+            "name": "Level Up Mentor",
+            "description": [
+              {
+                "text": "Level Up is a mentorship scheme for connecting experienced UK tech professionals with young technologists in Iraq, Syria and Iran."
+              },
+              {
+                "text": "I host regular online calls with a young person living in Iraq and provide advice and help for developing their career in technology"
               }
             ]
           },
