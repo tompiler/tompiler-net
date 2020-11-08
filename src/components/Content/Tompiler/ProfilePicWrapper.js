@@ -11,6 +11,10 @@ const ProfilePicWrapper = styled("div")`
   background-position: center center;
   box-shadow: 10px 10px 30px 0px rgba(0, 0, 0, 0.5);
   border: ${props => `5px solid ${props.theme.tompiler.border}`};
+
+  @media ${props => props.theme.breakpoints.md} {
+    width: 100%;
+  }
 `
 
 export { ProfilePicWrapper }
