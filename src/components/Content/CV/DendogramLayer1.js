@@ -7,7 +7,7 @@ const SkillCategoryDendogramContainer = styled("div")`
   margin-top: 3vh;
   position: absolute;
   top: 0%;
-  left: 12%;
+  left: 13%;
   /* border: 1px dashed lightpink; */
 
   @media ${props => props.theme.breakpoints.md} {

@@ -226,13 +226,13 @@
       "values": {
         "title": "Senior Software Engineer",
         "duration": "Jan 2021 - now",
-        "summary": "Talking Medicines are on a mission to become the world's gold standard patient intelligence by medicine.",
+        "summary": "Talking Medicines are on a mission to become the world's gold standard for patient intelligence by medicine.",
         "placements": [
           {
             "name": null,
             "description": [
               {
-                "text": "Managing a small team of developers to build and maintain a SaaS product providing access to Patient Intelligence to clients in the Pharmaceutical industry"
+                "text": "Working with a small team of engineers to build and maintain a SaaS product that provides access to Patient Intelligence to clients in the Pharma industry"
               },
               {
                 "text": "Responsible for data pipelines, statistical robustness, design, performance, security, reliability and data quality"
@@ -241,7 +241,7 @@
                 "text": "Built a new data feature to automatically detect relevant insights for users based on statistical anomalies"
               },
               {
-                "text": "Integrated a new data source from initial scoping to being fully incorporated into the product"
+                "text": "Integrated a new data source from concept to being fully incorporated into the product"
               },
               {
                 "text": "Implemented best practices for security and cost management in Azure"

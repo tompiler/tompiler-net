@@ -29,7 +29,7 @@ const Contact = () => {
     <ContactContainer>
       <ContactItem
         icon={faHome}
-        href="https://www.google.com/maps/place/East+Dulwich,+London/@51.4543338,-0.0784063,16z/data=!3m1!4b1!4m5!3m4!1s0x4876039570044f17:0xb3ff4c32542fd4d!8m2!3d51.4545635!4d-0.0732101"
+        href="https://www.google.com/maps/search/SE22+0,+London/@51.4534643,-0.086425,14z/data=!3m1!4b1"
       ></ContactItem>
       <ContactItem
         icon={faEnvelope}

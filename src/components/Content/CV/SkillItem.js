@@ -32,7 +32,7 @@ const SkillItem = styled(animated.div)`
   font-family: "Open Sans";
   font-size: 0.85em;
   font-weight: ${props =>
-    props.hover === "true" || props.selected ? 800 : 300};
+    props.hover === "true" || props.selected ? 700 : 400};
   color: ${props =>
     props.hover === "true" || props.selected
       ? props.theme.cv.hover
