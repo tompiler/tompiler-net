@@ -11,9 +11,9 @@ const Navigation = () => {
     <TransitionState>
       {props => (
         <>
-          <MobileLink {...props} to={"aims"} location={location} />
-          <MobileLink {...props} to={"articles"} location={location} />
-          <MobileLink {...props} to={"tutorials"} location={location} />
+          {/* <MobileLink {...props} to={"aims"} location={location} /> */}
+          {/* <MobileLink {...props} to={"articles"} location={location} /> */}
+          {/* <MobileLink {...props} to={"tutorials"} location={location} /> */}
           <MobileLink {...props} to={"contact"} location={location} />
           <MobileLink {...props} to={"cv"} location={location} />
         </>

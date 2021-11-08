@@ -12,7 +12,7 @@ const CV = () => {
   const mobile = windowSize.width < 650
   const [open, toggle] = useState(false)
   const [selected, setSelected] = useState({
-    value: mobile ? null : 5, // no default job view in detail with mobile view
+    value: mobile ? null : 6, // no default job view in detail with mobile view
     prevValue: null,
     menu: !mobile ? false : true
   })
@@ -32,6 +32,7 @@ const CV = () => {
   }
 
   const circleNodes = Object.keys(data.timelineNodes).length
+  console.log(circleNodes)
   const circleRadius = 6
   const circleRadiusInv = (circleRadius / windowSize.height) * 100
   const svgHeight = (mobile ? 58 : 100) - margin.top - margin.bottom

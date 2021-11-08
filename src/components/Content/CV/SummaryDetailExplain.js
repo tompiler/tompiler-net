@@ -32,7 +32,7 @@ const SummaryContainer = styled("div")`
   top: 0;
   left: 0%;
   width: 100%;
-  height: 18%;
+  height: 20%;
   margin: 0 0vw 2vh 0;
   /* border: 1px dashed lightpink; */
 

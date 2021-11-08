@@ -10,7 +10,7 @@ const ContentContainer = styled(animated.div)`
   text-align: center;
   position: absolute;
   height: 93vh;
-  top: 5vh;
+  top: 3vh;
   left: 12vw;
   width: 100vw;
   z-index: 0;

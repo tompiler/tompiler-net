@@ -1,5 +1,5 @@
-Hello! My name is Tom.
+Hello, my name is Tom.
 
-I'm a software engineer living in London.
+I'm a software engineer living in London. 
 
-Here is a picture of me taken by a socially distanced photographer 👇
+This is me 👇

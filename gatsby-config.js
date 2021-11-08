@@ -36,18 +36,10 @@ module.exports = {
       resolve: "gatsby-plugin-styled-components"
     },
     {
-      resolve: "gatsby-plugin-prefetch-google-fonts",
+      resolve: `gatsby-plugin-google-fonts`,
       options: {
-        fonts: [
-          {
-            family: "Open Sans",
-            variants: ["300", "400", "600", "700"]
-          },
-          {
-            family: "Hammersmith One",
-            variants: ["Regular"]
-          }
-        ]
+        fonts: ["Open Sans:300,400,700,800", "Hammersmith One"],
+        display: "swap"
       }
     },
     "gatsby-plugin-sharp",
@@ -66,12 +58,14 @@ module.exports = {
     },
     "gatsby-plugin-sitemap",
     "gatsby-plugin-react-helmet",
+    "gatsby-plugin-image",
     "gatsby-transformer-sharp",
     {
       resolve: "gatsby-transformer-remark",
       options: {
+        footnotes: true,
+        gfm: true,
         plugins: [
-          "gatsby-remark-relative-images",
           {
             resolve: "gatsby-remark-images",
             options: {

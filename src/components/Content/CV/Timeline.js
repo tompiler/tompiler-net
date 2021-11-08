@@ -142,7 +142,7 @@ const DendrogramPath = styled(animated.path)`
       ? props.theme.cv.line.hover
       : props.theme.cv.line.color};
   stroke-width: ${props =>
-    props.hover === "true" || props.selected ? 1.4 : 0.6};
+    props.hover === "true" || props.selected ? 2 : 0.6};
 `
 
 const Timeline = ({
@@ -419,13 +419,9 @@ const Timeline = ({
     to: {
       y: open
         ? innerSvgHeight - lineLength * 6 - circleRadiusInv * 6 + "vh"
-        : innerSvgHeight - lineLength * 5 - circleRadiusInv * 6 + "vh",
-      x: open ? 3 + mobileAdjY * 1.5 + "vw" : 1 + mobileAdjY + "vw"
+        : innerSvgHeight - lineLength * 5 - circleRadiusInv * 6 + "vh"
     },
-    from: {
-      y: innerSvgHeight - lineLength * 5 - circleRadiusInv * 6 + "vh",
-      x: 1 + mobileAdjY + "vw"
-    },
+    from: { y: innerSvgHeight - lineLength * 5 - circleRadiusInv * 6 + "vh" },
     ref: lineRef6
   })
 
@@ -434,6 +430,28 @@ const Timeline = ({
     to: { r: open ? circleRadius : 0, opacity: open ? 1 : 0 },
     from: { r: 0, opacity: 0 },
     ref: circleRef6
+  })
+
+  const lineRef7 = useRef()
+  const lineProps7 = useSpring({
+    to: {
+      y: open
+        ? innerSvgHeight - lineLength * 7 - circleRadiusInv * 7 + "vh"
+        : innerSvgHeight - lineLength * 6 - circleRadiusInv * 7 + "vh",
+      x: open ? 3 + mobileAdjY * 1.5 + "vw" : 1 + mobileAdjY + "vw"
+    },
+    from: {
+      y: innerSvgHeight - lineLength * 6 - circleRadiusInv * 7 + "vh",
+      x: 1 + mobileAdjY + "vw"
+    },
+    ref: lineRef7
+  })
+
+  const circleRef7 = useRef()
+  const circleProps7 = useSpring({
+    to: { r: open ? circleRadius : 0, opacity: open ? 1 : 0 },
+    from: { r: 0, opacity: 0 },
+    ref: circleRef7
   })
 
   const detailRef = useRef()
@@ -464,7 +482,9 @@ const Timeline = ({
           lineRef5,
           circleRef5,
           lineRef6,
-          circleRef6
+          circleRef6,
+          lineRef7,
+          circleRef7
         ]
       : open
       ? [
@@ -481,6 +501,8 @@ const Timeline = ({
           circleRef5,
           lineRef6,
           circleRef6,
+          lineRef7,
+          circleRef7,
           DendogramLayer1Ref,
           skillCategoryRef,
           DendogramLayer2Ref,
@@ -493,6 +515,8 @@ const Timeline = ({
           DendogramLayer2Ref,
           skillCategoryRef,
           DendogramLayer1Ref,
+          circleRef7,
+          lineRef7,
           circleRef6,
           lineRef6,
           circleRef5,
@@ -508,7 +532,24 @@ const Timeline = ({
           circleRef0
         ],
     mobile && open
-      ? [0, 0.3, 0.3, 0.6, 0.6, 0.9, 0.9, 1.2, 1.2, 1.5, 1.5, 1.8, 1.8, 2.1]
+      ? [
+          0,
+          0.3,
+          0.3,
+          0.6,
+          0.6,
+          0.9,
+          0.9,
+          1.2,
+          1.2,
+          1.5,
+          1.5,
+          1.8,
+          1.8,
+          2.1,
+          2.1,
+          2.4
+        ]
       : open
       ? [
           0,
@@ -525,10 +566,12 @@ const Timeline = ({
           1.5,
           1.8,
           1.8,
-          2.8,
-          2.9,
-          3.3,
-          3.6
+          2.1,
+          2.1,
+          3.1,
+          3.2,
+          3.6,
+          4.0
         ]
       : [
           0.4,
@@ -548,7 +591,11 @@ const Timeline = ({
           3.2,
           3.2,
           3.5,
-          3.6
+          3.5,
+          3.8,
+          3.9,
+          4.2,
+          4.5
         ]
   )
 
@@ -559,7 +606,8 @@ const Timeline = ({
     circleProps3,
     circleProps4,
     circleProps5,
-    circleProps6
+    circleProps6,
+    circleProps7
   ]
 
   const lineSprings = [
@@ -567,10 +615,11 @@ const Timeline = ({
     lineProps2,
     lineProps3,
     lineProps4,
-    lineProps5
+    lineProps5,
+    lineProps6
   ]
 
-  const selectedArray = [-1, 1, 2, 3, 4, 5, 6]
+  const selectedArray = [-1, 1, 2, 3, 4, 5, 6, 7]
 
   const result = useStaticQuery(graphql`
     query TimelineQuery {
@@ -603,7 +652,7 @@ const Timeline = ({
       {(selected.menu || !mobile) && (
         <Container>
           {!mobile && (
-            <ColumnHeading style={{ opacity: circleProps6.opacity }}>
+            <ColumnHeading style={{ opacity: circleProps7.opacity }}>
               {columnHeadings[0]}
             </ColumnHeading>
           )}
@@ -614,11 +663,11 @@ const Timeline = ({
           >
             <g>
               <Line
-                x1={lineProps6.x}
-                y1={lineProps6.y}
+                x1={lineProps7.x}
+                y1={lineProps7.y}
                 x2={1 + mobileAdjY + "vw"}
                 y2={
-                  innerSvgHeight - lineLength * 5 - circleRadiusInv * 6 + "vh"
+                  innerSvgHeight - lineLength * 6 - circleRadiusInv * 7 + "vh"
                 }
                 strokeDasharray="4 8"
               />
@@ -647,7 +696,7 @@ const Timeline = ({
                   }
                   r={spring.r}
                   cx={
-                    i === 6
+                    i === 7
                       ? 3 + mobileAdjY * 1.5 + "vw"
                       : 1 + mobileAdjY + "vw"
                   }

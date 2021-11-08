@@ -8,7 +8,7 @@ const HeadlineCompany = styled("div")`
   top: 0%;
   left: 0%;
   height: auto;
-  margin: 0 0 2vh 0;
+  margin: 2vh 0 0vh 0;
 
   @media ${props => props.theme.breakpoints.md} {
     margin: 0;
@@ -51,8 +51,9 @@ const Role = styled("p")`
   text-align: center;
   font-style: italic;
   font-size: 0.9em;
-  margin: 1.5vh 0 1vh 0;
-  line-height: 1vh;
+  margin: 0.5vh 0 0.5vh 0;
+  line-height: 2vh;
+  /* border: 1px dashed lightblue; */
 
   @media ${props => props.theme.breakpoints.desktopsm} {
     font-size: 1em;

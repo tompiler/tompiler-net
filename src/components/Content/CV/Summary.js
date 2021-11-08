@@ -39,7 +39,7 @@ const SummaryDescriptionContainer = styled("div")`
   top: 0%;
   left: 0%;
   width: 100%;
-  height: 70%;
+  height: 80%;
   overflow-y: auto;
   overflow-x: hidden;
   padding: 0vh 2vw;

@@ -26,7 +26,7 @@ const TompilerContainer = styled("div")`
 const TompilerItem = styled("div")`
   display: block;
   min-height: 16%;
-  text-align: justify;
+  text-align: center;
   color: ${props => props.theme.color};
   line-height: 1.6;
   font-size: 0.9em;

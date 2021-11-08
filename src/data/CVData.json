@@ -2,7 +2,7 @@
   "main": { "columnHeadings": ["TIMELINE", "SKILL", "TECHNOLOGY"] },
   "summary": {
     "heading": "Summary",
-    "text": "Software engineer with very broad experience across data consultancy, working in teams to help clients face challenges with technology. Highly capable problem solver with substantial technical acumen in data science, data engineering, business intelligence, interactive data visualisation, and cloud technologies."
+    "text": "Software engineer with broad experience in technology, mostly helping teams face challenges with data. Highly attentive to detail, skilled in data science, data engineering, analytics, interactive data visualisation, and cloud technologies."
   },
   "explain": {
     "heading": "Work Experience Dendrogram",
@@ -163,7 +163,7 @@
       "selected": 5,
       "values": {
         "title": "Data Engineer",
-        "duration": "July 2019 - present",
+        "duration": "July 2019 - January 2021",
         "summary": "Infinity Works is one of the UK's leading digital transformation and engineering consultancies, delivering value in large technology-led projects in a variety of sectors including government, retail, energy, and financial services.",
         "placements": [
           {
@@ -221,8 +221,39 @@
       }
     },
     {
-      "heading": "Side Projects & Volunteering",
+      "heading": "Talking Medicines",
       "selected": 6,
+      "values": {
+        "title": "Senior Software Engineer",
+        "duration": "Jan 2021 - now",
+        "summary": "Talking Medicines are on a mission to become the world's gold standard patient intelligence by medicine.",
+        "placements": [
+          {
+            "name": null,
+            "description": [
+              {
+                "text": "Managing a small team of developers to build and maintain a SaaS product providing access to Patient Intelligence to clients in the Pharmaceutical industry"
+              },
+              {
+                "text": "Responsible for data pipelines, statistical robustness, design, performance, security, reliability and data quality"
+              },
+              {
+                "text": "Built a new data feature to automatically detect relevant insights for users based on statistical anomalies"
+              },
+              {
+                "text": "Integrated a new data source from initial scoping to being fully incorporated into the product"
+              },
+              {
+                "text": "Implemented best practices for security and cost management in Azure"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "heading": "Side Projects & Volunteering",
+      "selected": 7,
       "values": {
         "duration": "Ongoing",
         "placements": [
@@ -230,7 +261,7 @@
             "name": "Side projects",
             "description": [
               {
-                "text": "Like many engineers, I start a lot more side projects than I finish. However, I'm planning to change this trend and will be looking forward to collaborating on some interesting and meaningful work soon"
+                "text": "Like many engineers, I start a lot more side projects than I finish. I'm always open to ideas but I'm generally unavailable for new projects if I'm working full time."
               }
             ]
           },

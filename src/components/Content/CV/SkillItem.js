@@ -30,9 +30,9 @@ const InnerSkillItemContainer = styled("div")`
 const SkillItem = styled(animated.div)`
   display: flex;
   font-family: "Open Sans";
-  font-size: 0.87em;
+  font-size: 0.85em;
   font-weight: ${props =>
-    props.hover === "true" || props.selected ? 700 : 400};
+    props.hover === "true" || props.selected ? 800 : 300};
   color: ${props =>
     props.hover === "true" || props.selected
       ? props.theme.cv.hover

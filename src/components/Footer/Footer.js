@@ -6,7 +6,7 @@ const FooterContainer = styled("div")`
   position: absolute;
   top: 97vh;
   /* left: 2px; */
-  left: 1vw;
+  /* left: 1vw; */
   width: 100%;
   font-size: 0.6em;
   text-align: center;
@@ -35,7 +35,7 @@ const Footer = () => {
   return (
     <FooterContainer>
       <div>Thomas Lynch </div>
-      <div>© Copyright 2020. </div>
+      <div>© Copyright 2021. </div>
     </FooterContainer>
   )
 }

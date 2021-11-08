@@ -3,7 +3,7 @@ import styled from "styled-components"
 const SkillItemDendogramContainer = styled("div")`
   display: inline-block;
   width: 16%;
-  height: 97%;
+  height: 100%;
   margin-top: 3vh;
   position: absolute;
   top: 0%;
