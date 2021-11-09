@@ -8,7 +8,7 @@ const SkillItemContainer = styled("div")`
   top: 0;
   left: 51%;
   height: 100%;
-  width: 8%;
+  width: 9%;
   /* border: 1px dashed lightpink; */
 
   @media ${props => props.theme.breakpoints.md} {
@@ -30,7 +30,7 @@ const InnerSkillItemContainer = styled("div")`
 const SkillItem = styled(animated.div)`
   display: flex;
   font-family: "Open Sans";
-  font-size: 0.85em;
+  font-size: 0.8vw;
   font-weight: ${props =>
     props.hover === "true" || props.selected ? 700 : 400};
   color: ${props =>

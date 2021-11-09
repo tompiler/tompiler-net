@@ -100,7 +100,7 @@ const HeadingContainer = styled(animated.div)`
 `
 
 const Heading = styled("div")`
-  font-size: 1em;
+  font-size: 0.87vw;
   font-weight: ${props =>
     props.hover === "true" || props.selected ? 500 : 500};
   color: ${props => props.theme.cv.color};
