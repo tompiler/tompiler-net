@@ -14,7 +14,7 @@ const ExplainContainerHeading = styled("h3")`
 
 const ExplainDescription = styled("p")`
   position: relative;
-  font-size: 0.95em;
+  font-size: 0.85vw;
   margin: 0.5vh 0 1vh 0;
 `
 

@@ -26,7 +26,7 @@ import data from "./links"
 const Container = styled("div")`
   display: inline-block;
   position: absolute;
-  width: 12%;
+  width: 14%;
   height: 100%;
   /* border: 1px dashed papayawhip; */
 
@@ -100,7 +100,7 @@ const HeadingContainer = styled(animated.div)`
 `
 
 const Heading = styled("div")`
-  font-size: 0.87vw;
+  font-size: 0.85vw;
   font-weight: ${props =>
     props.hover === "true" || props.selected ? 500 : 500};
   color: ${props => props.theme.cv.color};
@@ -110,27 +110,27 @@ const Heading = styled("div")`
   cursor: pointer;
 
   @media ${props => props.theme.breakpoints.md} {
-    font-size: 0.85em;
+    font-size: 0.7vw;
   }
 
   @media ${props => props.theme.breakpoints.sm} {
-    font-size: 0.8em;
+    font-size: 0.6vw;
   }
 `
 
 const HeadingDuration = styled("div")`
   font-style: italic;
-  font-size: 0.8em;
+  font-size: 0.75vw;
   color: ${props => props.theme.cv.color};
   width: 80%;
 
   @media ${props => props.theme.breakpoints.md} {
-    font-size: 0.7em;
+    font-size: 0.7vw;
     width: 100%;
   }
 
   @media ${props => props.theme.breakpoints.sm} {
-    font-size: 0.65em;
+    font-size: 0.65vw;
     width: 100%;
   }
 `

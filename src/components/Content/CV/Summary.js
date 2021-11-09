@@ -49,14 +49,14 @@ const SummaryDescriptionContainer = styled("div")`
 const SummaryDescription = styled("p")`
   text-align: left;
   margin: 0;
-  font-size: 0.95em;
+  font-size: 0.85vw;
 
   @media ${props => props.theme.breakpoints.md} {
-    font-size: 0.8em;
+    font-size: 0.7vw;
   }
 
   @media ${props => props.theme.breakpoints.sm} {
-    font-size: 0.75em;
+    font-size: 0.65vw;
   }
 `
 
