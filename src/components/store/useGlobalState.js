@@ -18,7 +18,7 @@ const useGlobalState = () => {
     isDark:
       isSSR && storage.getItem("isDark")
         ? JSON.parse(storage.getItem("isDark"))
-        : true // change to true for default = dark mode
+        : false, // change to true for default = dark mode
   })
 
   return { state, dispatch }
