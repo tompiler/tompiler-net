@@ -87,6 +87,13 @@ const BackButton = styled("button")`
 
   @media ${(props) => props.theme.breakpoints.md} {
     font-size: 0.7vw;
+    height: 3vh;
+    text-align: center;
+  }
+
+  @media ${(props) => props.theme.breakpoints.sm} {
+    font-size: 3vw;
+    height: 3vh;
     text-align: center;
   }
 `
@@ -155,7 +162,7 @@ const SummaryDetailExplain = ({
       <SummaryContainer mobile={mobile ? 1 : 0} menu={selected.menu ? 1 : 0}>
         <Summary data={data} mobile={mobile ? 1 : 0} />
       </SummaryContainer>
-      {mobile ? (
+      {mobile && !selected.menu ? (
         <BackButton
           onClick={() =>
             setSelected((state) => ({
@@ -165,9 +172,7 @@ const SummaryDetailExplain = ({
             }))
           }
         >
-          {selected.menu
-            ? "Check out a role in the timeline below"
-            : "Return to timeline"}
+          Return to timeline
         </BackButton>
       ) : null}
       {(!mobile || !selected.menu) && (

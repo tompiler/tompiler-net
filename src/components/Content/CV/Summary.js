@@ -32,6 +32,10 @@ const SummaryHeading = styled("h3")`
   @media ${(props) => props.theme.breakpoints.md} {
     font-size: 1em;
   }
+  @media ${(props) => props.theme.breakpoints.sm} {
+    font-size: 4vw;
+    margin: 0 0 2vh 0;
+  }
 `
 
 const SummaryDescriptionContainer = styled("div")`
@@ -57,7 +61,7 @@ const SummaryDescription = styled("p")`
   }
 
   @media ${(props) => props.theme.breakpoints.sm} {
-    font-size: 0.65vw;
+    font-size: 3vw;
   }
 `
 

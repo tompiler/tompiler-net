@@ -14,27 +14,27 @@ const LinkContainer = styled("div")`
   width: 12vw;
   text-align: left;
 
-  @media ${props => props.theme.breakpoints.desktopmd} {
+  @media ${(props) => props.theme.breakpoints.desktopmd} {
     font-size: 1.4em;
     padding: 1vh 3vw;
   }
 
-  @media ${props => props.theme.breakpoints.desktopsm} {
+  @media ${(props) => props.theme.breakpoints.desktopsm} {
     font-size: 1.25em;
     padding: 1vh 2vw;
   }
 
-  @media ${props => props.theme.breakpoints.tablet} {
+  @media ${(props) => props.theme.breakpoints.tablet} {
     font-size: 1.1em;
     padding: 1vh 1vw;
   }
 
-  @media ${props => props.theme.breakpoints.lg} {
+  @media ${(props) => props.theme.breakpoints.lg} {
     font-size: 1em;
     padding: 1vh 1vw;
   }
 
-  @media ${props => props.theme.breakpoints.md} {
+  @media ${(props) => props.theme.breakpoints.md} {
     display: inline-block;
     padding: 1vh 0;
     font-size: 0.95em;
@@ -46,7 +46,7 @@ const LinkContainer = styled("div")`
 const StyledSpringLink = styled(SpringLink)`
   display: inline-block;
   text-decoration: none;
-  color: ${props => props.theme.color};
+  color: ${(props) => props.theme.color};
   margin: 0;
 
   &:hover {
@@ -54,13 +54,18 @@ const StyledSpringLink = styled(SpringLink)`
     cursor: pointer;
   }
 
-  @media ${props => props.theme.breakpoints.md} {
+  @media ${(props) => props.theme.breakpoints.md} {
     font-size: 0.9em;
     margin: 0 0 0.2vh 0;
   }
+
+  @media ${(props) => props.theme.breakpoints.sm} {
+    font-size: 4vw;
+    margin: 0 0 0 0;
+  }
 `
 
-const MobileLink = props => {
+const MobileLink = (props) => {
   const windowSize = useWindowSize()
 
   return (

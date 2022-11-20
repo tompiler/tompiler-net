@@ -114,7 +114,7 @@ const Heading = styled("div")`
   }
 
   @media ${(props) => props.theme.breakpoints.sm} {
-    font-size: 0.6vw;
+    font-size: 3.5vw;
   }
 `
 
@@ -130,7 +130,7 @@ const HeadingDuration = styled("div")`
   }
 
   @media ${(props) => props.theme.breakpoints.sm} {
-    font-size: 0.65vw;
+    font-size: 2.8vw;
     width: 100%;
   }
 `
