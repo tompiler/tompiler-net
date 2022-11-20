@@ -55,7 +55,7 @@ const StyledSpringLink = styled(SpringLink)`
   }
 
   @media ${(props) => props.theme.breakpoints.md} {
-    font-size: 0.9em;
+    font-size: 4vw;
     margin: 0 0 0.2vh 0;
   }
 

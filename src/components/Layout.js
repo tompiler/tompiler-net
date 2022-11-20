@@ -23,11 +23,11 @@ const NavigationContainer = styled("div")`
   display: flex;
   align-items: center;
 
-  @media ${props => props.theme.breakpoints.md} {
+  @media ${(props) => props.theme.breakpoints.md} {
     display: block;
     width: 100%;
     height: 5vh;
-    margin: 2vh 0 2vh 0;
+    margin: 1vh 0 1vh 0;
     align-items: stretch;
   }
 `
@@ -37,12 +37,12 @@ const LinkContainer = styled("div")`
   justify-content: center;
   flex-direction: column;
 
-  @media ${props => props.theme.breakpoints.md} {
+  @media ${(props) => props.theme.breakpoints.md} {
     flex-direction: row;
   }
 `
 
-const Layout = props => {
+const Layout = (props) => {
   const { state } = useContext(Context)
 
   const data = useStaticQuery(graphql`

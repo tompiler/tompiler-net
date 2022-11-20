@@ -101,7 +101,7 @@ const JobSummary = styled("p")`
   font-weight: 600;
 
   @media ${(props) => props.theme.breakpoints.md} {
-    font-size: 0.75vw;
+    font-size: 2.5vw;
     margin: 2vh 0 2vh 0;
   }
 
@@ -120,6 +120,10 @@ const Education = styled("p")`
   font-weight: ${(props) => (props.title ? 600 : 400)};
   margin: 0;
 
+  @media ${(props) => props.theme.breakpoints.md} {
+    font-size: 2.5vw;
+  }
+
   @media ${(props) => props.theme.breakpoints.sm} {
     font-size: 2.5vw;
   }
@@ -130,7 +134,7 @@ const Placement = styled("h4")`
   margin: 2vh 0 0 0;
 
   @media ${(props) => props.theme.breakpoints.md} {
-    font-size: 0.9vw;
+    font-size: 2.5vw;
   }
 
   @media ${(props) => props.theme.breakpoints.sm} {
@@ -155,7 +159,7 @@ const JobDescriptionLI = styled("li")`
   margin: 1vh 0vw 1vh 0vw;
 
   @media ${(props) => props.theme.breakpoints.md} {
-    font-size: 0.75vw;
+    font-size: 2.5vw;
   }
 
   @media ${(props) => props.theme.breakpoints.sm} {
@@ -169,7 +173,7 @@ const JobSubDescriptionLI = styled("li")`
   margin: 1vh 0vw 1vh 0vw;
 
   @media ${(props) => props.theme.breakpoints.md} {
-    font-size: 0.7vw;
+    font-size: 2.5vw;
   }
 
   @media ${(props) => props.theme.breakpoints.sm} {

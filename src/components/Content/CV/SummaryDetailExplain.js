@@ -86,7 +86,7 @@ const BackButton = styled("button")`
   }
 
   @media ${(props) => props.theme.breakpoints.md} {
-    font-size: 0.7vw;
+    font-size: 2.5vw;
     height: 3vh;
     text-align: center;
   }
