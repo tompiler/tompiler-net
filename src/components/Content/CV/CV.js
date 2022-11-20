@@ -12,9 +12,9 @@ const CV = () => {
   const mobile = windowSize.width < 650
   const [open, toggle] = useState(false)
   const [selected, setSelected] = useState({
-    value: mobile ? null : 6, // no default job view in detail with mobile view
+    value: mobile ? null : 7, // no default job view in detail with mobile view
     prevValue: null,
-    menu: !mobile ? false : true
+    menu: !mobile ? false : true,
   })
   const [hover, setHover] = useState(null)
   const [first, toggleFirst] = useState(true)
@@ -23,12 +23,12 @@ const CV = () => {
     top: mobile ? 0 : 10,
     right: 0,
     bottom: mobile ? 4 : 8,
-    left: 0
+    left: 0,
   }
 
   const padding = {
     bottom: mobile ? 0 : 3,
-    top: mobile ? 3 : 10
+    top: mobile ? 3 : 10,
   }
 
   const circleNodes = Object.keys(data.timelineNodes).length

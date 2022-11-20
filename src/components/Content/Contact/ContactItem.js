@@ -16,7 +16,7 @@ const IconContainer = styled("div")`
 
 const ItemLink = styled("a")`
   display: flex;
-  color: ${props => props.theme.contactItem.color};
+  color: ${(props) => props.theme.contactItem.color};
   width: 100%;
   height: 100%;
   justify-content: center;
@@ -25,7 +25,7 @@ const ItemLink = styled("a")`
 
 const Icon = styled(FontAwesomeIcon)`
   &:hover {
-    color: ${props => props.theme.contactItem.hover};
+    color: ${(props) => props.theme.contactItem.hover};
     cursor: pointer;
   }
 `
@@ -39,10 +39,10 @@ const ContactItem = ({ href, icon }) => {
         <Icon
           size={
             windowSize.width > 1900
-              ? "4x"
-              : windowSize.width > 650
               ? "3x"
-              : "2x"
+              : windowSize.width > 650
+              ? "2x"
+              : "1x"
           }
           icon={icon}
         />

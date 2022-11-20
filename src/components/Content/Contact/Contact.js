@@ -6,7 +6,7 @@ import { faHome, faEnvelope } from "@fortawesome/free-solid-svg-icons"
 import {
   faLinkedinIn,
   faTwitter,
-  faGithub
+  faGithub,
 } from "@fortawesome/free-brands-svg-icons"
 import styled from "styled-components"
 
@@ -18,8 +18,8 @@ const ContactContainer = styled("div")`
   grid-row-gap: 2vh;
   justify-content: space-between;
   /* border: 1px dashed lightpink; */
-  width: 75%;
-  @media ${props => props.theme.breakpoints.md} {
+  width: 40%;
+  @media ${(props) => props.theme.breakpoints.md} {
     width: 100%;
   }
 `
@@ -27,10 +27,6 @@ const ContactContainer = styled("div")`
 const Contact = () => {
   return (
     <ContactContainer>
-      <ContactItem
-        icon={faHome}
-        href="https://www.google.com/maps/search/SE22+0,+London/@51.4534643,-0.086425,14z/data=!3m1!4b1"
-      ></ContactItem>
       <ContactItem
         icon={faEnvelope}
         href="mailto:tom@tompiler.net"

@@ -11,7 +11,7 @@ const SkillItemContainer = styled("div")`
   width: 9%;
   /* border: 1px dashed lightpink; */
 
-  @media ${props => props.theme.breakpoints.md} {
+  @media ${(props) => props.theme.breakpoints.md} {
     left: 10%;
   }
 `
@@ -20,7 +20,7 @@ const InnerSkillItemContainer = styled("div")`
   display: flex;
   justify-content: left;
   position: absolute;
-  top: ${props => props.top + "vh"};
+  top: ${(props) => props.top + "vh"};
   margin-left: 5%;
   width: 95%;
   text-align: center;
@@ -30,10 +30,10 @@ const InnerSkillItemContainer = styled("div")`
 const SkillItem = styled(animated.div)`
   display: flex;
   font-family: "Open Sans";
-  font-size: 0.8vw;
-  font-weight: ${props =>
+  font-size: 0.72vw;
+  font-weight: ${(props) =>
     props.hover === "true" || props.selected ? 700 : 400};
-  color: ${props =>
+  color: ${(props) =>
     props.hover === "true" || props.selected
       ? props.theme.cv.hover
       : props.theme.cv.color};

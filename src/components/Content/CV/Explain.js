@@ -5,6 +5,7 @@ import styled from "styled-components"
 const ExplainContainerHeading = styled("h3")`
   display: inline-block;
   width: 100%;
+  font-size: 0.95vw;
   font-weight: 700;
   padding: 1vh 0 1vh 2vw;
   margin: 0;
@@ -14,7 +15,7 @@ const ExplainContainerHeading = styled("h3")`
 
 const ExplainDescription = styled("p")`
   position: relative;
-  font-size: 0.85vw;
+  font-size: 0.8vw;
   margin: 0.5vh 0 1vh 0;
 `
 

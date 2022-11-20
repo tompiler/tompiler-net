@@ -11,21 +11,21 @@ const FooterContainer = styled("div")`
   font-size: 0.6em;
   text-align: center;
 
-  @media ${props => props.theme.breakpoints.desktopmd} {
+  @media ${(props) => props.theme.breakpoints.desktopmd} {
     top: 96vh;
   }
 
-  @media ${props => props.theme.breakpoints.desktopsm} {
-    top: 96vh;
-    text-align: left;
-  }
-
-  @media ${props => props.theme.breakpoints.lg} {
+  @media ${(props) => props.theme.breakpoints.desktopsm} {
     top: 96vh;
     text-align: left;
   }
 
-  @media ${props => props.theme.breakpoints.md} {
+  @media ${(props) => props.theme.breakpoints.lg} {
+    top: 96vh;
+    text-align: left;
+  }
+
+  @media ${(props) => props.theme.breakpoints.md} {
     display: none;
     text-align: left;
   }
@@ -35,7 +35,7 @@ const Footer = () => {
   return (
     <FooterContainer>
       <div>Thomas Lynch </div>
-      <div>© Copyright 2021. </div>
+      <div>© Copyright 2022. </div>
     </FooterContainer>
   )
 }

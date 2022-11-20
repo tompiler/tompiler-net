@@ -10,7 +10,7 @@ const SkillCategoryContainer = styled("div")`
   width: 7%;
   /* border: 1px dashed lightpink; */
 
-  @media ${props => props.theme.breakpoints.md} {
+  @media ${(props) => props.theme.breakpoints.md} {
     left: 10%;
   }
 `
@@ -19,7 +19,7 @@ const InnerSkillCategoryContainer = styled("div")`
   display: flex;
   justify-content: center;
   position: absolute;
-  top: ${props => props.top + "vh"};
+  top: ${(props) => props.top + "vh"};
   align-items: center;
   width: 100%;
   text-align: center;
@@ -31,10 +31,10 @@ const SkillCategory = styled(animated.div)`
   margin: 0 1vw;
   align-items: center;
   font-family: "Open Sans";
-  font-size: 0.9vw;
-  font-weight: ${props =>
+  font-size: 0.8vw;
+  font-weight: ${(props) =>
     props.hover === "true" || props.selected ? 700 : 400};
-  color: ${props =>
+  color: ${(props) =>
     props.hover === "true" || props.selected
       ? props.theme.cv.hover
       : props.theme.cv.color};

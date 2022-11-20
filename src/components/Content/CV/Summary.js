@@ -14,10 +14,10 @@ const SummaryHeadingContainer = styled("div")`
   border-top: none;
   /* border: 1px dashed lightpink; */
 
-  @media ${props => props.theme.breakpoints.md} {
+  @media ${(props) => props.theme.breakpoints.md} {
     padding: 1vh 2vw 0 2vw;
     margin: 1vh 0 0 0;
-    border-top: ${props => `1px solid ${props.theme.color}`};
+    border-top: ${(props) => `1px solid ${props.theme.color}`};
   }
 `
 
@@ -25,10 +25,11 @@ const SummaryHeading = styled("h3")`
   top: 0%;
   width: 100%;
   text-align: left;
+  font-size: 0.95vw;
   font-weight: 700;
   margin: 0 0 0.2vh 0;
 
-  @media ${props => props.theme.breakpoints.md} {
+  @media ${(props) => props.theme.breakpoints.md} {
     font-size: 1em;
   }
 `
@@ -49,13 +50,13 @@ const SummaryDescriptionContainer = styled("div")`
 const SummaryDescription = styled("p")`
   text-align: left;
   margin: 0;
-  font-size: 0.85vw;
+  font-size: 0.8vw;
 
-  @media ${props => props.theme.breakpoints.md} {
+  @media ${(props) => props.theme.breakpoints.md} {
     font-size: 0.7vw;
   }
 
-  @media ${props => props.theme.breakpoints.sm} {
+  @media ${(props) => props.theme.breakpoints.sm} {
     font-size: 0.65vw;
   }
 `

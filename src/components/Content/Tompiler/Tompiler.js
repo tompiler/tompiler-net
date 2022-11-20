@@ -10,14 +10,14 @@ import { FeatureImage } from "./ProfilePic"
 const TompilerContainer = styled("div")`
   display: flex;
   flex-direction: column;
-  width: 75%;
-
-  @media ${props => props.theme.breakpoints.md} {
+  width: 100%;
+  align-items: center;
+  @media ${(props) => props.theme.breakpoints.md} {
     font-size: 0.85em;
     width: 90%;
   }
 
-  @media ${props => props.theme.breakpoints.sm} {
+  @media ${(props) => props.theme.breakpoints.sm} {
     font-size: 0.8em;
     width: 90%;
   }
@@ -27,11 +27,20 @@ const TompilerItem = styled("div")`
   display: block;
   min-height: 16%;
   text-align: center;
-  color: ${props => props.theme.color};
+  color: ${(props) => props.theme.color};
   line-height: 1.6;
   font-size: 0.9em;
 
-  @media ${props => props.theme.breakpoints.sm} {
+  @media ${(props) => props.theme.breakpoints.sm} {
+    font-size: 0.8em;
+  }
+`
+const FeatureImageContainer = styled("div")`
+  display: flex;
+  min-height: 16%;
+  width: 60%;
+
+  @media ${(props) => props.theme.breakpoints.sm} {
     font-size: 0.8em;
   }
 `
@@ -59,7 +68,9 @@ const Tompiler = () => {
             dangerouslySetInnerHTML={{ __html: data.markdownRemark.html }}
           ></div>
         </TompilerItem>
-        <FeatureImage />
+        <FeatureImageContainer>
+          <FeatureImage />
+        </FeatureImageContainer>
       </TompilerContainer>
     </>
   )

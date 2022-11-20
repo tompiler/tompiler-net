@@ -5,7 +5,7 @@ import CVContainer from "./CV/CVContainer"
 
 import { useTransition } from "react-spring"
 
-const ContentSplitter = props => {
+const ContentSplitter = (props) => {
   const route = props.location.pathname.replace(/\//g, "")
   const toggle = props.entry.state.entryState === "cv" || route === "cv"
   const transitions = useTransition(toggle, null, {
@@ -15,8 +15,8 @@ const ContentSplitter = props => {
     config: {
       mass: 1,
       tension: 120,
-      friction: 15
-    }
+      friction: 15,
+    },
   })
 
   // not sure why this works but it does :/

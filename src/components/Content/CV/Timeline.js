@@ -9,12 +9,12 @@ import { SkillItemDendogramContainer } from "./DendogramLayer2"
 import {
   SkillCategoryContainer,
   InnerSkillCategoryContainer,
-  SkillCategory
+  SkillCategory,
 } from "./SkillCategory"
 import {
   SkillItemContainer,
   InnerSkillItemContainer,
-  SkillItem
+  SkillItem,
 } from "./SkillItem"
 
 import SummaryDetailExplain from "./SummaryDetailExplain"
@@ -30,7 +30,7 @@ const Container = styled("div")`
   height: 100%;
   /* border: 1px dashed papayawhip; */
 
-  @media ${props => props.theme.breakpoints.md} {
+  @media ${(props) => props.theme.breakpoints.md} {
     position: relative;
     width: 80%;
     height: 70%;
@@ -38,7 +38,7 @@ const Container = styled("div")`
 `
 
 const SvgContainer = styled(animated.svg)`
-  height: ${props => props.height + "vh"};
+  height: ${(props) => props.height + "vh"};
   float: left;
   width: 40%;
   overflow: visible;
@@ -46,14 +46,14 @@ const SvgContainer = styled(animated.svg)`
 `
 
 const Line = styled(animated.line)`
-  stroke: ${props => props.theme.color};
+  stroke: ${(props) => props.theme.color};
   stroke-width: 1.2;
 `
 
 const Circle = styled(animated.circle)`
-  stroke: ${props => props.theme.color};
+  stroke: ${(props) => props.theme.color};
   stroke-width: 1.8;
-  fill: ${props =>
+  fill: ${(props) =>
     props.hover === "true" || props.selected
       ? props.theme.cv.circle.hover
       : props.theme.background};
@@ -67,8 +67,8 @@ const ColumnHeading = styled(animated.div)`
   text-align: center;
   font-family: "Hammersmith One";
   font-size: 1.1em;
-  color: ${props => props.theme.color};
-  border-bottom: ${props => `1px solid ${props.theme.cv.color}`};
+  color: ${(props) => props.theme.color};
+  border-bottom: ${(props) => `1px solid ${props.theme.cv.color}`};
   /* border: 1px dashed lightpink; */
 `
 
@@ -79,11 +79,11 @@ const ColumnBody = styled("div")`
 const TimelineHeadingsContainer = styled("div")`
   display: inline-block;
   left: 40%;
-  height: ${props => props.height + "vh"};
+  height: ${(props) => props.height + "vh"};
   width: 60%;
   /* border: 1px dashed lightgrey; */
 
-  @media ${props => props.theme.breakpoints.md} {
+  @media ${(props) => props.theme.breakpoints.md} {
     left: 0%;
     width: 60%;
   }
@@ -93,43 +93,43 @@ const HeadingContainer = styled(animated.div)`
   display: flex;
   flex-direction: column;
   position: absolute;
-  top: ${props => props.top + "vh"};
+  top: ${(props) => props.top + "vh"};
   width: 60%;
   text-align: left;
   /* border: 1px dashed lightgrey; */
 `
 
 const Heading = styled("div")`
-  font-size: 0.85vw;
-  font-weight: ${props =>
+  font-size: 0.8vw;
+  font-weight: ${(props) =>
     props.hover === "true" || props.selected ? 500 : 500};
-  color: ${props => props.theme.cv.color};
+  color: ${(props) => props.theme.cv.color};
   &:hover {
-    color: ${props => props.theme.cv.hover};
+    color: ${(props) => props.theme.cv.hover};
   }
   cursor: pointer;
 
-  @media ${props => props.theme.breakpoints.md} {
+  @media ${(props) => props.theme.breakpoints.md} {
     font-size: 0.7vw;
   }
 
-  @media ${props => props.theme.breakpoints.sm} {
+  @media ${(props) => props.theme.breakpoints.sm} {
     font-size: 0.6vw;
   }
 `
 
 const HeadingDuration = styled("div")`
   font-style: italic;
-  font-size: 0.75vw;
-  color: ${props => props.theme.cv.color};
-  width: 80%;
+  font-size: 0.7vw;
+  color: ${(props) => props.theme.cv.color};
+  width: 90%;
 
-  @media ${props => props.theme.breakpoints.md} {
+  @media ${(props) => props.theme.breakpoints.md} {
     font-size: 0.7vw;
     width: 100%;
   }
 
-  @media ${props => props.theme.breakpoints.sm} {
+  @media ${(props) => props.theme.breakpoints.sm} {
     font-size: 0.65vw;
     width: 100%;
   }
@@ -137,11 +137,11 @@ const HeadingDuration = styled("div")`
 
 const DendrogramPath = styled(animated.path)`
   fill: none;
-  stroke: ${props =>
+  stroke: ${(props) =>
     props.hover === "true" || props.selected
       ? props.theme.cv.line.hover
       : props.theme.cv.line.color};
-  stroke-width: ${props =>
+  stroke-width: ${(props) =>
     props.hover === "true" || props.selected ? 2 : 0.6};
 `
 
@@ -156,22 +156,22 @@ const Timeline = ({
   innerSvgHeight,
   lineLength,
   circleRadius,
-  circleRadiusInv
+  circleRadiusInv,
 }) => {
   const windowSize = useWindowSize()
 
   const svgWidth = windowSize.width * 0.16
 
-  const toPxH = h => (h / 100) * windowSize.height
+  const toPxH = (h) => (h / 100) * windowSize.height
 
   const innerSvgHeightPx = toPxH(innerSvgHeight)
   const lineLengthPx = toPxH(lineLength)
 
-  const yStartInv = i => {
+  const yStartInv = (i) => {
     return innerSvgHeight - lineLength * i - circleRadiusInv * i
   }
 
-  const yStartPx = i => {
+  const yStartPx = (i) => {
     return innerSvgHeightPx - lineLengthPx * i - circleRadius * i
   }
 
@@ -182,18 +182,18 @@ const Timeline = ({
   const DendogramLayer1Ref = useRef()
   const DendogramLayer1Props = useSpring({
     to: {
-      x: open ? -3000 : -1200
+      x: open ? -3000 : -1200,
     },
     from: { x: -1200 },
     config: {
       mass: 1,
       tension: 20,
-      friction: 20
+      friction: 20,
     },
-    ref: DendogramLayer1Ref
+    ref: DendogramLayer1Ref,
   })
 
-  const skillCategorylinks = data.skillCategoryLinks.map(link => (
+  const skillCategorylinks = data.skillCategoryLinks.map((link) => (
     <DendrogramPath
       key={link.key}
       d={`
@@ -202,10 +202,10 @@ const Timeline = ({
       svgWidth * 0.33,
       innerSvgHeightPx -
         lineLengthPx * link.y0.order -
-        circleRadius * link.y0.order
+        circleRadius * link.y0.order,
     ]} ${[svgWidth * 0.66, toPxH(link.y1.vh - 1.8)]} ${[
         svgWidth,
-        toPxH(link.y1.vh - 1.8)
+        toPxH(link.y1.vh - 1.8),
       ]}
   `}
       hover={hover === link.y0.order ? "true" : "false"}
@@ -218,19 +218,19 @@ const Timeline = ({
   const skillCategoryRef = useRef()
   const skillCategoryProps = useSpring({
     to: {
-      opacity: open ? 1 : 0
+      opacity: open ? 1 : 0,
     },
     from: { opacity: 0 },
     ref: skillCategoryRef,
     config: {
       mass: 1,
       tension: 150,
-      friction: 35
-    }
+      friction: 35,
+    },
   })
 
   const skillCategoryList = Object.values(data.skillCategories).map(
-    skillCategory => (
+    (skillCategory) => (
       <InnerSkillCategoryContainer
         top={skillCategory.vh}
         key={skillCategory.name}
@@ -257,25 +257,25 @@ const Timeline = ({
   const DendogramLayer2Ref = useRef()
   const DendogramLayer2Props = useSpring({
     to: {
-      x: open ? -2300 : -1000
+      x: open ? -2300 : -1000,
     },
     from: { x: -1000 },
     config: {
       mass: 1,
       tension: 20,
-      friction: 20
+      friction: 20,
     },
-    ref: DendogramLayer2Ref
+    ref: DendogramLayer2Ref,
   })
 
-  const skillItemlinks = data.skillItemLinks.map(link => (
+  const skillItemlinks = data.skillItemLinks.map((link) => (
     <DendrogramPath
       key={link.key}
       d={`
     M ${[0, toPxH(link.y0.vh - 1.8)]}
     C  ${[svgWidth * 0.33, toPxH(link.y0.vh - 1.8)]} ${[
         svgWidth * 0.66,
-        toPxH(link.y1.vh - 1.8)
+        toPxH(link.y1.vh - 1.8),
       ]} ${[svgWidth, toPxH(link.y1.vh - 1.8)]}
   `}
       hover={link.y1.validTimelineNodesOrder.includes(hover) ? "true" : "false"}
@@ -288,18 +288,18 @@ const Timeline = ({
   const skillItemRef = useRef()
   const skillItemProps = useSpring({
     to: {
-      opacity: open ? 1 : 0
+      opacity: open ? 1 : 0,
     },
     from: { opacity: 0 },
     ref: skillItemRef,
     config: {
       mass: 1,
       tension: 150,
-      friction: 35
-    }
+      friction: 35,
+    },
   })
 
-  const skillItemList = Object.values(data.skillItems).map(skillItem => (
+  const skillItemList = Object.values(data.skillItems).map((skillItem) => (
     <InnerSkillItemContainer
       height={svgHeight}
       top={skillItem.vh}
@@ -321,7 +321,7 @@ const Timeline = ({
   const circleProps0 = useSpring({
     to: { r: open ? circleRadius : 0, opacity: open ? 1 : 0 },
     from: { r: 0, opacity: 0 },
-    ref: circleRef0
+    ref: circleRef0,
   })
 
   const lineRef1 = useRef()
@@ -329,17 +329,17 @@ const Timeline = ({
     to: {
       y: open
         ? innerSvgHeight - lineLength - circleRadiusInv + "vh"
-        : innerSvgHeight - circleRadiusInv + "vh"
+        : innerSvgHeight - circleRadiusInv + "vh",
     },
     from: { y: innerSvgHeight - circleRadiusInv + "vh" },
-    ref: lineRef1
+    ref: lineRef1,
   })
 
   const circleRef1 = useRef()
   const circleProps1 = useSpring({
     to: { r: open ? circleRadius : 0, opacity: open ? 1 : 0 },
     from: { r: 0, opacity: 0 },
-    ref: circleRef1
+    ref: circleRef1,
   })
 
   const lineRef2 = useRef()
@@ -347,17 +347,17 @@ const Timeline = ({
     to: {
       y: open
         ? innerSvgHeight - lineLength * 2 - circleRadiusInv * 2 + "vh"
-        : innerSvgHeight - lineLength - circleRadiusInv * 2 + "vh"
+        : innerSvgHeight - lineLength - circleRadiusInv * 2 + "vh",
     },
     from: { y: innerSvgHeight - lineLength - circleRadiusInv * 2 + "vh" },
-    ref: lineRef2
+    ref: lineRef2,
   })
 
   const circleRef2 = useRef()
   const circleProps2 = useSpring({
     to: { r: open ? circleRadius : 0, opacity: open ? 1 : 0 },
     from: { r: 0, opacity: 0 },
-    ref: circleRef2
+    ref: circleRef2,
   })
 
   const lineRef3 = useRef()
@@ -365,17 +365,17 @@ const Timeline = ({
     to: {
       y: open
         ? innerSvgHeight - lineLength * 3 - circleRadiusInv * 3 + "vh"
-        : innerSvgHeight - lineLength * 2 - circleRadiusInv * 3 + "vh"
+        : innerSvgHeight - lineLength * 2 - circleRadiusInv * 3 + "vh",
     },
     from: { y: innerSvgHeight - lineLength * 2 - circleRadiusInv * 3 + "vh" },
-    ref: lineRef3
+    ref: lineRef3,
   })
 
   const circleRef3 = useRef()
   const circleProps3 = useSpring({
     to: { r: open ? circleRadius : 0, opacity: open ? 1 : 0 },
     from: { r: 0, opacity: 0 },
-    ref: circleRef3
+    ref: circleRef3,
   })
 
   const lineRef4 = useRef()
@@ -383,17 +383,17 @@ const Timeline = ({
     to: {
       y: open
         ? innerSvgHeight - lineLength * 4 - circleRadiusInv * 4 + "vh"
-        : innerSvgHeight - lineLength * 3 - circleRadiusInv * 4 + "vh"
+        : innerSvgHeight - lineLength * 3 - circleRadiusInv * 4 + "vh",
     },
     from: { y: innerSvgHeight - lineLength * 3 - circleRadiusInv * 4 + "vh" },
-    ref: lineRef4
+    ref: lineRef4,
   })
 
   const circleRef4 = useRef()
   const circleProps4 = useSpring({
     to: { r: open ? circleRadius : 0, opacity: open ? 1 : 0 },
     from: { r: 0, opacity: 0 },
-    ref: circleRef4
+    ref: circleRef4,
   })
 
   const lineRef5 = useRef()
@@ -401,17 +401,17 @@ const Timeline = ({
     to: {
       y: open
         ? innerSvgHeight - lineLength * 5 - circleRadiusInv * 5 + "vh"
-        : innerSvgHeight - lineLength * 4 - circleRadiusInv * 5 + "vh"
+        : innerSvgHeight - lineLength * 4 - circleRadiusInv * 5 + "vh",
     },
     from: { y: innerSvgHeight - lineLength * 4 - circleRadiusInv * 5 + "vh" },
-    ref: lineRef5
+    ref: lineRef5,
   })
 
   const circleRef5 = useRef()
   const circleProps5 = useSpring({
     to: { r: open ? circleRadius : 0, opacity: open ? 1 : 0 },
     from: { r: 0, opacity: 0 },
-    ref: circleRef5
+    ref: circleRef5,
   })
 
   const lineRef6 = useRef()
@@ -419,17 +419,17 @@ const Timeline = ({
     to: {
       y: open
         ? innerSvgHeight - lineLength * 6 - circleRadiusInv * 6 + "vh"
-        : innerSvgHeight - lineLength * 5 - circleRadiusInv * 6 + "vh"
+        : innerSvgHeight - lineLength * 5 - circleRadiusInv * 6 + "vh",
     },
     from: { y: innerSvgHeight - lineLength * 5 - circleRadiusInv * 6 + "vh" },
-    ref: lineRef6
+    ref: lineRef6,
   })
 
   const circleRef6 = useRef()
   const circleProps6 = useSpring({
     to: { r: open ? circleRadius : 0, opacity: open ? 1 : 0 },
     from: { r: 0, opacity: 0 },
-    ref: circleRef6
+    ref: circleRef6,
   })
 
   const lineRef7 = useRef()
@@ -438,31 +438,49 @@ const Timeline = ({
       y: open
         ? innerSvgHeight - lineLength * 7 - circleRadiusInv * 7 + "vh"
         : innerSvgHeight - lineLength * 6 - circleRadiusInv * 7 + "vh",
-      x: open ? 3 + mobileAdjY * 1.5 + "vw" : 1 + mobileAdjY + "vw"
+    },
+    from: { y: innerSvgHeight - lineLength * 6 - circleRadiusInv * 7 + "vh" },
+    ref: lineRef7,
+  })
+
+  const circleRef8 = useRef()
+  const circleProps8 = useSpring({
+    to: { r: open ? circleRadius : 0, opacity: open ? 1 : 0 },
+    from: { r: 0, opacity: 0 },
+    ref: circleRef8,
+  })
+
+  const lineRef8 = useRef()
+  const lineProps8 = useSpring({
+    to: {
+      y: open
+        ? innerSvgHeight - lineLength * 8 - circleRadiusInv * 8 + "vh"
+        : innerSvgHeight - lineLength * 7 - circleRadiusInv * 8 + "vh",
+      x: open ? 3 + mobileAdjY * 1.5 + "vw" : 1 + mobileAdjY + "vw",
     },
     from: {
-      y: innerSvgHeight - lineLength * 6 - circleRadiusInv * 7 + "vh",
-      x: 1 + mobileAdjY + "vw"
+      y: innerSvgHeight - lineLength * 7 - circleRadiusInv * 8 + "vh",
+      x: 1 + mobileAdjY + "vw",
     },
-    ref: lineRef7
+    ref: lineRef8,
   })
 
   const circleRef7 = useRef()
   const circleProps7 = useSpring({
     to: { r: open ? circleRadius : 0, opacity: open ? 1 : 0 },
     from: { r: 0, opacity: 0 },
-    ref: circleRef7
+    ref: circleRef7,
   })
 
   const detailRef = useRef()
   const detailProps = useSpring({
     to: {
-      opacity: open ? 1 : 0
+      opacity: open ? 1 : 0,
     },
     from: {
-      opacity: 0
+      opacity: 0,
     },
-    ref: detailRef
+    ref: detailRef,
   })
 
   // chain
@@ -484,7 +502,9 @@ const Timeline = ({
           lineRef6,
           circleRef6,
           lineRef7,
-          circleRef7
+          circleRef7,
+          lineRef8,
+          circleRef8,
         ]
       : open
       ? [
@@ -503,11 +523,13 @@ const Timeline = ({
           circleRef6,
           lineRef7,
           circleRef7,
+          lineRef8,
+          circleRef8,
           DendogramLayer1Ref,
           skillCategoryRef,
           DendogramLayer2Ref,
           skillItemRef,
-          detailRef
+          detailRef,
         ]
       : [
           detailRef,
@@ -515,6 +537,8 @@ const Timeline = ({
           DendogramLayer2Ref,
           skillCategoryRef,
           DendogramLayer1Ref,
+          circleRef8,
+          lineRef8,
           circleRef7,
           lineRef7,
           circleRef6,
@@ -529,73 +553,21 @@ const Timeline = ({
           lineRef2,
           circleRef1,
           lineRef1,
-          circleRef0
+          circleRef0,
         ],
     mobile && open
       ? [
-          0,
-          0.3,
-          0.3,
-          0.6,
-          0.6,
-          0.9,
-          0.9,
-          1.2,
-          1.2,
-          1.5,
-          1.5,
-          1.8,
-          1.8,
-          2.1,
-          2.1,
-          2.4
+          0, 0.3, 0.3, 0.6, 0.6, 0.9, 0.9, 1.2, 1.2, 1.5, 1.5, 1.8, 1.8, 2.1,
+          2.1, 2.4, 2.4, 2.7,
         ]
       : open
       ? [
-          0,
-          0,
-          0.3,
-          0.3,
-          0.6,
-          0.6,
-          0.9,
-          0.9,
-          1.2,
-          1.2,
-          1.5,
-          1.5,
-          1.8,
-          1.8,
-          2.1,
-          2.1,
-          3.1,
-          3.2,
-          3.6,
-          4.0
+          0, 0, 0.3, 0.3, 0.6, 0.6, 0.9, 0.9, 1.2, 1.2, 1.5, 1.5, 1.8, 1.8, 2.1,
+          2.1, 2.4, 2.4, 3.4, 3.5, 3.9, 4.3,
         ]
       : [
-          0.4,
-          0.5,
-          1.5,
-          1.5,
-          1.8,
-          1.8,
-          2.1,
-          2.1,
-          2.3,
-          2.3,
-          2.6,
-          2.6,
-          2.9,
-          2.9,
-          3.2,
-          3.2,
-          3.5,
-          3.5,
-          3.8,
-          3.9,
-          4.2,
-          4.5
+          0.4, 0.5, 1.5, 1.5, 1.8, 1.8, 2.1, 2.1, 2.3, 2.3, 2.6, 2.6, 2.9, 2.9,
+          3.2, 3.2, 3.5, 3.5, 3.8, 3.9, 4.2, 4.2,
         ]
   )
 
@@ -607,7 +579,8 @@ const Timeline = ({
     circleProps4,
     circleProps5,
     circleProps6,
-    circleProps7
+    circleProps7,
+    circleProps8,
   ]
 
   const lineSprings = [
@@ -616,10 +589,11 @@ const Timeline = ({
     lineProps3,
     lineProps4,
     lineProps5,
-    lineProps6
+    lineProps6,
+    lineProps7,
   ]
 
-  const selectedArray = [-1, 1, 2, 3, 4, 5, 6, 7]
+  const selectedArray = [-1, 1, 2, 3, 4, 5, 6, 7, 8]
 
   const result = useStaticQuery(graphql`
     query TimelineQuery {
@@ -663,11 +637,11 @@ const Timeline = ({
           >
             <g>
               <Line
-                x1={lineProps7.x}
-                y1={lineProps7.y}
+                x1={lineProps8.x}
+                y1={lineProps8.y}
                 x2={1 + mobileAdjY + "vw"}
                 y2={
-                  innerSvgHeight - lineLength * 6 - circleRadiusInv * 7 + "vh"
+                  innerSvgHeight - lineLength * 7 - circleRadiusInv * 8 + "vh"
                 }
                 strokeDasharray="4 8"
               />
@@ -688,15 +662,15 @@ const Timeline = ({
               {circleSprings.map((spring, i) => (
                 <Circle
                   onClick={() =>
-                    setSelected(state => ({
+                    setSelected((state) => ({
                       value: selectedArray[i],
                       prevValue: state.value,
-                      menu: false
+                      menu: false,
                     }))
                   }
                   r={spring.r}
                   cx={
-                    i === 7
+                    i === 8
                       ? 3 + mobileAdjY * 1.5 + "vw"
                       : 1 + mobileAdjY + "vw"
                   }
@@ -721,10 +695,10 @@ const Timeline = ({
                   onMouseOver={() => setHover(selectedArray[i])}
                   onMouseOut={() => setHover(null)}
                   onClick={() =>
-                    setSelected(state => ({
+                    setSelected((state) => ({
                       value: selectedArray[i],
                       prevValue: state.value,
-                      menu: false
+                      menu: false,
                     }))
                   }
                   onFocus={() => void 0}

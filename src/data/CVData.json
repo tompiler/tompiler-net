@@ -225,7 +225,7 @@
       "selected": 6,
       "values": {
         "title": "Senior Software Engineer",
-        "duration": "Jan 2021 - now",
+        "duration": "Jan 2021 - Jun 2022",
         "summary": "Talking Medicines are on a mission to become the world's gold standard for patient intelligence by medicine.",
         "placements": [
           {
@@ -252,8 +252,36 @@
       }
     },
     {
-      "heading": "Side Projects & Volunteering",
+      "heading": "Policy in Practice",
       "selected": 7,
+      "values": {
+        "title": "Lead Data Engineer",
+        "duration": "Jul 2022 - now",
+        "summary": "Policy in Practice is a social policy software and analytics company working with councils, government, housing providers and community organisations.",
+        "placements": [
+          {
+            "name": null,
+            "description": [
+              {
+                "text": "Working across several products at different points in their lifecycle, a role combining the delivery of new features and improving efficiency by removing technical debt"
+              },
+              {
+                "text": "Fostering a positive culture, technical empowerment and providing analytics & engineering advice throughout the organisation"
+              },
+              {
+                "text": "Developing products with a preference for serverless architecture & infrastructure-as-code with the AWS CDK"
+              },
+              {
+                "text": "Technical lead on integrating Energy Performance Certificates (EPC) data into the Low-Income Family Tracker (LIFT) tool, providing Local Authorities with the ability to provide assistance to residents facing further financial pressure due to living in poorly insulated homes."
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "heading": "Side Projects & Volunteering",
+      "selected": 8,
       "values": {
         "duration": "Ongoing",
         "placements": [

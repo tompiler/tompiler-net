@@ -22,16 +22,16 @@ const HeaderContainer = styled(animated.div)`
   align-items: center;
   width: 100%;
   height: 6vh;
-  border-bottom: ${props => `1px solid ${props.theme.color}`};
+  border-bottom: ${(props) => `1px solid ${props.theme.color}`};
 
-  @media ${props => props.theme.breakpoints.md} {
+  @media ${(props) => props.theme.breakpoints.md} {
     height: 0;
   }
 `
 
 const ChildContainer = styled(animated.div)`
   display: block;
-  padding: 3vh 0;
+  padding: 1vh 0;
   display: flex;
   width: 100%;
   height: auto;
@@ -47,7 +47,7 @@ const ContentContainer = styled("div")`
   height: auto;
   text-align: center;
 
-  @media ${props => props.theme.breakpoints.md} {
+  @media ${(props) => props.theme.breakpoints.md} {
     top: 110px;
     left: 10%;
     width: 80%;
@@ -60,7 +60,7 @@ const Content = ({
   exit,
   entry,
   location,
-  children
+  children,
 }) => {
   const route = location.pathname.replace(/\//g, "")
   const windowSize = useWindowSize()
@@ -83,13 +83,13 @@ const Content = ({
   const props = useSpring({
     from: { opacity: 0 },
     to: {
-      opacity: mount && route !== "cv" ? 1 : 0
+      opacity: mount && route !== "cv" ? 1 : 0,
     },
     config: {
       mass: 1,
       tension: 120,
-      friction: 15
-    }
+      friction: 15,
+    },
   })
 
   return (
@@ -104,13 +104,13 @@ const Content = ({
                 ? 0
                 : route === "cv" || (mount && exitState === "cv")
                 ? props.opacity
-                : 1
+                : 1,
           }}
         >
           {windowSize.width > 650 && (
             <Title
               style={{
-                opacity: props.opacity
+                opacity: props.opacity,
               }}
             >
               {header}
@@ -120,7 +120,7 @@ const Content = ({
         <div>
           <ChildContainer
             style={{
-              opacity: props.opacity
+              opacity: props.opacity,
             }}
           >
             {children}
