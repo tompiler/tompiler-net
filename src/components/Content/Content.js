@@ -41,7 +41,7 @@ const ChildContainer = styled(animated.div)`
 const ContentContainer = styled("div")`
   display: block;
   position: absolute;
-  top: 14vh;
+  top: 6vh;
   left: 30vw;
   width: 40%;
   height: auto;

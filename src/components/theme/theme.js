@@ -47,9 +47,9 @@ export const darkTheme = {
   contactItem: { color: "#d4cac1", hover: "#F3E9DE" },
   tompiler: { border: "#d4cac1" },
   cv: {
-    color: "#DCDCDC",
-    hover: "#fafafa",
-    line: { color: "#DCDCDC", hover: "#fafafa" },
+    color: "#d4cac1",
+    hover: "#DCDCDC",
+    line: { color: "#d4cac1", hover: "#DCDCDC" },
     circle: { hover: "#aba49d" },
     toggle: { hover: "#414654" },
     button: { background: "#313e57", color: "#d4cac1", border: "#535e73" },

@@ -60,7 +60,7 @@ const Layout = (props) => {
   `)
 
   return (
-    <ThemeProvider theme={state.isDark ? darkTheme : lightTheme}>
+    <ThemeProvider theme={state.isDark ? lightTheme : darkTheme}>
       <GlobalStyles />
       <Seo image={data.file.childImageSharp.resize} />
       <Toolbar />
