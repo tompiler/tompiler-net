@@ -36,10 +36,6 @@ const Contact = () => {
         href="https://www.linkedin.com/in/thomas-lynch-88700354/"
       ></ContactItem>
       <ContactItem
-        icon={faTwitter}
-        href="https://www.twitter.com/tompiler"
-      ></ContactItem>
-      <ContactItem
         icon={faGithub}
         href="https://www.github.com/tompiler"
       ></ContactItem>
