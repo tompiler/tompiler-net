@@ -2,7 +2,7 @@
   "main": { "columnHeadings": ["TIMELINE", "SKILL", "TECHNOLOGY"] },
   "summary": {
     "heading": "Summary",
-    "text": "Software engineer with broad experience in technology, mostly helping teams face challenges with data. Highly attentive to detail, skilled in data science, data engineering, analytics, interactive data visualisation, and cloud technologies."
+    "text": "Software engineer with broad experience in technology, mostly helping teams face challenges with data. Highly attentive to detail, skilled in data science, data engineering, analytics, interactive data visualisation, cloud technologies, and project management"
   },
   "explain": {
     "heading": "Work Experience Dendrogram",
@@ -257,7 +257,7 @@
       "values": {
         "title": "Lead Data Engineer",
         "duration": "Jul 2022 - now",
-        "summary": "Policy in Practice is a social policy software and analytics company working with councils, government, housing providers and community organisations.",
+        "summary": "Policy in Practice is a social policy software and analytics company working with local government, housing providers and community organisations across the UK.",
         "placements": [
           {
             "name": null,
@@ -266,13 +266,16 @@
                 "text": "Working across several products at different points in their lifecycle, a role combining the delivery of new features and improving efficiency by removing technical debt"
               },
               {
-                "text": "Fostering a positive culture, technical empowerment and providing analytics & engineering advice throughout the organisation"
+                "text": "Fostering a positive culture, technical empowerment within and across teams, and providing analytics & engineering advice throughout the organisation"
               },
               {
-                "text": "Developing products with a preference for serverless architecture & infrastructure-as-code with the AWS CDK"
+                "text": "Developing and maintaining a (mostly) serverless infrastructure, all using infrastructure-as-code with the AWS CDK"
               },
               {
-                "text": "Technical lead on integrating Energy Performance Certificates (EPC) data into the Low-Income Family Tracker (LIFT) tool, providing Local Authorities with the ability to provide assistance to residents facing further financial pressure due to living in poorly insulated homes."
+                "text": "Led the technical effort to deliver letters to thousands of pensioners across London that were eligible for (but not yet claiming) pension credit. It led to over a quarter of them claiming an average of £3,879 each per year. See more here: https://www.bbc.co.uk/news/uk-england-london-66553749"
+              },
+              {
+                "text": "Helped steer a team through rapid technical advances including: integrating Energy Performance Certificate data to help local authorities identify and assist residents living in poorly insulated homes, a new sophisticated data ingestion system for scalably processing myriad administrative datasets from third parties, and a campaigns solution for local authorities to communicate with residents to alert them to extra income they are entitled to based on their circumstances"
               }
             ]
           }

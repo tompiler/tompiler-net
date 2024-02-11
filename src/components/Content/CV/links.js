@@ -27,69 +27,74 @@ const timelineNodes = {
 // Version Control
 
 const skillCategories = {
+  management: {
+    name: "Engineering Management",
+    vh: 8,
+    validTimelineNodesOrder: [7],
+  },
   etl: {
     name: "Data Engineering",
-    vh: 9,
+    vh: 15,
     validTimelineNodesOrder: [7, 6, 5, 4, 3, 2],
   },
   python: {
     name: "Python",
-    vh: 16,
+    vh: 21,
     validTimelineNodesOrder: [8, 7, 6, 5, 4, 3, 2],
-  },
-  dataModelling: {
-    name: "Data Analysis",
-    vh: 20,
-    validTimelineNodesOrder: [7, 6, 5, 4, 2],
-  },
-  geoSpatial: {
-    name: "Geospatial Analysis",
-    vh: 27,
-    validTimelineNodesOrder: [8, 7, 3, 2],
   },
   azure: {
     name: "Azure",
-    vh: 33,
+    vh: 26,
     validTimelineNodesOrder: [6, 5],
   },
   aws: {
     name: "AWS",
-    vh: 39,
+    vh: 32,
     validTimelineNodesOrder: [8, 7, 5, 4],
+  },
+  dataModelling: {
+    name: "Data Analysis",
+    vh: 37,
+    validTimelineNodesOrder: [7, 6, 5, 4, 2],
+  },
+  geoSpatial: {
+    name: "Geospatial Analysis",
+    vh: 44,
+    validTimelineNodesOrder: [8, 7, 3, 2],
   },
   visualisation: {
     name: "Data Visualisation",
-    vh: 44,
+    vh: 51,
     validTimelineNodesOrder: [8, 7, 6, 5, 4, 3, 2],
   },
   frontendDevelopment: {
     name: "Frontend Development",
-    vh: 52,
+    vh: 59,
     validTimelineNodesOrder: [8, 7, 6, 5, 4, 3, 2],
-  },
-  API: {
-    name: "APIs",
-    vh: 60,
-    validTimelineNodesOrder: [8, 7, 6, 5, 4, 3],
   },
   databases: {
     name: "Databases",
-    vh: 65,
+    vh: 66,
     validTimelineNodesOrder: [8, 7, 6, 5, 4, 3, 2],
+  },
+  cicd: {
+    name: "CI/CD",
+    vh: 71,
+    validTimelineNodesOrder: [8, 7, 6, 5],
   },
   testing: {
     name: "Testing",
-    vh: 72,
+    vh: 75,
     validTimelineNodesOrder: [8, 7, 6, 5, 4, 3, 2],
   },
   os: {
     name: "OS",
-    vh: 77,
+    vh: 80,
     validTimelineNodesOrder: [8, 7, 6, 5, 4, 3, 2],
   },
   other: {
     name: "Version Control",
-    vh: 82,
+    vh: 85,
     validTimelineNodesOrder: [8, 7, 6, 5, 4, 3, 2],
   },
 }
@@ -123,100 +128,100 @@ const skillItems = {
     vh: 12,
     validTimelineNodesOrder: [6],
   },
+  tableau: {
+    name: "Tableau",
+    vh: 15,
+    validTimelineNodesOrder: [7],
+  },
   powerBI: {
     name: "Power BI",
-    vh: 15,
+    vh: 17,
     validTimelineNodesOrder: [6, 5],
   },
   looker: {
     name: "Looker",
-    vh: 17,
+    vh: 19,
     validTimelineNodesOrder: [5],
   },
   arcgis: {
     name: "ArcGIS",
-    vh: 20,
+    vh: 22,
     validTimelineNodesOrder: [3],
   },
   sql: {
     name: "SQL",
-    vh: 23,
+    vh: 25,
     validTimelineNodesOrder: [7, 6, 5, 4, 3, 2],
   },
   airflow: {
     name: "Airflow",
-    vh: 26,
+    vh: 28,
     validTimelineNodesOrder: [5],
   },
   dbt: {
     name: "dbt",
-    vh: 28,
+    vh: 30,
     validTimelineNodesOrder: [5],
   },
   dataFactory: {
     name: "Data Factory",
-    vh: 31,
+    vh: 33,
     validTimelineNodesOrder: [5],
   },
   devOps: {
     name: "Dev Ops",
-    vh: 33,
+    vh: 35,
     validTimelineNodesOrder: [5],
   },
   functions: {
     name: "Functions",
-    vh: 35,
+    vh: 37,
     validTimelineNodesOrder: [6, 5],
   },
   blobStorage: {
     name: "Blob Storage",
-    vh: 37,
-    validTimelineNodesOrder: [6, 5],
-  },
-  keyVault: {
-    name: "Key Vault",
     vh: 39,
     validTimelineNodesOrder: [6, 5],
   },
-  containerInstances: {
-    name: "Container Instances",
+  azureAndMore: {
+    name: "+ more",
     vh: 41,
-    validTimelineNodesOrder: [6],
-  },
-  logAnalytics: {
-    name: "Log Analytics",
-    vh: 43,
     validTimelineNodesOrder: [6, 5],
   },
   storage: {
-    name: "S3/Glacier/EBS/EFS",
-    vh: 46,
+    name: "S3/ECR",
+    vh: 44,
     validTimelineNodesOrder: [7, 5, 4],
   },
   compute: {
     name: "EC2/ECS/EMR/Lambda",
-    vh: 48,
+    vh: 46,
     validTimelineNodesOrder: [8, 7, 5, 4],
   },
   databases: {
-    name: "RDS/Redshift/DynamoDB",
-    vh: 50,
+    name: "RDS/Aurora/DynamoDB",
+    vh: 48,
     validTimelineNodesOrder: [7, 5],
   },
   networking: {
-    name: "VPC/ELB/Networking",
-    vh: 52,
+    name: "VPC/Networking",
+    vh: 50,
     validTimelineNodesOrder: [7, 5],
   },
   other: {
-    name: "Athena/Kinesis/SQS/IAM",
-    vh: 54,
+    name: "Athena/Kinesis/SQS/SNS/IAM",
+    vh: 52,
     validTimelineNodesOrder: [7, 5],
   },
   d3: {
     name: "d3.js",
-    vh: 57,
+    vh: 55,
     validTimelineNodesOrder: [8, 6, 4, 3, 2],
+  },
+  typescript: {
+    name: "Typescript",
+    vh: 57,
+    validTimelineNodesOrder: [7],
   },
   htmlCSSJavaScript: {
     name: "HTML/CSS/JavaScript",
@@ -238,64 +243,59 @@ const skillItems = {
     vh: 65,
     validTimelineNodesOrder: [8, 4],
   },
-  rest: {
-    name: "REST",
-    vh: 68,
-    validTimelineNodesOrder: [6, 5, 4, 3],
-  },
-  django: {
-    name: "Django",
-    vh: 70,
-    validTimelineNodesOrder: [6, 5, 4, 3],
-  },
   postgreSQL: {
     name: "PostgreSQL",
-    vh: 73,
+    vh: 68,
     validTimelineNodesOrder: [7, 6, 2],
   },
   sqlserver: {
     name: "SQL Server",
-    vh: 75,
+    vh: 70,
     validTimelineNodesOrder: [6, 5, 1],
   },
   mongoDB: {
     name: "MongoDB",
-    vh: 77,
+    vh: 72,
     validTimelineNodesOrder: [7, 5, 4, 3],
   },
   mysql: {
     name: "MySQL",
-    vh: 79,
+    vh: 74,
     validTimelineNodesOrder: [2],
+  },
+  githubactions: {
+    name: "Github Actions",
+    vh: 77,
+    validTimelineNodesOrder: [7],
   },
   jestPyTest: {
     name: "Jest/pyTest",
-    vh: 82,
+    vh: 80,
     validTimelineNodesOrder: [8, 7, 6, 4],
   },
   BDD: {
     name: "BDD",
-    vh: 84,
+    vh: 82,
     validTimelineNodesOrder: [5],
   },
   linux: {
     name: "Linux/Ubuntu",
-    vh: 86.5,
+    vh: 85,
     validTimelineNodesOrder: [8, 5, 4],
   },
   macOS: {
     name: "MacOS",
-    vh: 88.5,
+    vh: 87,
     validTimelineNodesOrder: [8, 7, 6, 5],
   },
   windows: {
     name: "Windows",
-    vh: 90.5,
+    vh: 89,
     validTimelineNodesOrder: [4, 3, 2, 1],
   },
   git: {
     name: "Git",
-    vh: 93,
+    vh: 92,
     validTimelineNodesOrder: [8, 7, 6, 5, 4, 3, 2],
   },
 }
@@ -360,72 +360,73 @@ const data = {
     {
       key: 9,
       y0: timelineNodes.policyInPractice,
-      y1: skillCategories.etl,
+      y1: skillCategories.management,
     },
     {
       key: 10,
       y0: timelineNodes.policyInPractice,
-      y1: skillCategories.python,
+      y1: skillCategories.etl,
     },
     {
       key: 11,
       y0: timelineNodes.policyInPractice,
-      y1: skillCategories.geoSpatial,
+      y1: skillCategories.python,
     },
     {
       key: 12,
       y0: timelineNodes.policyInPractice,
-      y1: skillCategories.aws,
+      y1: skillCategories.geoSpatial,
     },
     {
       key: 13,
       y0: timelineNodes.policyInPractice,
-      y1: skillCategories.visualisation,
+      y1: skillCategories.aws,
     },
     {
       key: 14,
       y0: timelineNodes.policyInPractice,
-      y1: skillCategories.frontendDevelopment,
+      y1: skillCategories.visualisation,
     },
     {
       key: 15,
       y0: timelineNodes.policyInPractice,
-      y1: skillCategories.API,
+      y1: skillCategories.frontendDevelopment,
     },
+
     {
-      key: 16,
+      key: 17,
       y0: timelineNodes.policyInPractice,
       y1: skillCategories.databases,
     },
     {
-      key: 17,
+      key: 170,
       y0: timelineNodes.policyInPractice,
-      y1: skillCategories.testing,
+      y1: skillCategories.cicd,
     },
     {
       key: 18,
       y0: timelineNodes.policyInPractice,
-      y1: skillCategories.os,
+      y1: skillCategories.testing,
     },
     {
       key: 19,
       y0: timelineNodes.policyInPractice,
-      y1: skillCategories.other,
+      y1: skillCategories.os,
     },
     {
       key: 20,
-      y0: timelineNodes.talkingMedicines,
-      y1: skillCategories.etl,
+      y0: timelineNodes.policyInPractice,
+      y1: skillCategories.other,
     },
     {
       key: 21,
       y0: timelineNodes.talkingMedicines,
-      y1: skillCategories.python,
+      y1: skillCategories.etl,
     },
     {
       key: 22,
       y0: timelineNodes.talkingMedicines,
-      y1: skillCategories.dataModelling,
+      y1: skillCategories.python,
     },
     {
       key: 23,
@@ -435,17 +436,17 @@ const data = {
     {
       key: 24,
       y0: timelineNodes.talkingMedicines,
-      y1: skillCategories.azure,
+      y1: skillCategories.dataModelling,
     },
     {
       key: 25,
       y0: timelineNodes.talkingMedicines,
-      y1: skillCategories.visualisation,
+      y1: skillCategories.azure,
     },
     {
       key: 26,
       y0: timelineNodes.talkingMedicines,
-      y1: skillCategories.frontendDevelopment,
+      y1: skillCategories.visualisation,
     },
     {
       key: 27,
@@ -454,8 +455,8 @@ const data = {
     },
     {
       key: 28,
-      y0: timelineNodes.infinityWorks,
-      y1: skillCategories.API,
+      y0: timelineNodes.talkingMedicines,
+      y1: skillCategories.frontendDevelopment,
     },
     {
       key: 29,
@@ -501,55 +502,49 @@ const data = {
     {
       key: 38,
       y0: timelineNodes.infinityWorks,
-      y1: skillCategories.API,
-    },
-    {
-      key: 39,
-      y0: timelineNodes.infinityWorks,
       y1: skillCategories.databases,
     },
     {
-      key: 40,
+      key: 29,
       y0: timelineNodes.infinityWorks,
       y1: skillCategories.testing,
     },
     {
-      key: 41,
+      key: 40,
       y0: timelineNodes.infinityWorks,
       y1: skillCategories.os,
     },
     {
-      key: 42,
+      key: 41,
       y0: timelineNodes.infinityWorks,
       y1: skillCategories.other,
     },
     {
-      key: 43,
+      key: 42,
       y0: timelineNodes.decathlonUK,
       y1: skillCategories.frontendDevelopment,
     },
     {
-      key: 44,
+      key: 43,
       y0: timelineNodes.decathlonUK,
       y1: skillCategories.visualisation,
     },
-    { key: 45, y0: timelineNodes.decathlonUK, y1: skillCategories.python },
+    { key: 44, y0: timelineNodes.decathlonUK, y1: skillCategories.python },
     {
-      key: 46,
+      key: 45,
       y0: timelineNodes.decathlonUK,
       y1: skillCategories.dataModelling,
     },
-    { key: 47, y0: timelineNodes.decathlonUK, y1: skillCategories.etl },
+    { key: 46, y0: timelineNodes.decathlonUK, y1: skillCategories.etl },
 
-    { key: 48, y0: timelineNodes.decathlonUK, y1: skillCategories.aws },
+    { key: 47, y0: timelineNodes.decathlonUK, y1: skillCategories.aws },
 
-    { key: 49, y0: timelineNodes.decathlonUK, y1: skillCategories.API },
-    { key: 50, y0: timelineNodes.decathlonUK, y1: skillCategories.databases },
-    { key: 51, y0: timelineNodes.decathlonUK, y1: skillCategories.testing },
-    { key: 52, y0: timelineNodes.decathlonUK, y1: skillCategories.os },
-    { key: 53, y0: timelineNodes.decathlonUK, y1: skillCategories.other },
+    { key: 48, y0: timelineNodes.decathlonUK, y1: skillCategories.databases },
+    { key: 49, y0: timelineNodes.decathlonUK, y1: skillCategories.testing },
+    { key: 50, y0: timelineNodes.decathlonUK, y1: skillCategories.os },
+    { key: 51, y0: timelineNodes.decathlonUK, y1: skillCategories.other },
     {
-      key: 54,
+      key: 52,
       y0: timelineNodes.charlesRiverAssociates,
       y1: skillCategories.frontendDevelopment,
     },
@@ -572,11 +567,6 @@ const data = {
       key: 58,
       y0: timelineNodes.charlesRiverAssociates,
       y1: skillCategories.etl,
-    },
-    {
-      key: 59,
-      y0: timelineNodes.charlesRiverAssociates,
-      y1: skillCategories.API,
     },
     {
       key: 60,
@@ -647,19 +637,9 @@ const data = {
       y1: skillItems.blobStorage,
     },
     {
-      key: 7,
-      y0: skillCategories.etl,
-      y1: skillItems.keyVault,
-    },
-    {
-      key: 8,
-      y0: skillCategories.etl,
-      y1: skillItems.containerInstances,
-    },
-    {
       key: 9,
       y0: skillCategories.etl,
-      y1: skillItems.logAnalytics,
+      y1: skillItems.azureAndMore,
     },
     {
       key: 10,
@@ -670,6 +650,11 @@ const data = {
       key: 11,
       y0: skillCategories.etl,
       y1: skillItems.sqlserver,
+    },
+    {
+      key: 110,
+      y0: skillCategories.etl,
+      y1: skillItems.typescript,
     },
     {
       key: 12,
@@ -737,19 +722,9 @@ const data = {
       y1: skillItems.blobStorage,
     },
     {
-      key: 25,
-      y0: skillCategories.azure,
-      y1: skillItems.keyVault,
-    },
-    {
-      key: 26,
-      y0: skillCategories.azure,
-      y1: skillItems.containerInstances,
-    },
-    {
       key: 27,
       y0: skillCategories.azure,
-      y1: skillItems.logAnalytics,
+      y1: skillItems.azureAndMore,
     },
     {
       key: 28,
@@ -782,6 +757,11 @@ const data = {
       y1: skillItems.d3,
     },
     {
+      key: 340,
+      y0: skillCategories.visualisation,
+      y1: skillItems.tableau,
+    },
+    {
       key: 34,
       y0: skillCategories.visualisation,
       y1: skillItems.powerBI,
@@ -800,6 +780,11 @@ const data = {
       key: 37,
       y0: skillCategories.frontendDevelopment,
       y1: skillItems.d3,
+    },
+    {
+      key: 370,
+      y0: skillCategories.frontendDevelopment,
+      y1: skillItems.typescript,
     },
     {
       key: 38,
@@ -822,16 +807,6 @@ const data = {
       y1: skillItems.graphQL,
     },
     {
-      key: 42,
-      y0: skillCategories.API,
-      y1: skillItems.rest,
-    },
-    {
-      key: 43,
-      y0: skillCategories.API,
-      y1: skillItems.django,
-    },
-    {
       key: 44,
       y0: skillCategories.databases,
       y1: skillItems.postgreSQL,
@@ -850,6 +825,11 @@ const data = {
       key: 47,
       y0: skillCategories.databases,
       y1: skillItems.mysql,
+    },
+    {
+      key: 470,
+      y0: skillCategories.cicd,
+      y1: skillItems.githubactions,
     },
     {
       key: 48,
