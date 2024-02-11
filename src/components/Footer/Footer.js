@@ -35,7 +35,7 @@ const Footer = () => {
   return (
     <FooterContainer>
       <div>Thomas Lynch </div>
-      <div>© Copyright 2022. </div>
+      <div>© Copyright 2024. </div>
     </FooterContainer>
   )
 }
